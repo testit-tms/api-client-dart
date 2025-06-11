@@ -1,0 +1,37 @@
+# OpenAPI Generator configuration for Dart API client
+generatorName: dart
+inputSpec: source/swagger5.3v2.json
+outputDir: ./generated-dart-client
+templateDir: null
+
+# Basic package settings
+additionalProperties:
+  # Package information
+  pubName: "testit_api_client_dart"
+  pubVersion: "1.0.0"
+  pubDescription: "Auto-generated Dart API client for Test IT"
+
+  
+  # Code settings
+  pubLibrary: "testit_api_client_dart"
+  sourceFolder: ""
+
+  # Settings for fixing types
+  disallowAdditionalPropertiesIfNotPresent: false
+  ensureUniqueParams: true
+  serializationLibrary: "native_serialization"
+  
+  # Code improvements for fixing types
+  sortModelPropertiesByRequiredFlag: true
+  sortParamsByRequiredFlag: true
+  enumUnknownDefaultCase: false
+  useEnumExtension: false
+  
+  # Security and compatibility
+  allowUnicodeIdentifiers: false
+  prependFormOrBodyParameters: false
+  legacyDiscriminatorBehavior: true
+
+# Ignore specific files during generation
+.openapi-generator-ignore: |
+  # .gitignore 

@@ -1,0 +1,19 @@
+# testit_api_client_dart.model.GlobalSearchItemResult
+
+## Load the model package
+```dart
+import 'package:testit_api_client_dart/api.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**resourceType** | **String** |  | 
+**resourceId** | **String** |  | 
+**name** | **String** |  | 
+**projectGlobalId** | **int** |  | 
+**globalId** | **int** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

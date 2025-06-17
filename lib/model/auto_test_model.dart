@@ -22,6 +22,7 @@ class AutoTestModel {
     required this.externalId,
     required this.projectId,
     required this.name,
+    this.lastTestResultStatus,
     this.modifiedDate,
     this.modifiedById,
     this.lastTestRunId,
@@ -60,6 +61,9 @@ class AutoTestModel {
 
   /// Unique ID of the project creator
   String createdById;
+
+  /// Status of the autotest last test result
+  TestStatusModel? lastTestResultStatus;
 
   /// External ID of the autotest
   String externalId;
@@ -135,6 +139,7 @@ class AutoTestModel {
     other.id == id &&
     other.createdDate == createdDate &&
     other.createdById == createdById &&
+    other.lastTestResultStatus == lastTestResultStatus &&
     other.externalId == externalId &&
     other.projectId == projectId &&
     other.name == name &&
@@ -170,6 +175,7 @@ class AutoTestModel {
     (externalId.hashCode) +
     (projectId.hashCode) +
     (name.hashCode) +
+    (lastTestResultStatus == null ? 0 : lastTestResultStatus.hashCode) +
     (modifiedDate == null ? 0 : modifiedDate!.hashCode) +
     (modifiedById == null ? 0 : modifiedById!.hashCode) +
     (lastTestRunId == null ? 0 : lastTestRunId!.hashCode) +
@@ -191,7 +197,7 @@ class AutoTestModel {
     (externalKey == null ? 0 : externalKey!.hashCode);
 
   @override
-  String toString() => 'AutoTestModel[globalId=$globalId, isDeleted=$isDeleted, mustBeApproved=$mustBeApproved, id=$id, createdDate=$createdDate, createdById=$createdById, externalId=$externalId, projectId=$projectId, name=$name, modifiedDate=$modifiedDate, modifiedById=$modifiedById, lastTestRunId=$lastTestRunId, lastTestRunName=$lastTestRunName, lastTestResultId=$lastTestResultId, lastTestResultConfiguration=$lastTestResultConfiguration, lastTestResultOutcome=$lastTestResultOutcome, stabilityPercentage=$stabilityPercentage, links=$links, namespace=$namespace, classname=$classname, steps=$steps, setup=$setup, teardown=$teardown, title=$title, description=$description, labels=$labels, isFlaky=$isFlaky, externalKey=$externalKey]';
+  String toString() => 'AutoTestModel[globalId=$globalId, isDeleted=$isDeleted, mustBeApproved=$mustBeApproved, id=$id, createdDate=$createdDate, createdById=$createdById, lastTestResultStatus=$lastTestResultStatus, externalId=$externalId, projectId=$projectId, name=$name, modifiedDate=$modifiedDate, modifiedById=$modifiedById, lastTestRunId=$lastTestRunId, lastTestRunName=$lastTestRunName, lastTestResultId=$lastTestResultId, lastTestResultConfiguration=$lastTestResultConfiguration, lastTestResultOutcome=$lastTestResultOutcome, stabilityPercentage=$stabilityPercentage, links=$links, namespace=$namespace, classname=$classname, steps=$steps, setup=$setup, teardown=$teardown, title=$title, description=$description, labels=$labels, isFlaky=$isFlaky, externalKey=$externalKey]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -204,6 +210,12 @@ class AutoTestModel {
       json[r'externalId'] = this.externalId;
       json[r'projectId'] = this.projectId;
       json[r'name'] = this.name;
+    if (this.lastTestResultStatus != null) {
+      json[r'lastTestResultStatus'] = this.lastTestResultStatus;
+    }
+    else {
+      json[r'lastTestResultStatus'] = null;
+    }
     if (this.modifiedDate != null) {
       json[r'modifiedDate'] = this.modifiedDate!.toUtc().toIso8601String();
     } else {
@@ -335,6 +347,7 @@ class AutoTestModel {
         lastTestRunId: mapValueOfType<String>(json, r'lastTestRunId'),
         lastTestRunName: mapValueOfType<String>(json, r'lastTestRunName'),
         lastTestResultId: mapValueOfType<String>(json, r'lastTestResultId'),
+        lastTestResultStatus: TestStatusModel.fromJson(json[r'lastTestResultStatus']),
         lastTestResultConfiguration: ConfigurationShortModel.fromJson(json[r'lastTestResultConfiguration']),
         lastTestResultOutcome: mapValueOfType<String>(json, r'lastTestResultOutcome'),
         stabilityPercentage: mapValueOfType<int>(json, r'stabilityPercentage'),
@@ -402,6 +415,7 @@ class AutoTestModel {
     'id',
     'createdDate',
     'createdById',
+    'lastTestResultStatus',
     'externalId',
     'projectId',
     'name',

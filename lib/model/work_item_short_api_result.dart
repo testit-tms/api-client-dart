@@ -27,6 +27,7 @@ class WorkItemShortApiResult {
     required this.createdById,
     required this.state,
     required this.priority,
+    required this.sourceType,
     required this.isDeleted,
     this.iterations = const [],
     this.links = const [],
@@ -80,6 +81,9 @@ class WorkItemShortApiResult {
   /// Work Item priority level
   WorkItemPriorityModel priority;
 
+  /// Work Item priority level
+  WorkItemSourceTypeModel sourceType;
+
   /// Flag determining whether Work Item is deleted
   bool isDeleted;
 
@@ -123,6 +127,7 @@ class WorkItemShortApiResult {
     other.createdById == createdById &&
     other.state == state &&
     other.priority == priority &&
+    other.sourceType == sourceType &&
     other.isDeleted == isDeleted &&
     _deepEquality.equals(other.iterations, iterations) &&
     _deepEquality.equals(other.links, links) &&
@@ -150,6 +155,7 @@ class WorkItemShortApiResult {
     (createdById.hashCode) +
     (state.hashCode) +
     (priority.hashCode) +
+    (sourceType.hashCode) +
     (isDeleted.hashCode) +
     (iterations.hashCode) +
     (links.hashCode) +
@@ -161,7 +167,7 @@ class WorkItemShortApiResult {
     (tagNames == null ? 0 : tagNames!.hashCode);
 
   @override
-  String toString() => 'WorkItemShortApiResult[id=$id, versionId=$versionId, versionNumber=$versionNumber, name=$name, entityTypeName=$entityTypeName, projectId=$projectId, sectionId=$sectionId, sectionName=$sectionName, isAutomated=$isAutomated, globalId=$globalId, duration=$duration, createdById=$createdById, state=$state, priority=$priority, isDeleted=$isDeleted, iterations=$iterations, links=$links, medianDuration=$medianDuration, attributes=$attributes, modifiedById=$modifiedById, createdDate=$createdDate, modifiedDate=$modifiedDate, tagNames=$tagNames]';
+  String toString() => 'WorkItemShortApiResult[id=$id, versionId=$versionId, versionNumber=$versionNumber, name=$name, entityTypeName=$entityTypeName, projectId=$projectId, sectionId=$sectionId, sectionName=$sectionName, isAutomated=$isAutomated, globalId=$globalId, duration=$duration, createdById=$createdById, state=$state, priority=$priority, sourceType=$sourceType, isDeleted=$isDeleted, iterations=$iterations, links=$links, medianDuration=$medianDuration, attributes=$attributes, modifiedById=$modifiedById, createdDate=$createdDate, modifiedDate=$modifiedDate, tagNames=$tagNames]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -179,6 +185,7 @@ class WorkItemShortApiResult {
       json[r'createdById'] = this.createdById;
       json[r'state'] = this.state;
       json[r'priority'] = this.priority;
+      json[r'sourceType'] = this.sourceType;
       json[r'isDeleted'] = this.isDeleted;
       json[r'iterations'] = this.iterations;
       json[r'links'] = this.links;
@@ -248,6 +255,7 @@ class WorkItemShortApiResult {
         createdById: mapValueOfType<String>(json, r'createdById')!,
         state: WorkItemStates.fromJson(json[r'state'])!,
         priority: WorkItemPriorityModel.fromJson(json[r'priority'])!,
+        sourceType: WorkItemSourceTypeModel.fromJson(json[r'sourceType'])!,
         isDeleted: mapValueOfType<bool>(json, r'isDeleted')!,
         iterations: IterationApiResult.listFromJson(json[r'iterations']),
         links: LinkShortApiResult.listFromJson(json[r'links']),
@@ -320,6 +328,7 @@ class WorkItemShortApiResult {
     'createdById',
     'state',
     'priority',
+    'sourceType',
     'isDeleted',
     'iterations',
     'links',

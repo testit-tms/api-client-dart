@@ -22,12 +22,13 @@ Name | Type | Description | Notes
 **sectionId** | **String** |  | 
 **state** | [**WorkItemStates**](WorkItemStates.md) |  | 
 **priority** | [**WorkItemPriorityModel**](WorkItemPriorityModel.md) |  | 
+**sourceType** | [**WorkItemSourceTypeModel**](WorkItemSourceTypeModel.md) |  | 
 **steps** | [**List<StepModel>**](StepModel.md) |  | [default to const []]
 **preconditionSteps** | [**List<StepModel>**](StepModel.md) |  | [default to const []]
 **postconditionSteps** | [**List<StepModel>**](StepModel.md) |  | [default to const []]
 **duration** | **int** |  | 
 **attributes** | [**Map<String, Object>**](Object.md) |  | [default to const {}]
-**tags** | [**List<TagPutModel>**](TagPutModel.md) |  | [default to const []]
+**tags** | [**List<TagModel>**](TagModel.md) |  | [default to const []]
 **links** | [**List<LinkModel>**](LinkModel.md) |  | [default to const []]
 **name** | **String** |  | 
 **autoTests** | [**List<AutoTestModel>**](AutoTestModel.md) |  | [optional] [default to const []]

@@ -42,7 +42,7 @@ Method | HTTP request | Description
 
 Upload and link attachment to WorkItem
 
- Use case   User sets workItemId   User attaches a file   System creates attachment and links it to the work item   System returns attachment identifier
+ Use case  User sets workItemId  User attaches a file  System creates attachment and links it to the work item  System returns attachment identifier
 
 ### Example
 ```dart
@@ -90,7 +90,7 @@ void (empty response body)
 
 Transform CheckList to TestCase
 
- Use case   User sets checklist identifier   User runs method execution   System transform CheckList to TestCase
+ Use case  User sets checklist identifier  User runs method execution  System transform CheckList to TestCase
 
 ### Example
 ```dart
@@ -137,7 +137,7 @@ Name | Type | Description  | Notes
 
 Get change history of WorkItem
 
- Use case   User sets work item identifier   User runs method execution   System return change history of WorkItem
+ Use case  User sets work item identifier  User runs method execution  System return change history of WorkItem
 
 ### Example
 ```dart
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 
 Delete like from WorkItem
 
- Use case   User sets WorkItem identifier   User runs method execution   System delete like from WorkItem
+ Use case  User sets WorkItem identifier  User runs method execution  System delete like from WorkItem
 
 ### Example
 ```dart
@@ -240,7 +240,7 @@ void (empty response body)
 
 Set like to WorkItem
 
- Use case   User sets WorkItem identifier   User runs method execution   System set like to WorkItem
+ Use case  User sets WorkItem identifier  User runs method execution  System set like to WorkItem
 
 ### Example
 ```dart
@@ -286,7 +286,7 @@ void (empty response body)
 
 Get likes count of WorkItem
 
- Use case   User sets WorkItem identifier   User runs method execution   System return likes count of WorkItem
+ Use case  User sets WorkItem identifier  User runs method execution  System return likes count of WorkItem
 
 ### Example
 ```dart
@@ -333,7 +333,7 @@ Name | Type | Description  | Notes
 
 Get likes of WorkItem
 
- Use case   User sets WorkItem identifier   User runs method execution   System return likes of WorkItem
+ Use case  User sets WorkItem identifier  User runs method execution  System return likes of WorkItem
 
 ### Example
 ```dart
@@ -380,7 +380,7 @@ Name | Type | Description  | Notes
 
 Get test results history of WorkItem
 
- Use case   User sets WorkItem identifier   User runs method execution   System return test results history of WorkItem
+ Use case  User sets WorkItem identifier  User runs method execution  System return test results history of WorkItem
 
 ### Example
 ```dart
@@ -457,7 +457,7 @@ Name | Type | Description  | Notes
 
 Set WorkItem as actual
 
- Use case   User sets work item identifier   User runs method execution   System set WorkItem as actual
+ Use case  User sets work item identifier  User runs method execution  System set WorkItem as actual
 
 ### Example
 ```dart
@@ -561,7 +561,7 @@ Name | Type | Description  | Notes
 
 Move WorkItem to another section
 
- Use case   User sets WorkItem identifier   User runs method execution   System move WorkItem to another section
+ Use case  User sets WorkItem identifier  User runs method execution  System move WorkItem to another section
 
 ### Example
 ```dart
@@ -663,7 +663,7 @@ Name | Type | Description  | Notes
 
 Get SharedStep references in sections
 
- Use case   User sets SharedStep identifier   User runs method execution   System return SharedStep references
+ Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
 
 ### Example
 ```dart
@@ -722,7 +722,7 @@ Name | Type | Description  | Notes
 
 Get SharedStep references in work items
 
- Use case   User sets SharedStep identifier   User runs method execution   System return SharedStep references
+ Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
 
 ### Example
 ```dart
@@ -781,7 +781,7 @@ Name | Type | Description  | Notes
 
 Get SharedStep references
 
- Use case   User sets SharedStep identifier   User runs method execution   System return SharedStep references
+ Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
 
 ### Example
 ```dart
@@ -824,11 +824,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createWorkItem**
-> WorkItemModel createWorkItem(workItemPostModel)
+> WorkItemModel createWorkItem(createWorkItemApiModel)
 
 Create Test Case, Checklist or Shared Step
 
- Use case   User sets work item properties (listed in request parameters)   User runs method execution   System creates work item by identifier   System returns work item model (listed in response parameters)
+ Use case  User sets work item properties (listed in request parameters)  User runs method execution  System creates work item by identifier  System returns work item model (listed in response parameters)
 
 ### Example
 ```dart
@@ -839,10 +839,10 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = WorkItemsApi();
-final workItemPostModel = WorkItemPostModel(); // WorkItemPostModel | 
+final createWorkItemApiModel = CreateWorkItemApiModel(); // CreateWorkItemApiModel | 
 
 try {
-    final result = api_instance.createWorkItem(workItemPostModel);
+    final result = api_instance.createWorkItem(createWorkItemApiModel);
     print(result);
 } catch (e) {
     print('Exception when calling WorkItemsApi->createWorkItem: $e\n');
@@ -853,7 +853,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workItemPostModel** | [**WorkItemPostModel**](WorkItemPostModel.md)|  | [optional] 
+ **createWorkItemApiModel** | [**CreateWorkItemApiModel**](CreateWorkItemApiModel.md)|  | [optional] 
 
 ### Return type
 
@@ -875,7 +875,7 @@ Name | Type | Description  | Notes
 
 Delete all links AutoTests from WorkItem by Id or GlobalId
 
- Use case   User sets work item identifier   User runs method execution   System search work item by identifier   System search and delete all autotests, related to found work item   System returns no content response
+ Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search and delete all autotests, related to found work item  System returns no content response
 
 ### Example
 ```dart
@@ -886,7 +886,7 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = WorkItemsApi();
-final id = 3fa85f64-5717-4562-b3fc-2c963f66afa6; // String | WorkItem internal (guid format) or  global(integer format) identifier\"
+final id = 3fa85f64-5717-4562-b3fc-2c963f66afa6; // String | WorkItem internal (guid format) or global(integer format) identifier\"
 
 try {
     api_instance.deleteAllWorkItemsFromAutoTest(id);
@@ -899,7 +899,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| WorkItem internal (guid format) or  global(integer format) identifier\" | 
+ **id** | **String**| WorkItem internal (guid format) or global(integer format) identifier\" | 
 
 ### Return type
 
@@ -921,7 +921,7 @@ void (empty response body)
 
 Delete Test Case, Checklist or Shared Step by Id or GlobalId
 
- Use case   User sets work item identifier   User runs method execution   System deletes work item   System returns no content response
+ Use case  User sets work item identifier  User runs method execution  System deletes work item  System returns no content response
 
 ### Example
 ```dart
@@ -932,7 +932,7 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = WorkItemsApi();
-final id = 3fa85f64-5717-4562-b3fc-2c963f66afa6; // String | WorkItem internal (guid format) or  global(integer format) identifier\"
+final id = 3fa85f64-5717-4562-b3fc-2c963f66afa6; // String | WorkItem internal (guid format) or global(integer format) identifier\"
 
 try {
     api_instance.deleteWorkItem(id);
@@ -945,7 +945,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| WorkItem internal (guid format) or  global(integer format) identifier\" | 
+ **id** | **String**| WorkItem internal (guid format) or global(integer format) identifier\" | 
 
 ### Return type
 
@@ -967,7 +967,7 @@ void (empty response body)
 
 Get all AutoTests linked to WorkItem by Id or GlobalId
 
- Use case   User sets work item identifier   User runs method execution   System search work item by identifier   System search all autotests, related to found work item   System returns list of found autotests
+ Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search all autotests, related to found work item  System returns list of found autotests
 
 ### Example
 ```dart
@@ -978,7 +978,7 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = WorkItemsApi();
-final id = 3fa85f64-5717-4562-b3fc-2c963f66afa6; // String | WorkItem internal (guid format) or  global(integer format) identifier\"
+final id = 3fa85f64-5717-4562-b3fc-2c963f66afa6; // String | WorkItem internal (guid format) or global(integer format) identifier\"
 
 try {
     final result = api_instance.getAutoTestsForWorkItem(id);
@@ -992,7 +992,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| WorkItem internal (guid format) or  global(integer format) identifier\" | 
+ **id** | **String**| WorkItem internal (guid format) or global(integer format) identifier\" | 
 
 ### Return type
 
@@ -1023,7 +1023,7 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = WorkItemsApi();
-final id = 3fa85f64-5717-4562-b3fc-2c963f66afa6; // String | WorkItem internal (guid format) or  global(integer format) identifier\"
+final id = 3fa85f64-5717-4562-b3fc-2c963f66afa6; // String | WorkItem internal (guid format) or global(integer format) identifier\"
 final versionId = 00000000-0000-0000-0000-000000000000; // String | WorkItem version (guid format) identifier
 final versionNumber = 0; // int | WorkItem version number (0 is the last version)\"
 
@@ -1039,7 +1039,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| WorkItem internal (guid format) or  global(integer format) identifier\" | 
+ **id** | **String**| WorkItem internal (guid format) or global(integer format) identifier\" | 
  **versionId** | **String**| WorkItem version (guid format) identifier | [optional] 
  **versionNumber** | **int**| WorkItem version number (0 is the last version)\" | [optional] 
 
@@ -1063,7 +1063,7 @@ Name | Type | Description  | Notes
 
 Get Test Case, Checklist or Shared Step by Id or GlobalId
 
- Use case   User sets work item identifier   [Optional] User sets work item version identifier   [Optional] User sets work item version number   User runs method execution   System search work item by identifier   [Optional] if User sets work item version identifier, system search work item version by identifier.   [Optional] if user sets work item version number, system search work item version by number   Otherwise, system search last work item version   System returns work item 
+ Use case  User sets work item identifier  [Optional] User sets work item version identifier  [Optional] User sets work item version number  User runs method execution  System search work item by identifier  [Optional] if User sets work item version identifier, system search work item version by identifier.  [Optional] if user sets work item version number, system search work item version by number  Otherwise, system search last work item version  System returns work item
 
 ### Example
 ```dart
@@ -1074,7 +1074,7 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = WorkItemsApi();
-final id = 3fa85f64-5717-4562-b3fc-2c963f66afa6; // String | WorkItem internal (guid format) or  global(integer format) identifier\"
+final id = 3fa85f64-5717-4562-b3fc-2c963f66afa6; // String | WorkItem internal (guid format) or global(integer format) identifier\"
 final versionId = 00000000-0000-0000-0000-000000000000; // String | WorkItem version (guid format) identifier\"
 final versionNumber = 0; // int | WorkItem version number (0 is the last version)\"
 
@@ -1090,7 +1090,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| WorkItem internal (guid format) or  global(integer format) identifier\" | 
+ **id** | **String**| WorkItem internal (guid format) or global(integer format) identifier\" | 
  **versionId** | **String**| WorkItem version (guid format) identifier\" | [optional] 
  **versionNumber** | **int**| WorkItem version number (0 is the last version)\" | [optional] 
 
@@ -1114,7 +1114,7 @@ Name | Type | Description  | Notes
 
 Get WorkItem chronology by Id or GlobalId
 
- Use case   User sets work item identifier   User runs method execution   System search work item by identifier   System search test results of all autotests, related to found work item   System sort results by CompletedOn ascending, then by CreatedDate ascending   System returns sorted collection of test results
+ Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search test results of all autotests, related to found work item  System sort results by CompletedOn ascending, then by CreatedDate ascending  System returns sorted collection of test results
 
 ### Example
 ```dart
@@ -1161,7 +1161,7 @@ Name | Type | Description  | Notes
 
 Get WorkItem versions
 
- Use case   User sets work item identifier   [Optional] User sets work item version identifier   User runs method execution   System search work item by identifier                         [Optional] If User set work item version identifier, System search work item version by version identifier                      Otherwise, system search all version of work item                     System returns array of work item version models (listed in response example)
+ Use case  User sets work item identifier  [Optional] User sets work item version identifier  User runs method execution  System search work item by identifier  [Optional] If User set work item version identifier, System search work item version by version identifier                     Otherwise, system search all version of work item  System returns array of work item version models (listed in response example)
 
 ### Example
 ```dart
@@ -1172,9 +1172,9 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = WorkItemsApi();
-final id = 3fa85f64-5717-4562-b3fc-2c963f66afa6; // String | WorkItem internal (guid format) or  global(integer format) identifier\"
-final workItemVersionId = 3fa85f64-5717-4562-b3fc-2c963f66afa6; // String | WorkItem version (guid format)  identifier\"
-final versionNumber = 1; // int | WorkItem version (integer format)  number\"
+final id = 3fa85f64-5717-4562-b3fc-2c963f66afa6; // String | WorkItem internal (guid format) or global(integer format) identifier\"
+final workItemVersionId = 3fa85f64-5717-4562-b3fc-2c963f66afa6; // String | WorkItem version (guid format) identifier\"
+final versionNumber = 1; // int | WorkItem version (integer format) number\"
 
 try {
     final result = api_instance.getWorkItemVersions(id, workItemVersionId, versionNumber);
@@ -1188,9 +1188,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| WorkItem internal (guid format) or  global(integer format) identifier\" | 
- **workItemVersionId** | **String**| WorkItem version (guid format)  identifier\" | [optional] 
- **versionNumber** | **int**| WorkItem version (integer format)  number\" | [optional] 
+ **id** | **String**| WorkItem internal (guid format) or global(integer format) identifier\" | 
+ **workItemVersionId** | **String**| WorkItem version (guid format) identifier\" | [optional] 
+ **versionNumber** | **int**| WorkItem version (integer format) number\" | [optional] 
 
 ### Return type
 
@@ -1296,11 +1296,11 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateWorkItem**
-> updateWorkItem(workItemPutModel)
+> updateWorkItem(updateWorkItemApiModel)
 
 Update Test Case, Checklist or Shared Step
 
- Use case   User sets work item properties (listed in request parameters)   User runs method execution   System updates work item by identifier   System returns updated work item model (listed in response parameters)
+ Use case  User sets work item properties (listed in request parameters)  User runs method execution  System updates work item by identifier  System returns updated work item model (listed in response parameters)
 
 ### Example
 ```dart
@@ -1311,10 +1311,10 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = WorkItemsApi();
-final workItemPutModel = WorkItemPutModel(); // WorkItemPutModel | 
+final updateWorkItemApiModel = UpdateWorkItemApiModel(); // UpdateWorkItemApiModel | 
 
 try {
-    api_instance.updateWorkItem(workItemPutModel);
+    api_instance.updateWorkItem(updateWorkItemApiModel);
 } catch (e) {
     print('Exception when calling WorkItemsApi->updateWorkItem: $e\n');
 }
@@ -1324,7 +1324,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workItemPutModel** | [**WorkItemPutModel**](WorkItemPutModel.md)|  | [optional] 
+ **updateWorkItemApiModel** | [**UpdateWorkItemApiModel**](UpdateWorkItemApiModel.md)|  | [optional] 
 
 ### Return type
 

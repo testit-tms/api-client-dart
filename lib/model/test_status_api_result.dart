@@ -26,7 +26,7 @@ class TestStatusApiResult {
   String name;
 
   /// Collection of possible status types
-  TestStatusType type;
+  TestStatusApiType type;
 
   bool isSystem;
 
@@ -92,7 +92,7 @@ class TestStatusApiResult {
       return TestStatusApiResult(
         id: mapValueOfType<String>(json, r'id')!,
         name: mapValueOfType<String>(json, r'name')!,
-        type: TestStatusType.fromJson(json[r'type'])!,
+        type: TestStatusApiType.fromJson(json[r'type'])!,
         isSystem: mapValueOfType<bool>(json, r'isSystem')!,
         code: mapValueOfType<String>(json, r'code')!,
         description: mapValueOfType<String>(json, r'description'),

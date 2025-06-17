@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **createdById** | **String** | Unique identifier of user who created Work Item | 
 **state** | [**WorkItemStates**](WorkItemStates.md) | The current state of Work Item | 
 **priority** | [**WorkItemPriorityModel**](WorkItemPriorityModel.md) | Work Item priority level | 
+**sourceType** | [**WorkItemSourceTypeModel**](WorkItemSourceTypeModel.md) | Work Item priority level | 
 **isDeleted** | **bool** | Flag determining whether Work Item is deleted | 
 **iterations** | [**List<IterationApiResult>**](IterationApiResult.md) | Set of iterations related to Work Item | [default to const []]
 **links** | [**List<LinkShortApiResult>**](LinkShortApiResult.md) | Set of links related to Work Item | [default to const []]

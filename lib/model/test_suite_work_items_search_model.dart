@@ -30,6 +30,7 @@ class TestSuiteWorkItemsSearchModel {
     this.modifiedByIds = const {},
     this.states = const {},
     this.priorities = const {},
+    this.sourceTypes = const {},
     this.types = const {},
     this.createdDate,
     this.modifiedDate,
@@ -44,7 +45,7 @@ class TestSuiteWorkItemsSearchModel {
   /// Collection of tags
   Set<String>? tagNames;
 
-  /// Collection of types of work item   Allowed values: `TestCases`, `CheckLists`, `SharedSteps`
+  /// Collection of types of work item  Allowed values: `TestCases`, `CheckLists`, `SharedSteps`
   Set<WorkItemEntityTypes>? entityTypes;
 
   /// Name or identifier (UUID) of work item
@@ -92,6 +93,9 @@ class TestSuiteWorkItemsSearchModel {
   /// Collection of priorities of work item
   Set<WorkItemPriorityModel>? priorities;
 
+  /// Collection of priorities of work item
+  Set<WorkItemSourceTypeModel>? sourceTypes;
+
   /// Collection of types of work item
   Set<WorkItemEntityTypes>? types;
 
@@ -138,6 +142,7 @@ class TestSuiteWorkItemsSearchModel {
     _deepEquality.equals(other.modifiedByIds, modifiedByIds) &&
     _deepEquality.equals(other.states, states) &&
     _deepEquality.equals(other.priorities, priorities) &&
+    _deepEquality.equals(other.sourceTypes, sourceTypes) &&
     _deepEquality.equals(other.types, types) &&
     other.createdDate == createdDate &&
     other.modifiedDate == modifiedDate &&
@@ -168,6 +173,7 @@ class TestSuiteWorkItemsSearchModel {
     (modifiedByIds == null ? 0 : modifiedByIds!.hashCode) +
     (states == null ? 0 : states!.hashCode) +
     (priorities == null ? 0 : priorities!.hashCode) +
+    (sourceTypes == null ? 0 : sourceTypes!.hashCode) +
     (types == null ? 0 : types!.hashCode) +
     (createdDate == null ? 0 : createdDate!.hashCode) +
     (modifiedDate == null ? 0 : modifiedDate!.hashCode) +
@@ -179,7 +185,7 @@ class TestSuiteWorkItemsSearchModel {
     (workItemVersionIds == null ? 0 : workItemVersionIds!.hashCode);
 
   @override
-  String toString() => 'TestSuiteWorkItemsSearchModel[tagNames=$tagNames, entityTypes=$entityTypes, nameOrId=$nameOrId, includeIds=$includeIds, excludeIds=$excludeIds, projectIds=$projectIds, links=$links, name=$name, ids=$ids, globalIds=$globalIds, attributes=$attributes, isDeleted=$isDeleted, sectionIds=$sectionIds, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds, states=$states, priorities=$priorities, types=$types, createdDate=$createdDate, modifiedDate=$modifiedDate, duration=$duration, medianDuration=$medianDuration, isAutomated=$isAutomated, tags=$tags, autoTestIds=$autoTestIds, workItemVersionIds=$workItemVersionIds]';
+  String toString() => 'TestSuiteWorkItemsSearchModel[tagNames=$tagNames, entityTypes=$entityTypes, nameOrId=$nameOrId, includeIds=$includeIds, excludeIds=$excludeIds, projectIds=$projectIds, links=$links, name=$name, ids=$ids, globalIds=$globalIds, attributes=$attributes, isDeleted=$isDeleted, sectionIds=$sectionIds, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds, states=$states, priorities=$priorities, sourceTypes=$sourceTypes, types=$types, createdDate=$createdDate, modifiedDate=$modifiedDate, duration=$duration, medianDuration=$medianDuration, isAutomated=$isAutomated, tags=$tags, autoTestIds=$autoTestIds, workItemVersionIds=$workItemVersionIds]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -267,6 +273,11 @@ class TestSuiteWorkItemsSearchModel {
       json[r'priorities'] = this.priorities!.toList(growable: false);
     } else {
       json[r'priorities'] = null;
+    }
+    if (this.sourceTypes != null) {
+      json[r'sourceTypes'] = this.sourceTypes!.toList(growable: false);
+    } else {
+      json[r'sourceTypes'] = null;
     }
     if (this.types != null) {
       json[r'types'] = this.types!.toList(growable: false);
@@ -372,6 +383,7 @@ class TestSuiteWorkItemsSearchModel {
             : const {},
         states: WorkItemStates.listFromJson(json[r'states']).toSet(),
         priorities: WorkItemPriorityModel.listFromJson(json[r'priorities']).toSet(),
+        sourceTypes: WorkItemSourceTypeModel.listFromJson(json[r'sourceTypes']).toSet(),
         types: WorkItemEntityTypes.listFromJson(json[r'types']).toSet(),
         createdDate: DateTimeRangeSelectorModel.fromJson(json[r'createdDate']),
         modifiedDate: DateTimeRangeSelectorModel.fromJson(json[r'modifiedDate']),

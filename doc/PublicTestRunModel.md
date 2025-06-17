@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **autoTests** | [**List<AutoTestModel>**](AutoTestModel.md) |  | [default to const []]
 **testPoints** | [**List<PublicTestPointModel>**](PublicTestPointModel.md) |  | [default to const []]
 **status** | **String** |  | 
+**statusModel** | [**TestStatusModel**](TestStatusModel.md) |  | 
 **testPlanId** | **String** |  | [optional] 
 **productName** | **String** |  | [optional] 
 **build** | **String** |  | [optional] 

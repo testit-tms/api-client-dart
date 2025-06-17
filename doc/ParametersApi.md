@@ -27,11 +27,11 @@ Method | HTTP request | Description
 
 
 # **apiV2ParametersBulkPost**
-> List<ParameterModel> apiV2ParametersBulkPost(parameterPostModel)
+> List<ParameterApiResult> apiV2ParametersBulkPost(createParameterApiModel)
 
 Create multiple parameters
 
- Use case   User sets list of parameter model (listed in the request example)   User runs method execution   System creates parameters   System returns list of parameter model (listed in the response example)
+ Use case  User sets list of parameter model (listed in the request example)  User runs method execution  System creates parameters  System returns list of parameter model (listed in the response example)
 
 ### Example
 ```dart
@@ -42,10 +42,10 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = ParametersApi();
-final parameterPostModel = [List<ParameterPostModel>()]; // List<ParameterPostModel> | 
+final createParameterApiModel = [List<CreateParameterApiModel>()]; // List<CreateParameterApiModel> | 
 
 try {
-    final result = api_instance.apiV2ParametersBulkPost(parameterPostModel);
+    final result = api_instance.apiV2ParametersBulkPost(createParameterApiModel);
     print(result);
 } catch (e) {
     print('Exception when calling ParametersApi->apiV2ParametersBulkPost: $e\n');
@@ -56,11 +56,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parameterPostModel** | [**List<ParameterPostModel>**](ParameterPostModel.md)|  | [optional] 
+ **createParameterApiModel** | [**List<CreateParameterApiModel>**](CreateParameterApiModel.md)|  | [optional] 
 
 ### Return type
 
-[**List<ParameterModel>**](ParameterModel.md)
+[**List<ParameterApiResult>**](ParameterApiResult.md)
 
 ### Authorization
 
@@ -74,11 +74,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apiV2ParametersBulkPut**
-> apiV2ParametersBulkPut(parameterPutModel)
+> apiV2ParametersBulkPut(updateParameterApiModel)
 
 Update multiple parameters
 
- Use case   User sets list of parameter model (listed in the request example)   User runs method execution   System updates parameters
+ Use case  User sets list of parameter model (listed in the request example)  User runs method execution  System updates parameters
 
 ### Example
 ```dart
@@ -89,10 +89,10 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = ParametersApi();
-final parameterPutModel = [List<ParameterPutModel>()]; // List<ParameterPutModel> | 
+final updateParameterApiModel = [List<UpdateParameterApiModel>()]; // List<UpdateParameterApiModel> | 
 
 try {
-    api_instance.apiV2ParametersBulkPut(parameterPutModel);
+    api_instance.apiV2ParametersBulkPut(updateParameterApiModel);
 } catch (e) {
     print('Exception when calling ParametersApi->apiV2ParametersBulkPut: $e\n');
 }
@@ -102,7 +102,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parameterPutModel** | [**List<ParameterPutModel>**](ParameterPutModel.md)|  | [optional] 
+ **updateParameterApiModel** | [**List<UpdateParameterApiModel>**](UpdateParameterApiModel.md)|  | [optional] 
 
 ### Return type
 
@@ -120,11 +120,11 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apiV2ParametersGroupsGet**
-> List<ParameterGroupModel> apiV2ParametersGroupsGet(isDeleted, parameterKeyIds, skip, take, orderBy, searchField, searchValue)
+> List<ParameterGroupApiResult> apiV2ParametersGroupsGet(parameterKeyIds, name, isDeleted, skip, take, orderBy, searchField, searchValue)
 
 Get parameters as group
 
- Use case   User runs method execution   System search parameters   System returns parameters models as groups (listed in the response example)
+ Use case  User runs method execution  System search parameters  System returns parameters models as groups (listed in the response example)
 
 ### Example
 ```dart
@@ -135,8 +135,9 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = ParametersApi();
-final isDeleted = true; // bool | 
 final parameterKeyIds = []; // Set<String> | 
+final name = name_example; // String | 
+final isDeleted = true; // bool | 
 final skip = 56; // int | Amount of items to be skipped (offset)
 final take = 56; // int | Amount of items to be taken (limit)
 final orderBy = orderBy_example; // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC)
@@ -144,7 +145,7 @@ final searchField = searchField_example; // String | Property name for searching
 final searchValue = searchValue_example; // String | Value for searching
 
 try {
-    final result = api_instance.apiV2ParametersGroupsGet(isDeleted, parameterKeyIds, skip, take, orderBy, searchField, searchValue);
+    final result = api_instance.apiV2ParametersGroupsGet(parameterKeyIds, name, isDeleted, skip, take, orderBy, searchField, searchValue);
     print(result);
 } catch (e) {
     print('Exception when calling ParametersApi->apiV2ParametersGroupsGet: $e\n');
@@ -155,8 +156,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **isDeleted** | **bool**|  | [optional] 
  **parameterKeyIds** | [**Set<String>**](String.md)|  | [optional] [default to const {}]
+ **name** | **String**|  | [optional] 
+ **isDeleted** | **bool**|  | [optional] 
  **skip** | **int**| Amount of items to be skipped (offset) | [optional] 
  **take** | **int**| Amount of items to be taken (limit) | [optional] 
  **orderBy** | **String**| SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) | [optional] 
@@ -165,7 +167,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<ParameterGroupModel>**](ParameterGroupModel.md)
+[**List<ParameterGroupApiResult>**](ParameterGroupApiResult.md)
 
 ### Authorization
 
@@ -183,7 +185,7 @@ Name | Type | Description  | Notes
 
 Check existence parameter key in system
 
- Use case   User sets name of parameter key   User runs method execution   System search parameter key   System returns the flag for the existence of the parameter key in the system
+ Use case  User sets name of parameter key  User runs method execution  System search parameter key  System returns the flag for the existence of the parameter key in the system
 
 ### Example
 ```dart
@@ -230,7 +232,7 @@ Name | Type | Description  | Notes
 
 Get all parameter key values
 
- Use case   User sets parameter key (string format)   User runs method execution   System search parameter values using the key   System returns parameter
+ Use case  User sets parameter key (string format)  User runs method execution  System search parameter values using the key  System returns parameter
 
 ### Example
 ```dart
@@ -277,7 +279,7 @@ Name | Type | Description  | Notes
 
 Get all parameter keys
 
- Use case   User runs method execution   System search all parameter keys   System returns parameter keys
+ Use case  User runs method execution  System search all parameter keys  System returns parameter keys
 
 ### Example
 ```dart
@@ -316,7 +318,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apiV2ParametersSearchGroupsPost**
-> List<ParameterGroupModel> apiV2ParametersSearchGroupsPost(skip, take, orderBy, searchField, searchValue, parameterFilterModel)
+> List<ParameterGroupApiResult> apiV2ParametersSearchGroupsPost(skip, take, orderBy, searchField, searchValue, parameterGroupsFilterApiModel)
 
 Search for parameters as group
 
@@ -334,10 +336,10 @@ final take = 56; // int | Amount of items to be taken (limit)
 final orderBy = orderBy_example; // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC)
 final searchField = searchField_example; // String | Property name for searching
 final searchValue = searchValue_example; // String | Value for searching
-final parameterFilterModel = ParameterFilterModel(); // ParameterFilterModel | 
+final parameterGroupsFilterApiModel = ParameterGroupsFilterApiModel(); // ParameterGroupsFilterApiModel | 
 
 try {
-    final result = api_instance.apiV2ParametersSearchGroupsPost(skip, take, orderBy, searchField, searchValue, parameterFilterModel);
+    final result = api_instance.apiV2ParametersSearchGroupsPost(skip, take, orderBy, searchField, searchValue, parameterGroupsFilterApiModel);
     print(result);
 } catch (e) {
     print('Exception when calling ParametersApi->apiV2ParametersSearchGroupsPost: $e\n');
@@ -353,11 +355,11 @@ Name | Type | Description  | Notes
  **orderBy** | **String**| SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) | [optional] 
  **searchField** | **String**| Property name for searching | [optional] 
  **searchValue** | **String**| Value for searching | [optional] 
- **parameterFilterModel** | [**ParameterFilterModel**](ParameterFilterModel.md)|  | [optional] 
+ **parameterGroupsFilterApiModel** | [**ParameterGroupsFilterApiModel**](ParameterGroupsFilterApiModel.md)|  | [optional] 
 
 ### Return type
 
-[**List<ParameterGroupModel>**](ParameterGroupModel.md)
+[**List<ParameterGroupApiResult>**](ParameterGroupApiResult.md)
 
 ### Authorization
 
@@ -371,7 +373,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apiV2ParametersSearchPost**
-> List<ParameterModel> apiV2ParametersSearchPost(skip, take, orderBy, searchField, searchValue, parameterFilterModel)
+> List<ParameterApiResult> apiV2ParametersSearchPost(skip, take, orderBy, searchField, searchValue, parametersFilterApiModel)
 
 Search for parameters
 
@@ -389,10 +391,10 @@ final take = 56; // int | Amount of items to be taken (limit)
 final orderBy = orderBy_example; // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC)
 final searchField = searchField_example; // String | Property name for searching
 final searchValue = searchValue_example; // String | Value for searching
-final parameterFilterModel = ParameterFilterModel(); // ParameterFilterModel | 
+final parametersFilterApiModel = ParametersFilterApiModel(); // ParametersFilterApiModel | 
 
 try {
-    final result = api_instance.apiV2ParametersSearchPost(skip, take, orderBy, searchField, searchValue, parameterFilterModel);
+    final result = api_instance.apiV2ParametersSearchPost(skip, take, orderBy, searchField, searchValue, parametersFilterApiModel);
     print(result);
 } catch (e) {
     print('Exception when calling ParametersApi->apiV2ParametersSearchPost: $e\n');
@@ -408,11 +410,11 @@ Name | Type | Description  | Notes
  **orderBy** | **String**| SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) | [optional] 
  **searchField** | **String**| Property name for searching | [optional] 
  **searchValue** | **String**| Value for searching | [optional] 
- **parameterFilterModel** | [**ParameterFilterModel**](ParameterFilterModel.md)|  | [optional] 
+ **parametersFilterApiModel** | [**ParametersFilterApiModel**](ParametersFilterApiModel.md)|  | [optional] 
 
 ### Return type
 
-[**List<ParameterModel>**](ParameterModel.md)
+[**List<ParameterApiResult>**](ParameterApiResult.md)
 
 ### Authorization
 
@@ -426,11 +428,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createParameter**
-> ParameterModel createParameter(parameterPostModel)
+> ParameterApiResult createParameter(createParameterApiModel)
 
 Create parameter
 
- Use case   User sets parameter model (listed in the request example)   User runs method execution   System creates parameter   System returns parameter model
+ Use case  User sets parameter model (listed in the request example)  User runs method execution  System creates parameter  System returns parameter model
 
 ### Example
 ```dart
@@ -441,10 +443,10 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = ParametersApi();
-final parameterPostModel = ParameterPostModel(); // ParameterPostModel | 
+final createParameterApiModel = CreateParameterApiModel(); // CreateParameterApiModel | 
 
 try {
-    final result = api_instance.createParameter(parameterPostModel);
+    final result = api_instance.createParameter(createParameterApiModel);
     print(result);
 } catch (e) {
     print('Exception when calling ParametersApi->createParameter: $e\n');
@@ -455,11 +457,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parameterPostModel** | [**ParameterPostModel**](ParameterPostModel.md)|  | [optional] 
+ **createParameterApiModel** | [**CreateParameterApiModel**](CreateParameterApiModel.md)|  | [optional] 
 
 ### Return type
 
-[**ParameterModel**](ParameterModel.md)
+[**ParameterApiResult**](ParameterApiResult.md)
 
 ### Authorization
 
@@ -569,7 +571,7 @@ void (empty response body)
 
 Delete parameter
 
- Use case   User sets parameter internal (guid format) identifier   System search and delete parameter   System returns deleted parameter
+ Use case  User sets parameter internal (guid format) identifier  System search and delete parameter  System returns deleted parameter
 
 ### Example
 ```dart
@@ -611,11 +613,11 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAllParameters**
-> List<ParameterModel> getAllParameters(isDeleted, skip, take, orderBy, searchField, searchValue)
+> List<ParameterApiResult> getAllParameters(isDeleted, skip, take, orderBy, searchField, searchValue)
 
 Get all parameters
 
- Use case   [Optional] User sets isDeleted field value   [Optional] If User sets isDeleted field value as true, System search all deleted parameters   [Optional] If User sets isDeleted field value as false, System search all parameters which are not deleted   If User did not set isDeleted field value, System search all parameters   System returns array of all found parameters(listed in response model)
+ Use case  [Optional] User sets isDeleted field value  [Optional] If User sets isDeleted field value as true, System search all deleted parameters  [Optional] If User sets isDeleted field value as false, System search all parameters which are not deleted  If User did not set isDeleted field value, System search all parameters  System returns array of all found parameters(listed in response model)
 
 ### Example
 ```dart
@@ -654,7 +656,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<ParameterModel>**](ParameterModel.md)
+[**List<ParameterApiResult>**](ParameterApiResult.md)
 
 ### Authorization
 
@@ -668,11 +670,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getParameterById**
-> ParameterModel getParameterById(id)
+> ParameterApiResult getParameterById(id)
 
 Get parameter by ID
 
- Use case   User sets parameter internal (guid format) identifier   User runs method execution   System search parameter using the identifier   System returns parameter
+ Use case  User sets parameter internal (guid format) identifier  User runs method execution  System search parameter using the identifier  System returns parameter
 
 ### Example
 ```dart
@@ -701,7 +703,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ParameterModel**](ParameterModel.md)
+[**ParameterApiResult**](ParameterApiResult.md)
 
 ### Authorization
 
@@ -715,11 +717,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateParameter**
-> updateParameter(parameterPutModel)
+> updateParameter(updateParameterApiModel)
 
 Update parameter
 
- Use case   User sets parameter updated properties(listed in the request example)   User runs method execution   System updated parameter using updated properties   System returns no content response
+ Use case  User sets parameter updated properties(listed in the request example)  User runs method execution  System updated parameter using updated properties  System returns no content response
 
 ### Example
 ```dart
@@ -730,10 +732,10 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = ParametersApi();
-final parameterPutModel = ParameterPutModel(); // ParameterPutModel | 
+final updateParameterApiModel = UpdateParameterApiModel(); // UpdateParameterApiModel | 
 
 try {
-    api_instance.updateParameter(parameterPutModel);
+    api_instance.updateParameter(updateParameterApiModel);
 } catch (e) {
     print('Exception when calling ParametersApi->updateParameter: $e\n');
 }
@@ -743,7 +745,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parameterPutModel** | [**ParameterPutModel**](ParameterPutModel.md)|  | [optional] 
+ **updateParameterApiModel** | [**UpdateParameterApiModel**](UpdateParameterApiModel.md)|  | [optional] 
 
 ### Return type
 

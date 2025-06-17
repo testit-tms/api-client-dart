@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 Get unread Notifications total in last 7 days
 
- Use case   User runs method execution   System returns unread notifications total (listed in the response example)
+ Use case  User runs method execution  System returns unread notifications total (listed in the response example)
 
 ### Example
 ```dart
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 Get all Notifications for current User
 
- Use case   User runs method execution   System returns notifications (listed in the response example)
+ Use case  User runs method execution  System returns notifications (listed in the response example)
 
 ### Example
 ```dart
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 Set Notification as read
 
- Use case   User sets notification internal (guid format) identifier   User runs method execution   System set notification as read
+ Use case  User sets notification internal (guid format) identifier  User runs method execution  System set notification as read
 
 ### Example
 ```dart
@@ -171,7 +171,7 @@ void (empty response body)
 
 Set all Notifications as read
 
- Use case   User runs method execution   System set all notifications as read
+ Use case  User runs method execution  System set all notifications as read
 
 ### Example
 ```dart
@@ -213,7 +213,7 @@ void (empty response body)
 
 Search Notifications for current User
 
- Use case   User set filter and runs method execution   System returns notifications (listed in the response example)
+ Use case  User set filter and runs method execution  System returns notifications (listed in the response example)
 
 ### Example
 ```dart

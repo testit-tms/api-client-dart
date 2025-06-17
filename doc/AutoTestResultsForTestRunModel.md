@@ -10,9 +10,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **configurationId** | **String** | Specifies the GUID of the autotest configuration, which was specified when the test run was created. | 
 **autoTestExternalId** | **String** | Specifies the external ID of the autotest, which was specified when the test run was created. | 
-**outcome** | [**AvailableTestResultOutcome**](AvailableTestResultOutcome.md) | Specifies the result of the autotest execution. | 
 **links** | [**List<LinkPostModel>**](LinkPostModel.md) | Specifies the links in the autotest. | [optional] [default to const []]
 **failureReasonNames** | [**List<FailureCategoryModel>**](FailureCategoryModel.md) | Specifies the cause of autotest failure. | [optional] [default to const []]
+**outcome** | [**AvailableTestResultOutcome**](AvailableTestResultOutcome.md) | Specifies the result of the autotest execution. | [optional] 
+**statusCode** | **String** | Specifies the result of the autotest execution. | [optional] 
 **message** | **String** | A comment for the result. | [optional] 
 **traces** | **String** | An extended comment or a stack trace. | [optional] 
 **startedOn** | [**DateTime**](DateTime.md) | Test run start date. | [optional] 

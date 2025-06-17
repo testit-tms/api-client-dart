@@ -18,19 +18,19 @@ class ParametersApi {
 
   /// Create multiple parameters
   ///
-  ///  Use case   User sets list of parameter model (listed in the request example)   User runs method execution   System creates parameters   System returns list of parameter model (listed in the response example)
+  ///  Use case  User sets list of parameter model (listed in the request example)  User runs method execution  System creates parameters  System returns list of parameter model (listed in the response example)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [List<ParameterPostModel>] parameterPostModel:
-  Future<Response> apiV2ParametersBulkPostWithHttpInfo({ List<ParameterPostModel>? parameterPostModel, }) async {
+  /// * [List<CreateParameterApiModel>] createParameterApiModel:
+  Future<Response> apiV2ParametersBulkPostWithHttpInfo({ List<CreateParameterApiModel>? createParameterApiModel, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/parameters/bulk';
 
     // ignore: prefer_final_locals
-    Object? postBody = parameterPostModel;
+    Object? postBody = createParameterApiModel;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -52,13 +52,13 @@ class ParametersApi {
 
   /// Create multiple parameters
   ///
-  ///  Use case   User sets list of parameter model (listed in the request example)   User runs method execution   System creates parameters   System returns list of parameter model (listed in the response example)
+  ///  Use case  User sets list of parameter model (listed in the request example)  User runs method execution  System creates parameters  System returns list of parameter model (listed in the response example)
   ///
   /// Parameters:
   ///
-  /// * [List<ParameterPostModel>] parameterPostModel:
-  Future<List<ParameterModel>?> apiV2ParametersBulkPost({ List<ParameterPostModel>? parameterPostModel, }) async {
-    final response = await apiV2ParametersBulkPostWithHttpInfo( parameterPostModel: parameterPostModel, );
+  /// * [List<CreateParameterApiModel>] createParameterApiModel:
+  Future<List<ParameterApiResult>?> apiV2ParametersBulkPost({ List<CreateParameterApiModel>? createParameterApiModel, }) async {
+    final response = await apiV2ParametersBulkPostWithHttpInfo( createParameterApiModel: createParameterApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -67,8 +67,8 @@ class ParametersApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<ParameterModel>') as List)
-        .cast<ParameterModel>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<ParameterApiResult>') as List)
+        .cast<ParameterApiResult>()
         .toList(growable: false);
 
     }
@@ -77,19 +77,19 @@ class ParametersApi {
 
   /// Update multiple parameters
   ///
-  ///  Use case   User sets list of parameter model (listed in the request example)   User runs method execution   System updates parameters
+  ///  Use case  User sets list of parameter model (listed in the request example)  User runs method execution  System updates parameters
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [List<ParameterPutModel>] parameterPutModel:
-  Future<Response> apiV2ParametersBulkPutWithHttpInfo({ List<ParameterPutModel>? parameterPutModel, }) async {
+  /// * [List<UpdateParameterApiModel>] updateParameterApiModel:
+  Future<Response> apiV2ParametersBulkPutWithHttpInfo({ List<UpdateParameterApiModel>? updateParameterApiModel, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/parameters/bulk';
 
     // ignore: prefer_final_locals
-    Object? postBody = parameterPutModel;
+    Object? postBody = updateParameterApiModel;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -111,13 +111,13 @@ class ParametersApi {
 
   /// Update multiple parameters
   ///
-  ///  Use case   User sets list of parameter model (listed in the request example)   User runs method execution   System updates parameters
+  ///  Use case  User sets list of parameter model (listed in the request example)  User runs method execution  System updates parameters
   ///
   /// Parameters:
   ///
-  /// * [List<ParameterPutModel>] parameterPutModel:
-  Future<void> apiV2ParametersBulkPut({ List<ParameterPutModel>? parameterPutModel, }) async {
-    final response = await apiV2ParametersBulkPutWithHttpInfo( parameterPutModel: parameterPutModel, );
+  /// * [List<UpdateParameterApiModel>] updateParameterApiModel:
+  Future<void> apiV2ParametersBulkPut({ List<UpdateParameterApiModel>? updateParameterApiModel, }) async {
+    final response = await apiV2ParametersBulkPutWithHttpInfo( updateParameterApiModel: updateParameterApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -125,15 +125,17 @@ class ParametersApi {
 
   /// Get parameters as group
   ///
-  ///  Use case   User runs method execution   System search parameters   System returns parameters models as groups (listed in the response example)
+  ///  Use case  User runs method execution  System search parameters  System returns parameters models as groups (listed in the response example)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [bool] isDeleted:
-  ///
   /// * [Set<String>] parameterKeyIds:
+  ///
+  /// * [String] name:
+  ///
+  /// * [bool] isDeleted:
   ///
   /// * [int] skip:
   ///   Amount of items to be skipped (offset)
@@ -149,7 +151,7 @@ class ParametersApi {
   ///
   /// * [String] searchValue:
   ///   Value for searching
-  Future<Response> apiV2ParametersGroupsGetWithHttpInfo({ bool? isDeleted, Set<String>? parameterKeyIds, int? skip, int? take, String? orderBy, String? searchField, String? searchValue, }) async {
+  Future<Response> apiV2ParametersGroupsGetWithHttpInfo({ Set<String>? parameterKeyIds, String? name, bool? isDeleted, int? skip, int? take, String? orderBy, String? searchField, String? searchValue, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/parameters/groups';
 
@@ -160,11 +162,14 @@ class ParametersApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (isDeleted != null) {
-      queryParams.addAll(_queryParams('', 'isDeleted', isDeleted));
-    }
     if (parameterKeyIds != null) {
       queryParams.addAll(_queryParams('multi', 'parameterKeyIds', parameterKeyIds));
+    }
+    if (name != null) {
+      queryParams.addAll(_queryParams('', 'name', name));
+    }
+    if (isDeleted != null) {
+      queryParams.addAll(_queryParams('', 'isDeleted', isDeleted));
     }
     if (skip != null) {
       queryParams.addAll(_queryParams('', 'Skip', skip));
@@ -198,13 +203,15 @@ class ParametersApi {
 
   /// Get parameters as group
   ///
-  ///  Use case   User runs method execution   System search parameters   System returns parameters models as groups (listed in the response example)
+  ///  Use case  User runs method execution  System search parameters  System returns parameters models as groups (listed in the response example)
   ///
   /// Parameters:
   ///
-  /// * [bool] isDeleted:
-  ///
   /// * [Set<String>] parameterKeyIds:
+  ///
+  /// * [String] name:
+  ///
+  /// * [bool] isDeleted:
   ///
   /// * [int] skip:
   ///   Amount of items to be skipped (offset)
@@ -220,8 +227,8 @@ class ParametersApi {
   ///
   /// * [String] searchValue:
   ///   Value for searching
-  Future<List<ParameterGroupModel>?> apiV2ParametersGroupsGet({ bool? isDeleted, Set<String>? parameterKeyIds, int? skip, int? take, String? orderBy, String? searchField, String? searchValue, }) async {
-    final response = await apiV2ParametersGroupsGetWithHttpInfo( isDeleted: isDeleted, parameterKeyIds: parameterKeyIds, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, );
+  Future<List<ParameterGroupApiResult>?> apiV2ParametersGroupsGet({ Set<String>? parameterKeyIds, String? name, bool? isDeleted, int? skip, int? take, String? orderBy, String? searchField, String? searchValue, }) async {
+    final response = await apiV2ParametersGroupsGetWithHttpInfo( parameterKeyIds: parameterKeyIds, name: name, isDeleted: isDeleted, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -230,8 +237,8 @@ class ParametersApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<ParameterGroupModel>') as List)
-        .cast<ParameterGroupModel>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<ParameterGroupApiResult>') as List)
+        .cast<ParameterGroupApiResult>()
         .toList(growable: false);
 
     }
@@ -240,7 +247,7 @@ class ParametersApi {
 
   /// Check existence parameter key in system
   ///
-  ///  Use case   User sets name of parameter key   User runs method execution   System search parameter key   System returns the flag for the existence of the parameter key in the system
+  ///  Use case  User sets name of parameter key  User runs method execution  System search parameter key  System returns the flag for the existence of the parameter key in the system
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -275,7 +282,7 @@ class ParametersApi {
 
   /// Check existence parameter key in system
   ///
-  ///  Use case   User sets name of parameter key   User runs method execution   System search parameter key   System returns the flag for the existence of the parameter key in the system
+  ///  Use case  User sets name of parameter key  User runs method execution  System search parameter key  System returns the flag for the existence of the parameter key in the system
   ///
   /// Parameters:
   ///
@@ -297,7 +304,7 @@ class ParametersApi {
 
   /// Get all parameter key values
   ///
-  ///  Use case   User sets parameter key (string format)   User runs method execution   System search parameter values using the key   System returns parameter
+  ///  Use case  User sets parameter key (string format)  User runs method execution  System search parameter values using the key  System returns parameter
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -333,7 +340,7 @@ class ParametersApi {
 
   /// Get all parameter key values
   ///
-  ///  Use case   User sets parameter key (string format)   User runs method execution   System search parameter values using the key   System returns parameter
+  ///  Use case  User sets parameter key (string format)  User runs method execution  System search parameter values using the key  System returns parameter
   ///
   /// Parameters:
   ///
@@ -359,7 +366,7 @@ class ParametersApi {
 
   /// Get all parameter keys
   ///
-  ///  Use case   User runs method execution   System search all parameter keys   System returns parameter keys
+  ///  Use case  User runs method execution  System search all parameter keys  System returns parameter keys
   ///
   /// Note: This method returns the HTTP [Response].
   Future<Response> apiV2ParametersKeysGetWithHttpInfo() async {
@@ -389,7 +396,7 @@ class ParametersApi {
 
   /// Get all parameter keys
   ///
-  ///  Use case   User runs method execution   System search all parameter keys   System returns parameter keys
+  ///  Use case  User runs method execution  System search all parameter keys  System returns parameter keys
   Future<List<String>?> apiV2ParametersKeysGet() async {
     final response = await apiV2ParametersKeysGetWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -429,13 +436,13 @@ class ParametersApi {
   /// * [String] searchValue:
   ///   Value for searching
   ///
-  /// * [ParameterFilterModel] parameterFilterModel:
-  Future<Response> apiV2ParametersSearchGroupsPostWithHttpInfo({ int? skip, int? take, String? orderBy, String? searchField, String? searchValue, ParameterFilterModel? parameterFilterModel, }) async {
+  /// * [ParameterGroupsFilterApiModel] parameterGroupsFilterApiModel:
+  Future<Response> apiV2ParametersSearchGroupsPostWithHttpInfo({ int? skip, int? take, String? orderBy, String? searchField, String? searchValue, ParameterGroupsFilterApiModel? parameterGroupsFilterApiModel, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/parameters/search/groups';
 
     // ignore: prefer_final_locals
-    Object? postBody = parameterFilterModel;
+    Object? postBody = parameterGroupsFilterApiModel;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -490,9 +497,9 @@ class ParametersApi {
   /// * [String] searchValue:
   ///   Value for searching
   ///
-  /// * [ParameterFilterModel] parameterFilterModel:
-  Future<List<ParameterGroupModel>?> apiV2ParametersSearchGroupsPost({ int? skip, int? take, String? orderBy, String? searchField, String? searchValue, ParameterFilterModel? parameterFilterModel, }) async {
-    final response = await apiV2ParametersSearchGroupsPostWithHttpInfo( skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, parameterFilterModel: parameterFilterModel, );
+  /// * [ParameterGroupsFilterApiModel] parameterGroupsFilterApiModel:
+  Future<List<ParameterGroupApiResult>?> apiV2ParametersSearchGroupsPost({ int? skip, int? take, String? orderBy, String? searchField, String? searchValue, ParameterGroupsFilterApiModel? parameterGroupsFilterApiModel, }) async {
+    final response = await apiV2ParametersSearchGroupsPostWithHttpInfo( skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, parameterGroupsFilterApiModel: parameterGroupsFilterApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -501,8 +508,8 @@ class ParametersApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<ParameterGroupModel>') as List)
-        .cast<ParameterGroupModel>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<ParameterGroupApiResult>') as List)
+        .cast<ParameterGroupApiResult>()
         .toList(growable: false);
 
     }
@@ -530,13 +537,13 @@ class ParametersApi {
   /// * [String] searchValue:
   ///   Value for searching
   ///
-  /// * [ParameterFilterModel] parameterFilterModel:
-  Future<Response> apiV2ParametersSearchPostWithHttpInfo({ int? skip, int? take, String? orderBy, String? searchField, String? searchValue, ParameterFilterModel? parameterFilterModel, }) async {
+  /// * [ParametersFilterApiModel] parametersFilterApiModel:
+  Future<Response> apiV2ParametersSearchPostWithHttpInfo({ int? skip, int? take, String? orderBy, String? searchField, String? searchValue, ParametersFilterApiModel? parametersFilterApiModel, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/parameters/search';
 
     // ignore: prefer_final_locals
-    Object? postBody = parameterFilterModel;
+    Object? postBody = parametersFilterApiModel;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -591,9 +598,9 @@ class ParametersApi {
   /// * [String] searchValue:
   ///   Value for searching
   ///
-  /// * [ParameterFilterModel] parameterFilterModel:
-  Future<List<ParameterModel>?> apiV2ParametersSearchPost({ int? skip, int? take, String? orderBy, String? searchField, String? searchValue, ParameterFilterModel? parameterFilterModel, }) async {
-    final response = await apiV2ParametersSearchPostWithHttpInfo( skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, parameterFilterModel: parameterFilterModel, );
+  /// * [ParametersFilterApiModel] parametersFilterApiModel:
+  Future<List<ParameterApiResult>?> apiV2ParametersSearchPost({ int? skip, int? take, String? orderBy, String? searchField, String? searchValue, ParametersFilterApiModel? parametersFilterApiModel, }) async {
+    final response = await apiV2ParametersSearchPostWithHttpInfo( skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, parametersFilterApiModel: parametersFilterApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -602,8 +609,8 @@ class ParametersApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<ParameterModel>') as List)
-        .cast<ParameterModel>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<ParameterApiResult>') as List)
+        .cast<ParameterApiResult>()
         .toList(growable: false);
 
     }
@@ -612,19 +619,19 @@ class ParametersApi {
 
   /// Create parameter
   ///
-  ///  Use case   User sets parameter model (listed in the request example)   User runs method execution   System creates parameter   System returns parameter model
+  ///  Use case  User sets parameter model (listed in the request example)  User runs method execution  System creates parameter  System returns parameter model
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [ParameterPostModel] parameterPostModel:
-  Future<Response> createParameterWithHttpInfo({ ParameterPostModel? parameterPostModel, }) async {
+  /// * [CreateParameterApiModel] createParameterApiModel:
+  Future<Response> createParameterWithHttpInfo({ CreateParameterApiModel? createParameterApiModel, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/parameters';
 
     // ignore: prefer_final_locals
-    Object? postBody = parameterPostModel;
+    Object? postBody = createParameterApiModel;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -646,13 +653,13 @@ class ParametersApi {
 
   /// Create parameter
   ///
-  ///  Use case   User sets parameter model (listed in the request example)   User runs method execution   System creates parameter   System returns parameter model
+  ///  Use case  User sets parameter model (listed in the request example)  User runs method execution  System creates parameter  System returns parameter model
   ///
   /// Parameters:
   ///
-  /// * [ParameterPostModel] parameterPostModel:
-  Future<ParameterModel?> createParameter({ ParameterPostModel? parameterPostModel, }) async {
-    final response = await createParameterWithHttpInfo( parameterPostModel: parameterPostModel, );
+  /// * [CreateParameterApiModel] createParameterApiModel:
+  Future<ParameterApiResult?> createParameter({ CreateParameterApiModel? createParameterApiModel, }) async {
+    final response = await createParameterWithHttpInfo( createParameterApiModel: createParameterApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -660,7 +667,7 @@ class ParametersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ParameterModel',) as ParameterModel;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ParameterApiResult',) as ParameterApiResult;
     
     }
     return null;
@@ -770,7 +777,7 @@ class ParametersApi {
 
   /// Delete parameter
   ///
-  ///  Use case   User sets parameter internal (guid format) identifier   System search and delete parameter   System returns deleted parameter
+  ///  Use case  User sets parameter internal (guid format) identifier  System search and delete parameter  System returns deleted parameter
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -806,7 +813,7 @@ class ParametersApi {
 
   /// Delete parameter
   ///
-  ///  Use case   User sets parameter internal (guid format) identifier   System search and delete parameter   System returns deleted parameter
+  ///  Use case  User sets parameter internal (guid format) identifier  System search and delete parameter  System returns deleted parameter
   ///
   /// Parameters:
   ///
@@ -821,7 +828,7 @@ class ParametersApi {
 
   /// Get all parameters
   ///
-  ///  Use case   [Optional] User sets isDeleted field value   [Optional] If User sets isDeleted field value as true, System search all deleted parameters   [Optional] If User sets isDeleted field value as false, System search all parameters which are not deleted   If User did not set isDeleted field value, System search all parameters   System returns array of all found parameters(listed in response model)
+  ///  Use case  [Optional] User sets isDeleted field value  [Optional] If User sets isDeleted field value as true, System search all deleted parameters  [Optional] If User sets isDeleted field value as false, System search all parameters which are not deleted  If User did not set isDeleted field value, System search all parameters  System returns array of all found parameters(listed in response model)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -890,7 +897,7 @@ class ParametersApi {
 
   /// Get all parameters
   ///
-  ///  Use case   [Optional] User sets isDeleted field value   [Optional] If User sets isDeleted field value as true, System search all deleted parameters   [Optional] If User sets isDeleted field value as false, System search all parameters which are not deleted   If User did not set isDeleted field value, System search all parameters   System returns array of all found parameters(listed in response model)
+  ///  Use case  [Optional] User sets isDeleted field value  [Optional] If User sets isDeleted field value as true, System search all deleted parameters  [Optional] If User sets isDeleted field value as false, System search all parameters which are not deleted  If User did not set isDeleted field value, System search all parameters  System returns array of all found parameters(listed in response model)
   ///
   /// Parameters:
   ///
@@ -911,7 +918,7 @@ class ParametersApi {
   ///
   /// * [String] searchValue:
   ///   Value for searching
-  Future<List<ParameterModel>?> getAllParameters({ bool? isDeleted, int? skip, int? take, String? orderBy, String? searchField, String? searchValue, }) async {
+  Future<List<ParameterApiResult>?> getAllParameters({ bool? isDeleted, int? skip, int? take, String? orderBy, String? searchField, String? searchValue, }) async {
     final response = await getAllParametersWithHttpInfo( isDeleted: isDeleted, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -921,8 +928,8 @@ class ParametersApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<ParameterModel>') as List)
-        .cast<ParameterModel>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<ParameterApiResult>') as List)
+        .cast<ParameterApiResult>()
         .toList(growable: false);
 
     }
@@ -931,7 +938,7 @@ class ParametersApi {
 
   /// Get parameter by ID
   ///
-  ///  Use case   User sets parameter internal (guid format) identifier   User runs method execution   System search parameter using the identifier   System returns parameter
+  ///  Use case  User sets parameter internal (guid format) identifier  User runs method execution  System search parameter using the identifier  System returns parameter
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -967,13 +974,13 @@ class ParametersApi {
 
   /// Get parameter by ID
   ///
-  ///  Use case   User sets parameter internal (guid format) identifier   User runs method execution   System search parameter using the identifier   System returns parameter
+  ///  Use case  User sets parameter internal (guid format) identifier  User runs method execution  System search parameter using the identifier  System returns parameter
   ///
   /// Parameters:
   ///
   /// * [String] id (required):
   ///   Parameter internal (UUID) identifier
-  Future<ParameterModel?> getParameterById(String id,) async {
+  Future<ParameterApiResult?> getParameterById(String id,) async {
     final response = await getParameterByIdWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -982,7 +989,7 @@ class ParametersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ParameterModel',) as ParameterModel;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ParameterApiResult',) as ParameterApiResult;
     
     }
     return null;
@@ -990,19 +997,19 @@ class ParametersApi {
 
   /// Update parameter
   ///
-  ///  Use case   User sets parameter updated properties(listed in the request example)   User runs method execution   System updated parameter using updated properties   System returns no content response
+  ///  Use case  User sets parameter updated properties(listed in the request example)  User runs method execution  System updated parameter using updated properties  System returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [ParameterPutModel] parameterPutModel:
-  Future<Response> updateParameterWithHttpInfo({ ParameterPutModel? parameterPutModel, }) async {
+  /// * [UpdateParameterApiModel] updateParameterApiModel:
+  Future<Response> updateParameterWithHttpInfo({ UpdateParameterApiModel? updateParameterApiModel, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/parameters';
 
     // ignore: prefer_final_locals
-    Object? postBody = parameterPutModel;
+    Object? postBody = updateParameterApiModel;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -1024,13 +1031,13 @@ class ParametersApi {
 
   /// Update parameter
   ///
-  ///  Use case   User sets parameter updated properties(listed in the request example)   User runs method execution   System updated parameter using updated properties   System returns no content response
+  ///  Use case  User sets parameter updated properties(listed in the request example)  User runs method execution  System updated parameter using updated properties  System returns no content response
   ///
   /// Parameters:
   ///
-  /// * [ParameterPutModel] parameterPutModel:
-  Future<void> updateParameter({ ParameterPutModel? parameterPutModel, }) async {
-    final response = await updateParameterWithHttpInfo( parameterPutModel: parameterPutModel, );
+  /// * [UpdateParameterApiModel] updateParameterApiModel:
+  Future<void> updateParameter({ UpdateParameterApiModel? updateParameterApiModel, }) async {
+    final response = await updateParameterWithHttpInfo( updateParameterApiModel: updateParameterApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -124,7 +124,7 @@ class ProjectAttributeTemplatesApi {
 
   /// Delete CustomAttributeTemplate from Project
   ///
-  ///  Use case   User sets project internal or global identifier    User sets attribute template internal identifier    User runs method execution   System delete attribute template from project
+  ///  Use case  User sets project internal or global identifier  User sets attribute template internal identifier  User runs method execution  System delete attribute template from project
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -164,7 +164,7 @@ class ProjectAttributeTemplatesApi {
 
   /// Delete CustomAttributeTemplate from Project
   ///
-  ///  Use case   User sets project internal or global identifier    User sets attribute template internal identifier    User runs method execution   System delete attribute template from project
+  ///  Use case  User sets project internal or global identifier  User sets attribute template internal identifier  User runs method execution  System delete attribute template from project
   ///
   /// Parameters:
   ///
@@ -182,7 +182,7 @@ class ProjectAttributeTemplatesApi {
 
   /// Add CustomAttributeTemplate to Project
   ///
-  ///  Use case   User sets project internal or global identifier    User sets attribute template internal identifier    User runs method execution   System add attribute template to project
+  ///  Use case  User sets project internal or global identifier  User sets attribute template internal identifier  User runs method execution  System add attribute template to project
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -222,7 +222,7 @@ class ProjectAttributeTemplatesApi {
 
   /// Add CustomAttributeTemplate to Project
   ///
-  ///  Use case   User sets project internal or global identifier    User sets attribute template internal identifier    User runs method execution   System add attribute template to project
+  ///  Use case  User sets project internal or global identifier  User sets attribute template internal identifier  User runs method execution  System add attribute template to project
   ///
   /// Parameters:
   ///

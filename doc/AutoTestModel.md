@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **id** | **String** | Unique ID of the autotest | 
 **createdDate** | [**DateTime**](DateTime.md) | Creation date of the autotest | 
 **createdById** | **String** | Unique ID of the project creator | 
+**lastTestResultStatus** | [**TestStatusModel**](TestStatusModel.md) | Status of the autotest last test result | 
 **externalId** | **String** | External ID of the autotest | 
 **projectId** | **String** | Unique ID of the autotest project | 
 **name** | **String** | Name of the autotest | 

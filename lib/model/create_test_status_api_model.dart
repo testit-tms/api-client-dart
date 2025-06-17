@@ -23,7 +23,7 @@ class CreateTestStatusApiModel {
   String name;
 
   /// Type of the status
-  TestStatusType type;
+  TestStatusApiType type;
 
   /// Code of the status, must be unique
   String code;
@@ -82,7 +82,7 @@ class CreateTestStatusApiModel {
 
       return CreateTestStatusApiModel(
         name: mapValueOfType<String>(json, r'name')!,
-        type: TestStatusType.fromJson(json[r'type'])!,
+        type: TestStatusApiType.fromJson(json[r'type'])!,
         code: mapValueOfType<String>(json, r'code')!,
         description: mapValueOfType<String>(json, r'description'),
       );

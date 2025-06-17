@@ -13,64 +13,26 @@ part of testit_api_client_dart;
 class TagModel {
   /// Returns a new [TagModel] instance.
   TagModel({
-    required this.id,
     required this.name,
-    required this.createdDate,
-    required this.createdById,
-    this.modifiedDate,
-    this.modifiedById,
   });
-
-  String id;
 
   String name;
 
-  DateTime createdDate;
-
-  String createdById;
-
-  DateTime? modifiedDate;
-
-  String? modifiedById;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is TagModel &&
-    other.id == id &&
-    other.name == name &&
-    other.createdDate == createdDate &&
-    other.createdById == createdById &&
-    other.modifiedDate == modifiedDate &&
-    other.modifiedById == modifiedById;
+    other.name == name;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id.hashCode) +
-    (name.hashCode) +
-    (createdDate.hashCode) +
-    (createdById.hashCode) +
-    (modifiedDate == null ? 0 : modifiedDate!.hashCode) +
-    (modifiedById == null ? 0 : modifiedById!.hashCode);
+    (name.hashCode);
 
   @override
-  String toString() => 'TagModel[id=$id, name=$name, createdDate=$createdDate, createdById=$createdById, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
+  String toString() => 'TagModel[name=$name]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'id'] = this.id;
       json[r'name'] = this.name;
-      json[r'createdDate'] = this.createdDate.toUtc().toIso8601String();
-      json[r'createdById'] = this.createdById;
-    if (this.modifiedDate != null) {
-      json[r'modifiedDate'] = this.modifiedDate!.toUtc().toIso8601String();
-    } else {
-      json[r'modifiedDate'] = null;
-    }
-    if (this.modifiedById != null) {
-      json[r'modifiedById'] = this.modifiedById;
-    } else {
-      json[r'modifiedById'] = null;
-    }
     return json;
   }
 
@@ -93,12 +55,7 @@ class TagModel {
       }());
 
       return TagModel(
-        id: mapValueOfType<String>(json, r'id')!,
         name: mapValueOfType<String>(json, r'name')!,
-        createdDate: mapDateTime(json, r'createdDate', r'')!,
-        createdById: mapValueOfType<String>(json, r'createdById')!,
-        modifiedDate: mapDateTime(json, r'modifiedDate', r''),
-        modifiedById: mapValueOfType<String>(json, r'modifiedById'),
       );
     }
     return null;
@@ -146,10 +103,7 @@ class TagModel {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'id',
     'name',
-    'createdDate',
-    'createdById',
   };
 }
 

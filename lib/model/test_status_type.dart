@@ -10,7 +10,7 @@
 
 part of testit_api_client_dart;
 
-/// Collection of possible status types
+
 class TestStatusType {
   /// Instantiate a new enum with the provided [value].
   const TestStatusType._(this.value);
@@ -23,19 +23,19 @@ class TestStatusType {
 
   String toJson() => value;
 
-  static const pending = TestStatusType._(r'Pending');
-  static const inProgress = TestStatusType._(r'InProgress');
-  static const succeeded = TestStatusType._(r'Succeeded');
   static const failed = TestStatusType._(r'Failed');
+  static const inProgress = TestStatusType._(r'InProgress');
   static const incomplete = TestStatusType._(r'Incomplete');
+  static const succeeded = TestStatusType._(r'Succeeded');
+  static const pending = TestStatusType._(r'Pending');
 
   /// List of all possible values in this [enum][TestStatusType].
   static const values = <TestStatusType>[
-    pending,
-    inProgress,
-    succeeded,
     failed,
+    inProgress,
     incomplete,
+    succeeded,
+    pending,
   ];
 
   static TestStatusType? fromJson(dynamic value) => TestStatusTypeTypeTransformer().decode(value);
@@ -74,11 +74,11 @@ class TestStatusTypeTypeTransformer {
   TestStatusType? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'Pending': return TestStatusType.pending;
-        case r'InProgress': return TestStatusType.inProgress;
-        case r'Succeeded': return TestStatusType.succeeded;
         case r'Failed': return TestStatusType.failed;
+        case r'InProgress': return TestStatusType.inProgress;
         case r'Incomplete': return TestStatusType.incomplete;
+        case r'Succeeded': return TestStatusType.succeeded;
+        case r'Pending': return TestStatusType.pending;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

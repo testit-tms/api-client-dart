@@ -10,7 +10,6 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**apiV2TagsDelete**](TagsApi.md#apiv2tagsdelete) | **DELETE** /api/v2/tags | Delete tags
-[**apiV2TagsGet**](TagsApi.md#apiv2tagsget) | **GET** /api/v2/tags | Get all Tags
 [**apiV2TagsIdDelete**](TagsApi.md#apiv2tagsiddelete) | **DELETE** /api/v2/tags/{id} | Delete tag
 [**apiV2TagsPost**](TagsApi.md#apiv2tagspost) | **POST** /api/v2/tags | Create tag
 [**apiV2TagsPut**](TagsApi.md#apiv2tagsput) | **PUT** /api/v2/tags | Update tag
@@ -19,11 +18,11 @@ Method | HTTP request | Description
 
 
 # **apiV2TagsDelete**
-> apiV2TagsDelete(tagSelectModel)
+> apiV2TagsDelete(selectTagsApiModel)
 
 Delete tags
 
- Use case   User sets collection of tags internal (guid format) identifiers   System searches and deletes a collection of tags
+ Use case  User sets collection of tags internal (guid format) identifiers  System searches and deletes a collection of tags
 
 ### Example
 ```dart
@@ -34,10 +33,10 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = TagsApi();
-final tagSelectModel = TagSelectModel(); // TagSelectModel | 
+final selectTagsApiModel = SelectTagsApiModel(); // SelectTagsApiModel | 
 
 try {
-    api_instance.apiV2TagsDelete(tagSelectModel);
+    api_instance.apiV2TagsDelete(selectTagsApiModel);
 } catch (e) {
     print('Exception when calling TagsApi->apiV2TagsDelete: $e\n');
 }
@@ -47,7 +46,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tagSelectModel** | [**TagSelectModel**](TagSelectModel.md)|  | [optional] 
+ **selectTagsApiModel** | [**SelectTagsApiModel**](SelectTagsApiModel.md)|  | [optional] 
 
 ### Return type
 
@@ -64,55 +63,12 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2TagsGet**
-> List<TagModel> apiV2TagsGet()
-
-Get all Tags
-
- Use case   User runs method execution   System returns tags (listed in the response example)
-
-### Example
-```dart
-import 'package:testit_api_client_dart/api.dart';
-// TODO Configure API key authorization: Bearer or PrivateToken
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
-
-final api_instance = TagsApi();
-
-try {
-    final result = api_instance.apiV2TagsGet();
-    print(result);
-} catch (e) {
-    print('Exception when calling TagsApi->apiV2TagsGet: $e\n');
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**List<TagModel>**](TagModel.md)
-
-### Authorization
-
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **apiV2TagsIdDelete**
 > apiV2TagsIdDelete(id)
 
 Delete tag
 
- Use case   User sets tag internal (guid format) identifier   System search and delete tag
+ Use case  User sets tag internal (guid format) identifier  System search and delete tag
 
 ### Example
 ```dart
@@ -154,11 +110,11 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apiV2TagsPost**
-> TagModel apiV2TagsPost(tagPostModel)
+> TagApiResult apiV2TagsPost(createTagApiModel)
 
 Create tag
 
- Use case   User sets tag model (listed in the request example)   User runs method execution   System creates tag   System returns tag model (listed in the response example)
+ Use case  User sets tag model (listed in the request example)  User runs method execution  System creates tag  System returns tag model (listed in the response example)
 
 ### Example
 ```dart
@@ -169,10 +125,10 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = TagsApi();
-final tagPostModel = TagPostModel(); // TagPostModel | 
+final createTagApiModel = CreateTagApiModel(); // CreateTagApiModel | 
 
 try {
-    final result = api_instance.apiV2TagsPost(tagPostModel);
+    final result = api_instance.apiV2TagsPost(createTagApiModel);
     print(result);
 } catch (e) {
     print('Exception when calling TagsApi->apiV2TagsPost: $e\n');
@@ -183,11 +139,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tagPostModel** | [**TagPostModel**](TagPostModel.md)|  | [optional] 
+ **createTagApiModel** | [**CreateTagApiModel**](CreateTagApiModel.md)|  | [optional] 
 
 ### Return type
 
-[**TagModel**](TagModel.md)
+[**TagApiResult**](TagApiResult.md)
 
 ### Authorization
 
@@ -201,11 +157,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apiV2TagsPut**
-> TagModel apiV2TagsPut(id, tagPutModel)
+> TagApiResult apiV2TagsPut(id, updateTagApiModel)
 
 Update tag
 
- Use case   User sets tag ID and model (listed in the request example)   User runs method execution   System updates tag   System returns tag model (listed in the response example)
+ Use case  User sets tag ID and model (listed in the request example)  User runs method execution  System updates tag  System returns tag model (listed in the response example)
 
 ### Example
 ```dart
@@ -217,10 +173,10 @@ import 'package:testit_api_client_dart/api.dart';
 
 final api_instance = TagsApi();
 final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
-final tagPutModel = TagPutModel(); // TagPutModel | 
+final updateTagApiModel = UpdateTagApiModel(); // UpdateTagApiModel | 
 
 try {
-    final result = api_instance.apiV2TagsPut(id, tagPutModel);
+    final result = api_instance.apiV2TagsPut(id, updateTagApiModel);
     print(result);
 } catch (e) {
     print('Exception when calling TagsApi->apiV2TagsPut: $e\n');
@@ -232,11 +188,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | [optional] 
- **tagPutModel** | [**TagPutModel**](TagPutModel.md)|  | [optional] 
+ **updateTagApiModel** | [**UpdateTagApiModel**](UpdateTagApiModel.md)|  | [optional] 
 
 ### Return type
 
-[**TagModel**](TagModel.md)
+[**TagApiResult**](TagApiResult.md)
 
 ### Authorization
 
@@ -250,11 +206,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apiV2TagsSearchGet**
-> List<TagModel> apiV2TagsSearchGet(skip, take, orderBy, searchField, searchValue)
+> List<TagApiResult> apiV2TagsSearchGet(skip, take, orderBy, searchField, searchValue)
 
 Search tags
 
- Use case   User runs method execution   System returns collection of tags (listed in the response example)
+ Use case  User runs method execution  System returns collection of tags (listed in the response example)
 
 ### Example
 ```dart
@@ -291,7 +247,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<TagModel>**](TagModel.md)
+[**List<TagApiResult>**](TagApiResult.md)
 
 ### Authorization
 
@@ -305,11 +261,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apiV2TagsTestPlansTagsGet**
-> List<TagModel> apiV2TagsTestPlansTagsGet(skip, take, orderBy, searchField, searchValue)
+> List<TagApiResult> apiV2TagsTestPlansTagsGet(skip, take, orderBy, searchField, searchValue)
 
 Get all Tags that are used in TestPlans
 
- Use case   User runs method execution   System returns tags (listed in the response example)
+ Use case  User runs method execution  System returns tags (listed in the response example)
 
 ### Example
 ```dart
@@ -346,7 +302,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<TagModel>**](TagModel.md)
+[**List<TagApiResult>**](TagApiResult.md)
 
 ### Authorization
 

@@ -27,6 +27,7 @@ class WorkItemShortModel {
     required this.createdById,
     required this.state,
     required this.priority,
+    required this.sourceType,
     required this.isDeleted,
     this.iterations = const [],
     this.links = const [],
@@ -80,6 +81,9 @@ class WorkItemShortModel {
   /// Work Item priority level
   WorkItemPriorityModel priority;
 
+  /// Work Item source type
+  WorkItemSourceTypeModel sourceType;
+
   /// Flag determining whether Work Item is deleted
   bool isDeleted;
 
@@ -123,6 +127,7 @@ class WorkItemShortModel {
     other.createdById == createdById &&
     other.state == state &&
     other.priority == priority &&
+    other.sourceType == sourceType &&
     other.isDeleted == isDeleted &&
     _deepEquality.equals(other.iterations, iterations) &&
     _deepEquality.equals(other.links, links) &&
@@ -150,6 +155,7 @@ class WorkItemShortModel {
     (createdById.hashCode) +
     (state.hashCode) +
     (priority.hashCode) +
+    (sourceType.hashCode) +
     (isDeleted.hashCode) +
     (iterations.hashCode) +
     (links.hashCode) +
@@ -161,7 +167,7 @@ class WorkItemShortModel {
     (tagNames == null ? 0 : tagNames!.hashCode);
 
   @override
-  String toString() => 'WorkItemShortModel[id=$id, versionId=$versionId, versionNumber=$versionNumber, name=$name, entityTypeName=$entityTypeName, projectId=$projectId, sectionId=$sectionId, sectionName=$sectionName, isAutomated=$isAutomated, globalId=$globalId, duration=$duration, createdById=$createdById, state=$state, priority=$priority, isDeleted=$isDeleted, iterations=$iterations, links=$links, medianDuration=$medianDuration, attributes=$attributes, modifiedById=$modifiedById, createdDate=$createdDate, modifiedDate=$modifiedDate, tagNames=$tagNames]';
+  String toString() => 'WorkItemShortModel[id=$id, versionId=$versionId, versionNumber=$versionNumber, name=$name, entityTypeName=$entityTypeName, projectId=$projectId, sectionId=$sectionId, sectionName=$sectionName, isAutomated=$isAutomated, globalId=$globalId, duration=$duration, createdById=$createdById, state=$state, priority=$priority, sourceType=$sourceType, isDeleted=$isDeleted, iterations=$iterations, links=$links, medianDuration=$medianDuration, attributes=$attributes, modifiedById=$modifiedById, createdDate=$createdDate, modifiedDate=$modifiedDate, tagNames=$tagNames]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -179,6 +185,7 @@ class WorkItemShortModel {
       json[r'createdById'] = this.createdById;
       json[r'state'] = this.state;
       json[r'priority'] = this.priority;
+      json[r'sourceType'] = this.sourceType;
       json[r'isDeleted'] = this.isDeleted;
       json[r'iterations'] = this.iterations;
       json[r'links'] = this.links;
@@ -248,6 +255,7 @@ class WorkItemShortModel {
         createdById: mapValueOfType<String>(json, r'createdById')!,
         state: WorkItemStates.fromJson(json[r'state'])!,
         priority: WorkItemPriorityModel.fromJson(json[r'priority'])!,
+        sourceType: WorkItemSourceTypeModel.fromJson(json[r'sourceType'])!,
         isDeleted: mapValueOfType<bool>(json, r'isDeleted')!,
         iterations: IterationModel.listFromJson(json[r'iterations']),
         links: LinkShortModel.listFromJson(json[r'links']),
@@ -320,6 +328,7 @@ class WorkItemShortModel {
     'createdById',
     'state',
     'priority',
+    'sourceType',
     'isDeleted',
     'iterations',
     'links',

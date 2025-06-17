@@ -18,7 +18,7 @@ class WorkItemsApi {
 
   /// Upload and link attachment to WorkItem
   ///
-  ///  Use case   User sets workItemId   User attaches a file   System creates attachment and links it to the work item   System returns attachment identifier
+  ///  Use case  User sets workItemId  User attaches a file  System creates attachment and links it to the work item  System returns attachment identifier
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -67,7 +67,7 @@ class WorkItemsApi {
 
   /// Upload and link attachment to WorkItem
   ///
-  ///  Use case   User sets workItemId   User attaches a file   System creates attachment and links it to the work item   System returns attachment identifier
+  ///  Use case  User sets workItemId  User attaches a file  System creates attachment and links it to the work item  System returns attachment identifier
   ///
   /// Parameters:
   ///
@@ -85,7 +85,7 @@ class WorkItemsApi {
 
   /// Transform CheckList to TestCase
   ///
-  ///  Use case   User sets checklist identifier   User runs method execution   System transform CheckList to TestCase
+  ///  Use case  User sets checklist identifier  User runs method execution  System transform CheckList to TestCase
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -120,7 +120,7 @@ class WorkItemsApi {
 
   /// Transform CheckList to TestCase
   ///
-  ///  Use case   User sets checklist identifier   User runs method execution   System transform CheckList to TestCase
+  ///  Use case  User sets checklist identifier  User runs method execution  System transform CheckList to TestCase
   ///
   /// Parameters:
   ///
@@ -142,7 +142,7 @@ class WorkItemsApi {
 
   /// Get change history of WorkItem
   ///
-  ///  Use case   User sets work item identifier   User runs method execution   System return change history of WorkItem
+  ///  Use case  User sets work item identifier  User runs method execution  System return change history of WorkItem
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -208,7 +208,7 @@ class WorkItemsApi {
 
   /// Get change history of WorkItem
   ///
-  ///  Use case   User sets work item identifier   User runs method execution   System return change history of WorkItem
+  ///  Use case  User sets work item identifier  User runs method execution  System return change history of WorkItem
   ///
   /// Parameters:
   ///
@@ -248,7 +248,7 @@ class WorkItemsApi {
 
   /// Delete like from WorkItem
   ///
-  ///  Use case   User sets WorkItem identifier   User runs method execution   System delete like from WorkItem
+  ///  Use case  User sets WorkItem identifier  User runs method execution  System delete like from WorkItem
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -283,7 +283,7 @@ class WorkItemsApi {
 
   /// Delete like from WorkItem
   ///
-  ///  Use case   User sets WorkItem identifier   User runs method execution   System delete like from WorkItem
+  ///  Use case  User sets WorkItem identifier  User runs method execution  System delete like from WorkItem
   ///
   /// Parameters:
   ///
@@ -297,7 +297,7 @@ class WorkItemsApi {
 
   /// Set like to WorkItem
   ///
-  ///  Use case   User sets WorkItem identifier   User runs method execution   System set like to WorkItem
+  ///  Use case  User sets WorkItem identifier  User runs method execution  System set like to WorkItem
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -332,7 +332,7 @@ class WorkItemsApi {
 
   /// Set like to WorkItem
   ///
-  ///  Use case   User sets WorkItem identifier   User runs method execution   System set like to WorkItem
+  ///  Use case  User sets WorkItem identifier  User runs method execution  System set like to WorkItem
   ///
   /// Parameters:
   ///
@@ -346,7 +346,7 @@ class WorkItemsApi {
 
   /// Get likes count of WorkItem
   ///
-  ///  Use case   User sets WorkItem identifier   User runs method execution   System return likes count of WorkItem
+  ///  Use case  User sets WorkItem identifier  User runs method execution  System return likes count of WorkItem
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -381,7 +381,7 @@ class WorkItemsApi {
 
   /// Get likes count of WorkItem
   ///
-  ///  Use case   User sets WorkItem identifier   User runs method execution   System return likes count of WorkItem
+  ///  Use case  User sets WorkItem identifier  User runs method execution  System return likes count of WorkItem
   ///
   /// Parameters:
   ///
@@ -403,7 +403,7 @@ class WorkItemsApi {
 
   /// Get likes of WorkItem
   ///
-  ///  Use case   User sets WorkItem identifier   User runs method execution   System return likes of WorkItem
+  ///  Use case  User sets WorkItem identifier  User runs method execution  System return likes of WorkItem
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -438,7 +438,7 @@ class WorkItemsApi {
 
   /// Get likes of WorkItem
   ///
-  ///  Use case   User sets WorkItem identifier   User runs method execution   System return likes of WorkItem
+  ///  Use case  User sets WorkItem identifier  User runs method execution  System return likes of WorkItem
   ///
   /// Parameters:
   ///
@@ -463,7 +463,7 @@ class WorkItemsApi {
 
   /// Get test results history of WorkItem
   ///
-  ///  Use case   User sets WorkItem identifier   User runs method execution   System return test results history of WorkItem
+  ///  Use case  User sets WorkItem identifier  User runs method execution  System return test results history of WorkItem
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -589,7 +589,7 @@ class WorkItemsApi {
 
   /// Get test results history of WorkItem
   ///
-  ///  Use case   User sets WorkItem identifier   User runs method execution   System return test results history of WorkItem
+  ///  Use case  User sets WorkItem identifier  User runs method execution  System return test results history of WorkItem
   ///
   /// Parameters:
   ///
@@ -659,7 +659,7 @@ class WorkItemsApi {
 
   /// Set WorkItem as actual
   ///
-  ///  Use case   User sets work item identifier   User runs method execution   System set WorkItem as actual
+  ///  Use case  User sets work item identifier  User runs method execution  System set WorkItem as actual
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -697,7 +697,7 @@ class WorkItemsApi {
 
   /// Set WorkItem as actual
   ///
-  ///  Use case   User sets work item identifier   User runs method execution   System set WorkItem as actual
+  ///  Use case  User sets work item identifier  User runs method execution  System set WorkItem as actual
   ///
   /// Parameters:
   ///
@@ -814,7 +814,7 @@ class WorkItemsApi {
 
   /// Move WorkItem to another section
   ///
-  ///  Use case   User sets WorkItem identifier   User runs method execution   System move WorkItem to another section
+  ///  Use case  User sets WorkItem identifier  User runs method execution  System move WorkItem to another section
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -848,7 +848,7 @@ class WorkItemsApi {
 
   /// Move WorkItem to another section
   ///
-  ///  Use case   User sets WorkItem identifier   User runs method execution   System move WorkItem to another section
+  ///  Use case  User sets WorkItem identifier  User runs method execution  System move WorkItem to another section
   ///
   /// Parameters:
   ///
@@ -971,7 +971,7 @@ class WorkItemsApi {
 
   /// Get SharedStep references in sections
   ///
-  ///  Use case   User sets SharedStep identifier   User runs method execution   System return SharedStep references
+  ///  Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1039,7 +1039,7 @@ class WorkItemsApi {
 
   /// Get SharedStep references in sections
   ///
-  ///  Use case   User sets SharedStep identifier   User runs method execution   System return SharedStep references
+  ///  Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
   ///
   /// Parameters:
   ///
@@ -1081,7 +1081,7 @@ class WorkItemsApi {
 
   /// Get SharedStep references in work items
   ///
-  ///  Use case   User sets SharedStep identifier   User runs method execution   System return SharedStep references
+  ///  Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1149,7 +1149,7 @@ class WorkItemsApi {
 
   /// Get SharedStep references in work items
   ///
-  ///  Use case   User sets SharedStep identifier   User runs method execution   System return SharedStep references
+  ///  Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
   ///
   /// Parameters:
   ///
@@ -1191,7 +1191,7 @@ class WorkItemsApi {
 
   /// Get SharedStep references
   ///
-  ///  Use case   User sets SharedStep identifier   User runs method execution   System return SharedStep references
+  ///  Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1226,7 +1226,7 @@ class WorkItemsApi {
 
   /// Get SharedStep references
   ///
-  ///  Use case   User sets SharedStep identifier   User runs method execution   System return SharedStep references
+  ///  Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
   ///
   /// Parameters:
   ///
@@ -1251,19 +1251,19 @@ class WorkItemsApi {
 
   /// Create Test Case, Checklist or Shared Step
   ///
-  ///  Use case   User sets work item properties (listed in request parameters)   User runs method execution   System creates work item by identifier   System returns work item model (listed in response parameters)
+  ///  Use case  User sets work item properties (listed in request parameters)  User runs method execution  System creates work item by identifier  System returns work item model (listed in response parameters)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [WorkItemPostModel] workItemPostModel:
-  Future<Response> createWorkItemWithHttpInfo({ WorkItemPostModel? workItemPostModel, }) async {
+  /// * [CreateWorkItemApiModel] createWorkItemApiModel:
+  Future<Response> createWorkItemWithHttpInfo({ CreateWorkItemApiModel? createWorkItemApiModel, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/workItems';
 
     // ignore: prefer_final_locals
-    Object? postBody = workItemPostModel;
+    Object? postBody = createWorkItemApiModel;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -1285,13 +1285,13 @@ class WorkItemsApi {
 
   /// Create Test Case, Checklist or Shared Step
   ///
-  ///  Use case   User sets work item properties (listed in request parameters)   User runs method execution   System creates work item by identifier   System returns work item model (listed in response parameters)
+  ///  Use case  User sets work item properties (listed in request parameters)  User runs method execution  System creates work item by identifier  System returns work item model (listed in response parameters)
   ///
   /// Parameters:
   ///
-  /// * [WorkItemPostModel] workItemPostModel:
-  Future<WorkItemModel?> createWorkItem({ WorkItemPostModel? workItemPostModel, }) async {
-    final response = await createWorkItemWithHttpInfo( workItemPostModel: workItemPostModel, );
+  /// * [CreateWorkItemApiModel] createWorkItemApiModel:
+  Future<WorkItemModel?> createWorkItem({ CreateWorkItemApiModel? createWorkItemApiModel, }) async {
+    final response = await createWorkItemWithHttpInfo( createWorkItemApiModel: createWorkItemApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1307,14 +1307,14 @@ class WorkItemsApi {
 
   /// Delete all links AutoTests from WorkItem by Id or GlobalId
   ///
-  ///  Use case   User sets work item identifier   User runs method execution   System search work item by identifier   System search and delete all autotests, related to found work item   System returns no content response
+  ///  Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search and delete all autotests, related to found work item  System returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   WorkItem internal (guid format) or  global(integer format) identifier\"
+  ///   WorkItem internal (guid format) or global(integer format) identifier\"
   Future<Response> deleteAllWorkItemsFromAutoTestWithHttpInfo(String id,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/workItems/{id}/autoTests'
@@ -1343,12 +1343,12 @@ class WorkItemsApi {
 
   /// Delete all links AutoTests from WorkItem by Id or GlobalId
   ///
-  ///  Use case   User sets work item identifier   User runs method execution   System search work item by identifier   System search and delete all autotests, related to found work item   System returns no content response
+  ///  Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search and delete all autotests, related to found work item  System returns no content response
   ///
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   WorkItem internal (guid format) or  global(integer format) identifier\"
+  ///   WorkItem internal (guid format) or global(integer format) identifier\"
   Future<void> deleteAllWorkItemsFromAutoTest(String id,) async {
     final response = await deleteAllWorkItemsFromAutoTestWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -1358,14 +1358,14 @@ class WorkItemsApi {
 
   /// Delete Test Case, Checklist or Shared Step by Id or GlobalId
   ///
-  ///  Use case   User sets work item identifier   User runs method execution   System deletes work item   System returns no content response
+  ///  Use case  User sets work item identifier  User runs method execution  System deletes work item  System returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   WorkItem internal (guid format) or  global(integer format) identifier\"
+  ///   WorkItem internal (guid format) or global(integer format) identifier\"
   Future<Response> deleteWorkItemWithHttpInfo(String id,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/workItems/{id}'
@@ -1394,12 +1394,12 @@ class WorkItemsApi {
 
   /// Delete Test Case, Checklist or Shared Step by Id or GlobalId
   ///
-  ///  Use case   User sets work item identifier   User runs method execution   System deletes work item   System returns no content response
+  ///  Use case  User sets work item identifier  User runs method execution  System deletes work item  System returns no content response
   ///
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   WorkItem internal (guid format) or  global(integer format) identifier\"
+  ///   WorkItem internal (guid format) or global(integer format) identifier\"
   Future<void> deleteWorkItem(String id,) async {
     final response = await deleteWorkItemWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -1409,14 +1409,14 @@ class WorkItemsApi {
 
   /// Get all AutoTests linked to WorkItem by Id or GlobalId
   ///
-  ///  Use case   User sets work item identifier   User runs method execution   System search work item by identifier   System search all autotests, related to found work item   System returns list of found autotests
+  ///  Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search all autotests, related to found work item  System returns list of found autotests
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   WorkItem internal (guid format) or  global(integer format) identifier\"
+  ///   WorkItem internal (guid format) or global(integer format) identifier\"
   Future<Response> getAutoTestsForWorkItemWithHttpInfo(String id,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/workItems/{id}/autoTests'
@@ -1445,12 +1445,12 @@ class WorkItemsApi {
 
   /// Get all AutoTests linked to WorkItem by Id or GlobalId
   ///
-  ///  Use case   User sets work item identifier   User runs method execution   System search work item by identifier   System search all autotests, related to found work item   System returns list of found autotests
+  ///  Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search all autotests, related to found work item  System returns list of found autotests
   ///
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   WorkItem internal (guid format) or  global(integer format) identifier\"
+  ///   WorkItem internal (guid format) or global(integer format) identifier\"
   Future<List<AutoTestModel>?> getAutoTestsForWorkItem(String id,) async {
     final response = await getAutoTestsForWorkItemWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -1476,7 +1476,7 @@ class WorkItemsApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   WorkItem internal (guid format) or  global(integer format) identifier\"
+  ///   WorkItem internal (guid format) or global(integer format) identifier\"
   ///
   /// * [String] versionId:
   ///   WorkItem version (guid format) identifier
@@ -1521,7 +1521,7 @@ class WorkItemsApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   WorkItem internal (guid format) or  global(integer format) identifier\"
+  ///   WorkItem internal (guid format) or global(integer format) identifier\"
   ///
   /// * [String] versionId:
   ///   WorkItem version (guid format) identifier
@@ -1548,14 +1548,14 @@ class WorkItemsApi {
 
   /// Get Test Case, Checklist or Shared Step by Id or GlobalId
   ///
-  ///  Use case   User sets work item identifier   [Optional] User sets work item version identifier   [Optional] User sets work item version number   User runs method execution   System search work item by identifier   [Optional] if User sets work item version identifier, system search work item version by identifier.   [Optional] if user sets work item version number, system search work item version by number   Otherwise, system search last work item version   System returns work item 
+  ///  Use case  User sets work item identifier  [Optional] User sets work item version identifier  [Optional] User sets work item version number  User runs method execution  System search work item by identifier  [Optional] if User sets work item version identifier, system search work item version by identifier.  [Optional] if user sets work item version number, system search work item version by number  Otherwise, system search last work item version  System returns work item
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   WorkItem internal (guid format) or  global(integer format) identifier\"
+  ///   WorkItem internal (guid format) or global(integer format) identifier\"
   ///
   /// * [String] versionId:
   ///   WorkItem version (guid format) identifier\"
@@ -1597,12 +1597,12 @@ class WorkItemsApi {
 
   /// Get Test Case, Checklist or Shared Step by Id or GlobalId
   ///
-  ///  Use case   User sets work item identifier   [Optional] User sets work item version identifier   [Optional] User sets work item version number   User runs method execution   System search work item by identifier   [Optional] if User sets work item version identifier, system search work item version by identifier.   [Optional] if user sets work item version number, system search work item version by number   Otherwise, system search last work item version   System returns work item 
+  ///  Use case  User sets work item identifier  [Optional] User sets work item version identifier  [Optional] User sets work item version number  User runs method execution  System search work item by identifier  [Optional] if User sets work item version identifier, system search work item version by identifier.  [Optional] if user sets work item version number, system search work item version by number  Otherwise, system search last work item version  System returns work item
   ///
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   WorkItem internal (guid format) or  global(integer format) identifier\"
+  ///   WorkItem internal (guid format) or global(integer format) identifier\"
   ///
   /// * [String] versionId:
   ///   WorkItem version (guid format) identifier\"
@@ -1626,7 +1626,7 @@ class WorkItemsApi {
 
   /// Get WorkItem chronology by Id or GlobalId
   ///
-  ///  Use case   User sets work item identifier   User runs method execution   System search work item by identifier   System search test results of all autotests, related to found work item   System sort results by CompletedOn ascending, then by CreatedDate ascending   System returns sorted collection of test results
+  ///  Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search test results of all autotests, related to found work item  System sort results by CompletedOn ascending, then by CreatedDate ascending  System returns sorted collection of test results
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1661,7 +1661,7 @@ class WorkItemsApi {
 
   /// Get WorkItem chronology by Id or GlobalId
   ///
-  ///  Use case   User sets work item identifier   User runs method execution   System search work item by identifier   System search test results of all autotests, related to found work item   System sort results by CompletedOn ascending, then by CreatedDate ascending   System returns sorted collection of test results
+  ///  Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search test results of all autotests, related to found work item  System sort results by CompletedOn ascending, then by CreatedDate ascending  System returns sorted collection of test results
   ///
   /// Parameters:
   ///
@@ -1686,20 +1686,20 @@ class WorkItemsApi {
 
   /// Get WorkItem versions
   ///
-  ///  Use case   User sets work item identifier   [Optional] User sets work item version identifier   User runs method execution   System search work item by identifier                         [Optional] If User set work item version identifier, System search work item version by version identifier                      Otherwise, system search all version of work item                     System returns array of work item version models (listed in response example)
+  ///  Use case  User sets work item identifier  [Optional] User sets work item version identifier  User runs method execution  System search work item by identifier  [Optional] If User set work item version identifier, System search work item version by version identifier                     Otherwise, system search all version of work item  System returns array of work item version models (listed in response example)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   WorkItem internal (guid format) or  global(integer format) identifier\"
+  ///   WorkItem internal (guid format) or global(integer format) identifier\"
   ///
   /// * [String] workItemVersionId:
-  ///   WorkItem version (guid format)  identifier\"
+  ///   WorkItem version (guid format) identifier\"
   ///
   /// * [int] versionNumber:
-  ///   WorkItem version (integer format)  number\"
+  ///   WorkItem version (integer format) number\"
   Future<Response> getWorkItemVersionsWithHttpInfo(String id, { String? workItemVersionId, int? versionNumber, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/workItems/{id}/versions'
@@ -1735,18 +1735,18 @@ class WorkItemsApi {
 
   /// Get WorkItem versions
   ///
-  ///  Use case   User sets work item identifier   [Optional] User sets work item version identifier   User runs method execution   System search work item by identifier                         [Optional] If User set work item version identifier, System search work item version by version identifier                      Otherwise, system search all version of work item                     System returns array of work item version models (listed in response example)
+  ///  Use case  User sets work item identifier  [Optional] User sets work item version identifier  User runs method execution  System search work item by identifier  [Optional] If User set work item version identifier, System search work item version by version identifier                     Otherwise, system search all version of work item  System returns array of work item version models (listed in response example)
   ///
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   WorkItem internal (guid format) or  global(integer format) identifier\"
+  ///   WorkItem internal (guid format) or global(integer format) identifier\"
   ///
   /// * [String] workItemVersionId:
-  ///   WorkItem version (guid format)  identifier\"
+  ///   WorkItem version (guid format) identifier\"
   ///
   /// * [int] versionNumber:
-  ///   WorkItem version (integer format)  number\"
+  ///   WorkItem version (integer format) number\"
   Future<List<WorkItemVersionModel>?> getWorkItemVersions(String id, { String? workItemVersionId, int? versionNumber, }) async {
     final response = await getWorkItemVersionsWithHttpInfo(id,  workItemVersionId: workItemVersionId, versionNumber: versionNumber, );
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -1861,19 +1861,19 @@ class WorkItemsApi {
 
   /// Update Test Case, Checklist or Shared Step
   ///
-  ///  Use case   User sets work item properties (listed in request parameters)   User runs method execution   System updates work item by identifier   System returns updated work item model (listed in response parameters)
+  ///  Use case  User sets work item properties (listed in request parameters)  User runs method execution  System updates work item by identifier  System returns updated work item model (listed in response parameters)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [WorkItemPutModel] workItemPutModel:
-  Future<Response> updateWorkItemWithHttpInfo({ WorkItemPutModel? workItemPutModel, }) async {
+  /// * [UpdateWorkItemApiModel] updateWorkItemApiModel:
+  Future<Response> updateWorkItemWithHttpInfo({ UpdateWorkItemApiModel? updateWorkItemApiModel, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/workItems';
 
     // ignore: prefer_final_locals
-    Object? postBody = workItemPutModel;
+    Object? postBody = updateWorkItemApiModel;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -1895,13 +1895,13 @@ class WorkItemsApi {
 
   /// Update Test Case, Checklist or Shared Step
   ///
-  ///  Use case   User sets work item properties (listed in request parameters)   User runs method execution   System updates work item by identifier   System returns updated work item model (listed in response parameters)
+  ///  Use case  User sets work item properties (listed in request parameters)  User runs method execution  System updates work item by identifier  System returns updated work item model (listed in response parameters)
   ///
   /// Parameters:
   ///
-  /// * [WorkItemPutModel] workItemPutModel:
-  Future<void> updateWorkItem({ WorkItemPutModel? workItemPutModel, }) async {
-    final response = await updateWorkItemWithHttpInfo( workItemPutModel: workItemPutModel, );
+  /// * [UpdateWorkItemApiModel] updateWorkItemApiModel:
+  Future<void> updateWorkItem({ UpdateWorkItemApiModel? updateWorkItemApiModel, }) async {
+    final response = await updateWorkItemWithHttpInfo( updateWorkItemApiModel: updateWorkItemApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

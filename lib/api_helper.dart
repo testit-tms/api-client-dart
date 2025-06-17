@@ -103,6 +103,9 @@ String parameterToString(dynamic value) {
   if (value is NotificationTypeModel) {
     return NotificationTypeModelTypeTransformer().encode(value).toString();
   }
+  if (value is ProjectType) {
+    return ProjectTypeTypeTransformer().encode(value).toString();
+  }
   if (value is ProjectTypeModel) {
     return ProjectTypeModelTypeTransformer().encode(value).toString();
   }
@@ -126,6 +129,9 @@ String parameterToString(dynamic value) {
   }
   if (value is TestRunState) {
     return TestRunStateTypeTransformer().encode(value).toString();
+  }
+  if (value is TestStatusApiType) {
+    return TestStatusApiTypeTypeTransformer().encode(value).toString();
   }
   if (value is TestStatusType) {
     return TestStatusTypeTypeTransformer().encode(value).toString();
@@ -151,8 +157,14 @@ String parameterToString(dynamic value) {
   if (value is WorkItemGroupType) {
     return WorkItemGroupTypeTypeTransformer().encode(value).toString();
   }
+  if (value is WorkItemPriority) {
+    return WorkItemPriorityTypeTransformer().encode(value).toString();
+  }
   if (value is WorkItemPriorityModel) {
     return WorkItemPriorityModelTypeTransformer().encode(value).toString();
+  }
+  if (value is WorkItemSourceTypeModel) {
+    return WorkItemSourceTypeModelTypeTransformer().encode(value).toString();
   }
   if (value is WorkItemState) {
     return WorkItemStateTypeTransformer().encode(value).toString();

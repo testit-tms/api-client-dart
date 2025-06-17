@@ -320,7 +320,7 @@ class TestSuitesApi {
 
   /// Delete TestSuite
   ///
-  ///  Use case   User sets test suite identifier   User runs method execution   System search test suite by identifier   System deletes test suite   System returns no content response
+  ///  Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System deletes test suite  System returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -356,7 +356,7 @@ class TestSuitesApi {
 
   /// Delete TestSuite
   ///
-  ///  Use case   User sets test suite identifier   User runs method execution   System search test suite by identifier   System deletes test suite   System returns no content response
+  ///  Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System deletes test suite  System returns no content response
   ///
   /// Parameters:
   ///
@@ -371,7 +371,7 @@ class TestSuitesApi {
 
   /// Get Configurations By Id
   ///
-  ///  Use case   User sets test suite identifier   User runs method execution   System search test suite by identifier   System search test points related to the test suite   System search configurations related to the test points   System returns configurations array
+  ///  Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System search configurations related to the test points  System returns configurations array
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -407,7 +407,7 @@ class TestSuitesApi {
 
   /// Get Configurations By Id
   ///
-  ///  Use case   User sets test suite identifier   User runs method execution   System search test suite by identifier   System search test points related to the test suite   System search configurations related to the test points   System returns configurations array
+  ///  Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System search configurations related to the test points  System returns configurations array
   ///
   /// Parameters:
   ///
@@ -433,7 +433,7 @@ class TestSuitesApi {
 
   /// Get TestPoints By Id
   ///
-  ///  Use case   User sets test suite identifier   User runs method execution   System search test suite by identifier   System search test points related to the test suite   System returns test points array
+  ///  Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System returns test points array
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -469,7 +469,7 @@ class TestSuitesApi {
 
   /// Get TestPoints By Id
   ///
-  ///  Use case   User sets test suite identifier   User runs method execution   System search test suite by identifier   System search test points related to the test suite   System returns test points array
+  ///  Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System returns test points array
   ///
   /// Parameters:
   ///
@@ -495,7 +495,7 @@ class TestSuitesApi {
 
   /// Get TestResults By Id
   ///
-  ///  Use case   User sets test suite identifier   User runs method execution   System search test suite by identifier   System search test points related to the test suite   System search test results related to the test points   System returns test results array
+  ///  Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System search test results related to the test points  System returns test results array
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -531,7 +531,7 @@ class TestSuitesApi {
 
   /// Get TestResults By Id
   ///
-  ///  Use case   User sets test suite identifier   User runs method execution   System search test suite by identifier   System search test points related to the test suite   System search test results related to the test points   System returns test results array
+  ///  Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System search test results related to the test points  System returns test results array
   ///
   /// Parameters:
   ///
@@ -557,7 +557,7 @@ class TestSuitesApi {
 
   /// Get TestSuite by Id
   ///
-  ///  Use case   User sets test suite identifier   User runs method execution   System search test suite by identifier   System returns test suite
+  ///  Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System returns test suite
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -593,7 +593,7 @@ class TestSuitesApi {
 
   /// Get TestSuite by Id
   ///
-  ///  Use case   User sets test suite identifier   User runs method execution   System search test suite by identifier   System returns test suite
+  ///  Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System returns test suite
   ///
   /// Parameters:
   ///
@@ -616,7 +616,7 @@ class TestSuitesApi {
 
   /// Search WorkItems
   ///
-  ///  Use case   User sets test suite identifier   [Optional] User sets filter   User runs method execution   System search test suite by identifier   System search test points related to the test suite   System search work items related to the test points                         [Optional] User sets filter, system applies filter                     System returns work items array
+  ///  Use case  User sets test suite identifier  [Optional] User sets filter  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System search work items related to the test points  [Optional] User sets filter, system applies filter  System returns work items array
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -685,7 +685,7 @@ class TestSuitesApi {
 
   /// Search WorkItems
   ///
-  ///  Use case   User sets test suite identifier   [Optional] User sets filter   User runs method execution   System search test suite by identifier   System search test points related to the test suite   System search work items related to the test points                         [Optional] User sets filter, system applies filter                     System returns work items array
+  ///  Use case  User sets test suite identifier  [Optional] User sets filter  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System search work items related to the test points  [Optional] User sets filter, system applies filter  System returns work items array
   ///
   /// Parameters:
   ///
@@ -728,7 +728,7 @@ class TestSuitesApi {
 
   /// Set Configurations By TestSuite Id
   ///
-  ///  Use case   User sets test suite identifier   User sets collection of configuration identifiers   User runs method execution   System search test suite by identifier   System search test points related to the test suite   System search configuration   System restores(if exist) or creates test points with listed configuration   System returns no content response
+  ///  Use case  User sets test suite identifier  User sets collection of configuration identifiers  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System search configuration  System restores(if exist) or creates test points with listed configuration  System returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -767,7 +767,7 @@ class TestSuitesApi {
 
   /// Set Configurations By TestSuite Id
   ///
-  ///  Use case   User sets test suite identifier   User sets collection of configuration identifiers   User runs method execution   System search test suite by identifier   System search test points related to the test suite   System search configuration   System restores(if exist) or creates test points with listed configuration   System returns no content response
+  ///  Use case  User sets test suite identifier  User sets collection of configuration identifiers  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System search configuration  System restores(if exist) or creates test points with listed configuration  System returns no content response
   ///
   /// Parameters:
   ///

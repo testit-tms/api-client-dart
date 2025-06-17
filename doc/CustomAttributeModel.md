@@ -9,7 +9,7 @@ import 'package:testit_api_client_dart/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | Unique ID of the attribute | 
-**options** | [**List<CustomAttributeOptionModel>**](CustomAttributeOptionModel.md) | Collection of the attribute options     Available for attributes of type `options` and `multiple options` only | [default to const []]
+**options** | [**List<CustomAttributeOptionModel>**](CustomAttributeOptionModel.md) | Collection of the attribute options   Available for attributes of type `options` and `multiple options` only | [default to const []]
 **type** | [**CustomAttributeTypesEnum**](CustomAttributeTypesEnum.md) | Type of the attribute | 
 **isDeleted** | **bool** | Indicates if the attribute is deleted | 
 **name** | **String** | Name of the attribute | 

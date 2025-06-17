@@ -18,7 +18,7 @@ class ProjectTestPlansApi {
 
   /// Get TestPlans analytics
   ///
-  ///  Use case   User sets project internal identifier   User sets query params   User runs method execution   System return analytics
+  ///  Use case  User sets project internal identifier  User sets query params  User runs method execution  System return analytics
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -95,7 +95,7 @@ class ProjectTestPlansApi {
 
   /// Get TestPlans analytics
   ///
-  ///  Use case   User sets project internal identifier   User sets query params   User runs method execution   System return analytics
+  ///  Use case  User sets project internal identifier  User sets query params  User runs method execution  System return analytics
   ///
   /// Parameters:
   ///
@@ -202,7 +202,7 @@ class ProjectTestPlansApi {
 
   /// Checks if TestPlan exists with the specified name exists for the project
   ///
-  ///  Use case   User sets project internal or global identifier    User runs method execution   System purge delete project workitems
+  ///  Use case  User sets project internal or global identifier  User runs method execution  System purge delete project workitems
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -242,7 +242,7 @@ class ProjectTestPlansApi {
 
   /// Checks if TestPlan exists with the specified name exists for the project
   ///
-  ///  Use case   User sets project internal or global identifier    User runs method execution   System purge delete project workitems
+  ///  Use case  User sets project internal or global identifier  User runs method execution  System purge delete project workitems
   ///
   /// Parameters:
   ///
@@ -381,7 +381,7 @@ class ProjectTestPlansApi {
 
   /// Get Project TestPlans with analytics
   ///
-  ///  Use case   User sets project internal or global identifier    User sets request body    User runs method execution   System returns project testplans with analytics
+  ///  Use case  User sets project internal or global identifier  User sets request body  User runs method execution  System returns project testplans with analytics
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -455,7 +455,7 @@ class ProjectTestPlansApi {
 
   /// Get Project TestPlans with analytics
   ///
-  ///  Use case   User sets project internal or global identifier    User sets request body    User runs method execution   System returns project testplans with analytics
+  ///  Use case  User sets project internal or global identifier  User sets request body  User runs method execution  System returns project testplans with analytics
   ///
   /// Parameters:
   ///

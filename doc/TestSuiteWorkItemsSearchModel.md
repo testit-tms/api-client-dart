@@ -9,7 +9,7 @@ import 'package:testit_api_client_dart/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tagNames** | **Set<String>** | Collection of tags | [optional] [default to const {}]
-**entityTypes** | [**Set<WorkItemEntityTypes>**](WorkItemEntityTypes.md) | Collection of types of work item   Allowed values: `TestCases`, `CheckLists`, `SharedSteps` | [optional] [default to const {}]
+**entityTypes** | [**Set<WorkItemEntityTypes>**](WorkItemEntityTypes.md) | Collection of types of work item  Allowed values: `TestCases`, `CheckLists`, `SharedSteps` | [optional] [default to const {}]
 **nameOrId** | **String** | Name or identifier (UUID) of work item | [optional] 
 **includeIds** | **Set<String>** | Collection of identifiers of work items which need to be included in result regardless of filtering | [optional] [default to const {}]
 **excludeIds** | **Set<String>** | Collection of identifiers of work items which need to be excluded from result regardless of filtering | [optional] [default to const {}]
@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **modifiedByIds** | **Set<String>** | Collection of identifiers of users who applied last modification to work item | [optional] [default to const {}]
 **states** | [**Set<WorkItemStates>**](WorkItemStates.md) | Collection of states of work item | [optional] [default to const {}]
 **priorities** | [**Set<WorkItemPriorityModel>**](WorkItemPriorityModel.md) | Collection of priorities of work item | [optional] [default to const {}]
+**sourceTypes** | [**Set<WorkItemSourceTypeModel>**](WorkItemSourceTypeModel.md) | Collection of priorities of work item | [optional] [default to const {}]
 **types** | [**Set<WorkItemEntityTypes>**](WorkItemEntityTypes.md) | Collection of types of work item | [optional] [default to const {}]
 **createdDate** | [**DateTimeRangeSelectorModel**](DateTimeRangeSelectorModel.md) | Specifies a work item range of creation date to search for | [optional] 
 **modifiedDate** | [**DateTimeRangeSelectorModel**](DateTimeRangeSelectorModel.md) | Specifies a work item range of last modification date to search for | [optional] 

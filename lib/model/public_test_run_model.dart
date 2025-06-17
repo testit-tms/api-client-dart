@@ -20,6 +20,7 @@ class PublicTestRunModel {
     this.autoTests = const [],
     this.testPoints = const [],
     required this.status,
+    required this.statusModel,
     this.testPlanId,
     this.productName,
     this.build,
@@ -41,6 +42,8 @@ class PublicTestRunModel {
 
   String status;
 
+  TestStatusModel statusModel;
+
   String? testPlanId;
 
   String? productName;
@@ -60,6 +63,7 @@ class PublicTestRunModel {
     _deepEquality.equals(other.autoTests, autoTests) &&
     _deepEquality.equals(other.testPoints, testPoints) &&
     other.status == status &&
+    other.statusModel == statusModel &&
     other.testPlanId == testPlanId &&
     other.productName == productName &&
     other.build == build &&
@@ -76,6 +80,7 @@ class PublicTestRunModel {
     (autoTests.hashCode) +
     (testPoints.hashCode) +
     (status.hashCode) +
+    (statusModel.hashCode) +
     (testPlanId == null ? 0 : testPlanId!.hashCode) +
     (productName == null ? 0 : productName!.hashCode) +
     (build == null ? 0 : build!.hashCode) +
@@ -83,7 +88,7 @@ class PublicTestRunModel {
     (testRunDescription == null ? 0 : testRunDescription!.hashCode);
 
   @override
-  String toString() => 'PublicTestRunModel[testRunId=$testRunId, testPlanGlobalId=$testPlanGlobalId, name=$name, configurations=$configurations, autoTests=$autoTests, testPoints=$testPoints, status=$status, testPlanId=$testPlanId, productName=$productName, build=$build, customParameters=$customParameters, testRunDescription=$testRunDescription]';
+  String toString() => 'PublicTestRunModel[testRunId=$testRunId, testPlanGlobalId=$testPlanGlobalId, name=$name, configurations=$configurations, autoTests=$autoTests, testPoints=$testPoints, status=$status, statusModel=$statusModel, testPlanId=$testPlanId, productName=$productName, build=$build, customParameters=$customParameters, testRunDescription=$testRunDescription]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -94,6 +99,7 @@ class PublicTestRunModel {
       json[r'autoTests'] = this.autoTests;
       json[r'testPoints'] = this.testPoints;
       json[r'status'] = this.status;
+      json[r'statusModel'] = this.statusModel;
     if (this.testPlanId != null) {
       json[r'testPlanId'] = this.testPlanId;
     } else {
@@ -148,6 +154,7 @@ class PublicTestRunModel {
         autoTests: AutoTestModel.listFromJson(json[r'autoTests']),
         testPoints: PublicTestPointModel.listFromJson(json[r'testPoints']),
         status: mapValueOfType<String>(json, r'status')!,
+        statusModel: TestStatusModel.fromJson(json[r'statusModel'])!,
         testPlanId: mapValueOfType<String>(json, r'testPlanId'),
         productName: mapValueOfType<String>(json, r'productName'),
         build: mapValueOfType<String>(json, r'build'),
@@ -207,6 +214,7 @@ class PublicTestRunModel {
     'autoTests',
     'testPoints',
     'status',
+    'statusModel',
   };
 }
 

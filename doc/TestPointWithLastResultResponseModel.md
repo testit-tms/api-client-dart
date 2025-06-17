@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **createdById** | **String** |  | 
 **duration** | **int** |  | 
 **priority** | [**WorkItemPriorityModel**](WorkItemPriorityModel.md) |  | 
+**sourceType** | [**WorkItemSourceTypeModel**](WorkItemSourceTypeModel.md) |  | 
 **workItemName** | **String** |  | [optional] 
 **testerId** | **String** |  | [optional] 
 **configurationId** | **String** |  | [optional] 

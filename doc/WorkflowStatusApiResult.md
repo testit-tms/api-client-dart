@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **id** | **String** |  | 
 **name** | **String** |  | 
 **code** | **String** |  | 
-**type** | [**TestStatusType**](TestStatusType.md) | Collection of possible status types | 
+**type** | [**TestStatusApiType**](TestStatusApiType.md) | Collection of possible status types | 
 **isSystem** | **bool** |  | 
 **priority** | **int** |  | 
 **description** | **String** |  | [optional] 

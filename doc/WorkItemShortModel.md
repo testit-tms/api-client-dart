@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **createdById** | **String** | Unique identifier of user who created Work Item | 
 **state** | [**WorkItemStates**](WorkItemStates.md) | The current state of Work Item | 
 **priority** | [**WorkItemPriorityModel**](WorkItemPriorityModel.md) | Work Item priority level | 
+**sourceType** | [**WorkItemSourceTypeModel**](WorkItemSourceTypeModel.md) | Work Item source type | 
 **isDeleted** | **bool** | Flag determining whether Work Item is deleted | 
 **iterations** | [**List<IterationModel>**](IterationModel.md) | Set of iterations related to Work Item | [default to const []]
 **links** | [**List<LinkShortModel>**](LinkShortModel.md) | Set of links related to Work Item | [default to const []]

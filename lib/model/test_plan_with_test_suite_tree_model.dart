@@ -73,7 +73,7 @@ class TestPlanWithTestSuiteTreeModel {
 
   String? lockedById;
 
-  List<TagPostModel>? tags;
+  List<TagModel>? tags;
 
   /// Used for analytics
   DateTime? startDate;
@@ -264,7 +264,7 @@ class TestPlanWithTestSuiteTreeModel {
         modifiedById: mapValueOfType<String>(json, r'modifiedById'),
         lockedDate: mapDateTime(json, r'lockedDate', r''),
         lockedById: mapValueOfType<String>(json, r'lockedById'),
-        tags: TagPostModel.listFromJson(json[r'tags']),
+        tags: TagModel.listFromJson(json[r'tags']),
         startDate: mapDateTime(json, r'startDate', r''),
         endDate: mapDateTime(json, r'endDate', r''),
         description: mapValueOfType<String>(json, r'description'),

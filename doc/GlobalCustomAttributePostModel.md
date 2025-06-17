@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **type** | [**CustomAttributeTypesEnum**](CustomAttributeTypesEnum.md) | Type of attribute | 
 **isEnabled** | **bool** | Indicates whether the attribute is available | [optional] 
 **isRequired** | **bool** | Indicates whether the attribute value is mandatory to specify | [optional] 
-**options** | [**List<CustomAttributeOptionPostModel>**](CustomAttributeOptionPostModel.md) | Collection of attribute options     Available for attributes of type `options` and `multiple options` only | [optional] [default to const []]
+**options** | [**List<CustomAttributeOptionPostModel>**](CustomAttributeOptionPostModel.md) | Collection of attribute options   Available for attributes of type `options` and `multiple options` only | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

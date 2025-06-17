@@ -21,6 +21,7 @@ class TestPointWithLastResultResponseModel {
     required this.createdById,
     required this.duration,
     required this.priority,
+    required this.sourceType,
     this.workItemName,
     this.testerId,
     this.configurationId,
@@ -55,6 +56,8 @@ class TestPointWithLastResultResponseModel {
   int duration;
 
   WorkItemPriorityModel priority;
+
+  WorkItemSourceTypeModel sourceType;
 
   String? workItemName;
 
@@ -100,6 +103,7 @@ class TestPointWithLastResultResponseModel {
     other.createdById == createdById &&
     other.duration == duration &&
     other.priority == priority &&
+    other.sourceType == sourceType &&
     other.workItemName == workItemName &&
     other.testerId == testerId &&
     other.configurationId == configurationId &&
@@ -129,6 +133,7 @@ class TestPointWithLastResultResponseModel {
     (createdById.hashCode) +
     (duration.hashCode) +
     (priority.hashCode) +
+    (sourceType.hashCode) +
     (workItemName == null ? 0 : workItemName!.hashCode) +
     (testerId == null ? 0 : testerId!.hashCode) +
     (configurationId == null ? 0 : configurationId!.hashCode) +
@@ -148,7 +153,7 @@ class TestPointWithLastResultResponseModel {
     (iteration == null ? 0 : iteration!.hashCode);
 
   @override
-  String toString() => 'TestPointWithLastResultResponseModel[id=$id, isAutomated=$isAutomated, workItemId=$workItemId, testSuiteId=$testSuiteId, sectionId=$sectionId, createdById=$createdById, duration=$duration, priority=$priority, workItemName=$workItemName, testerId=$testerId, configurationId=$configurationId, lastTestResult=$lastTestResult, status=$status, statusModel=$statusModel, workItemGlobalId=$workItemGlobalId, workItemEntityTypeName=$workItemEntityTypeName, sectionName=$sectionName, createdDate=$createdDate, modifiedDate=$modifiedDate, modifiedById=$modifiedById, attributes=$attributes, tagNames=$tagNames, testSuiteNameBreadCrumbs=$testSuiteNameBreadCrumbs, groupCount=$groupCount, iteration=$iteration]';
+  String toString() => 'TestPointWithLastResultResponseModel[id=$id, isAutomated=$isAutomated, workItemId=$workItemId, testSuiteId=$testSuiteId, sectionId=$sectionId, createdById=$createdById, duration=$duration, priority=$priority, sourceType=$sourceType, workItemName=$workItemName, testerId=$testerId, configurationId=$configurationId, lastTestResult=$lastTestResult, status=$status, statusModel=$statusModel, workItemGlobalId=$workItemGlobalId, workItemEntityTypeName=$workItemEntityTypeName, sectionName=$sectionName, createdDate=$createdDate, modifiedDate=$modifiedDate, modifiedById=$modifiedById, attributes=$attributes, tagNames=$tagNames, testSuiteNameBreadCrumbs=$testSuiteNameBreadCrumbs, groupCount=$groupCount, iteration=$iteration]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -160,6 +165,7 @@ class TestPointWithLastResultResponseModel {
       json[r'createdById'] = this.createdById;
       json[r'duration'] = this.duration;
       json[r'priority'] = this.priority;
+      json[r'sourceType'] = this.sourceType;
     if (this.workItemName != null) {
       json[r'workItemName'] = this.workItemName;
     } else {
@@ -275,6 +281,7 @@ class TestPointWithLastResultResponseModel {
         createdById: mapValueOfType<String>(json, r'createdById')!,
         duration: mapValueOfType<int>(json, r'duration')!,
         priority: WorkItemPriorityModel.fromJson(json[r'priority'])!,
+        sourceType: WorkItemSourceTypeModel.fromJson(json[r'sourceType'])!,
         workItemName: mapValueOfType<String>(json, r'workItemName'),
         testerId: mapValueOfType<String>(json, r'testerId'),
         configurationId: mapValueOfType<String>(json, r'configurationId'),
@@ -351,6 +358,7 @@ class TestPointWithLastResultResponseModel {
     'createdById',
     'duration',
     'priority',
+    'sourceType',
   };
 }
 

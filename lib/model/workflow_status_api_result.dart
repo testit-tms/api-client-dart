@@ -29,7 +29,7 @@ class WorkflowStatusApiResult {
   String code;
 
   /// Collection of possible status types
-  TestStatusType type;
+  TestStatusApiType type;
 
   bool isSystem;
 
@@ -99,7 +99,7 @@ class WorkflowStatusApiResult {
         id: mapValueOfType<String>(json, r'id')!,
         name: mapValueOfType<String>(json, r'name')!,
         code: mapValueOfType<String>(json, r'code')!,
-        type: TestStatusType.fromJson(json[r'type'])!,
+        type: TestStatusApiType.fromJson(json[r'type'])!,
         isSystem: mapValueOfType<bool>(json, r'isSystem')!,
         priority: mapValueOfType<int>(json, r'priority')!,
         description: mapValueOfType<String>(json, r'description'),

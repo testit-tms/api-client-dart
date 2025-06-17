@@ -32,7 +32,7 @@ class GlobalCustomAttributePostModel {
   /// Indicates whether the attribute value is mandatory to specify
   bool? isRequired;
 
-  /// Collection of attribute options     Available for attributes of type `options` and `multiple options` only
+  /// Collection of attribute options   Available for attributes of type `options` and `multiple options` only
   List<CustomAttributeOptionPostModel>? options;
 
   @override

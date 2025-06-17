@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **modifiedByIds** | **Set<String>** | Collection of identifiers of users who applied last modification to work item | [optional] [default to const {}]
 **states** | [**Set<WorkItemStates>**](WorkItemStates.md) | Collection of states of work item | [optional] [default to const {}]
 **priorities** | [**Set<WorkItemPriorityModel>**](WorkItemPriorityModel.md) | Collection of priorities of work item | [optional] [default to const {}]
-**entityTypes** | **Set<String>** | Collection of types of work item   Allowed values: `TestCases`, `CheckLists`, `SharedSteps` | [optional] [default to const {}]
+**entityTypes** | **Set<String>** | Collection of types of work item  Allowed values: `TestCases`, `CheckLists`, `SharedSteps` | [optional] [default to const {}]
 **createdDate** | [**DateTimeRangeSelectorModel**](DateTimeRangeSelectorModel.md) | Date and time of work item creation | [optional] 
 **modifiedDate** | [**DateTimeRangeSelectorModel**](DateTimeRangeSelectorModel.md) | Date and time of work item last modification | [optional] 
 **isAutomated** | **bool** | Is result must consist of only manual/automated work items | [optional] 

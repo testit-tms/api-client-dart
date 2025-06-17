@@ -27,6 +27,7 @@ class WorkItemFilterApiModel {
     this.modifiedByIds = const {},
     this.states = const {},
     this.priorities = const {},
+    this.sourceTypes = const {},
     this.types = const {},
     this.createdDate,
     this.modifiedDate,
@@ -81,6 +82,9 @@ class WorkItemFilterApiModel {
   /// Collection of priorities of work item
   Set<WorkItemPriorityModel>? priorities;
 
+  /// Source type of work item (manual creation or AI generated)
+  Set<WorkItemSourceTypeModel>? sourceTypes;
+
   /// Collection of types of work item
   Set<WorkItemEntityTypes>? types;
 
@@ -127,6 +131,7 @@ class WorkItemFilterApiModel {
     _deepEquality.equals(other.modifiedByIds, modifiedByIds) &&
     _deepEquality.equals(other.states, states) &&
     _deepEquality.equals(other.priorities, priorities) &&
+    _deepEquality.equals(other.sourceTypes, sourceTypes) &&
     _deepEquality.equals(other.types, types) &&
     other.createdDate == createdDate &&
     other.modifiedDate == modifiedDate &&
@@ -155,6 +160,7 @@ class WorkItemFilterApiModel {
     (modifiedByIds == null ? 0 : modifiedByIds!.hashCode) +
     (states == null ? 0 : states!.hashCode) +
     (priorities == null ? 0 : priorities!.hashCode) +
+    (sourceTypes == null ? 0 : sourceTypes!.hashCode) +
     (types == null ? 0 : types!.hashCode) +
     (createdDate == null ? 0 : createdDate!.hashCode) +
     (modifiedDate == null ? 0 : modifiedDate!.hashCode) +
@@ -167,7 +173,7 @@ class WorkItemFilterApiModel {
     (links == null ? 0 : links!.hashCode);
 
   @override
-  String toString() => 'WorkItemFilterApiModel[nameOrId=$nameOrId, includeIds=$includeIds, excludeIds=$excludeIds, projectIds=$projectIds, name=$name, ids=$ids, globalIds=$globalIds, attributes=$attributes, isDeleted=$isDeleted, sectionIds=$sectionIds, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds, states=$states, priorities=$priorities, types=$types, createdDate=$createdDate, modifiedDate=$modifiedDate, duration=$duration, medianDuration=$medianDuration, isAutomated=$isAutomated, tags=$tags, autoTestIds=$autoTestIds, workItemVersionIds=$workItemVersionIds, links=$links]';
+  String toString() => 'WorkItemFilterApiModel[nameOrId=$nameOrId, includeIds=$includeIds, excludeIds=$excludeIds, projectIds=$projectIds, name=$name, ids=$ids, globalIds=$globalIds, attributes=$attributes, isDeleted=$isDeleted, sectionIds=$sectionIds, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds, states=$states, priorities=$priorities, sourceTypes=$sourceTypes, types=$types, createdDate=$createdDate, modifiedDate=$modifiedDate, duration=$duration, medianDuration=$medianDuration, isAutomated=$isAutomated, tags=$tags, autoTestIds=$autoTestIds, workItemVersionIds=$workItemVersionIds, links=$links]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -240,6 +246,11 @@ class WorkItemFilterApiModel {
       json[r'priorities'] = this.priorities!.toList(growable: false);
     } else {
       json[r'priorities'] = null;
+    }
+    if (this.sourceTypes != null) {
+      json[r'sourceTypes'] = this.sourceTypes!.toList(growable: false);
+    } else {
+      json[r'sourceTypes'] = null;
     }
     if (this.types != null) {
       json[r'types'] = this.types!.toList(growable: false);
@@ -345,6 +356,7 @@ class WorkItemFilterApiModel {
             : const {},
         states: WorkItemStates.listFromJson(json[r'states']).toSet(),
         priorities: WorkItemPriorityModel.listFromJson(json[r'priorities']).toSet(),
+        sourceTypes: WorkItemSourceTypeModel.listFromJson(json[r'sourceTypes']).toSet(),
         types: WorkItemEntityTypes.listFromJson(json[r'types']).toSet(),
         createdDate: DateTimeRangeSelectorModel.fromJson(json[r'createdDate']),
         modifiedDate: DateTimeRangeSelectorModel.fromJson(json[r'modifiedDate']),

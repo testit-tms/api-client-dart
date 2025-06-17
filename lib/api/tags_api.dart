@@ -18,19 +18,19 @@ class TagsApi {
 
   /// Delete tags
   ///
-  ///  Use case   User sets collection of tags internal (guid format) identifiers   System searches and deletes a collection of tags
+  ///  Use case  User sets collection of tags internal (guid format) identifiers  System searches and deletes a collection of tags
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [TagSelectModel] tagSelectModel:
-  Future<Response> apiV2TagsDeleteWithHttpInfo({ TagSelectModel? tagSelectModel, }) async {
+  /// * [SelectTagsApiModel] selectTagsApiModel:
+  Future<Response> apiV2TagsDeleteWithHttpInfo({ SelectTagsApiModel? selectTagsApiModel, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/tags';
 
     // ignore: prefer_final_locals
-    Object? postBody = tagSelectModel;
+    Object? postBody = selectTagsApiModel;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -52,72 +52,21 @@ class TagsApi {
 
   /// Delete tags
   ///
-  ///  Use case   User sets collection of tags internal (guid format) identifiers   System searches and deletes a collection of tags
+  ///  Use case  User sets collection of tags internal (guid format) identifiers  System searches and deletes a collection of tags
   ///
   /// Parameters:
   ///
-  /// * [TagSelectModel] tagSelectModel:
-  Future<void> apiV2TagsDelete({ TagSelectModel? tagSelectModel, }) async {
-    final response = await apiV2TagsDeleteWithHttpInfo( tagSelectModel: tagSelectModel, );
+  /// * [SelectTagsApiModel] selectTagsApiModel:
+  Future<void> apiV2TagsDelete({ SelectTagsApiModel? selectTagsApiModel, }) async {
+    final response = await apiV2TagsDeleteWithHttpInfo( selectTagsApiModel: selectTagsApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
-  }
-
-  /// Get all Tags
-  ///
-  ///  Use case   User runs method execution   System returns tags (listed in the response example)
-  ///
-  /// Note: This method returns the HTTP [Response].
-  Future<Response> apiV2TagsGetWithHttpInfo() async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/v2/tags';
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Get all Tags
-  ///
-  ///  Use case   User runs method execution   System returns tags (listed in the response example)
-  Future<List<TagModel>?> apiV2TagsGet() async {
-    final response = await apiV2TagsGetWithHttpInfo();
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<TagModel>') as List)
-        .cast<TagModel>()
-        .toList(growable: false);
-
-    }
-    return null;
   }
 
   /// Delete tag
   ///
-  ///  Use case   User sets tag internal (guid format) identifier   System search and delete tag
+  ///  Use case  User sets tag internal (guid format) identifier  System search and delete tag
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -153,7 +102,7 @@ class TagsApi {
 
   /// Delete tag
   ///
-  ///  Use case   User sets tag internal (guid format) identifier   System search and delete tag
+  ///  Use case  User sets tag internal (guid format) identifier  System search and delete tag
   ///
   /// Parameters:
   ///
@@ -168,19 +117,19 @@ class TagsApi {
 
   /// Create tag
   ///
-  ///  Use case   User sets tag model (listed in the request example)   User runs method execution   System creates tag   System returns tag model (listed in the response example)
+  ///  Use case  User sets tag model (listed in the request example)  User runs method execution  System creates tag  System returns tag model (listed in the response example)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [TagPostModel] tagPostModel:
-  Future<Response> apiV2TagsPostWithHttpInfo({ TagPostModel? tagPostModel, }) async {
+  /// * [CreateTagApiModel] createTagApiModel:
+  Future<Response> apiV2TagsPostWithHttpInfo({ CreateTagApiModel? createTagApiModel, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/tags';
 
     // ignore: prefer_final_locals
-    Object? postBody = tagPostModel;
+    Object? postBody = createTagApiModel;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -202,13 +151,13 @@ class TagsApi {
 
   /// Create tag
   ///
-  ///  Use case   User sets tag model (listed in the request example)   User runs method execution   System creates tag   System returns tag model (listed in the response example)
+  ///  Use case  User sets tag model (listed in the request example)  User runs method execution  System creates tag  System returns tag model (listed in the response example)
   ///
   /// Parameters:
   ///
-  /// * [TagPostModel] tagPostModel:
-  Future<TagModel?> apiV2TagsPost({ TagPostModel? tagPostModel, }) async {
-    final response = await apiV2TagsPostWithHttpInfo( tagPostModel: tagPostModel, );
+  /// * [CreateTagApiModel] createTagApiModel:
+  Future<TagApiResult?> apiV2TagsPost({ CreateTagApiModel? createTagApiModel, }) async {
+    final response = await apiV2TagsPostWithHttpInfo( createTagApiModel: createTagApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -216,7 +165,7 @@ class TagsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TagModel',) as TagModel;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TagApiResult',) as TagApiResult;
     
     }
     return null;
@@ -224,7 +173,7 @@ class TagsApi {
 
   /// Update tag
   ///
-  ///  Use case   User sets tag ID and model (listed in the request example)   User runs method execution   System updates tag   System returns tag model (listed in the response example)
+  ///  Use case  User sets tag ID and model (listed in the request example)  User runs method execution  System updates tag  System returns tag model (listed in the response example)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -232,13 +181,13 @@ class TagsApi {
   ///
   /// * [String] id:
   ///
-  /// * [TagPutModel] tagPutModel:
-  Future<Response> apiV2TagsPutWithHttpInfo({ String? id, TagPutModel? tagPutModel, }) async {
+  /// * [UpdateTagApiModel] updateTagApiModel:
+  Future<Response> apiV2TagsPutWithHttpInfo({ String? id, UpdateTagApiModel? updateTagApiModel, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/tags';
 
     // ignore: prefer_final_locals
-    Object? postBody = tagPutModel;
+    Object? postBody = updateTagApiModel;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -264,15 +213,15 @@ class TagsApi {
 
   /// Update tag
   ///
-  ///  Use case   User sets tag ID and model (listed in the request example)   User runs method execution   System updates tag   System returns tag model (listed in the response example)
+  ///  Use case  User sets tag ID and model (listed in the request example)  User runs method execution  System updates tag  System returns tag model (listed in the response example)
   ///
   /// Parameters:
   ///
   /// * [String] id:
   ///
-  /// * [TagPutModel] tagPutModel:
-  Future<TagModel?> apiV2TagsPut({ String? id, TagPutModel? tagPutModel, }) async {
-    final response = await apiV2TagsPutWithHttpInfo( id: id, tagPutModel: tagPutModel, );
+  /// * [UpdateTagApiModel] updateTagApiModel:
+  Future<TagApiResult?> apiV2TagsPut({ String? id, UpdateTagApiModel? updateTagApiModel, }) async {
+    final response = await apiV2TagsPutWithHttpInfo( id: id, updateTagApiModel: updateTagApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -280,7 +229,7 @@ class TagsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TagModel',) as TagModel;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TagApiResult',) as TagApiResult;
     
     }
     return null;
@@ -288,7 +237,7 @@ class TagsApi {
 
   /// Search tags
   ///
-  ///  Use case   User runs method execution   System returns collection of tags (listed in the response example)
+  ///  Use case  User runs method execution  System returns collection of tags (listed in the response example)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -351,7 +300,7 @@ class TagsApi {
 
   /// Search tags
   ///
-  ///  Use case   User runs method execution   System returns collection of tags (listed in the response example)
+  ///  Use case  User runs method execution  System returns collection of tags (listed in the response example)
   ///
   /// Parameters:
   ///
@@ -369,7 +318,7 @@ class TagsApi {
   ///
   /// * [String] searchValue:
   ///   Value for searching
-  Future<List<TagModel>?> apiV2TagsSearchGet({ int? skip, int? take, String? orderBy, String? searchField, String? searchValue, }) async {
+  Future<List<TagApiResult>?> apiV2TagsSearchGet({ int? skip, int? take, String? orderBy, String? searchField, String? searchValue, }) async {
     final response = await apiV2TagsSearchGetWithHttpInfo( skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -379,8 +328,8 @@ class TagsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<TagModel>') as List)
-        .cast<TagModel>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<TagApiResult>') as List)
+        .cast<TagApiResult>()
         .toList(growable: false);
 
     }
@@ -389,7 +338,7 @@ class TagsApi {
 
   /// Get all Tags that are used in TestPlans
   ///
-  ///  Use case   User runs method execution   System returns tags (listed in the response example)
+  ///  Use case  User runs method execution  System returns tags (listed in the response example)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -452,7 +401,7 @@ class TagsApi {
 
   /// Get all Tags that are used in TestPlans
   ///
-  ///  Use case   User runs method execution   System returns tags (listed in the response example)
+  ///  Use case  User runs method execution  System returns tags (listed in the response example)
   ///
   /// Parameters:
   ///
@@ -470,7 +419,7 @@ class TagsApi {
   ///
   /// * [String] searchValue:
   ///   Value for searching
-  Future<List<TagModel>?> apiV2TagsTestPlansTagsGet({ int? skip, int? take, String? orderBy, String? searchField, String? searchValue, }) async {
+  Future<List<TagApiResult>?> apiV2TagsTestPlansTagsGet({ int? skip, int? take, String? orderBy, String? searchField, String? searchValue, }) async {
     final response = await apiV2TagsTestPlansTagsGetWithHttpInfo( skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -480,8 +429,8 @@ class TagsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<TagModel>') as List)
-        .cast<TagModel>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<TagApiResult>') as List)
+        .cast<TagApiResult>()
         .toList(growable: false);
 
     }

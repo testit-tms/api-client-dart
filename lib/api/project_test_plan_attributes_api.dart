@@ -18,7 +18,7 @@ class ProjectTestPlanAttributesApi {
 
   /// Add attributes to project's test plans
   ///
-  ///  Use case   User sets project internal or global identifier and attributes identifiers   User runs method execution   System updates project and add attributes to project for test plans   System returns no content response
+  ///  Use case  User sets project internal or global identifier and attributes identifiers  User runs method execution  System updates project and add attributes to project for test plans  System returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -56,7 +56,7 @@ class ProjectTestPlanAttributesApi {
 
   /// Add attributes to project's test plans
   ///
-  ///  Use case   User sets project internal or global identifier and attributes identifiers   User runs method execution   System updates project and add attributes to project for test plans   System returns no content response
+  ///  Use case  User sets project internal or global identifier and attributes identifiers  User runs method execution  System updates project and add attributes to project for test plans  System returns no content response
   ///
   /// Parameters:
   ///
@@ -73,7 +73,7 @@ class ProjectTestPlanAttributesApi {
 
   /// Delete attribute from project's test plans
   ///
-  ///  Use case   User sets project internal or global identifier and attribute identifier   User runs method execution   System updates project and delete attribute from project for test plans   System returns no content response
+  ///  Use case  User sets project internal or global identifier and attribute identifier  User runs method execution  System updates project and delete attribute from project for test plans  System returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -112,7 +112,7 @@ class ProjectTestPlanAttributesApi {
 
   /// Delete attribute from project's test plans
   ///
-  ///  Use case   User sets project internal or global identifier and attribute identifier   User runs method execution   System updates project and delete attribute from project for test plans   System returns no content response
+  ///  Use case  User sets project internal or global identifier and attribute identifier  User runs method execution  System updates project and delete attribute from project for test plans  System returns no content response
   ///
   /// Parameters:
   ///
@@ -129,7 +129,7 @@ class ProjectTestPlanAttributesApi {
 
   /// Get project's test plan attributes
   ///
-  ///  Use case   User runs method execution   System returns project for test plans attributes by project identifier
+  ///  Use case  User runs method execution  System returns project for test plans attributes by project identifier
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -165,7 +165,7 @@ class ProjectTestPlanAttributesApi {
 
   /// Get project's test plan attributes
   ///
-  ///  Use case   User runs method execution   System returns project for test plans attributes by project identifier
+  ///  Use case  User runs method execution  System returns project for test plans attributes by project identifier
   ///
   /// Parameters:
   ///
@@ -299,7 +299,7 @@ class ProjectTestPlanAttributesApi {
 
   /// Update attribute of project's test plans
   ///
-  ///  Use case   User sets project internal or global identifier and attribute model   User runs method execution   System updates project and project attribute for test plan   System returns no content response
+  ///  Use case  User sets project internal or global identifier and attribute model  User runs method execution  System updates project and project attribute for test plan  System returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -337,7 +337,7 @@ class ProjectTestPlanAttributesApi {
 
   /// Update attribute of project's test plans
   ///
-  ///  Use case   User sets project internal or global identifier and attribute model   User runs method execution   System updates project and project attribute for test plan   System returns no content response
+  ///  Use case  User sets project internal or global identifier and attribute model  User runs method execution  System updates project and project attribute for test plan  System returns no content response
   ///
   /// Parameters:
   ///

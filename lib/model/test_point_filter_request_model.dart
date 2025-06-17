@@ -21,6 +21,7 @@ class TestPointFilterRequestModel {
     this.statuses = const [],
     this.statusCodes = const [],
     this.priorities = const [],
+    this.sourceTypes = const [],
     this.isAutomated,
     this.name,
     this.configurationIds = const [],
@@ -62,6 +63,9 @@ class TestPointFilterRequestModel {
 
   /// Specifies a test point priorities to search for
   List<WorkItemPriorityModel>? priorities;
+
+  /// Specifies a test point source types to search for
+  List<WorkItemSourceTypeModel>? sourceTypes;
 
   /// Specifies a test point automation status to search for
   bool? isAutomated;
@@ -121,6 +125,7 @@ class TestPointFilterRequestModel {
     _deepEquality.equals(other.statuses, statuses) &&
     _deepEquality.equals(other.statusCodes, statusCodes) &&
     _deepEquality.equals(other.priorities, priorities) &&
+    _deepEquality.equals(other.sourceTypes, sourceTypes) &&
     other.isAutomated == isAutomated &&
     other.name == name &&
     _deepEquality.equals(other.configurationIds, configurationIds) &&
@@ -149,6 +154,7 @@ class TestPointFilterRequestModel {
     (statuses == null ? 0 : statuses!.hashCode) +
     (statusCodes == null ? 0 : statusCodes!.hashCode) +
     (priorities == null ? 0 : priorities!.hashCode) +
+    (sourceTypes == null ? 0 : sourceTypes!.hashCode) +
     (isAutomated == null ? 0 : isAutomated!.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (configurationIds == null ? 0 : configurationIds!.hashCode) +
@@ -167,7 +173,7 @@ class TestPointFilterRequestModel {
     (workItemModifiedByIds == null ? 0 : workItemModifiedByIds!.hashCode);
 
   @override
-  String toString() => 'TestPointFilterRequestModel[testPlanIds=$testPlanIds, testSuiteIds=$testSuiteIds, workItemGlobalIds=$workItemGlobalIds, workItemMedianDuration=$workItemMedianDuration, workItemIsDeleted=$workItemIsDeleted, statuses=$statuses, statusCodes=$statusCodes, priorities=$priorities, isAutomated=$isAutomated, name=$name, configurationIds=$configurationIds, testerIds=$testerIds, duration=$duration, sectionIds=$sectionIds, createdDate=$createdDate, createdByIds=$createdByIds, modifiedDate=$modifiedDate, modifiedByIds=$modifiedByIds, tags=$tags, attributes=$attributes, workItemCreatedDate=$workItemCreatedDate, workItemCreatedByIds=$workItemCreatedByIds, workItemModifiedDate=$workItemModifiedDate, workItemModifiedByIds=$workItemModifiedByIds]';
+  String toString() => 'TestPointFilterRequestModel[testPlanIds=$testPlanIds, testSuiteIds=$testSuiteIds, workItemGlobalIds=$workItemGlobalIds, workItemMedianDuration=$workItemMedianDuration, workItemIsDeleted=$workItemIsDeleted, statuses=$statuses, statusCodes=$statusCodes, priorities=$priorities, sourceTypes=$sourceTypes, isAutomated=$isAutomated, name=$name, configurationIds=$configurationIds, testerIds=$testerIds, duration=$duration, sectionIds=$sectionIds, createdDate=$createdDate, createdByIds=$createdByIds, modifiedDate=$modifiedDate, modifiedByIds=$modifiedByIds, tags=$tags, attributes=$attributes, workItemCreatedDate=$workItemCreatedDate, workItemCreatedByIds=$workItemCreatedByIds, workItemModifiedDate=$workItemModifiedDate, workItemModifiedByIds=$workItemModifiedByIds]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -210,6 +216,11 @@ class TestPointFilterRequestModel {
       json[r'priorities'] = this.priorities;
     } else {
       json[r'priorities'] = null;
+    }
+    if (this.sourceTypes != null) {
+      json[r'sourceTypes'] = this.sourceTypes;
+    } else {
+      json[r'sourceTypes'] = null;
     }
     if (this.isAutomated != null) {
       json[r'isAutomated'] = this.isAutomated;
@@ -329,6 +340,7 @@ class TestPointFilterRequestModel {
             ? (json[r'statusCodes'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         priorities: WorkItemPriorityModel.listFromJson(json[r'priorities']),
+        sourceTypes: WorkItemSourceTypeModel.listFromJson(json[r'sourceTypes']),
         isAutomated: mapValueOfType<bool>(json, r'isAutomated'),
         name: mapValueOfType<String>(json, r'name'),
         configurationIds: json[r'configurationIds'] is Iterable

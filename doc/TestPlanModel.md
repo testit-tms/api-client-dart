@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **modifiedById** | **String** |  | [optional] 
 **lockedDate** | [**DateTime**](DateTime.md) |  | [optional] 
 **lockedById** | **String** |  | [optional] 
-**tags** | [**List<TagPostModel>**](TagPostModel.md) |  | [optional] [default to const []]
+**tags** | [**List<TagModel>**](TagModel.md) |  | [optional] [default to const []]
 **startDate** | [**DateTime**](DateTime.md) | Used for analytics | [optional] 
 **endDate** | [**DateTime**](DateTime.md) | Used for analytics | [optional] 
 **description** | **String** |  | [optional] 

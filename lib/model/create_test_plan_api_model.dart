@@ -36,7 +36,7 @@ class CreateTestPlanApiModel {
   Map<String, Object> attributes;
 
   /// Test plan tag names collection
-  List<TagPostModel>? tags;
+  List<TagApiModel>? tags;
 
   /// Date and time of test plan start
   DateTime? startDate;
@@ -160,7 +160,7 @@ class CreateTestPlanApiModel {
         name: mapValueOfType<String>(json, r'name')!,
         projectId: mapValueOfType<String>(json, r'projectId')!,
         attributes: mapCastOfType<String, Object>(json, r'attributes')!,
-        tags: TagPostModel.listFromJson(json[r'tags']),
+        tags: TagApiModel.listFromJson(json[r'tags']),
         startDate: mapDateTime(json, r'startDate', r''),
         endDate: mapDateTime(json, r'endDate', r''),
         description: mapValueOfType<String>(json, r'description'),

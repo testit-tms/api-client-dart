@@ -186,6 +186,8 @@ class ApiClient {
           return ActionUpdateTypeTransformer().decode(value);
         case 'AssignAttachmentApiModel':
           return AssignAttachmentApiModel.fromJson(value);
+        case 'AssignIterationApiModel':
+          return AssignIterationApiModel.fromJson(value);
         case 'AttachmentApiResult':
           return AttachmentApiResult.fromJson(value);
         case 'AttachmentChangeViewModel':
@@ -200,6 +202,8 @@ class ApiClient {
           return AttachmentPutModelAutoTestStepResultsModel.fromJson(value);
         case 'AttachmentUpdateRequest':
           return AttachmentUpdateRequest.fromJson(value);
+        case 'AuditApiResult':
+          return AuditApiResult.fromJson(value);
         case 'AutoTest':
           return AutoTest.fromJson(value);
         case 'AutoTestApiResult':
@@ -324,8 +328,14 @@ class ApiClient {
           return CreateEmptyTestRunApiModel.fromJson(value);
         case 'CreateLinkApiModel':
           return CreateLinkApiModel.fromJson(value);
+        case 'CreateParameterApiModel':
+          return CreateParameterApiModel.fromJson(value);
         case 'CreateProjectApiModel':
           return CreateProjectApiModel.fromJson(value);
+        case 'CreateStepApiModel':
+          return CreateStepApiModel.fromJson(value);
+        case 'CreateTagApiModel':
+          return CreateTagApiModel.fromJson(value);
         case 'CreateTestPlanApiModel':
           return CreateTestPlanApiModel.fromJson(value);
         case 'CreateTestRunAndFillByAutoTestsApiModel':
@@ -336,6 +346,8 @@ class ApiClient {
           return CreateTestRunAndFillByWorkItemsApiModel.fromJson(value);
         case 'CreateTestStatusApiModel':
           return CreateTestStatusApiModel.fromJson(value);
+        case 'CreateWorkItemApiModel':
+          return CreateWorkItemApiModel.fromJson(value);
         case 'CreateWorkItemPreviewsApiModel':
           return CreateWorkItemPreviewsApiModel.fromJson(value);
         case 'CreateWorkflowApiModel':
@@ -416,6 +428,8 @@ class ApiClient {
           return GenerateWorkItemPreviewsApiResult.fromJson(value);
         case 'GetExternalFormApiResult':
           return GetExternalFormApiResult.fromJson(value);
+        case 'GetShortProjectsApiModel':
+          return GetShortProjectsApiModel.fromJson(value);
         case 'GetXlsxTestPointsByTestPlanModel':
           return GetXlsxTestPointsByTestPlanModel.fromJson(value);
         case 'GlobalCustomAttributePostModel':
@@ -448,8 +462,6 @@ class ApiClient {
           return IterationApiResult.fromJson(value);
         case 'IterationModel':
           return IterationModel.fromJson(value);
-        case 'IterationPutModel':
-          return IterationPutModel.fromJson(value);
         case 'Label':
           return Label.fromJson(value);
         case 'LabelApiResult':
@@ -458,6 +470,8 @@ class ApiClient {
           return LabelPostModel.fromJson(value);
         case 'LabelShortModel':
           return LabelShortModel.fromJson(value);
+        case 'LastTestResultApiResult':
+          return LastTestResultApiResult.fromJson(value);
         case 'LastTestResultModel':
           return LastTestResultModel.fromJson(value);
         case 'Link':
@@ -502,22 +516,20 @@ class ApiClient {
           return Order.fromJson(value);
         case 'Page':
           return Page.fromJson(value);
-        case 'ParameterFilterModel':
-          return ParameterFilterModel.fromJson(value);
-        case 'ParameterGroupModel':
-          return ParameterGroupModel.fromJson(value);
+        case 'ParameterApiResult':
+          return ParameterApiResult.fromJson(value);
+        case 'ParameterGroupApiResult':
+          return ParameterGroupApiResult.fromJson(value);
+        case 'ParameterGroupsFilterApiModel':
+          return ParameterGroupsFilterApiModel.fromJson(value);
         case 'ParameterIterationModel':
           return ParameterIterationModel.fromJson(value);
-        case 'ParameterModel':
-          return ParameterModel.fromJson(value);
-        case 'ParameterPostModel':
-          return ParameterPostModel.fromJson(value);
-        case 'ParameterPutModel':
-          return ParameterPutModel.fromJson(value);
         case 'ParameterShortApiResult':
           return ParameterShortApiResult.fromJson(value);
         case 'ParameterShortModel':
           return ParameterShortModel.fromJson(value);
+        case 'ParametersFilterApiModel':
+          return ParametersFilterApiModel.fromJson(value);
         case 'PeriodViewModel':
           return PeriodViewModel.fromJson(value);
         case 'PeriodViewModelChangedFieldViewModel':
@@ -542,12 +554,18 @@ class ApiClient {
           return ProjectModel.fromJson(value);
         case 'ProjectSelectModel':
           return ProjectSelectModel.fromJson(value);
+        case 'ProjectShortApiResult':
+          return ProjectShortApiResult.fromJson(value);
+        case 'ProjectShortApiResultReply':
+          return ProjectShortApiResultReply.fromJson(value);
         case 'ProjectShortModel':
           return ProjectShortModel.fromJson(value);
         case 'ProjectShortestModel':
           return ProjectShortestModel.fromJson(value);
         case 'ProjectTestPlansFilterModel':
           return ProjectTestPlansFilterModel.fromJson(value);
+        case 'ProjectType':
+          return ProjectTypeTypeTransformer().decode(value);
         case 'ProjectTypeModel':
           return ProjectTypeModelTypeTransformer().decode(value);
         case 'ProjectsFilterModel':
@@ -590,6 +608,8 @@ class ApiClient {
           return SectionRenameModel.fromJson(value);
         case 'SectionWithStepsModel':
           return SectionWithStepsModel.fromJson(value);
+        case 'SelectTagsApiModel':
+          return SelectTagsApiModel.fromJson(value);
         case 'SharedStepChangeViewModel':
           return SharedStepChangeViewModel.fromJson(value);
         case 'SharedStepModel':
@@ -626,20 +646,16 @@ class ApiClient {
           return StringExtractionModel.fromJson(value);
         case 'TagApiModel':
           return TagApiModel.fromJson(value);
-        case 'TagExtractionModel':
-          return TagExtractionModel.fromJson(value);
+        case 'TagApiResult':
+          return TagApiResult.fromJson(value);
         case 'TagModel':
           return TagModel.fromJson(value);
-        case 'TagPostModel':
-          return TagPostModel.fromJson(value);
-        case 'TagPutModel':
-          return TagPutModel.fromJson(value);
-        case 'TagSelectModel':
-          return TagSelectModel.fromJson(value);
-        case 'TagShortModel':
-          return TagShortModel.fromJson(value);
-        case 'TagsFilterModel':
-          return TagsFilterModel.fromJson(value);
+        case 'TagShortApiResult':
+          return TagShortApiResult.fromJson(value);
+        case 'TagsExtractionApiModel':
+          return TagsExtractionApiModel.fromJson(value);
+        case 'TagsFilterApiModel':
+          return TagsFilterApiModel.fromJson(value);
         case 'TestPlanApiResult':
           return TestPlanApiResult.fromJson(value);
         case 'TestPlanChangeModel':
@@ -650,12 +666,16 @@ class ApiClient {
           return TestPlanExtractionModel.fromJson(value);
         case 'TestPlanGroupByStatus':
           return TestPlanGroupByStatus.fromJson(value);
+        case 'TestPlanGroupByStatusCode':
+          return TestPlanGroupByStatusCode.fromJson(value);
         case 'TestPlanGroupByTestSuite':
           return TestPlanGroupByTestSuite.fromJson(value);
         case 'TestPlanGroupByTester':
           return TestPlanGroupByTester.fromJson(value);
         case 'TestPlanGroupByTesterAndStatus':
           return TestPlanGroupByTesterAndStatus.fromJson(value);
+        case 'TestPlanGroupByTesterAndStatusCode':
+          return TestPlanGroupByTesterAndStatusCode.fromJson(value);
         case 'TestPlanLink':
           return TestPlanLink.fromJson(value);
         case 'TestPlanModel':
@@ -672,6 +692,46 @@ class ApiClient {
           return TestPlanSummaryModel.fromJson(value);
         case 'TestPlanTagApiResult':
           return TestPlanTagApiResult.fromJson(value);
+        case 'TestPlanTestPointsAnalyticsApiModel':
+          return TestPlanTestPointsAnalyticsApiModel.fromJson(value);
+        case 'TestPlanTestPointsAnalyticsApiResult':
+          return TestPlanTestPointsAnalyticsApiResult.fromJson(value);
+        case 'TestPlanTestPointsApiModel':
+          return TestPlanTestPointsApiModel.fromJson(value);
+        case 'TestPlanTestPointsAutoTestsRerunApiModel':
+          return TestPlanTestPointsAutoTestsRerunApiModel.fromJson(value);
+        case 'TestPlanTestPointsExtractionApiModel':
+          return TestPlanTestPointsExtractionApiModel.fromJson(value);
+        case 'TestPlanTestPointsGroupApiModel':
+          return TestPlanTestPointsGroupApiModel.fromJson(value);
+        case 'TestPlanTestPointsGroupApiResult':
+          return TestPlanTestPointsGroupApiResult.fromJson(value);
+        case 'TestPlanTestPointsGroupSearchApiResult':
+          return TestPlanTestPointsGroupSearchApiResult.fromJson(value);
+        case 'TestPlanTestPointsGroupSearchItemApiResult':
+          return TestPlanTestPointsGroupSearchItemApiResult.fromJson(value);
+        case 'TestPlanTestPointsInquiryApiModel':
+          return TestPlanTestPointsInquiryApiModel.fromJson(value);
+        case 'TestPlanTestPointsSearchApiModel':
+          return TestPlanTestPointsSearchApiModel.fromJson(value);
+        case 'TestPlanTestPointsSearchApiResult':
+          return TestPlanTestPointsSearchApiResult.fromJson(value);
+        case 'TestPlanTestPointsSearchStatusCountersApiResult':
+          return TestPlanTestPointsSearchStatusCountersApiResult.fromJson(value);
+        case 'TestPlanTestPointsSectionSearchApiResult':
+          return TestPlanTestPointsSectionSearchApiResult.fromJson(value);
+        case 'TestPlanTestPointsSetTestersApiModel':
+          return TestPlanTestPointsSetTestersApiModel.fromJson(value);
+        case 'TestPlanTestPointsStatusGroupApiResult':
+          return TestPlanTestPointsStatusGroupApiResult.fromJson(value);
+        case 'TestPlanTestPointsTestSuiteSearchApiResult':
+          return TestPlanTestPointsTestSuiteSearchApiResult.fromJson(value);
+        case 'TestPlanTestPointsTesterAndStatusGroupApiResult':
+          return TestPlanTestPointsTesterAndStatusGroupApiResult.fromJson(value);
+        case 'TestPlanTestPointsTesterGroupApiResult':
+          return TestPlanTestPointsTesterGroupApiResult.fromJson(value);
+        case 'TestPlanTestPointsWorkItemSearchApiResult':
+          return TestPlanTestPointsWorkItemSearchApiResult.fromJson(value);
         case 'TestPlanWithAnalyticModel':
           return TestPlanWithAnalyticModel.fromJson(value);
         case 'TestPlanWithTestSuiteTreeModel':
@@ -784,6 +844,12 @@ class ApiClient {
           return TestStatusApiResult.fromJson(value);
         case 'TestStatusApiResultReply':
           return TestStatusApiResultReply.fromJson(value);
+        case 'TestStatusApiType':
+          return TestStatusApiTypeTypeTransformer().decode(value);
+        case 'TestStatusModel':
+          return TestStatusModel.fromJson(value);
+        case 'TestStatusShortApiResult':
+          return TestStatusShortApiResult.fromJson(value);
         case 'TestStatusType':
           return TestStatusTypeTypeTransformer().decode(value);
         case 'TestSuiteChangeViewModel':
@@ -816,16 +882,26 @@ class ApiClient {
           return UpdateMultipleLinksApiModel.fromJson(value);
         case 'UpdateMultipleTestRunsApiModel':
           return UpdateMultipleTestRunsApiModel.fromJson(value);
+        case 'UpdateParameterApiModel':
+          return UpdateParameterApiModel.fromJson(value);
         case 'UpdateProjectApiModel':
           return UpdateProjectApiModel.fromJson(value);
+        case 'UpdateStepApiModel':
+          return UpdateStepApiModel.fromJson(value);
+        case 'UpdateTagApiModel':
+          return UpdateTagApiModel.fromJson(value);
         case 'UpdateTestPlanApiModel':
           return UpdateTestPlanApiModel.fromJson(value);
         case 'UpdateTestStatusApiModel':
           return UpdateTestStatusApiModel.fromJson(value);
+        case 'UpdateWorkItemApiModel':
+          return UpdateWorkItemApiModel.fromJson(value);
         case 'UpdateWorkflowApiModel':
           return UpdateWorkflowApiModel.fromJson(value);
         case 'UserCustomNameValidationResponse':
           return UserCustomNameValidationResponse.fromJson(value);
+        case 'UserNameApiResult':
+          return UserNameApiResult.fromJson(value);
         case 'UserRankModel':
           return UserRankModel.fromJson(value);
         case 'UserWithRankModel':
@@ -922,14 +998,12 @@ class ApiClient {
           return WorkItemModel.fromJson(value);
         case 'WorkItemMovePostModel':
           return WorkItemMovePostModel.fromJson(value);
-        case 'WorkItemPostModel':
-          return WorkItemPostModel.fromJson(value);
         case 'WorkItemPreviewApiModel':
           return WorkItemPreviewApiModel.fromJson(value);
+        case 'WorkItemPriority':
+          return WorkItemPriorityTypeTransformer().decode(value);
         case 'WorkItemPriorityModel':
           return WorkItemPriorityModelTypeTransformer().decode(value);
-        case 'WorkItemPutModel':
-          return WorkItemPutModel.fromJson(value);
         case 'WorkItemSearchQueryModel':
           return WorkItemSearchQueryModel.fromJson(value);
         case 'WorkItemSelectApiModel':
@@ -940,6 +1014,8 @@ class ApiClient {
           return WorkItemShortApiResult.fromJson(value);
         case 'WorkItemShortModel':
           return WorkItemShortModel.fromJson(value);
+        case 'WorkItemSourceTypeModel':
+          return WorkItemSourceTypeModelTypeTransformer().decode(value);
         case 'WorkItemState':
           return WorkItemStateTypeTransformer().decode(value);
         case 'WorkItemStates':

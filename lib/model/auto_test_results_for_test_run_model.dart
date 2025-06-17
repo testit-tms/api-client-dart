@@ -15,9 +15,10 @@ class AutoTestResultsForTestRunModel {
   AutoTestResultsForTestRunModel({
     required this.configurationId,
     required this.autoTestExternalId,
-    required this.outcome,
     this.links = const [],
     this.failureReasonNames = const [],
+    this.outcome,
+    this.statusCode,
     this.message,
     this.traces,
     this.startedOn,
@@ -37,14 +38,17 @@ class AutoTestResultsForTestRunModel {
   /// Specifies the external ID of the autotest, which was specified when the test run was created.
   String autoTestExternalId;
 
-  /// Specifies the result of the autotest execution.
-  AvailableTestResultOutcome outcome;
-
   /// Specifies the links in the autotest.
   List<LinkPostModel>? links;
 
   /// Specifies the cause of autotest failure.
   List<FailureCategoryModel>? failureReasonNames;
+
+  /// Specifies the result of the autotest execution.
+  AvailableTestResultOutcome? outcome;
+
+  /// Specifies the result of the autotest execution.
+  String? statusCode;
 
   /// A comment for the result.
   String? message;
@@ -86,9 +90,10 @@ class AutoTestResultsForTestRunModel {
   bool operator ==(Object other) => identical(this, other) || other is AutoTestResultsForTestRunModel &&
     other.configurationId == configurationId &&
     other.autoTestExternalId == autoTestExternalId &&
-    other.outcome == outcome &&
     _deepEquality.equals(other.links, links) &&
     _deepEquality.equals(other.failureReasonNames, failureReasonNames) &&
+    other.outcome == outcome &&
+    other.statusCode == statusCode &&
     other.message == message &&
     other.traces == traces &&
     other.startedOn == startedOn &&
@@ -106,9 +111,10 @@ class AutoTestResultsForTestRunModel {
     // ignore: unnecessary_parenthesis
     (configurationId.hashCode) +
     (autoTestExternalId.hashCode) +
-    (outcome.hashCode) +
     (links == null ? 0 : links!.hashCode) +
     (failureReasonNames == null ? 0 : failureReasonNames!.hashCode) +
+    (outcome == null ? 0 : outcome!.hashCode) +
+    (statusCode == null ? 0 : statusCode!.hashCode) +
     (message == null ? 0 : message!.hashCode) +
     (traces == null ? 0 : traces!.hashCode) +
     (startedOn == null ? 0 : startedOn!.hashCode) +
@@ -122,13 +128,12 @@ class AutoTestResultsForTestRunModel {
     (teardownResults == null ? 0 : teardownResults!.hashCode);
 
   @override
-  String toString() => 'AutoTestResultsForTestRunModel[configurationId=$configurationId, autoTestExternalId=$autoTestExternalId, outcome=$outcome, links=$links, failureReasonNames=$failureReasonNames, message=$message, traces=$traces, startedOn=$startedOn, completedOn=$completedOn, duration=$duration, attachments=$attachments, parameters=$parameters, properties=$properties, stepResults=$stepResults, setupResults=$setupResults, teardownResults=$teardownResults]';
+  String toString() => 'AutoTestResultsForTestRunModel[configurationId=$configurationId, autoTestExternalId=$autoTestExternalId, links=$links, failureReasonNames=$failureReasonNames, outcome=$outcome, statusCode=$statusCode, message=$message, traces=$traces, startedOn=$startedOn, completedOn=$completedOn, duration=$duration, attachments=$attachments, parameters=$parameters, properties=$properties, stepResults=$stepResults, setupResults=$setupResults, teardownResults=$teardownResults]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'configurationId'] = this.configurationId;
       json[r'autoTestExternalId'] = this.autoTestExternalId;
-      json[r'outcome'] = this.outcome;
     if (this.links != null) {
       json[r'links'] = this.links;
     } else {
@@ -138,6 +143,16 @@ class AutoTestResultsForTestRunModel {
       json[r'failureReasonNames'] = this.failureReasonNames;
     } else {
       json[r'failureReasonNames'] = null;
+    }
+    if (this.outcome != null) {
+      json[r'outcome'] = this.outcome;
+    } else {
+      json[r'outcome'] = null;
+    }
+    if (this.statusCode != null) {
+      json[r'statusCode'] = this.statusCode;
+    } else {
+      json[r'statusCode'] = null;
     }
     if (this.message != null) {
       json[r'message'] = this.message;
@@ -218,9 +233,10 @@ class AutoTestResultsForTestRunModel {
       return AutoTestResultsForTestRunModel(
         configurationId: mapValueOfType<String>(json, r'configurationId')!,
         autoTestExternalId: mapValueOfType<String>(json, r'autoTestExternalId')!,
-        outcome: AvailableTestResultOutcome.fromJson(json[r'outcome'])!,
         links: LinkPostModel.listFromJson(json[r'links']),
         failureReasonNames: FailureCategoryModel.listFromJson(json[r'failureReasonNames']),
+        outcome: AvailableTestResultOutcome.fromJson(json[r'outcome']),
+        statusCode: mapValueOfType<String>(json, r'statusCode'),
         message: mapValueOfType<String>(json, r'message'),
         traces: mapValueOfType<String>(json, r'traces'),
         startedOn: mapDateTime(json, r'startedOn', r''),
@@ -281,7 +297,6 @@ class AutoTestResultsForTestRunModel {
   static const requiredKeys = <String>{
     'configurationId',
     'autoTestExternalId',
-    'outcome',
   };
 }
 

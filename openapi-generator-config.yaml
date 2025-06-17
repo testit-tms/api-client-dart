@@ -1,6 +1,6 @@
 # OpenAPI Generator configuration for Dart API client
 generatorName: dart
-inputSpec: source/swagger5.3v2.json
+inputSpec: source/swagger-cloud.json
 outputDir: ./generated-dart-client
 templateDir: null
 

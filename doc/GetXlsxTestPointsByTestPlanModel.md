@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **includeName** | **bool** |  | 
 **includeSection** | **bool** |  | 
 **includePriority** | **bool** |  | 
+**includeSourceType** | **bool** |  | 
 **includeAutomated** | **bool** |  | 
 **includeStatus** | **bool** |  | 
 **includeDuration** | **bool** |  | 

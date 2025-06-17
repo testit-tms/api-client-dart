@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **name** | **String** | Test plan name | 
 **projectId** | **String** | Project unique identifier | 
 **attributes** | [**Map<String, Object>**](Object.md) | Key value pair of test plan custom attributes | [default to const {}]
-**tags** | [**List<TagPostModel>**](TagPostModel.md) | Test plan tag names collection | [optional] [default to const []]
+**tags** | [**List<TagApiModel>**](TagApiModel.md) | Test plan tag names collection | [optional] [default to const []]
 **startDate** | [**DateTime**](DateTime.md) | Date and time of test plan start | [optional] 
 **endDate** | [**DateTime**](DateTime.md) | Date and time of test plan end | [optional] 
 **description** | **String** | Test plan description | [optional] 

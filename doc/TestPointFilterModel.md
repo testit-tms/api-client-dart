@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **statuses** | [**List<TestPointStatus>**](TestPointStatus.md) | Specifies a test point statuses to search for | [optional] [default to const []]
 **statusCodes** | **List<String>** | Specifies a test point status codes to search for | [optional] [default to const []]
 **priorities** | [**List<WorkItemPriorityModel>**](WorkItemPriorityModel.md) | Specifies a test point priorities to search for | [optional] [default to const []]
+**sourceTypes** | [**List<WorkItemSourceTypeModel>**](WorkItemSourceTypeModel.md) | Specifies a test point source types to search for | [optional] [default to const []]
 **isAutomated** | **bool** | Specifies a test point automation status to search for | [optional] 
 **name** | **String** | Specifies a test point name to search for | [optional] 
 **configurationIds** | **List<String>** | Specifies a test point configuration IDs to search for | [optional] [default to const []]

@@ -27,6 +27,7 @@ class WorkItemModel {
     required this.sectionId,
     required this.state,
     required this.priority,
+    required this.sourceType,
     this.steps = const [],
     this.preconditionSteps = const [],
     this.postconditionSteps = const [],
@@ -76,6 +77,8 @@ class WorkItemModel {
 
   WorkItemPriorityModel priority;
 
+  WorkItemSourceTypeModel sourceType;
+
   List<StepModel> steps;
 
   List<StepModel> preconditionSteps;
@@ -88,7 +91,7 @@ class WorkItemModel {
 
   Map<String, Object> attributes;
 
-  List<TagPutModel> tags;
+  List<TagModel> tags;
 
   List<LinkModel> links;
 
@@ -126,6 +129,7 @@ class WorkItemModel {
     other.sectionId == sectionId &&
     other.state == state &&
     other.priority == priority &&
+    other.sourceType == sourceType &&
     _deepEquality.equals(other.steps, steps) &&
     _deepEquality.equals(other.preconditionSteps, preconditionSteps) &&
     _deepEquality.equals(other.postconditionSteps, postconditionSteps) &&
@@ -160,6 +164,7 @@ class WorkItemModel {
     (sectionId.hashCode) +
     (state.hashCode) +
     (priority.hashCode) +
+    (sourceType.hashCode) +
     (steps.hashCode) +
     (preconditionSteps.hashCode) +
     (postconditionSteps.hashCode) +
@@ -178,7 +183,7 @@ class WorkItemModel {
     (description == null ? 0 : description!.hashCode);
 
   @override
-  String toString() => 'WorkItemModel[versionId=$versionId, medianDuration=$medianDuration, isDeleted=$isDeleted, projectId=$projectId, entityTypeName=$entityTypeName, isAutomated=$isAutomated, versionNumber=$versionNumber, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, id=$id, sectionId=$sectionId, state=$state, priority=$priority, steps=$steps, preconditionSteps=$preconditionSteps, postconditionSteps=$postconditionSteps, duration=$duration, attributes=$attributes, tags=$tags, links=$links, name=$name, autoTests=$autoTests, attachments=$attachments, sectionPreconditionSteps=$sectionPreconditionSteps, sectionPostconditionSteps=$sectionPostconditionSteps, iterations=$iterations, modifiedDate=$modifiedDate, modifiedById=$modifiedById, description=$description]';
+  String toString() => 'WorkItemModel[versionId=$versionId, medianDuration=$medianDuration, isDeleted=$isDeleted, projectId=$projectId, entityTypeName=$entityTypeName, isAutomated=$isAutomated, versionNumber=$versionNumber, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, id=$id, sectionId=$sectionId, state=$state, priority=$priority, sourceType=$sourceType, steps=$steps, preconditionSteps=$preconditionSteps, postconditionSteps=$postconditionSteps, duration=$duration, attributes=$attributes, tags=$tags, links=$links, name=$name, autoTests=$autoTests, attachments=$attachments, sectionPreconditionSteps=$sectionPreconditionSteps, sectionPostconditionSteps=$sectionPostconditionSteps, iterations=$iterations, modifiedDate=$modifiedDate, modifiedById=$modifiedById, description=$description]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -196,6 +201,7 @@ class WorkItemModel {
       json[r'sectionId'] = this.sectionId;
       json[r'state'] = this.state;
       json[r'priority'] = this.priority;
+      json[r'sourceType'] = this.sourceType;
       json[r'steps'] = this.steps;
       json[r'preconditionSteps'] = this.preconditionSteps;
       json[r'postconditionSteps'] = this.postconditionSteps;
@@ -280,12 +286,13 @@ class WorkItemModel {
         sectionId: mapValueOfType<String>(json, r'sectionId')!,
         state: WorkItemStates.fromJson(json[r'state'])!,
         priority: WorkItemPriorityModel.fromJson(json[r'priority'])!,
+        sourceType: WorkItemSourceTypeModel.fromJson(json[r'sourceType'])!,
         steps: StepModel.listFromJson(json[r'steps']),
         preconditionSteps: StepModel.listFromJson(json[r'preconditionSteps']),
         postconditionSteps: StepModel.listFromJson(json[r'postconditionSteps']),
         duration: mapValueOfType<int>(json, r'duration')!,
         attributes: mapCastOfType<String, Object>(json, r'attributes')!,
-        tags: TagPutModel.listFromJson(json[r'tags']),
+        tags: TagModel.listFromJson(json[r'tags']),
         links: LinkModel.listFromJson(json[r'links']),
         name: mapValueOfType<String>(json, r'name')!,
         autoTests: AutoTestModel.listFromJson(json[r'autoTests']),
@@ -357,6 +364,7 @@ class WorkItemModel {
     'sectionId',
     'state',
     'priority',
+    'sourceType',
     'steps',
     'preconditionSteps',
     'postconditionSteps',

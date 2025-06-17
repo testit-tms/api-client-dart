@@ -28,6 +28,7 @@ class TestPointShortResponseModel {
     required this.status,
     required this.statusModel,
     required this.priority,
+    required this.sourceType,
     required this.isAutomated,
     required this.name,
     required this.configurationId,
@@ -93,6 +94,9 @@ class TestPointShortResponseModel {
 
   /// Priority of the test point
   WorkItemPriorityModel priority;
+
+  /// Source type of the test point
+  WorkItemSourceTypeModel sourceType;
 
   /// Indicates if the test point represents an autotest
   bool isAutomated;
@@ -168,6 +172,7 @@ class TestPointShortResponseModel {
     other.status == status &&
     other.statusModel == statusModel &&
     other.priority == priority &&
+    other.sourceType == sourceType &&
     other.isAutomated == isAutomated &&
     other.name == name &&
     other.configurationId == configurationId &&
@@ -206,6 +211,7 @@ class TestPointShortResponseModel {
     (status.hashCode) +
     (statusModel.hashCode) +
     (priority.hashCode) +
+    (sourceType.hashCode) +
     (isAutomated.hashCode) +
     (name.hashCode) +
     (configurationId.hashCode) +
@@ -227,7 +233,7 @@ class TestPointShortResponseModel {
     (workItemModifiedDate == null ? 0 : workItemModifiedDate!.hashCode);
 
   @override
-  String toString() => 'TestPointShortResponseModel[id=$id, createdDate=$createdDate, createdById=$createdById, attributes=$attributes, tags=$tags, links=$links, testSuiteId=$testSuiteId, testSuiteName=$testSuiteName, workItemId=$workItemId, workItemGlobalId=$workItemGlobalId, workItemVersionId=$workItemVersionId, workItemVersionNumber=$workItemVersionNumber, status=$status, statusModel=$statusModel, priority=$priority, isAutomated=$isAutomated, name=$name, configurationId=$configurationId, duration=$duration, sectionId=$sectionId, projectId=$projectId, iterationId=$iterationId, workItemState=$workItemState, workItemCreatedById=$workItemCreatedById, workItemCreatedDate=$workItemCreatedDate, modifiedDate=$modifiedDate, modifiedById=$modifiedById, testerId=$testerId, parameters=$parameters, workItemMedianDuration=$workItemMedianDuration, sectionName=$sectionName, lastTestResult=$lastTestResult, workItemModifiedById=$workItemModifiedById, workItemModifiedDate=$workItemModifiedDate]';
+  String toString() => 'TestPointShortResponseModel[id=$id, createdDate=$createdDate, createdById=$createdById, attributes=$attributes, tags=$tags, links=$links, testSuiteId=$testSuiteId, testSuiteName=$testSuiteName, workItemId=$workItemId, workItemGlobalId=$workItemGlobalId, workItemVersionId=$workItemVersionId, workItemVersionNumber=$workItemVersionNumber, status=$status, statusModel=$statusModel, priority=$priority, sourceType=$sourceType, isAutomated=$isAutomated, name=$name, configurationId=$configurationId, duration=$duration, sectionId=$sectionId, projectId=$projectId, iterationId=$iterationId, workItemState=$workItemState, workItemCreatedById=$workItemCreatedById, workItemCreatedDate=$workItemCreatedDate, modifiedDate=$modifiedDate, modifiedById=$modifiedById, testerId=$testerId, parameters=$parameters, workItemMedianDuration=$workItemMedianDuration, sectionName=$sectionName, lastTestResult=$lastTestResult, workItemModifiedById=$workItemModifiedById, workItemModifiedDate=$workItemModifiedDate]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -246,6 +252,7 @@ class TestPointShortResponseModel {
       json[r'status'] = this.status;
       json[r'statusModel'] = this.statusModel;
       json[r'priority'] = this.priority;
+      json[r'sourceType'] = this.sourceType;
       json[r'isAutomated'] = this.isAutomated;
       json[r'name'] = this.name;
       json[r'configurationId'] = this.configurationId;
@@ -342,6 +349,7 @@ class TestPointShortResponseModel {
         status: TestPointStatus.fromJson(json[r'status'])!,
         statusModel: TestStatusApiResult.fromJson(json[r'statusModel'])!,
         priority: WorkItemPriorityModel.fromJson(json[r'priority'])!,
+        sourceType: WorkItemSourceTypeModel.fromJson(json[r'sourceType'])!,
         isAutomated: mapValueOfType<bool>(json, r'isAutomated')!,
         name: mapValueOfType<String>(json, r'name')!,
         configurationId: mapValueOfType<String>(json, r'configurationId')!,
@@ -423,6 +431,7 @@ class TestPointShortResponseModel {
     'status',
     'statusModel',
     'priority',
+    'sourceType',
     'isAutomated',
     'name',
     'configurationId',

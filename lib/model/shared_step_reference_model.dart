@@ -23,6 +23,7 @@ class SharedStepReferenceModel {
     required this.createdById,
     required this.state,
     required this.priority,
+    required this.sourceType,
     required this.isDeleted,
     required this.versionId,
     required this.isAutomated,
@@ -53,6 +54,8 @@ class SharedStepReferenceModel {
 
   WorkItemPriorityModel priority;
 
+  WorkItemSourceTypeModel sourceType;
+
   bool isDeleted;
 
   /// used for versioning changes in workitem
@@ -82,6 +85,7 @@ class SharedStepReferenceModel {
     other.createdById == createdById &&
     other.state == state &&
     other.priority == priority &&
+    other.sourceType == sourceType &&
     other.isDeleted == isDeleted &&
     other.versionId == versionId &&
     other.isAutomated == isAutomated &&
@@ -104,6 +108,7 @@ class SharedStepReferenceModel {
     (createdById.hashCode) +
     (state.hashCode) +
     (priority.hashCode) +
+    (sourceType.hashCode) +
     (isDeleted.hashCode) +
     (versionId.hashCode) +
     (isAutomated.hashCode) +
@@ -114,7 +119,7 @@ class SharedStepReferenceModel {
     (tags == null ? 0 : tags!.hashCode);
 
   @override
-  String toString() => 'SharedStepReferenceModel[id=$id, globalId=$globalId, name=$name, entityTypeName=$entityTypeName, hasThisSharedStepAsStep=$hasThisSharedStepAsStep, hasThisSharedStepAsPrecondition=$hasThisSharedStepAsPrecondition, hasThisSharedStepAsPostcondition=$hasThisSharedStepAsPostcondition, createdById=$createdById, state=$state, priority=$priority, isDeleted=$isDeleted, versionId=$versionId, isAutomated=$isAutomated, sectionId=$sectionId, modifiedById=$modifiedById, createdDate=$createdDate, modifiedDate=$modifiedDate, tags=$tags]';
+  String toString() => 'SharedStepReferenceModel[id=$id, globalId=$globalId, name=$name, entityTypeName=$entityTypeName, hasThisSharedStepAsStep=$hasThisSharedStepAsStep, hasThisSharedStepAsPrecondition=$hasThisSharedStepAsPrecondition, hasThisSharedStepAsPostcondition=$hasThisSharedStepAsPostcondition, createdById=$createdById, state=$state, priority=$priority, sourceType=$sourceType, isDeleted=$isDeleted, versionId=$versionId, isAutomated=$isAutomated, sectionId=$sectionId, modifiedById=$modifiedById, createdDate=$createdDate, modifiedDate=$modifiedDate, tags=$tags]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -128,6 +133,7 @@ class SharedStepReferenceModel {
       json[r'createdById'] = this.createdById;
       json[r'state'] = this.state;
       json[r'priority'] = this.priority;
+      json[r'sourceType'] = this.sourceType;
       json[r'isDeleted'] = this.isDeleted;
       json[r'versionId'] = this.versionId;
       json[r'isAutomated'] = this.isAutomated;
@@ -184,6 +190,7 @@ class SharedStepReferenceModel {
         createdById: mapValueOfType<String>(json, r'createdById')!,
         state: mapValueOfType<String>(json, r'state')!,
         priority: WorkItemPriorityModel.fromJson(json[r'priority'])!,
+        sourceType: WorkItemSourceTypeModel.fromJson(json[r'sourceType'])!,
         isDeleted: mapValueOfType<bool>(json, r'isDeleted')!,
         versionId: mapValueOfType<String>(json, r'versionId')!,
         isAutomated: mapValueOfType<bool>(json, r'isAutomated')!,
@@ -249,6 +256,7 @@ class SharedStepReferenceModel {
     'createdById',
     'state',
     'priority',
+    'sourceType',
     'isDeleted',
     'versionId',
     'isAutomated',

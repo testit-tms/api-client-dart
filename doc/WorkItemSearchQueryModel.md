@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **modifiedByIds** | **Set<String>** | Collection of identifiers of users who applied last modification to work item | [optional] [default to const {}]
 **states** | [**Set<WorkItemStates>**](WorkItemStates.md) | Collection of states of work item | [optional] [default to const {}]
 **priorities** | [**Set<WorkItemPriorityModel>**](WorkItemPriorityModel.md) | Collection of priorities of work item | [optional] [default to const {}]
+**sourceTypes** | [**Set<WorkItemSourceTypeModel>**](WorkItemSourceTypeModel.md) | Collection of priorities of work item | [optional] [default to const {}]
 **types** | [**Set<WorkItemEntityTypes>**](WorkItemEntityTypes.md) | Collection of types of work item | [optional] [default to const {}]
 **createdDate** | [**DateTimeRangeSelectorModel**](DateTimeRangeSelectorModel.md) | Specifies a work item range of creation date to search for | [optional] 
 **modifiedDate** | [**DateTimeRangeSelectorModel**](DateTimeRangeSelectorModel.md) | Specifies a work item range of last modification date to search for | [optional] 

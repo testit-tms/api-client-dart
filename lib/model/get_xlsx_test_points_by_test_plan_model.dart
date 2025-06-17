@@ -16,6 +16,7 @@ class GetXlsxTestPointsByTestPlanModel {
     required this.includeName,
     required this.includeSection,
     required this.includePriority,
+    required this.includeSourceType,
     required this.includeAutomated,
     required this.includeStatus,
     required this.includeDuration,
@@ -34,6 +35,8 @@ class GetXlsxTestPointsByTestPlanModel {
   bool includeSection;
 
   bool includePriority;
+
+  bool includeSourceType;
 
   bool includeAutomated;
 
@@ -62,6 +65,7 @@ class GetXlsxTestPointsByTestPlanModel {
     other.includeName == includeName &&
     other.includeSection == includeSection &&
     other.includePriority == includePriority &&
+    other.includeSourceType == includeSourceType &&
     other.includeAutomated == includeAutomated &&
     other.includeStatus == includeStatus &&
     other.includeDuration == includeDuration &&
@@ -80,6 +84,7 @@ class GetXlsxTestPointsByTestPlanModel {
     (includeName.hashCode) +
     (includeSection.hashCode) +
     (includePriority.hashCode) +
+    (includeSourceType.hashCode) +
     (includeAutomated.hashCode) +
     (includeStatus.hashCode) +
     (includeDuration.hashCode) +
@@ -93,13 +98,14 @@ class GetXlsxTestPointsByTestPlanModel {
     (configurationIds == null ? 0 : configurationIds!.hashCode);
 
   @override
-  String toString() => 'GetXlsxTestPointsByTestPlanModel[includeName=$includeName, includeSection=$includeSection, includePriority=$includePriority, includeAutomated=$includeAutomated, includeStatus=$includeStatus, includeDuration=$includeDuration, includeCreationDate=$includeCreationDate, includeAuthor=$includeAuthor, includeModificationDate=$includeModificationDate, includeModifiedBy=$includeModifiedBy, includeTags=$includeTags, includeIterations=$includeIterations, customAttributesIds=$customAttributesIds, configurationIds=$configurationIds]';
+  String toString() => 'GetXlsxTestPointsByTestPlanModel[includeName=$includeName, includeSection=$includeSection, includePriority=$includePriority, includeSourceType=$includeSourceType, includeAutomated=$includeAutomated, includeStatus=$includeStatus, includeDuration=$includeDuration, includeCreationDate=$includeCreationDate, includeAuthor=$includeAuthor, includeModificationDate=$includeModificationDate, includeModifiedBy=$includeModifiedBy, includeTags=$includeTags, includeIterations=$includeIterations, customAttributesIds=$customAttributesIds, configurationIds=$configurationIds]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'includeName'] = this.includeName;
       json[r'includeSection'] = this.includeSection;
       json[r'includePriority'] = this.includePriority;
+      json[r'includeSourceType'] = this.includeSourceType;
       json[r'includeAutomated'] = this.includeAutomated;
       json[r'includeStatus'] = this.includeStatus;
       json[r'includeDuration'] = this.includeDuration;
@@ -144,6 +150,7 @@ class GetXlsxTestPointsByTestPlanModel {
         includeName: mapValueOfType<bool>(json, r'includeName')!,
         includeSection: mapValueOfType<bool>(json, r'includeSection')!,
         includePriority: mapValueOfType<bool>(json, r'includePriority')!,
+        includeSourceType: mapValueOfType<bool>(json, r'includeSourceType')!,
         includeAutomated: mapValueOfType<bool>(json, r'includeAutomated')!,
         includeStatus: mapValueOfType<bool>(json, r'includeStatus')!,
         includeDuration: mapValueOfType<bool>(json, r'includeDuration')!,
@@ -209,6 +216,7 @@ class GetXlsxTestPointsByTestPlanModel {
     'includeName',
     'includeSection',
     'includePriority',
+    'includeSourceType',
     'includeAutomated',
     'includeStatus',
     'includeDuration',

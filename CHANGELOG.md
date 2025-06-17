@@ -1,3 +1,7 @@
+## 1.1.1
+
+* small fix for lastTestResultStatus
+
 ## 1.1.0
 
 * last Cloud support version

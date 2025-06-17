@@ -1,0 +1,26 @@
+name: Check
+
+on:
+  pull_request:
+    paths:
+      - 'lib/**'
+      - 'test/**'
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: ${{ secrets.FLUTTER_VERSION }}
+
+      - name: Test
+        run: |
+          flutter --disable-telemetry
+          flutter test --dart-define=disableValidation=true ./test/

@@ -3,9 +3,11 @@
 #
 
 name: 'testit_api_client_dart'
-version: '1.0.0'
+version: '1.0.1-TMS-5.3'
 description: 'Auto-generated Dart API client for Test IT'
-homepage: 'homepage'
+repository: https://github.com/testit-tms/api-client-dart/
+homepage: https://testit.software/
+
 environment:
   sdk: '>=2.12.0 <4.0.0'
 dependencies:

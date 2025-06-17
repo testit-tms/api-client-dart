@@ -415,7 +415,6 @@ class AutoTestModel {
     'id',
     'createdDate',
     'createdById',
-    'lastTestResultStatus',
     'externalId',
     'projectId',
     'name',

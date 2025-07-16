@@ -20,6 +20,7 @@ class ParameterApiResult {
     required this.createdDate,
     required this.createdById,
     required this.isDeleted,
+    this.projectIds = const [],
     this.modifiedDate,
     this.modifiedById,
   });
@@ -38,6 +39,8 @@ class ParameterApiResult {
 
   bool isDeleted;
 
+  List<String> projectIds;
+
   DateTime? modifiedDate;
 
   String? modifiedById;
@@ -51,6 +54,7 @@ class ParameterApiResult {
     other.createdDate == createdDate &&
     other.createdById == createdById &&
     other.isDeleted == isDeleted &&
+    _deepEquality.equals(other.projectIds, projectIds) &&
     other.modifiedDate == modifiedDate &&
     other.modifiedById == modifiedById;
 
@@ -64,11 +68,12 @@ class ParameterApiResult {
     (createdDate.hashCode) +
     (createdById.hashCode) +
     (isDeleted.hashCode) +
+    (projectIds.hashCode) +
     (modifiedDate == null ? 0 : modifiedDate!.hashCode) +
     (modifiedById == null ? 0 : modifiedById!.hashCode);
 
   @override
-  String toString() => 'ParameterApiResult[id=$id, parameterKeyId=$parameterKeyId, name=$name, value=$value, createdDate=$createdDate, createdById=$createdById, isDeleted=$isDeleted, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
+  String toString() => 'ParameterApiResult[id=$id, parameterKeyId=$parameterKeyId, name=$name, value=$value, createdDate=$createdDate, createdById=$createdById, isDeleted=$isDeleted, projectIds=$projectIds, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -79,6 +84,7 @@ class ParameterApiResult {
       json[r'createdDate'] = this.createdDate.toUtc().toIso8601String();
       json[r'createdById'] = this.createdById;
       json[r'isDeleted'] = this.isDeleted;
+      json[r'projectIds'] = this.projectIds;
     if (this.modifiedDate != null) {
       json[r'modifiedDate'] = this.modifiedDate!.toUtc().toIso8601String();
     } else {
@@ -118,6 +124,9 @@ class ParameterApiResult {
         createdDate: mapDateTime(json, r'createdDate', r'')!,
         createdById: mapValueOfType<String>(json, r'createdById')!,
         isDeleted: mapValueOfType<bool>(json, r'isDeleted')!,
+        projectIds: json[r'projectIds'] is Iterable
+            ? (json[r'projectIds'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
         modifiedDate: mapDateTime(json, r'modifiedDate', r''),
         modifiedById: mapValueOfType<String>(json, r'modifiedById'),
       );
@@ -174,6 +183,7 @@ class ParameterApiResult {
     'createdDate',
     'createdById',
     'isDeleted',
+    'projectIds',
   };
 }
 

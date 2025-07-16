@@ -15,6 +15,7 @@ class CreateParameterApiModel {
   CreateParameterApiModel({
     required this.name,
     required this.value,
+    this.projectIds = const [],
   });
 
   /// Key of the parameter
@@ -23,24 +24,34 @@ class CreateParameterApiModel {
   /// Value of the parameter
   String value;
 
+  /// List of projects where parameter should be available
+  List<String>? projectIds;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateParameterApiModel &&
     other.name == name &&
-    other.value == value;
+    other.value == value &&
+    _deepEquality.equals(other.projectIds, projectIds);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (name.hashCode) +
-    (value.hashCode);
+    (value.hashCode) +
+    (projectIds == null ? 0 : projectIds!.hashCode);
 
   @override
-  String toString() => 'CreateParameterApiModel[name=$name, value=$value]';
+  String toString() => 'CreateParameterApiModel[name=$name, value=$value, projectIds=$projectIds]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'name'] = this.name;
       json[r'value'] = this.value;
+    if (this.projectIds != null) {
+      json[r'projectIds'] = this.projectIds;
+    } else {
+      json[r'projectIds'] = null;
+    }
     return json;
   }
 
@@ -65,6 +76,9 @@ class CreateParameterApiModel {
       return CreateParameterApiModel(
         name: mapValueOfType<String>(json, r'name')!,
         value: mapValueOfType<String>(json, r'value')!,
+        projectIds: json[r'projectIds'] is Iterable
+            ? (json[r'projectIds'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
       );
     }
     return null;

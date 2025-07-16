@@ -370,7 +370,7 @@ class CustomAttributesApi {
   ///   Value for searching
   ///
   /// * [CustomAttributeSearchQueryModel] customAttributeSearchQueryModel:
-  Future<List<CustomAttributeModel>?> apiV2CustomAttributesSearchPost({ int? skip, int? take, String? orderBy, String? searchField, String? searchValue, CustomAttributeSearchQueryModel? customAttributeSearchQueryModel, }) async {
+  Future<List<CustomAttributeSearchResponseModel>?> apiV2CustomAttributesSearchPost({ int? skip, int? take, String? orderBy, String? searchField, String? searchValue, CustomAttributeSearchQueryModel? customAttributeSearchQueryModel, }) async {
     final response = await apiV2CustomAttributesSearchPostWithHttpInfo( skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, customAttributeSearchQueryModel: customAttributeSearchQueryModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -380,8 +380,8 @@ class CustomAttributesApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<CustomAttributeModel>') as List)
-        .cast<CustomAttributeModel>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<CustomAttributeSearchResponseModel>') as List)
+        .cast<CustomAttributeSearchResponseModel>()
         .toList(growable: false);
 
     }

@@ -16,6 +16,7 @@ class UpdateParameterApiModel {
     required this.id,
     required this.name,
     required this.value,
+    this.projectIds = const [],
   });
 
   /// ID's of the parameter
@@ -27,27 +28,37 @@ class UpdateParameterApiModel {
   /// Value of the parameter
   String value;
 
+  /// List of projects where parameter should be available
+  List<String>? projectIds;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UpdateParameterApiModel &&
     other.id == id &&
     other.name == name &&
-    other.value == value;
+    other.value == value &&
+    _deepEquality.equals(other.projectIds, projectIds);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id.hashCode) +
     (name.hashCode) +
-    (value.hashCode);
+    (value.hashCode) +
+    (projectIds == null ? 0 : projectIds!.hashCode);
 
   @override
-  String toString() => 'UpdateParameterApiModel[id=$id, name=$name, value=$value]';
+  String toString() => 'UpdateParameterApiModel[id=$id, name=$name, value=$value, projectIds=$projectIds]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
       json[r'name'] = this.name;
       json[r'value'] = this.value;
+    if (this.projectIds != null) {
+      json[r'projectIds'] = this.projectIds;
+    } else {
+      json[r'projectIds'] = null;
+    }
     return json;
   }
 
@@ -73,6 +84,9 @@ class UpdateParameterApiModel {
         id: mapValueOfType<String>(json, r'id')!,
         name: mapValueOfType<String>(json, r'name')!,
         value: mapValueOfType<String>(json, r'value')!,
+        projectIds: json[r'projectIds'] is Iterable
+            ? (json[r'projectIds'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
       );
     }
     return null;

@@ -16,6 +16,7 @@ class ParameterGroupApiResult {
     required this.parameterKeyId,
     required this.name,
     this.values = const {},
+    this.projectIds = const [],
   });
 
   String parameterKeyId;
@@ -24,27 +25,32 @@ class ParameterGroupApiResult {
 
   Map<String, String> values;
 
+  List<String> projectIds;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ParameterGroupApiResult &&
     other.parameterKeyId == parameterKeyId &&
     other.name == name &&
-    _deepEquality.equals(other.values, values);
+    _deepEquality.equals(other.values, values) &&
+    _deepEquality.equals(other.projectIds, projectIds);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (parameterKeyId.hashCode) +
     (name.hashCode) +
-    (values.hashCode);
+    (values.hashCode) +
+    (projectIds.hashCode);
 
   @override
-  String toString() => 'ParameterGroupApiResult[parameterKeyId=$parameterKeyId, name=$name, values=$values]';
+  String toString() => 'ParameterGroupApiResult[parameterKeyId=$parameterKeyId, name=$name, values=$values, projectIds=$projectIds]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'parameterKeyId'] = this.parameterKeyId;
       json[r'name'] = this.name;
       json[r'values'] = this.values;
+      json[r'projectIds'] = this.projectIds;
     return json;
   }
 
@@ -70,6 +76,9 @@ class ParameterGroupApiResult {
         parameterKeyId: mapValueOfType<String>(json, r'parameterKeyId')!,
         name: mapValueOfType<String>(json, r'name')!,
         values: mapCastOfType<String, String>(json, r'values')!,
+        projectIds: json[r'projectIds'] is Iterable
+            ? (json[r'projectIds'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
       );
     }
     return null;
@@ -120,6 +129,7 @@ class ParameterGroupApiResult {
     'parameterKeyId',
     'name',
     'values',
+    'projectIds',
   };
 }
 

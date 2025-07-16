@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **createdDate** | [**DateTime**](DateTime.md) |  | 
 **createdById** | **String** |  | 
 **isDeleted** | **bool** |  | 
+**projectIds** | **List<String>** |  | [default to const []]
 **modifiedDate** | [**DateTime**](DateTime.md) |  | [optional] 
 **modifiedById** | **String** |  | [optional] 
 

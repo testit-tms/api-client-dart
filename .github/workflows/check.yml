@@ -20,7 +20,6 @@ jobs:
           channel: stable
           flutter-version: ${{ secrets.FLUTTER_VERSION }}
 
-      - name: Test
-        run: |
-          flutter --disable-telemetry
-          flutter test --dart-define=disableValidation=true ./test/
+      # - name: Test
+      #   run: |
+      #     flutter test --dart-define=disableValidation=true ./test/

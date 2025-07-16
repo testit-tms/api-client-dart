@@ -368,6 +368,8 @@ class ApiClient {
           return CustomAttributePutModel.fromJson(value);
         case 'CustomAttributeSearchQueryModel':
           return CustomAttributeSearchQueryModel.fromJson(value);
+        case 'CustomAttributeSearchResponseModel':
+          return CustomAttributeSearchResponseModel.fromJson(value);
         case 'CustomAttributeTemplateModel':
           return CustomAttributeTemplateModel.fromJson(value);
         case 'CustomAttributeTemplatePostModel':

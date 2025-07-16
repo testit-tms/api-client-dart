@@ -1,3 +1,7 @@
+## 1.2.0-TMS-5.4
+
+* 5.4 TMS support
+
 ## 1.1.1
 
 * small fix for lastTestResultStatus

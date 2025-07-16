@@ -137,6 +137,8 @@ class ParametersApi {
   ///
   /// * [bool] isDeleted:
   ///
+  /// * [List<String>] projectIds:
+  ///
   /// * [int] skip:
   ///   Amount of items to be skipped (offset)
   ///
@@ -151,7 +153,7 @@ class ParametersApi {
   ///
   /// * [String] searchValue:
   ///   Value for searching
-  Future<Response> apiV2ParametersGroupsGetWithHttpInfo({ Set<String>? parameterKeyIds, String? name, bool? isDeleted, int? skip, int? take, String? orderBy, String? searchField, String? searchValue, }) async {
+  Future<Response> apiV2ParametersGroupsGetWithHttpInfo({ Set<String>? parameterKeyIds, String? name, bool? isDeleted, List<String>? projectIds, int? skip, int? take, String? orderBy, String? searchField, String? searchValue, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/parameters/groups';
 
@@ -170,6 +172,9 @@ class ParametersApi {
     }
     if (isDeleted != null) {
       queryParams.addAll(_queryParams('', 'isDeleted', isDeleted));
+    }
+    if (projectIds != null) {
+      queryParams.addAll(_queryParams('multi', 'projectIds', projectIds));
     }
     if (skip != null) {
       queryParams.addAll(_queryParams('', 'Skip', skip));
@@ -213,6 +218,8 @@ class ParametersApi {
   ///
   /// * [bool] isDeleted:
   ///
+  /// * [List<String>] projectIds:
+  ///
   /// * [int] skip:
   ///   Amount of items to be skipped (offset)
   ///
@@ -227,8 +234,8 @@ class ParametersApi {
   ///
   /// * [String] searchValue:
   ///   Value for searching
-  Future<List<ParameterGroupApiResult>?> apiV2ParametersGroupsGet({ Set<String>? parameterKeyIds, String? name, bool? isDeleted, int? skip, int? take, String? orderBy, String? searchField, String? searchValue, }) async {
-    final response = await apiV2ParametersGroupsGetWithHttpInfo( parameterKeyIds: parameterKeyIds, name: name, isDeleted: isDeleted, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, );
+  Future<List<ParameterGroupApiResult>?> apiV2ParametersGroupsGet({ Set<String>? parameterKeyIds, String? name, bool? isDeleted, List<String>? projectIds, int? skip, int? take, String? orderBy, String? searchField, String? searchValue, }) async {
+    final response = await apiV2ParametersGroupsGetWithHttpInfo( parameterKeyIds: parameterKeyIds, name: name, isDeleted: isDeleted, projectIds: projectIds, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -369,7 +376,11 @@ class ParametersApi {
   ///  Use case  User runs method execution  System search all parameter keys  System returns parameter keys
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> apiV2ParametersKeysGetWithHttpInfo() async {
+  ///
+  /// Parameters:
+  ///
+  /// * [List<String>] projectIds:
+  Future<Response> apiV2ParametersKeysGetWithHttpInfo({ List<String>? projectIds, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/parameters/keys';
 
@@ -379,6 +390,10 @@ class ParametersApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+    if (projectIds != null) {
+      queryParams.addAll(_queryParams('multi', 'projectIds', projectIds));
+    }
 
     const contentTypes = <String>[];
 
@@ -397,8 +412,12 @@ class ParametersApi {
   /// Get all parameter keys
   ///
   ///  Use case  User runs method execution  System search all parameter keys  System returns parameter keys
-  Future<List<String>?> apiV2ParametersKeysGet() async {
-    final response = await apiV2ParametersKeysGetWithHttpInfo();
+  ///
+  /// Parameters:
+  ///
+  /// * [List<String>] projectIds:
+  Future<List<String>?> apiV2ParametersKeysGet({ List<String>? projectIds, }) async {
+    final response = await apiV2ParametersKeysGetWithHttpInfo( projectIds: projectIds, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

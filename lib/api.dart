@@ -152,6 +152,7 @@ part 'model/custom_attribute_option_post_model.dart';
 part 'model/custom_attribute_post_model.dart';
 part 'model/custom_attribute_put_model.dart';
 part 'model/custom_attribute_search_query_model.dart';
+part 'model/custom_attribute_search_response_model.dart';
 part 'model/custom_attribute_template_model.dart';
 part 'model/custom_attribute_template_post_model.dart';
 part 'model/custom_attribute_template_put_model.dart';

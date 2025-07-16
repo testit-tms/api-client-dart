@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apiV2CustomAttributesSearchPost**
-> List<CustomAttributeModel> apiV2CustomAttributesSearchPost(skip, take, orderBy, searchField, searchValue, customAttributeSearchQueryModel)
+> List<CustomAttributeSearchResponseModel> apiV2CustomAttributesSearchPost(skip, take, orderBy, searchField, searchValue, customAttributeSearchQueryModel)
 
 Search for attributes
 
@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<CustomAttributeModel>**](CustomAttributeModel.md)
+[**List<CustomAttributeSearchResponseModel>**](CustomAttributeSearchResponseModel.md)
 
 ### Authorization
 

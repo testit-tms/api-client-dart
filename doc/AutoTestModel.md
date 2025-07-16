@@ -14,7 +14,6 @@ Name | Type | Description | Notes
 **id** | **String** | Unique ID of the autotest | 
 **createdDate** | [**DateTime**](DateTime.md) | Creation date of the autotest | 
 **createdById** | **String** | Unique ID of the project creator | 
-**lastTestResultStatus** | [**TestStatusModel**](TestStatusModel.md) | Status of the autotest last test result | 
 **externalId** | **String** | External ID of the autotest | 
 **projectId** | **String** | Unique ID of the autotest project | 
 **name** | **String** | Name of the autotest | 
@@ -25,6 +24,7 @@ Name | Type | Description | Notes
 **lastTestResultId** | **String** | Unique ID of the autotest last test result | [optional] 
 **lastTestResultConfiguration** | [**ConfigurationShortModel**](ConfigurationShortModel.md) | Configuration of the autotest last test result | [optional] 
 **lastTestResultOutcome** | **String** | Outcome of the autotest last test result | [optional] 
+**lastTestResultStatus** | [**TestStatusModel**](TestStatusModel.md) | Status of the autotest last test result | [optional] 
 **stabilityPercentage** | **int** | Stability percentage of the autotest | [optional] 
 **links** | [**List<LinkPutModel>**](LinkPutModel.md) | Collection of the autotest links | [optional] [default to const []]
 **namespace** | **String** | Name of the autotest namespace | [optional] 

@@ -15,25 +15,30 @@ class ParametersFilterApiModel {
   ParametersFilterApiModel({
     this.name,
     this.isDeleted,
+    this.projectIds = const [],
   });
 
   String? name;
 
   bool? isDeleted;
 
+  List<String>? projectIds;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ParametersFilterApiModel &&
     other.name == name &&
-    other.isDeleted == isDeleted;
+    other.isDeleted == isDeleted &&
+    _deepEquality.equals(other.projectIds, projectIds);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (name == null ? 0 : name!.hashCode) +
-    (isDeleted == null ? 0 : isDeleted!.hashCode);
+    (isDeleted == null ? 0 : isDeleted!.hashCode) +
+    (projectIds == null ? 0 : projectIds!.hashCode);
 
   @override
-  String toString() => 'ParametersFilterApiModel[name=$name, isDeleted=$isDeleted]';
+  String toString() => 'ParametersFilterApiModel[name=$name, isDeleted=$isDeleted, projectIds=$projectIds]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -46,6 +51,11 @@ class ParametersFilterApiModel {
       json[r'isDeleted'] = this.isDeleted;
     } else {
       json[r'isDeleted'] = null;
+    }
+    if (this.projectIds != null) {
+      json[r'projectIds'] = this.projectIds;
+    } else {
+      json[r'projectIds'] = null;
     }
     return json;
   }
@@ -71,6 +81,9 @@ class ParametersFilterApiModel {
       return ParametersFilterApiModel(
         name: mapValueOfType<String>(json, r'name'),
         isDeleted: mapValueOfType<bool>(json, r'isDeleted'),
+        projectIds: json[r'projectIds'] is Iterable
+            ? (json[r'projectIds'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
       );
     }
     return null;

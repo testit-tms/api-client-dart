@@ -22,6 +22,7 @@ class ProjectModel {
     required this.globalId,
     required this.type,
     required this.isFlakyAuto,
+    required this.workflowId,
     this.description,
     this.attributesScheme = const [],
     this.testPlansAttributesScheme = const [],
@@ -59,6 +60,8 @@ class ProjectModel {
 
   /// Indicates if the status \"Flaky/Stable\" sets automatically
   bool isFlakyAuto;
+
+  String workflowId;
 
   /// Description of the project
   String? description;
@@ -98,6 +101,7 @@ class ProjectModel {
     other.globalId == globalId &&
     other.type == type &&
     other.isFlakyAuto == isFlakyAuto &&
+    other.workflowId == workflowId &&
     other.description == description &&
     _deepEquality.equals(other.attributesScheme, attributesScheme) &&
     _deepEquality.equals(other.testPlansAttributesScheme, testPlansAttributesScheme) &&
@@ -120,6 +124,7 @@ class ProjectModel {
     (globalId.hashCode) +
     (type.hashCode) +
     (isFlakyAuto.hashCode) +
+    (workflowId.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (attributesScheme == null ? 0 : attributesScheme!.hashCode) +
     (testPlansAttributesScheme == null ? 0 : testPlansAttributesScheme!.hashCode) +
@@ -131,7 +136,7 @@ class ProjectModel {
     (modifiedById == null ? 0 : modifiedById!.hashCode);
 
   @override
-  String toString() => 'ProjectModel[id=$id, name=$name, isFavorite=$isFavorite, isDeleted=$isDeleted, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, type=$type, isFlakyAuto=$isFlakyAuto, description=$description, attributesScheme=$attributesScheme, testPlansAttributesScheme=$testPlansAttributesScheme, testCasesCount=$testCasesCount, sharedStepsCount=$sharedStepsCount, checkListsCount=$checkListsCount, autoTestsCount=$autoTestsCount, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
+  String toString() => 'ProjectModel[id=$id, name=$name, isFavorite=$isFavorite, isDeleted=$isDeleted, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, type=$type, isFlakyAuto=$isFlakyAuto, workflowId=$workflowId, description=$description, attributesScheme=$attributesScheme, testPlansAttributesScheme=$testPlansAttributesScheme, testCasesCount=$testCasesCount, sharedStepsCount=$sharedStepsCount, checkListsCount=$checkListsCount, autoTestsCount=$autoTestsCount, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -144,6 +149,7 @@ class ProjectModel {
       json[r'globalId'] = this.globalId;
       json[r'type'] = this.type;
       json[r'isFlakyAuto'] = this.isFlakyAuto;
+      json[r'workflowId'] = this.workflowId;
     if (this.description != null) {
       json[r'description'] = this.description;
     } else {
@@ -220,6 +226,7 @@ class ProjectModel {
         globalId: mapValueOfType<int>(json, r'globalId')!,
         type: ProjectTypeModel.fromJson(json[r'type'])!,
         isFlakyAuto: mapValueOfType<bool>(json, r'isFlakyAuto')!,
+        workflowId: mapValueOfType<String>(json, r'workflowId')!,
         description: mapValueOfType<String>(json, r'description'),
         attributesScheme: CustomAttributeModel.listFromJson(json[r'attributesScheme']),
         testPlansAttributesScheme: CustomAttributeModel.listFromJson(json[r'testPlansAttributesScheme']),
@@ -285,6 +292,7 @@ class ProjectModel {
     'globalId',
     'type',
     'isFlakyAuto',
+    'workflowId',
   };
 }
 

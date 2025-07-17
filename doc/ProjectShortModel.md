@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **globalId** | **int** | Global ID of the project | 
 **type** | [**ProjectTypeModel**](ProjectTypeModel.md) | Type of the project | 
 **isFlakyAuto** | **bool** | Indicates if the status \"Flaky/Stable\" sets automatically | 
+**workflowId** | **String** |  | 
 **description** | **String** | Description of the project | [optional] 
 **testCasesCount** | **int** | Number of test cases in the project | [optional] 
 **sharedStepsCount** | **int** | Number of shared steps in the project | [optional] 

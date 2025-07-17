@@ -14,25 +14,35 @@ class GenerateWorkItemPreviewsApiResult {
   /// Returns a new [GenerateWorkItemPreviewsApiResult] instance.
   GenerateWorkItemPreviewsApiResult({
     this.previews = const [],
+    this.link,
   });
 
   List<WorkItemPreviewApiModel> previews;
 
+  PreviewsIssueLinkApiResult? link;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is GenerateWorkItemPreviewsApiResult &&
-    _deepEquality.equals(other.previews, previews);
+    _deepEquality.equals(other.previews, previews) &&
+    other.link == link;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (previews.hashCode);
+    (previews.hashCode) +
+    (link == null ? 0 : link!.hashCode);
 
   @override
-  String toString() => 'GenerateWorkItemPreviewsApiResult[previews=$previews]';
+  String toString() => 'GenerateWorkItemPreviewsApiResult[previews=$previews, link=$link]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'previews'] = this.previews;
+    if (this.link != null) {
+      json[r'link'] = this.link;
+    } else {
+      json[r'link'] = null;
+    }
     return json;
   }
 
@@ -56,6 +66,7 @@ class GenerateWorkItemPreviewsApiResult {
 
       return GenerateWorkItemPreviewsApiResult(
         previews: WorkItemPreviewApiModel.listFromJson(json[r'previews']),
+        link: PreviewsIssueLinkApiResult.fromJson(json[r'link']),
       );
     }
     return null;

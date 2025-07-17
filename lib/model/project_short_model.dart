@@ -22,6 +22,7 @@ class ProjectShortModel {
     required this.globalId,
     required this.type,
     required this.isFlakyAuto,
+    required this.workflowId,
     this.description,
     this.testCasesCount,
     this.sharedStepsCount,
@@ -58,6 +59,8 @@ class ProjectShortModel {
   /// Indicates if the status \"Flaky/Stable\" sets automatically
   bool isFlakyAuto;
 
+  String workflowId;
+
   /// Description of the project
   String? description;
 
@@ -90,6 +93,7 @@ class ProjectShortModel {
     other.globalId == globalId &&
     other.type == type &&
     other.isFlakyAuto == isFlakyAuto &&
+    other.workflowId == workflowId &&
     other.description == description &&
     other.testCasesCount == testCasesCount &&
     other.sharedStepsCount == sharedStepsCount &&
@@ -110,6 +114,7 @@ class ProjectShortModel {
     (globalId.hashCode) +
     (type.hashCode) +
     (isFlakyAuto.hashCode) +
+    (workflowId.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (testCasesCount == null ? 0 : testCasesCount!.hashCode) +
     (sharedStepsCount == null ? 0 : sharedStepsCount!.hashCode) +
@@ -119,7 +124,7 @@ class ProjectShortModel {
     (modifiedById == null ? 0 : modifiedById!.hashCode);
 
   @override
-  String toString() => 'ProjectShortModel[id=$id, name=$name, isFavorite=$isFavorite, isDeleted=$isDeleted, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, type=$type, isFlakyAuto=$isFlakyAuto, description=$description, testCasesCount=$testCasesCount, sharedStepsCount=$sharedStepsCount, checkListsCount=$checkListsCount, autoTestsCount=$autoTestsCount, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
+  String toString() => 'ProjectShortModel[id=$id, name=$name, isFavorite=$isFavorite, isDeleted=$isDeleted, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, type=$type, isFlakyAuto=$isFlakyAuto, workflowId=$workflowId, description=$description, testCasesCount=$testCasesCount, sharedStepsCount=$sharedStepsCount, checkListsCount=$checkListsCount, autoTestsCount=$autoTestsCount, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -132,6 +137,7 @@ class ProjectShortModel {
       json[r'globalId'] = this.globalId;
       json[r'type'] = this.type;
       json[r'isFlakyAuto'] = this.isFlakyAuto;
+      json[r'workflowId'] = this.workflowId;
     if (this.description != null) {
       json[r'description'] = this.description;
     } else {
@@ -198,6 +204,7 @@ class ProjectShortModel {
         globalId: mapValueOfType<int>(json, r'globalId')!,
         type: ProjectTypeModel.fromJson(json[r'type'])!,
         isFlakyAuto: mapValueOfType<bool>(json, r'isFlakyAuto')!,
+        workflowId: mapValueOfType<String>(json, r'workflowId')!,
         description: mapValueOfType<String>(json, r'description'),
         testCasesCount: mapValueOfType<int>(json, r'testCasesCount'),
         sharedStepsCount: mapValueOfType<int>(json, r'sharedStepsCount'),
@@ -261,6 +268,7 @@ class ProjectShortModel {
     'globalId',
     'type',
     'isFlakyAuto',
+    'workflowId',
   };
 }
 

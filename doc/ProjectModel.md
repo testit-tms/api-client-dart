@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **globalId** | **int** | Global ID of the project | 
 **type** | [**ProjectTypeModel**](ProjectTypeModel.md) | Type of the project | 
 **isFlakyAuto** | **bool** | Indicates if the status \"Flaky/Stable\" sets automatically | 
+**workflowId** | **String** |  | 
 **description** | **String** | Description of the project | [optional] 
 **attributesScheme** | [**List<CustomAttributeModel>**](CustomAttributeModel.md) | Collection of the project attributes | [optional] [default to const []]
 **testPlansAttributesScheme** | [**List<CustomAttributeModel>**](CustomAttributeModel.md) | Collection of the project test plans attributes | [optional] [default to const []]

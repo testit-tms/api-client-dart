@@ -536,12 +536,10 @@ class ApiClient {
           return PeriodViewModel.fromJson(value);
         case 'PeriodViewModelChangedFieldViewModel':
           return PeriodViewModelChangedFieldViewModel.fromJson(value);
-        case 'PreviewsIssueLinkApiModel':
-          return PreviewsIssueLinkApiModel.fromJson(value);
-        case 'PreviewsIssueLinkApiResult':
-          return PreviewsIssueLinkApiResult.fromJson(value);
         case 'ProblemDetails':
           return ProblemDetails.fromJson(value);
+        case 'ProjectApiResult':
+          return ProjectApiResult.fromJson(value);
         case 'ProjectAttributesFilterModel':
           return ProjectAttributesFilterModel.fromJson(value);
         case 'ProjectCustomAttributeTemplateGetModel':

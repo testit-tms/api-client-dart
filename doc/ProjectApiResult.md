@@ -1,4 +1,4 @@
-# testit_api_client_dart.model.ProjectShortModel
+# testit_api_client_dart.model.ProjectApiResult
 
 ## Load the model package
 ```dart
@@ -17,7 +17,10 @@ Name | Type | Description | Notes
 **globalId** | **int** | Global ID of the project | 
 **type** | [**ProjectTypeModel**](ProjectTypeModel.md) | Type of the project | 
 **isFlakyAuto** | **bool** | Indicates if the status \"Flaky/Stable\" sets automatically | 
+**workflowId** | **String** |  | 
 **description** | **String** | Description of the project | [optional] 
+**attributesScheme** | [**List<CustomAttributeModel>**](CustomAttributeModel.md) | Collection of the project attributes | [optional] [default to const []]
+**testPlansAttributesScheme** | [**List<CustomAttributeModel>**](CustomAttributeModel.md) | Collection of the project test plans attributes | [optional] [default to const []]
 **testCasesCount** | **int** | Number of test cases in the project | [optional] 
 **sharedStepsCount** | **int** | Number of shared steps in the project | [optional] 
 **checkListsCount** | **int** | Number of checklists in the project | [optional] 

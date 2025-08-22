@@ -10,9 +10,9 @@
 
 part of testit_api_client_dart;
 
-class ProjectModel {
-  /// Returns a new [ProjectModel] instance.
-  ProjectModel({
+class ProjectApiResult {
+  /// Returns a new [ProjectApiResult] instance.
+  ProjectApiResult({
     required this.id,
     required this.name,
     required this.isFavorite,
@@ -22,6 +22,7 @@ class ProjectModel {
     required this.globalId,
     required this.type,
     required this.isFlakyAuto,
+    required this.workflowId,
     this.description,
     this.attributesScheme = const [],
     this.testPlansAttributesScheme = const [],
@@ -60,6 +61,8 @@ class ProjectModel {
   /// Indicates if the status \"Flaky/Stable\" sets automatically
   bool isFlakyAuto;
 
+  String workflowId;
+
   /// Description of the project
   String? description;
 
@@ -88,7 +91,7 @@ class ProjectModel {
   String? modifiedById;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ProjectModel &&
+  bool operator ==(Object other) => identical(this, other) || other is ProjectApiResult &&
     other.id == id &&
     other.name == name &&
     other.isFavorite == isFavorite &&
@@ -98,6 +101,7 @@ class ProjectModel {
     other.globalId == globalId &&
     other.type == type &&
     other.isFlakyAuto == isFlakyAuto &&
+    other.workflowId == workflowId &&
     other.description == description &&
     _deepEquality.equals(other.attributesScheme, attributesScheme) &&
     _deepEquality.equals(other.testPlansAttributesScheme, testPlansAttributesScheme) &&
@@ -120,6 +124,7 @@ class ProjectModel {
     (globalId.hashCode) +
     (type.hashCode) +
     (isFlakyAuto.hashCode) +
+    (workflowId.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (attributesScheme == null ? 0 : attributesScheme!.hashCode) +
     (testPlansAttributesScheme == null ? 0 : testPlansAttributesScheme!.hashCode) +
@@ -131,7 +136,7 @@ class ProjectModel {
     (modifiedById == null ? 0 : modifiedById!.hashCode);
 
   @override
-  String toString() => 'ProjectModel[id=$id, name=$name, isFavorite=$isFavorite, isDeleted=$isDeleted, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, type=$type, isFlakyAuto=$isFlakyAuto, description=$description, attributesScheme=$attributesScheme, testPlansAttributesScheme=$testPlansAttributesScheme, testCasesCount=$testCasesCount, sharedStepsCount=$sharedStepsCount, checkListsCount=$checkListsCount, autoTestsCount=$autoTestsCount, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
+  String toString() => 'ProjectApiResult[id=$id, name=$name, isFavorite=$isFavorite, isDeleted=$isDeleted, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, type=$type, isFlakyAuto=$isFlakyAuto, workflowId=$workflowId, description=$description, attributesScheme=$attributesScheme, testPlansAttributesScheme=$testPlansAttributesScheme, testCasesCount=$testCasesCount, sharedStepsCount=$sharedStepsCount, checkListsCount=$checkListsCount, autoTestsCount=$autoTestsCount, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -144,6 +149,7 @@ class ProjectModel {
       json[r'globalId'] = this.globalId;
       json[r'type'] = this.type;
       json[r'isFlakyAuto'] = this.isFlakyAuto;
+      json[r'workflowId'] = this.workflowId;
     if (this.description != null) {
       json[r'description'] = this.description;
     } else {
@@ -192,10 +198,10 @@ class ProjectModel {
     return json;
   }
 
-  /// Returns a new [ProjectModel] instance and imports its values from
+  /// Returns a new [ProjectApiResult] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ProjectModel? fromJson(dynamic value) {
+  static ProjectApiResult? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -204,13 +210,13 @@ class ProjectModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ProjectModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ProjectModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ProjectApiResult[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ProjectApiResult[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ProjectModel(
+      return ProjectApiResult(
         id: mapValueOfType<String>(json, r'id')!,
         name: mapValueOfType<String>(json, r'name')!,
         isFavorite: mapValueOfType<bool>(json, r'isFavorite')!,
@@ -220,6 +226,7 @@ class ProjectModel {
         globalId: mapValueOfType<int>(json, r'globalId')!,
         type: ProjectTypeModel.fromJson(json[r'type'])!,
         isFlakyAuto: mapValueOfType<bool>(json, r'isFlakyAuto')!,
+        workflowId: mapValueOfType<String>(json, r'workflowId')!,
         description: mapValueOfType<String>(json, r'description'),
         attributesScheme: CustomAttributeModel.listFromJson(json[r'attributesScheme']),
         testPlansAttributesScheme: CustomAttributeModel.listFromJson(json[r'testPlansAttributesScheme']),
@@ -234,11 +241,11 @@ class ProjectModel {
     return null;
   }
 
-  static List<ProjectModel> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProjectModel>[];
+  static List<ProjectApiResult> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProjectApiResult>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ProjectModel.fromJson(row);
+        final value = ProjectApiResult.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -247,12 +254,12 @@ class ProjectModel {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ProjectModel> mapFromJson(dynamic json) {
-    final map = <String, ProjectModel>{};
+  static Map<String, ProjectApiResult> mapFromJson(dynamic json) {
+    final map = <String, ProjectApiResult>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ProjectModel.fromJson(entry.value);
+        final value = ProjectApiResult.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -261,14 +268,14 @@ class ProjectModel {
     return map;
   }
 
-  // maps a json object with a list of ProjectModel-objects as value to a dart map
-  static Map<String, List<ProjectModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ProjectModel>>{};
+  // maps a json object with a list of ProjectApiResult-objects as value to a dart map
+  static Map<String, List<ProjectApiResult>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ProjectApiResult>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ProjectModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ProjectApiResult.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -285,6 +292,7 @@ class ProjectModel {
     'globalId',
     'type',
     'isFlakyAuto',
+    'workflowId',
   };
 }
 

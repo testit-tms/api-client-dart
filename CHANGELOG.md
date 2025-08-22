@@ -1,3 +1,7 @@
+## 1.2.3-TMS-5.4.1
+
+* 5.4.1 fix the unknown field workflowId for ProjectModel.
+
 ## 1.2.1
 
 * TMS Cloud support

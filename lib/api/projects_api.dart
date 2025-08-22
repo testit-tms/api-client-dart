@@ -71,53 +71,6 @@ class ProjectsApi {
     }
   }
 
-  /// Performs an HTTP 'POST /api/v2/projects/demo' operation and returns the [Response].
-  /// Parameters:
-  ///
-  /// * [CreateProjectApiModel] createProjectApiModel:
-  Future<Response> apiV2ProjectsDemoPostWithHttpInfo({ CreateProjectApiModel? createProjectApiModel, }) async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/v2/projects/demo';
-
-    // ignore: prefer_final_locals
-    Object? postBody = createProjectApiModel;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Parameters:
-  ///
-  /// * [CreateProjectApiModel] createProjectApiModel:
-  Future<DemoProjectApiResult?> apiV2ProjectsDemoPost({ CreateProjectApiModel? createProjectApiModel, }) async {
-    final response = await apiV2ProjectsDemoPostWithHttpInfo( createProjectApiModel: createProjectApiModel, );
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DemoProjectApiResult',) as DemoProjectApiResult;
-    
-    }
-    return null;
-  }
-
   /// Archive project
   ///
   /// Note: This method returns the HTTP [Response].
@@ -1183,7 +1136,7 @@ class ProjectsApi {
   /// Parameters:
   ///
   /// * [CreateProjectApiModel] createProjectApiModel:
-  Future<ProjectModel?> createProject({ CreateProjectApiModel? createProjectApiModel, }) async {
+  Future<ProjectApiResult?> createProject({ CreateProjectApiModel? createProjectApiModel, }) async {
     final response = await createProjectWithHttpInfo( createProjectApiModel: createProjectApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -1192,7 +1145,7 @@ class ProjectsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProjectModel',) as ProjectModel;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProjectApiResult',) as ProjectApiResult;
     
     }
     return null;

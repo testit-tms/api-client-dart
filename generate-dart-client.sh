@@ -5,7 +5,7 @@
 
 # Configuration
 CONFIG_FILE="openapi-generator-config.yaml"
-OPENAPI_SPEC="source/swagger-cloud1.json"
+OPENAPI_SPEC="source/swagger_5.4.1_copy.json"
 OUTPUT_DIR="./generated-dart-client"
 
 # Colors for output

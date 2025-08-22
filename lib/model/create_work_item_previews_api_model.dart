@@ -16,7 +16,6 @@ class CreateWorkItemPreviewsApiModel {
     required this.sectionId,
     this.previews = const [],
     this.attributes = const {},
-    this.link,
   });
 
   String sectionId;
@@ -25,25 +24,21 @@ class CreateWorkItemPreviewsApiModel {
 
   Map<String, Object>? attributes;
 
-  PreviewsIssueLinkApiModel? link;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateWorkItemPreviewsApiModel &&
     other.sectionId == sectionId &&
     _deepEquality.equals(other.previews, previews) &&
-    _deepEquality.equals(other.attributes, attributes) &&
-    other.link == link;
+    _deepEquality.equals(other.attributes, attributes);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (sectionId.hashCode) +
     (previews.hashCode) +
-    (attributes == null ? 0 : attributes!.hashCode) +
-    (link == null ? 0 : link!.hashCode);
+    (attributes == null ? 0 : attributes!.hashCode);
 
   @override
-  String toString() => 'CreateWorkItemPreviewsApiModel[sectionId=$sectionId, previews=$previews, attributes=$attributes, link=$link]';
+  String toString() => 'CreateWorkItemPreviewsApiModel[sectionId=$sectionId, previews=$previews, attributes=$attributes]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -53,11 +48,6 @@ class CreateWorkItemPreviewsApiModel {
       json[r'attributes'] = this.attributes;
     } else {
       json[r'attributes'] = null;
-    }
-    if (this.link != null) {
-      json[r'link'] = this.link;
-    } else {
-      json[r'link'] = null;
     }
     return json;
   }
@@ -84,7 +74,6 @@ class CreateWorkItemPreviewsApiModel {
         sectionId: mapValueOfType<String>(json, r'sectionId')!,
         previews: WorkItemPreviewApiModel.listFromJson(json[r'previews']),
         attributes: mapCastOfType<String, Object>(json, r'attributes') ?? const {},
-        link: PreviewsIssueLinkApiModel.fromJson(json[r'link']),
       );
     }
     return null;

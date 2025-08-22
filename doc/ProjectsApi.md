@@ -10,7 +10,6 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addGlobaAttributesToProject**](ProjectsApi.md#addglobaattributestoproject) | **POST** /api/v2/projects/{id}/globalAttributes | Add global attributes to project
-[**apiV2ProjectsDemoPost**](ProjectsApi.md#apiv2projectsdemopost) | **POST** /api/v2/projects/demo | 
 [**apiV2ProjectsIdDelete**](ProjectsApi.md#apiv2projectsiddelete) | **DELETE** /api/v2/projects/{id} | Archive project
 [**apiV2ProjectsIdFailureClassesGet**](ProjectsApi.md#apiv2projectsidfailureclassesget) | **GET** /api/v2/projects/{id}/failureClasses | Get failure classes
 [**apiV2ProjectsIdFavoritePut**](ProjectsApi.md#apiv2projectsidfavoriteput) | **PUT** /api/v2/projects/{id}/favorite | Mark Project as favorite
@@ -73,51 +72,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
-
-### Authorization
-
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2ProjectsDemoPost**
-> DemoProjectApiResult apiV2ProjectsDemoPost(createProjectApiModel)
-
-
-
-### Example
-```dart
-import 'package:testit_api_client_dart/api.dart';
-// TODO Configure API key authorization: Bearer or PrivateToken
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
-
-final api_instance = ProjectsApi();
-final createProjectApiModel = CreateProjectApiModel(); // CreateProjectApiModel | 
-
-try {
-    final result = api_instance.apiV2ProjectsDemoPost(createProjectApiModel);
-    print(result);
-} catch (e) {
-    print('Exception when calling ProjectsApi->apiV2ProjectsDemoPost: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createProjectApiModel** | [**CreateProjectApiModel**](CreateProjectApiModel.md)|  | [optional] 
-
-### Return type
-
-[**DemoProjectApiResult**](DemoProjectApiResult.md)
 
 ### Authorization
 

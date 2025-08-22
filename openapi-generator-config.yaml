@@ -2,7 +2,7 @@
 generatorName: dart
 inputSpec: source/swagger_5.4.1_copy.json
 outputDir: ./generated-dart-client
-templateDir: C:/Users/Frank_Reznov/Downloads/gen/templates
+templateDir: null
 
 # Basic package settings
 additionalProperties:

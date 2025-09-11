@@ -19,10 +19,8 @@ postgen:
 
 dart pub get
 
-dart pub run build_runner build
-
-dart pub run build_runner build --delete-conflicting-outputs
 ```
 3. Return the dependencies in the pubspec.yaml
 4. Return the repository and the homepage in the pubspec.yaml
 5. Write in the CHANGELOG.md for new version
+6. manually update Readme.md

@@ -599,7 +599,7 @@ class TestSuitesApi {
   ///
   /// * [String] id (required):
   ///   Test suite internal (guid format) identifier\"
-  Future<TestSuiteV2GetModel?> getTestSuiteById(String id,) async {
+  Future<TestSuiteApiResult?> getTestSuiteById(String id,) async {
     final response = await getTestSuiteByIdWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -608,7 +608,7 @@ class TestSuitesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TestSuiteV2GetModel',) as TestSuiteV2GetModel;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TestSuiteApiResult',) as TestSuiteApiResult;
     
     }
     return null;

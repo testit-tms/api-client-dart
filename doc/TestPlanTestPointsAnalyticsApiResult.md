@@ -9,9 +9,11 @@ import 'package:testit_api_client_dart/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **countGroupByStatus** | [**List<TestPlanTestPointsStatusGroupApiResult>**](TestPlanTestPointsStatusGroupApiResult.md) |  | [default to const []]
+**countGroupByTesterAndStatus** | [**List<TestPlanTestPointsTesterAndStatusGroupApiResult>**](TestPlanTestPointsTesterAndStatusGroupApiResult.md) |  | [default to const []]
 **sumGroupByTester** | [**List<TestPlanTestPointsTesterGroupApiResult>**](TestPlanTestPointsTesterGroupApiResult.md) |  | [default to const []]
 **countGroupByTester** | [**List<TestPlanTestPointsTesterGroupApiResult>**](TestPlanTestPointsTesterGroupApiResult.md) |  | [default to const []]
-**countGroupByTesterAndStatus** | [**List<TestPlanTestPointsTesterAndStatusGroupApiResult>**](TestPlanTestPointsTesterAndStatusGroupApiResult.md) |  | [default to const []]
+**countGroupByStatusType** | [**List<TestPlanTestPointsStatusTypeGroupApiResult>**](TestPlanTestPointsStatusTypeGroupApiResult.md) |  | [default to const []]
+**countGroupByTesterAndStatusType** | [**List<TestPlanTestPointsTesterAndStatusTypeGroupApiResult>**](TestPlanTestPointsTesterAndStatusTypeGroupApiResult.md) |  | [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

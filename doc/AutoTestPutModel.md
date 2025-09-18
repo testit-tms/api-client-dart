@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **name** | **String** | Name of the autotest | 
 **id** | **String** | Used for search autotest. If value is null or equals Guid mask filled with zeros, search will be executed using ExternalId | [optional] 
 **workItemIdsForLinkWithAutoTest** | **Set<String>** |  | [optional] [default to const {}]
+**workItemIds** | **List<String>** |  | [optional] [default to const []]
 **links** | [**List<LinkPutModel>**](LinkPutModel.md) | Collection of the autotest links | [optional] [default to const []]
 **namespace** | **String** | Name of the autotest namespace | [optional] 
 **classname** | **String** | Name of the autotest class | [optional] 

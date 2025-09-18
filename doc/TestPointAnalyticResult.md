@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **countGroupByTesterAndStatus** | [**List<TestPlanGroupByTesterAndStatus>**](TestPlanGroupByTesterAndStatus.md) |  | [default to const []]
 **countGroupByStatusCode** | [**List<TestPlanGroupByStatusCode>**](TestPlanGroupByStatusCode.md) |  | [default to const []]
 **countGroupByTesterAndStatusCode** | [**List<TestPlanGroupByTesterAndStatusCode>**](TestPlanGroupByTesterAndStatusCode.md) |  | [default to const []]
+**countGroupByStatusType** | [**List<TestPlanGroupByStatusType>**](TestPlanGroupByStatusType.md) |  | [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

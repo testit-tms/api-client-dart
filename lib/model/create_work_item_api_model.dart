@@ -13,144 +13,146 @@ part of testit_api_client_dart;
 class CreateWorkItemApiModel {
   /// Returns a new [CreateWorkItemApiModel] instance.
   CreateWorkItemApiModel({
+    required this.projectId,
+    required this.name,
     required this.entityTypeName,
+    required this.duration,
     required this.state,
     required this.priority,
-    this.steps = const [],
-    this.preconditionSteps = const [],
-    this.postconditionSteps = const [],
-    required this.duration,
     this.attributes = const {},
     this.tags = const [],
+    this.preconditionSteps = const [],
+    this.steps = const [],
+    this.postconditionSteps = const [],
     this.links = const [],
-    required this.name,
-    required this.projectId,
-    required this.sectionId,
+    this.sectionId,
     this.description,
-    this.attachments = const [],
     this.iterations = const [],
     this.autoTests = const [],
+    this.attachments = const [],
   });
 
-  WorkItemEntityTypes entityTypeName;
+  /// Unique identifier of the project
+  String projectId;
 
-  WorkItemStates state;
+  /// Name of the work item
+  String name;
 
-  WorkItemPriorityModel priority;
+  /// Type of entity associated with this work item
+  WorkItemEntityTypeApiModel entityTypeName;
 
-  /// Collection of workitem steps
-  List<CreateStepApiModel> steps;
-
-  /// Collection of workitem precondition steps
-  List<CreateStepApiModel> preconditionSteps;
-
-  /// Collection of workitem postcondition steps
-  List<CreateStepApiModel> postconditionSteps;
-
-  /// WorkItem duration in milliseconds, must be 0 for shared steps and greater than 0 for the other types of work items
+  /// Duration of the work item in milliseconds
   ///
   /// Minimum value: 0
   /// Maximum value: 86400000
   int duration;
 
-  /// Key value pair of custom workitem attributes
+  /// State of the work item
+  WorkItemStateApiModel state;
+
+  /// Priority level of the work item
+  WorkItemPriorityApiModel priority;
+
+  /// Set of custom attributes associated with the work item
   Map<String, Object> attributes;
 
-  /// Collection of workitem tags
+  /// Set of tags applied to the work item
   List<TagModel> tags;
 
-  /// Collection of workitem links
+  /// Set of precondition steps that need to be executed before starting the main steps
+  List<CreateStepApiModel> preconditionSteps;
+
+  /// Main steps or actions defined for the work item
+  List<CreateStepApiModel> steps;
+
+  /// Set of postcondition steps that are executed after completing the main steps
+  List<CreateStepApiModel> postconditionSteps;
+
+  /// Set of links related to the work item
   List<CreateLinkApiModel> links;
 
-  /// Workitem name
-  String name;
+  /// Unique identifier of the section within a project
+  String? sectionId;
 
-  /// Project unique identifier - used to link workitem with project
-  String projectId;
-
-  /// Internal identifier of section where workitem is located
-  String sectionId;
-
-  /// Workitem description
+  /// Description of the work item
   String? description;
 
-  /// Collection of workitem attachments
-  List<AssignAttachmentApiModel>? attachments;
-
-  /// Collection of parameter sets
+  /// Associated iterations linked to the work item
   List<AssignIterationApiModel>? iterations;
 
-  /// Collection of autotest internal ids
+  /// Automated tests associated with the work item
   List<AutoTestIdModel>? autoTests;
+
+  /// Files attached to the work item
+  List<AssignAttachmentApiModel>? attachments;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateWorkItemApiModel &&
+    other.projectId == projectId &&
+    other.name == name &&
     other.entityTypeName == entityTypeName &&
+    other.duration == duration &&
     other.state == state &&
     other.priority == priority &&
-    _deepEquality.equals(other.steps, steps) &&
-    _deepEquality.equals(other.preconditionSteps, preconditionSteps) &&
-    _deepEquality.equals(other.postconditionSteps, postconditionSteps) &&
-    other.duration == duration &&
     _deepEquality.equals(other.attributes, attributes) &&
     _deepEquality.equals(other.tags, tags) &&
+    _deepEquality.equals(other.preconditionSteps, preconditionSteps) &&
+    _deepEquality.equals(other.steps, steps) &&
+    _deepEquality.equals(other.postconditionSteps, postconditionSteps) &&
     _deepEquality.equals(other.links, links) &&
-    other.name == name &&
-    other.projectId == projectId &&
     other.sectionId == sectionId &&
     other.description == description &&
-    _deepEquality.equals(other.attachments, attachments) &&
     _deepEquality.equals(other.iterations, iterations) &&
-    _deepEquality.equals(other.autoTests, autoTests);
+    _deepEquality.equals(other.autoTests, autoTests) &&
+    _deepEquality.equals(other.attachments, attachments);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (projectId.hashCode) +
+    (name.hashCode) +
     (entityTypeName.hashCode) +
+    (duration.hashCode) +
     (state.hashCode) +
     (priority.hashCode) +
-    (steps.hashCode) +
-    (preconditionSteps.hashCode) +
-    (postconditionSteps.hashCode) +
-    (duration.hashCode) +
     (attributes.hashCode) +
     (tags.hashCode) +
+    (preconditionSteps.hashCode) +
+    (steps.hashCode) +
+    (postconditionSteps.hashCode) +
     (links.hashCode) +
-    (name.hashCode) +
-    (projectId.hashCode) +
-    (sectionId.hashCode) +
+    (sectionId == null ? 0 : sectionId!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
-    (attachments == null ? 0 : attachments!.hashCode) +
     (iterations == null ? 0 : iterations!.hashCode) +
-    (autoTests == null ? 0 : autoTests!.hashCode);
+    (autoTests == null ? 0 : autoTests!.hashCode) +
+    (attachments == null ? 0 : attachments!.hashCode);
 
   @override
-  String toString() => 'CreateWorkItemApiModel[entityTypeName=$entityTypeName, state=$state, priority=$priority, steps=$steps, preconditionSteps=$preconditionSteps, postconditionSteps=$postconditionSteps, duration=$duration, attributes=$attributes, tags=$tags, links=$links, name=$name, projectId=$projectId, sectionId=$sectionId, description=$description, attachments=$attachments, iterations=$iterations, autoTests=$autoTests]';
+  String toString() => 'CreateWorkItemApiModel[projectId=$projectId, name=$name, entityTypeName=$entityTypeName, duration=$duration, state=$state, priority=$priority, attributes=$attributes, tags=$tags, preconditionSteps=$preconditionSteps, steps=$steps, postconditionSteps=$postconditionSteps, links=$links, sectionId=$sectionId, description=$description, iterations=$iterations, autoTests=$autoTests, attachments=$attachments]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+      json[r'projectId'] = this.projectId;
+      json[r'name'] = this.name;
       json[r'entityTypeName'] = this.entityTypeName;
+      json[r'duration'] = this.duration;
       json[r'state'] = this.state;
       json[r'priority'] = this.priority;
-      json[r'steps'] = this.steps;
-      json[r'preconditionSteps'] = this.preconditionSteps;
-      json[r'postconditionSteps'] = this.postconditionSteps;
-      json[r'duration'] = this.duration;
       json[r'attributes'] = this.attributes;
       json[r'tags'] = this.tags;
+      json[r'preconditionSteps'] = this.preconditionSteps;
+      json[r'steps'] = this.steps;
+      json[r'postconditionSteps'] = this.postconditionSteps;
       json[r'links'] = this.links;
-      json[r'name'] = this.name;
-      json[r'projectId'] = this.projectId;
+    if (this.sectionId != null) {
       json[r'sectionId'] = this.sectionId;
+    } else {
+      json[r'sectionId'] = null;
+    }
     if (this.description != null) {
       json[r'description'] = this.description;
     } else {
       json[r'description'] = null;
-    }
-    if (this.attachments != null) {
-      json[r'attachments'] = this.attachments;
-    } else {
-      json[r'attachments'] = null;
     }
     if (this.iterations != null) {
       json[r'iterations'] = this.iterations;
@@ -161,6 +163,11 @@ class CreateWorkItemApiModel {
       json[r'autoTests'] = this.autoTests;
     } else {
       json[r'autoTests'] = null;
+    }
+    if (this.attachments != null) {
+      json[r'attachments'] = this.attachments;
+    } else {
+      json[r'attachments'] = null;
     }
     return json;
   }
@@ -184,23 +191,23 @@ class CreateWorkItemApiModel {
       }());
 
       return CreateWorkItemApiModel(
-        entityTypeName: WorkItemEntityTypes.fromJson(json[r'entityTypeName'])!,
-        state: WorkItemStates.fromJson(json[r'state'])!,
-        priority: WorkItemPriorityModel.fromJson(json[r'priority'])!,
-        steps: CreateStepApiModel.listFromJson(json[r'steps']),
-        preconditionSteps: CreateStepApiModel.listFromJson(json[r'preconditionSteps']),
-        postconditionSteps: CreateStepApiModel.listFromJson(json[r'postconditionSteps']),
+        projectId: mapValueOfType<String>(json, r'projectId')!,
+        name: mapValueOfType<String>(json, r'name')!,
+        entityTypeName: WorkItemEntityTypeApiModel.fromJson(json[r'entityTypeName'])!,
         duration: mapValueOfType<int>(json, r'duration')!,
+        state: WorkItemStateApiModel.fromJson(json[r'state'])!,
+        priority: WorkItemPriorityApiModel.fromJson(json[r'priority'])!,
         attributes: mapCastOfType<String, Object>(json, r'attributes')!,
         tags: TagModel.listFromJson(json[r'tags']),
+        preconditionSteps: CreateStepApiModel.listFromJson(json[r'preconditionSteps']),
+        steps: CreateStepApiModel.listFromJson(json[r'steps']),
+        postconditionSteps: CreateStepApiModel.listFromJson(json[r'postconditionSteps']),
         links: CreateLinkApiModel.listFromJson(json[r'links']),
-        name: mapValueOfType<String>(json, r'name')!,
-        projectId: mapValueOfType<String>(json, r'projectId')!,
-        sectionId: mapValueOfType<String>(json, r'sectionId')!,
+        sectionId: mapValueOfType<String>(json, r'sectionId'),
         description: mapValueOfType<String>(json, r'description'),
-        attachments: AssignAttachmentApiModel.listFromJson(json[r'attachments']),
         iterations: AssignIterationApiModel.listFromJson(json[r'iterations']),
         autoTests: AutoTestIdModel.listFromJson(json[r'autoTests']),
+        attachments: AssignAttachmentApiModel.listFromJson(json[r'attachments']),
       );
     }
     return null;
@@ -248,19 +255,18 @@ class CreateWorkItemApiModel {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'projectId',
+    'name',
     'entityTypeName',
+    'duration',
     'state',
     'priority',
-    'steps',
-    'preconditionSteps',
-    'postconditionSteps',
-    'duration',
     'attributes',
     'tags',
+    'preconditionSteps',
+    'steps',
+    'postconditionSteps',
     'links',
-    'name',
-    'projectId',
-    'sectionId',
   };
 }
 

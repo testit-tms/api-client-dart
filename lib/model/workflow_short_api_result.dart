@@ -17,6 +17,7 @@ class WorkflowShortApiResult {
     required this.name,
     required this.isSystem,
     required this.isDefault,
+    required this.projects,
   });
 
   String id;
@@ -27,12 +28,15 @@ class WorkflowShortApiResult {
 
   bool isDefault;
 
+  WorkflowProjectApiResultApiCollectionPreview projects;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is WorkflowShortApiResult &&
     other.id == id &&
     other.name == name &&
     other.isSystem == isSystem &&
-    other.isDefault == isDefault;
+    other.isDefault == isDefault &&
+    other.projects == projects;
 
   @override
   int get hashCode =>
@@ -40,10 +44,11 @@ class WorkflowShortApiResult {
     (id.hashCode) +
     (name.hashCode) +
     (isSystem.hashCode) +
-    (isDefault.hashCode);
+    (isDefault.hashCode) +
+    (projects.hashCode);
 
   @override
-  String toString() => 'WorkflowShortApiResult[id=$id, name=$name, isSystem=$isSystem, isDefault=$isDefault]';
+  String toString() => 'WorkflowShortApiResult[id=$id, name=$name, isSystem=$isSystem, isDefault=$isDefault, projects=$projects]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -51,6 +56,7 @@ class WorkflowShortApiResult {
       json[r'name'] = this.name;
       json[r'isSystem'] = this.isSystem;
       json[r'isDefault'] = this.isDefault;
+      json[r'projects'] = this.projects;
     return json;
   }
 
@@ -77,6 +83,7 @@ class WorkflowShortApiResult {
         name: mapValueOfType<String>(json, r'name')!,
         isSystem: mapValueOfType<bool>(json, r'isSystem')!,
         isDefault: mapValueOfType<bool>(json, r'isDefault')!,
+        projects: WorkflowProjectApiResultApiCollectionPreview.fromJson(json[r'projects'])!,
       );
     }
     return null;
@@ -128,6 +135,7 @@ class WorkflowShortApiResult {
     'name',
     'isSystem',
     'isDefault',
+    'projects',
   };
 }
 

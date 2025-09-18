@@ -1316,7 +1316,6 @@ class TestPlansApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   Test plan unique or global ID
   Future<Response> apiV2TestPlansIdTestRunsTestResultsLastModifiedModifiedDateGetWithHttpInfo(String id,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/testPlans/{id}/testRuns/testResults/lastModified/modifiedDate'
@@ -1348,7 +1347,6 @@ class TestPlansApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   Test plan unique or global ID
   Future<void> apiV2TestPlansIdTestRunsTestResultsLastModifiedModifiedDateGet(String id,) async {
     final response = await apiV2TestPlansIdTestRunsTestResultsLastModifiedModifiedDateGetWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -1794,7 +1792,7 @@ class TestPlansApi {
   ///
   /// * [String] id (required):
   ///   Test plan internal (guid format) or global (int format) identifier
-  Future<List<TestSuiteV2TreeModel>?> getTestSuitesById(String id,) async {
+  Future<List<TestSuiteHierarchyApiResult>?> getTestSuitesById(String id,) async {
     final response = await getTestSuitesByIdWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -1804,8 +1802,8 @@ class TestPlansApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<TestSuiteV2TreeModel>') as List)
-        .cast<TestSuiteV2TreeModel>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<TestSuiteHierarchyApiResult>') as List)
+        .cast<TestSuiteHierarchyApiResult>()
         .toList(growable: false);
 
     }

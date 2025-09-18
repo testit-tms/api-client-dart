@@ -868,6 +868,58 @@ class WorkItemsApi {
     return null;
   }
 
+  /// Creates work item
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [CreateWorkItemApiModel] createWorkItemApiModel:
+  Future<Response> apiV2WorkItemsPostWithHttpInfo({ CreateWorkItemApiModel? createWorkItemApiModel, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/v2/workItems';
+
+    // ignore: prefer_final_locals
+    Object? postBody = createWorkItemApiModel;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Creates work item
+  ///
+  /// Parameters:
+  ///
+  /// * [CreateWorkItemApiModel] createWorkItemApiModel:
+  Future<WorkItemApiResult?> apiV2WorkItemsPost({ CreateWorkItemApiModel? createWorkItemApiModel, }) async {
+    final response = await apiV2WorkItemsPostWithHttpInfo( createWorkItemApiModel: createWorkItemApiModel, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'WorkItemApiResult',) as WorkItemApiResult;
+    
+    }
+    return null;
+  }
+
   /// Search for work items
   ///
   /// Note: This method returns the HTTP [Response].
@@ -1245,62 +1297,6 @@ class WorkItemsApi {
         .cast<SharedStepReferenceModel>()
         .toList(growable: false);
 
-    }
-    return null;
-  }
-
-  /// Create Test Case, Checklist or Shared Step
-  ///
-  ///  Use case  User sets work item properties (listed in request parameters)  User runs method execution  System creates work item by identifier  System returns work item model (listed in response parameters)
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [CreateWorkItemApiModel] createWorkItemApiModel:
-  Future<Response> createWorkItemWithHttpInfo({ CreateWorkItemApiModel? createWorkItemApiModel, }) async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/v2/workItems';
-
-    // ignore: prefer_final_locals
-    Object? postBody = createWorkItemApiModel;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Create Test Case, Checklist or Shared Step
-  ///
-  ///  Use case  User sets work item properties (listed in request parameters)  User runs method execution  System creates work item by identifier  System returns work item model (listed in response parameters)
-  ///
-  /// Parameters:
-  ///
-  /// * [CreateWorkItemApiModel] createWorkItemApiModel:
-  Future<WorkItemModel?> createWorkItem({ CreateWorkItemApiModel? createWorkItemApiModel, }) async {
-    final response = await createWorkItemWithHttpInfo( createWorkItemApiModel: createWorkItemApiModel, );
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'WorkItemModel',) as WorkItemModel;
-    
     }
     return null;
   }

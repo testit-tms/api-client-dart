@@ -9,6 +9,8 @@ import 'package:testit_api_client_dart/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** |  | 
+**description** | **String** |  | 
+**steps** | [**List<WorkItemPreviewStepApiModel>**](WorkItemPreviewStepApiModel.md) |  | [default to const []]
 **action** | **String** |  | 
 **expected** | **String** |  | 
 

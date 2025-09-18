@@ -14,11 +14,17 @@ class WorkItemPreviewApiModel {
   /// Returns a new [WorkItemPreviewApiModel] instance.
   WorkItemPreviewApiModel({
     required this.name,
+    required this.description,
+    this.steps = const [],
     required this.action,
     required this.expected,
   });
 
   String name;
+
+  String description;
+
+  List<WorkItemPreviewStepApiModel> steps;
 
   String action;
 
@@ -27,6 +33,8 @@ class WorkItemPreviewApiModel {
   @override
   bool operator ==(Object other) => identical(this, other) || other is WorkItemPreviewApiModel &&
     other.name == name &&
+    other.description == description &&
+    _deepEquality.equals(other.steps, steps) &&
     other.action == action &&
     other.expected == expected;
 
@@ -34,15 +42,19 @@ class WorkItemPreviewApiModel {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (name.hashCode) +
+    (description.hashCode) +
+    (steps.hashCode) +
     (action.hashCode) +
     (expected.hashCode);
 
   @override
-  String toString() => 'WorkItemPreviewApiModel[name=$name, action=$action, expected=$expected]';
+  String toString() => 'WorkItemPreviewApiModel[name=$name, description=$description, steps=$steps, action=$action, expected=$expected]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'name'] = this.name;
+      json[r'description'] = this.description;
+      json[r'steps'] = this.steps;
       json[r'action'] = this.action;
       json[r'expected'] = this.expected;
     return json;
@@ -68,6 +80,8 @@ class WorkItemPreviewApiModel {
 
       return WorkItemPreviewApiModel(
         name: mapValueOfType<String>(json, r'name')!,
+        description: mapValueOfType<String>(json, r'description')!,
+        steps: WorkItemPreviewStepApiModel.listFromJson(json[r'steps']),
         action: mapValueOfType<String>(json, r'action')!,
         expected: mapValueOfType<String>(json, r'expected')!,
       );
@@ -118,6 +132,8 @@ class WorkItemPreviewApiModel {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'name',
+    'description',
+    'steps',
     'action',
     'expected',
   };

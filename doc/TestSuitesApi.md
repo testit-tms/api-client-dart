@@ -485,7 +485,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTestSuiteById**
-> TestSuiteV2GetModel getTestSuiteById(id)
+> TestSuiteApiResult getTestSuiteById(id)
 
 Get TestSuite by Id
 
@@ -518,7 +518,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TestSuiteV2GetModel**](TestSuiteV2GetModel.md)
+[**TestSuiteApiResult**](TestSuiteApiResult.md)
 
 ### Authorization
 

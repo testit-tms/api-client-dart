@@ -277,7 +277,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apiV2ParametersKeysGet**
-> List<String> apiV2ParametersKeysGet(projectIds)
+> List<String> apiV2ParametersKeysGet(projectIds, skip, take, orderBy, searchField, searchValue)
 
 Get all parameter keys
 
@@ -293,9 +293,14 @@ import 'package:testit_api_client_dart/api.dart';
 
 final api_instance = ParametersApi();
 final projectIds = []; // List<String> | 
+final skip = 56; // int | Amount of items to be skipped (offset)
+final take = 56; // int | Amount of items to be taken (limit)
+final orderBy = orderBy_example; // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC)
+final searchField = searchField_example; // String | Property name for searching
+final searchValue = searchValue_example; // String | Value for searching
 
 try {
-    final result = api_instance.apiV2ParametersKeysGet(projectIds);
+    final result = api_instance.apiV2ParametersKeysGet(projectIds, skip, take, orderBy, searchField, searchValue);
     print(result);
 } catch (e) {
     print('Exception when calling ParametersApi->apiV2ParametersKeysGet: $e\n');
@@ -307,6 +312,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectIds** | [**List<String>**](String.md)|  | [optional] [default to const []]
+ **skip** | **int**| Amount of items to be skipped (offset) | [optional] 
+ **take** | **int**| Amount of items to be taken (limit) | [optional] 
+ **orderBy** | **String**| SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) | [optional] 
+ **searchField** | **String**| Property name for searching | [optional] 
+ **searchValue** | **String**| Value for searching | [optional] 
 
 ### Return type
 

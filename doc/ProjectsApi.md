@@ -86,7 +86,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apiV2ProjectsDemoPost**
-> DemoProjectApiResult apiV2ProjectsDemoPost(createProjectApiModel)
+> DemoProjectApiResult apiV2ProjectsDemoPost()
 
 
 
@@ -99,10 +99,9 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = ProjectsApi();
-final createProjectApiModel = CreateProjectApiModel(); // CreateProjectApiModel | 
 
 try {
-    final result = api_instance.apiV2ProjectsDemoPost(createProjectApiModel);
+    final result = api_instance.apiV2ProjectsDemoPost();
     print(result);
 } catch (e) {
     print('Exception when calling ProjectsApi->apiV2ProjectsDemoPost: $e\n');
@@ -110,10 +109,7 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createProjectApiModel** | [**CreateProjectApiModel**](CreateProjectApiModel.md)|  | [optional] 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -125,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -175,7 +171,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apiV2ProjectsIdFailureClassesGet**
-> List<FailureClassModel> apiV2ProjectsIdFailureClassesGet(id, isDeleted)
+> List<AutoTestResultReasonProjectApiResult> apiV2ProjectsIdFailureClassesGet(id, isDeleted)
 
 Get failure classes
 
@@ -208,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<FailureClassModel>**](FailureClassModel.md)
+[**List<AutoTestResultReasonProjectApiResult>**](AutoTestResultReasonProjectApiResult.md)
 
 ### Authorization
 

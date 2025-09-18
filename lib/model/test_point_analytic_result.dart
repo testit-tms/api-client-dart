@@ -20,6 +20,7 @@ class TestPointAnalyticResult {
     this.countGroupByTesterAndStatus = const [],
     this.countGroupByStatusCode = const [],
     this.countGroupByTesterAndStatusCode = const [],
+    this.countGroupByStatusType = const [],
   });
 
   List<TestPlanGroupByStatus> countGroupByStatus;
@@ -36,6 +37,8 @@ class TestPointAnalyticResult {
 
   List<TestPlanGroupByTesterAndStatusCode> countGroupByTesterAndStatusCode;
 
+  List<TestPlanGroupByStatusType> countGroupByStatusType;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is TestPointAnalyticResult &&
     _deepEquality.equals(other.countGroupByStatus, countGroupByStatus) &&
@@ -44,7 +47,8 @@ class TestPointAnalyticResult {
     _deepEquality.equals(other.countGroupByTestSuite, countGroupByTestSuite) &&
     _deepEquality.equals(other.countGroupByTesterAndStatus, countGroupByTesterAndStatus) &&
     _deepEquality.equals(other.countGroupByStatusCode, countGroupByStatusCode) &&
-    _deepEquality.equals(other.countGroupByTesterAndStatusCode, countGroupByTesterAndStatusCode);
+    _deepEquality.equals(other.countGroupByTesterAndStatusCode, countGroupByTesterAndStatusCode) &&
+    _deepEquality.equals(other.countGroupByStatusType, countGroupByStatusType);
 
   @override
   int get hashCode =>
@@ -55,10 +59,11 @@ class TestPointAnalyticResult {
     (countGroupByTestSuite.hashCode) +
     (countGroupByTesterAndStatus.hashCode) +
     (countGroupByStatusCode.hashCode) +
-    (countGroupByTesterAndStatusCode.hashCode);
+    (countGroupByTesterAndStatusCode.hashCode) +
+    (countGroupByStatusType.hashCode);
 
   @override
-  String toString() => 'TestPointAnalyticResult[countGroupByStatus=$countGroupByStatus, sumGroupByTester=$sumGroupByTester, countGroupByTester=$countGroupByTester, countGroupByTestSuite=$countGroupByTestSuite, countGroupByTesterAndStatus=$countGroupByTesterAndStatus, countGroupByStatusCode=$countGroupByStatusCode, countGroupByTesterAndStatusCode=$countGroupByTesterAndStatusCode]';
+  String toString() => 'TestPointAnalyticResult[countGroupByStatus=$countGroupByStatus, sumGroupByTester=$sumGroupByTester, countGroupByTester=$countGroupByTester, countGroupByTestSuite=$countGroupByTestSuite, countGroupByTesterAndStatus=$countGroupByTesterAndStatus, countGroupByStatusCode=$countGroupByStatusCode, countGroupByTesterAndStatusCode=$countGroupByTesterAndStatusCode, countGroupByStatusType=$countGroupByStatusType]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -69,6 +74,7 @@ class TestPointAnalyticResult {
       json[r'countGroupByTesterAndStatus'] = this.countGroupByTesterAndStatus;
       json[r'countGroupByStatusCode'] = this.countGroupByStatusCode;
       json[r'countGroupByTesterAndStatusCode'] = this.countGroupByTesterAndStatusCode;
+      json[r'countGroupByStatusType'] = this.countGroupByStatusType;
     return json;
   }
 
@@ -98,6 +104,7 @@ class TestPointAnalyticResult {
         countGroupByTesterAndStatus: TestPlanGroupByTesterAndStatus.listFromJson(json[r'countGroupByTesterAndStatus']),
         countGroupByStatusCode: TestPlanGroupByStatusCode.listFromJson(json[r'countGroupByStatusCode']),
         countGroupByTesterAndStatusCode: TestPlanGroupByTesterAndStatusCode.listFromJson(json[r'countGroupByTesterAndStatusCode']),
+        countGroupByStatusType: TestPlanGroupByStatusType.listFromJson(json[r'countGroupByStatusType']),
       );
     }
     return null;
@@ -152,6 +159,7 @@ class TestPointAnalyticResult {
     'countGroupByTesterAndStatus',
     'countGroupByStatusCode',
     'countGroupByTesterAndStatusCode',
+    'countGroupByStatusType',
   };
 }
 

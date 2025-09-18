@@ -14,43 +14,55 @@ class TestPlanTestPointsAnalyticsApiResult {
   /// Returns a new [TestPlanTestPointsAnalyticsApiResult] instance.
   TestPlanTestPointsAnalyticsApiResult({
     this.countGroupByStatus = const [],
+    this.countGroupByTesterAndStatus = const [],
     this.sumGroupByTester = const [],
     this.countGroupByTester = const [],
-    this.countGroupByTesterAndStatus = const [],
+    this.countGroupByStatusType = const [],
+    this.countGroupByTesterAndStatusType = const [],
   });
 
   List<TestPlanTestPointsStatusGroupApiResult> countGroupByStatus;
+
+  List<TestPlanTestPointsTesterAndStatusGroupApiResult> countGroupByTesterAndStatus;
 
   List<TestPlanTestPointsTesterGroupApiResult> sumGroupByTester;
 
   List<TestPlanTestPointsTesterGroupApiResult> countGroupByTester;
 
-  List<TestPlanTestPointsTesterAndStatusGroupApiResult> countGroupByTesterAndStatus;
+  List<TestPlanTestPointsStatusTypeGroupApiResult> countGroupByStatusType;
+
+  List<TestPlanTestPointsTesterAndStatusTypeGroupApiResult> countGroupByTesterAndStatusType;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is TestPlanTestPointsAnalyticsApiResult &&
     _deepEquality.equals(other.countGroupByStatus, countGroupByStatus) &&
+    _deepEquality.equals(other.countGroupByTesterAndStatus, countGroupByTesterAndStatus) &&
     _deepEquality.equals(other.sumGroupByTester, sumGroupByTester) &&
     _deepEquality.equals(other.countGroupByTester, countGroupByTester) &&
-    _deepEquality.equals(other.countGroupByTesterAndStatus, countGroupByTesterAndStatus);
+    _deepEquality.equals(other.countGroupByStatusType, countGroupByStatusType) &&
+    _deepEquality.equals(other.countGroupByTesterAndStatusType, countGroupByTesterAndStatusType);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (countGroupByStatus.hashCode) +
+    (countGroupByTesterAndStatus.hashCode) +
     (sumGroupByTester.hashCode) +
     (countGroupByTester.hashCode) +
-    (countGroupByTesterAndStatus.hashCode);
+    (countGroupByStatusType.hashCode) +
+    (countGroupByTesterAndStatusType.hashCode);
 
   @override
-  String toString() => 'TestPlanTestPointsAnalyticsApiResult[countGroupByStatus=$countGroupByStatus, sumGroupByTester=$sumGroupByTester, countGroupByTester=$countGroupByTester, countGroupByTesterAndStatus=$countGroupByTesterAndStatus]';
+  String toString() => 'TestPlanTestPointsAnalyticsApiResult[countGroupByStatus=$countGroupByStatus, countGroupByTesterAndStatus=$countGroupByTesterAndStatus, sumGroupByTester=$sumGroupByTester, countGroupByTester=$countGroupByTester, countGroupByStatusType=$countGroupByStatusType, countGroupByTesterAndStatusType=$countGroupByTesterAndStatusType]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'countGroupByStatus'] = this.countGroupByStatus;
+      json[r'countGroupByTesterAndStatus'] = this.countGroupByTesterAndStatus;
       json[r'sumGroupByTester'] = this.sumGroupByTester;
       json[r'countGroupByTester'] = this.countGroupByTester;
-      json[r'countGroupByTesterAndStatus'] = this.countGroupByTesterAndStatus;
+      json[r'countGroupByStatusType'] = this.countGroupByStatusType;
+      json[r'countGroupByTesterAndStatusType'] = this.countGroupByTesterAndStatusType;
     return json;
   }
 
@@ -74,9 +86,11 @@ class TestPlanTestPointsAnalyticsApiResult {
 
       return TestPlanTestPointsAnalyticsApiResult(
         countGroupByStatus: TestPlanTestPointsStatusGroupApiResult.listFromJson(json[r'countGroupByStatus']),
+        countGroupByTesterAndStatus: TestPlanTestPointsTesterAndStatusGroupApiResult.listFromJson(json[r'countGroupByTesterAndStatus']),
         sumGroupByTester: TestPlanTestPointsTesterGroupApiResult.listFromJson(json[r'sumGroupByTester']),
         countGroupByTester: TestPlanTestPointsTesterGroupApiResult.listFromJson(json[r'countGroupByTester']),
-        countGroupByTesterAndStatus: TestPlanTestPointsTesterAndStatusGroupApiResult.listFromJson(json[r'countGroupByTesterAndStatus']),
+        countGroupByStatusType: TestPlanTestPointsStatusTypeGroupApiResult.listFromJson(json[r'countGroupByStatusType']),
+        countGroupByTesterAndStatusType: TestPlanTestPointsTesterAndStatusTypeGroupApiResult.listFromJson(json[r'countGroupByTesterAndStatusType']),
       );
     }
     return null;
@@ -125,9 +139,11 @@ class TestPlanTestPointsAnalyticsApiResult {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'countGroupByStatus',
+    'countGroupByTesterAndStatus',
     'sumGroupByTester',
     'countGroupByTester',
-    'countGroupByTesterAndStatus',
+    'countGroupByStatusType',
+    'countGroupByTesterAndStatusType',
   };
 }
 

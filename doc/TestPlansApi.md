@@ -927,7 +927,7 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = TestPlansApi();
-final id = id_example; // String | Test plan unique or global ID
+final id = id_example; // String | 
 
 try {
     api_instance.apiV2TestPlansIdTestRunsTestResultsLastModifiedModifiedDateGet(id);
@@ -940,7 +940,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| Test plan unique or global ID | 
+ **id** | **String**|  | 
 
 ### Return type
 
@@ -1286,7 +1286,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTestSuitesById**
-> List<TestSuiteV2TreeModel> getTestSuitesById(id)
+> List<TestSuiteHierarchyApiResult> getTestSuitesById(id)
 
 Get TestSuites Tree By Id
 
@@ -1319,7 +1319,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<TestSuiteV2TreeModel>**](TestSuiteV2TreeModel.md)
+[**List<TestSuiteHierarchyApiResult>**](TestSuiteHierarchyApiResult.md)
 
 ### Authorization
 

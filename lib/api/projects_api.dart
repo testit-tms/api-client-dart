@@ -72,21 +72,18 @@ class ProjectsApi {
   }
 
   /// Performs an HTTP 'POST /api/v2/projects/demo' operation and returns the [Response].
-  /// Parameters:
-  ///
-  /// * [CreateProjectApiModel] createProjectApiModel:
-  Future<Response> apiV2ProjectsDemoPostWithHttpInfo({ CreateProjectApiModel? createProjectApiModel, }) async {
+  Future<Response> apiV2ProjectsDemoPostWithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/projects/demo';
 
     // ignore: prefer_final_locals
-    Object? postBody = createProjectApiModel;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>['application/json'];
+    const contentTypes = <String>[];
 
 
     return apiClient.invokeAPI(
@@ -100,11 +97,8 @@ class ProjectsApi {
     );
   }
 
-  /// Parameters:
-  ///
-  /// * [CreateProjectApiModel] createProjectApiModel:
-  Future<DemoProjectApiResult?> apiV2ProjectsDemoPost({ CreateProjectApiModel? createProjectApiModel, }) async {
-    final response = await apiV2ProjectsDemoPostWithHttpInfo( createProjectApiModel: createProjectApiModel, );
+  Future<DemoProjectApiResult?> apiV2ProjectsDemoPost() async {
+    final response = await apiV2ProjectsDemoPostWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -213,7 +207,7 @@ class ProjectsApi {
   ///   Unique or global ID of the project
   ///
   /// * [bool] isDeleted:
-  Future<List<FailureClassModel>?> apiV2ProjectsIdFailureClassesGet(String id, { bool? isDeleted, }) async {
+  Future<List<AutoTestResultReasonProjectApiResult>?> apiV2ProjectsIdFailureClassesGet(String id, { bool? isDeleted, }) async {
     final response = await apiV2ProjectsIdFailureClassesGetWithHttpInfo(id,  isDeleted: isDeleted, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -223,8 +217,8 @@ class ProjectsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<FailureClassModel>') as List)
-        .cast<FailureClassModel>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<AutoTestResultReasonProjectApiResult>') as List)
+        .cast<AutoTestResultReasonProjectApiResult>()
         .toList(growable: false);
 
     }

@@ -13,40 +13,26 @@ part of testit_api_client_dart;
 class DemoProjectApiResult {
   /// Returns a new [DemoProjectApiResult] instance.
   DemoProjectApiResult({
-    required this.projectId,
-    required this.projectGlobalId,
     required this.jobId,
   });
-
-  /// Demo project ID
-  String projectId;
-
-  /// Demo project global ID
-  int projectGlobalId;
 
   /// Job ID
   String jobId;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is DemoProjectApiResult &&
-    other.projectId == projectId &&
-    other.projectGlobalId == projectGlobalId &&
     other.jobId == jobId;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (projectId.hashCode) +
-    (projectGlobalId.hashCode) +
     (jobId.hashCode);
 
   @override
-  String toString() => 'DemoProjectApiResult[projectId=$projectId, projectGlobalId=$projectGlobalId, jobId=$jobId]';
+  String toString() => 'DemoProjectApiResult[jobId=$jobId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'projectId'] = this.projectId;
-      json[r'projectGlobalId'] = this.projectGlobalId;
       json[r'jobId'] = this.jobId;
     return json;
   }
@@ -70,8 +56,6 @@ class DemoProjectApiResult {
       }());
 
       return DemoProjectApiResult(
-        projectId: mapValueOfType<String>(json, r'projectId')!,
-        projectGlobalId: mapValueOfType<int>(json, r'projectGlobalId')!,
         jobId: mapValueOfType<String>(json, r'jobId')!,
       );
     }
@@ -120,8 +104,6 @@ class DemoProjectApiResult {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'projectId',
-    'projectGlobalId',
     'jobId',
   };
 }

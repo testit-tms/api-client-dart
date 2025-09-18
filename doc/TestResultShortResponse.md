@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **links** | [**List<LinkShort>**](LinkShort.md) | Collection of links attached to the test result | [default to const []]
 **attachments** | [**List<AttachmentApiResult>**](AttachmentApiResult.md) | Collection of files attached to the test result | [default to const []]
 **rerunCompletedCount** | **int** | Run count | 
+**autotestExternalId** | **String** | External ID of autotest represented by the test result | [optional] 
 **outcome** | **String** | Outcome of the test result | [optional] 
 **status** | [**TestStatusApiResult**](TestStatusApiResult.md) |  | [optional] 
 **comment** | **String** | Comment to the test result | [optional] 

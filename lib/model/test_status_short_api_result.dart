@@ -16,6 +16,7 @@ class TestStatusShortApiResult {
     required this.id,
     required this.name,
     required this.code,
+    required this.type,
   });
 
   String id;
@@ -24,27 +25,33 @@ class TestStatusShortApiResult {
 
   String code;
 
+  /// Collection of possible status types
+  TestStatusApiType type;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is TestStatusShortApiResult &&
     other.id == id &&
     other.name == name &&
-    other.code == code;
+    other.code == code &&
+    other.type == type;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id.hashCode) +
     (name.hashCode) +
-    (code.hashCode);
+    (code.hashCode) +
+    (type.hashCode);
 
   @override
-  String toString() => 'TestStatusShortApiResult[id=$id, name=$name, code=$code]';
+  String toString() => 'TestStatusShortApiResult[id=$id, name=$name, code=$code, type=$type]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
       json[r'name'] = this.name;
       json[r'code'] = this.code;
+      json[r'type'] = this.type;
     return json;
   }
 
@@ -70,6 +77,7 @@ class TestStatusShortApiResult {
         id: mapValueOfType<String>(json, r'id')!,
         name: mapValueOfType<String>(json, r'name')!,
         code: mapValueOfType<String>(json, r'code')!,
+        type: TestStatusApiType.fromJson(json[r'type'])!,
       );
     }
     return null;
@@ -120,6 +128,7 @@ class TestStatusShortApiResult {
     'id',
     'name',
     'code',
+    'type',
   };
 }
 

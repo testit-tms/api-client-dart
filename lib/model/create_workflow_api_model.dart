@@ -16,6 +16,7 @@ class CreateWorkflowApiModel {
     required this.name,
     this.statuses = const [],
     this.isDefault,
+    this.projectIds = const [],
   });
 
   String name;
@@ -24,21 +25,25 @@ class CreateWorkflowApiModel {
 
   bool? isDefault;
 
+  List<String>? projectIds;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateWorkflowApiModel &&
     other.name == name &&
     _deepEquality.equals(other.statuses, statuses) &&
-    other.isDefault == isDefault;
+    other.isDefault == isDefault &&
+    _deepEquality.equals(other.projectIds, projectIds);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (name.hashCode) +
     (statuses.hashCode) +
-    (isDefault == null ? 0 : isDefault!.hashCode);
+    (isDefault == null ? 0 : isDefault!.hashCode) +
+    (projectIds == null ? 0 : projectIds!.hashCode);
 
   @override
-  String toString() => 'CreateWorkflowApiModel[name=$name, statuses=$statuses, isDefault=$isDefault]';
+  String toString() => 'CreateWorkflowApiModel[name=$name, statuses=$statuses, isDefault=$isDefault, projectIds=$projectIds]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -48,6 +53,11 @@ class CreateWorkflowApiModel {
       json[r'isDefault'] = this.isDefault;
     } else {
       json[r'isDefault'] = null;
+    }
+    if (this.projectIds != null) {
+      json[r'projectIds'] = this.projectIds;
+    } else {
+      json[r'projectIds'] = null;
     }
     return json;
   }
@@ -74,6 +84,9 @@ class CreateWorkflowApiModel {
         name: mapValueOfType<String>(json, r'name')!,
         statuses: WorkflowStatusApiModel.listFromJson(json[r'statuses']),
         isDefault: mapValueOfType<bool>(json, r'isDefault'),
+        projectIds: json[r'projectIds'] is Iterable
+            ? (json[r'projectIds'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
       );
     }
     return null;

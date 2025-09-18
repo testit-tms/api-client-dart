@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **projectId** | **String** | Unique ID of the autotest project | 
 **name** | **String** | Name of the autotest | 
 **workItemIdsForLinkWithAutoTest** | **Set<String>** | Specifies the IDs of work items to link your autotest to. You can specify several IDs. | [optional] [default to const {}]
+**workItemIds** | **List<String>** | Specifies the IDs of work items to link your autotest to. You can specify several IDs. | [optional] [default to const []]
 **shouldCreateWorkItem** | **bool** | Creates a test case linked to the autotest. | [optional] 
 **attributes** | [**Map<String, Object>**](Object.md) | Key value pair of custom work item attributes | [optional] [default to const {}]
 **links** | [**List<LinkPostModel>**](LinkPostModel.md) | Collection of the autotest links | [optional] [default to const []]

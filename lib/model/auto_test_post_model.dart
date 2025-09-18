@@ -17,6 +17,7 @@ class AutoTestPostModel {
     required this.projectId,
     required this.name,
     this.workItemIdsForLinkWithAutoTest = const {},
+    this.workItemIds = const [],
     this.shouldCreateWorkItem,
     this.attributes = const {},
     this.links = const [],
@@ -43,6 +44,9 @@ class AutoTestPostModel {
 
   /// Specifies the IDs of work items to link your autotest to. You can specify several IDs.
   Set<String>? workItemIdsForLinkWithAutoTest;
+
+  /// Specifies the IDs of work items to link your autotest to. You can specify several IDs.
+  List<String>? workItemIds;
 
   /// Creates a test case linked to the autotest.
   bool? shouldCreateWorkItem;
@@ -89,6 +93,7 @@ class AutoTestPostModel {
     other.projectId == projectId &&
     other.name == name &&
     _deepEquality.equals(other.workItemIdsForLinkWithAutoTest, workItemIdsForLinkWithAutoTest) &&
+    _deepEquality.equals(other.workItemIds, workItemIds) &&
     other.shouldCreateWorkItem == shouldCreateWorkItem &&
     _deepEquality.equals(other.attributes, attributes) &&
     _deepEquality.equals(other.links, links) &&
@@ -110,6 +115,7 @@ class AutoTestPostModel {
     (projectId.hashCode) +
     (name.hashCode) +
     (workItemIdsForLinkWithAutoTest == null ? 0 : workItemIdsForLinkWithAutoTest!.hashCode) +
+    (workItemIds == null ? 0 : workItemIds!.hashCode) +
     (shouldCreateWorkItem == null ? 0 : shouldCreateWorkItem!.hashCode) +
     (attributes == null ? 0 : attributes!.hashCode) +
     (links == null ? 0 : links!.hashCode) +
@@ -125,7 +131,7 @@ class AutoTestPostModel {
     (externalKey == null ? 0 : externalKey!.hashCode);
 
   @override
-  String toString() => 'AutoTestPostModel[externalId=$externalId, projectId=$projectId, name=$name, workItemIdsForLinkWithAutoTest=$workItemIdsForLinkWithAutoTest, shouldCreateWorkItem=$shouldCreateWorkItem, attributes=$attributes, links=$links, namespace=$namespace, classname=$classname, steps=$steps, setup=$setup, teardown=$teardown, title=$title, description=$description, labels=$labels, isFlaky=$isFlaky, externalKey=$externalKey]';
+  String toString() => 'AutoTestPostModel[externalId=$externalId, projectId=$projectId, name=$name, workItemIdsForLinkWithAutoTest=$workItemIdsForLinkWithAutoTest, workItemIds=$workItemIds, shouldCreateWorkItem=$shouldCreateWorkItem, attributes=$attributes, links=$links, namespace=$namespace, classname=$classname, steps=$steps, setup=$setup, teardown=$teardown, title=$title, description=$description, labels=$labels, isFlaky=$isFlaky, externalKey=$externalKey]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -136,6 +142,11 @@ class AutoTestPostModel {
       json[r'workItemIdsForLinkWithAutoTest'] = this.workItemIdsForLinkWithAutoTest!.toList(growable: false);
     } else {
       json[r'workItemIdsForLinkWithAutoTest'] = null;
+    }
+    if (this.workItemIds != null) {
+      json[r'workItemIds'] = this.workItemIds;
+    } else {
+      json[r'workItemIds'] = null;
     }
     if (this.shouldCreateWorkItem != null) {
       json[r'shouldCreateWorkItem'] = this.shouldCreateWorkItem;
@@ -230,6 +241,9 @@ class AutoTestPostModel {
         workItemIdsForLinkWithAutoTest: json[r'workItemIdsForLinkWithAutoTest'] is Iterable
             ? (json[r'workItemIdsForLinkWithAutoTest'] as Iterable).cast<String>().toSet()
             : const {},
+        workItemIds: json[r'workItemIds'] is Iterable
+            ? (json[r'workItemIds'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
         shouldCreateWorkItem: mapValueOfType<bool>(json, r'shouldCreateWorkItem'),
         attributes: mapCastOfType<String, Object>(json, r'attributes') ?? const {},
         links: LinkPostModel.listFromJson(json[r'links']),

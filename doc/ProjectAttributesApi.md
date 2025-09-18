@@ -195,7 +195,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectId** | **String**| Project internal (UUID) or global (integer) identifier | 
- **isDeleted** | [**DeletionState**](.md)|  | [optional] [default to NotDeleted]
+ **isDeleted** | [**DeletionState**](.md)|  | [optional] 
 
 ### Return type
 

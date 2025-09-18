@@ -18,6 +18,7 @@ class AutoTestPutModel {
     required this.name,
     this.id,
     this.workItemIdsForLinkWithAutoTest = const {},
+    this.workItemIds = const [],
     this.links = const [],
     this.namespace,
     this.classname,
@@ -44,6 +45,8 @@ class AutoTestPutModel {
   String? id;
 
   Set<String>? workItemIdsForLinkWithAutoTest;
+
+  List<String>? workItemIds;
 
   /// Collection of the autotest links
   List<LinkPutModel>? links;
@@ -85,6 +88,7 @@ class AutoTestPutModel {
     other.name == name &&
     other.id == id &&
     _deepEquality.equals(other.workItemIdsForLinkWithAutoTest, workItemIdsForLinkWithAutoTest) &&
+    _deepEquality.equals(other.workItemIds, workItemIds) &&
     _deepEquality.equals(other.links, links) &&
     other.namespace == namespace &&
     other.classname == classname &&
@@ -105,6 +109,7 @@ class AutoTestPutModel {
     (name.hashCode) +
     (id == null ? 0 : id!.hashCode) +
     (workItemIdsForLinkWithAutoTest == null ? 0 : workItemIdsForLinkWithAutoTest!.hashCode) +
+    (workItemIds == null ? 0 : workItemIds!.hashCode) +
     (links == null ? 0 : links!.hashCode) +
     (namespace == null ? 0 : namespace!.hashCode) +
     (classname == null ? 0 : classname!.hashCode) +
@@ -118,7 +123,7 @@ class AutoTestPutModel {
     (externalKey == null ? 0 : externalKey!.hashCode);
 
   @override
-  String toString() => 'AutoTestPutModel[externalId=$externalId, projectId=$projectId, name=$name, id=$id, workItemIdsForLinkWithAutoTest=$workItemIdsForLinkWithAutoTest, links=$links, namespace=$namespace, classname=$classname, steps=$steps, setup=$setup, teardown=$teardown, title=$title, description=$description, labels=$labels, isFlaky=$isFlaky, externalKey=$externalKey]';
+  String toString() => 'AutoTestPutModel[externalId=$externalId, projectId=$projectId, name=$name, id=$id, workItemIdsForLinkWithAutoTest=$workItemIdsForLinkWithAutoTest, workItemIds=$workItemIds, links=$links, namespace=$namespace, classname=$classname, steps=$steps, setup=$setup, teardown=$teardown, title=$title, description=$description, labels=$labels, isFlaky=$isFlaky, externalKey=$externalKey]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -134,6 +139,11 @@ class AutoTestPutModel {
       json[r'workItemIdsForLinkWithAutoTest'] = this.workItemIdsForLinkWithAutoTest!.toList(growable: false);
     } else {
       json[r'workItemIdsForLinkWithAutoTest'] = null;
+    }
+    if (this.workItemIds != null) {
+      json[r'workItemIds'] = this.workItemIds;
+    } else {
+      json[r'workItemIds'] = null;
     }
     if (this.links != null) {
       json[r'links'] = this.links;
@@ -219,6 +229,9 @@ class AutoTestPutModel {
         workItemIdsForLinkWithAutoTest: json[r'workItemIdsForLinkWithAutoTest'] is Iterable
             ? (json[r'workItemIdsForLinkWithAutoTest'] as Iterable).cast<String>().toSet()
             : const {},
+        workItemIds: json[r'workItemIds'] is Iterable
+            ? (json[r'workItemIds'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
         links: LinkPutModel.listFromJson(json[r'links']),
         namespace: mapValueOfType<String>(json, r'namespace'),
         classname: mapValueOfType<String>(json, r'classname'),

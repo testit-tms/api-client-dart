@@ -47,9 +47,9 @@ class ExternalFormFieldModel {
 
   String? controlType;
 
-  int? minLength;
+  double? minLength;
 
-  int? maxLength;
+  double? maxLength;
 
   bool? isRequired;
 
@@ -194,8 +194,8 @@ class ExternalFormFieldModel {
         defaultValue: mapValueOfType<Object>(json, r'defaultValue'),
         autoCompleteUrl: mapValueOfType<String>(json, r'autoCompleteUrl'),
         controlType: mapValueOfType<String>(json, r'controlType'),
-        minLength: mapValueOfType<int>(json, r'minLength'),
-        maxLength: mapValueOfType<int>(json, r'maxLength'),
+        minLength: mapValueOfType<double>(json, r'minLength'),
+        maxLength: mapValueOfType<double>(json, r'maxLength'),
         isRequired: mapValueOfType<bool>(json, r'isRequired'),
         min: mapValueOfType<Object>(json, r'min'),
         max: mapValueOfType<Object>(json, r'max'),

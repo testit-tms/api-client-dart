@@ -64,6 +64,9 @@ String parameterToString(dynamic value) {
   if (value is AutotestResultOutcome) {
     return AutotestResultOutcomeTypeTransformer().encode(value).toString();
   }
+  if (value is AvailableFailureCategory) {
+    return AvailableFailureCategoryTypeTransformer().encode(value).toString();
+  }
   if (value is AvailableTestResultOutcome) {
     return AvailableTestResultOutcomeTypeTransformer().encode(value).toString();
   }
@@ -78,6 +81,9 @@ String parameterToString(dynamic value) {
   }
   if (value is DeletionState) {
     return DeletionStateTypeTransformer().encode(value).toString();
+  }
+  if (value is ExternalIssueApiField) {
+    return ExternalIssueApiFieldTypeTransformer().encode(value).toString();
   }
   if (value is ExternalServiceCategoryApiResult) {
     return ExternalServiceCategoryApiResultTypeTransformer().encode(value).toString();
@@ -139,6 +145,9 @@ String parameterToString(dynamic value) {
   if (value is TestSuiteType) {
     return TestSuiteTypeTypeTransformer().encode(value).toString();
   }
+  if (value is TestSuiteTypeApiResult) {
+    return TestSuiteTypeApiResultTypeTransformer().encode(value).toString();
+  }
   if (value is WebHookEventType) {
     return WebHookEventTypeTypeTransformer().encode(value).toString();
   }
@@ -151,6 +160,9 @@ String parameterToString(dynamic value) {
   if (value is WebhookVariablesType) {
     return WebhookVariablesTypeTypeTransformer().encode(value).toString();
   }
+  if (value is WorkItemEntityTypeApiModel) {
+    return WorkItemEntityTypeApiModelTypeTransformer().encode(value).toString();
+  }
   if (value is WorkItemEntityTypes) {
     return WorkItemEntityTypesTypeTransformer().encode(value).toString();
   }
@@ -160,14 +172,23 @@ String parameterToString(dynamic value) {
   if (value is WorkItemPriority) {
     return WorkItemPriorityTypeTransformer().encode(value).toString();
   }
+  if (value is WorkItemPriorityApiModel) {
+    return WorkItemPriorityApiModelTypeTransformer().encode(value).toString();
+  }
   if (value is WorkItemPriorityModel) {
     return WorkItemPriorityModelTypeTransformer().encode(value).toString();
+  }
+  if (value is WorkItemSourceTypeApiModel) {
+    return WorkItemSourceTypeApiModelTypeTransformer().encode(value).toString();
   }
   if (value is WorkItemSourceTypeModel) {
     return WorkItemSourceTypeModelTypeTransformer().encode(value).toString();
   }
   if (value is WorkItemState) {
     return WorkItemStateTypeTransformer().encode(value).toString();
+  }
+  if (value is WorkItemStateApiModel) {
+    return WorkItemStateApiModelTypeTransformer().encode(value).toString();
   }
   if (value is WorkItemStates) {
     return WorkItemStatesTypeTransformer().encode(value).toString();

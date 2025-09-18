@@ -10,60 +10,58 @@
 
 part of testit_api_client_dart;
 
-class FailureClassRegexModel {
-  /// Returns a new [FailureClassRegexModel] instance.
-  FailureClassRegexModel({
-    required this.regexText,
+class FailureClassRegexApiResult {
+  /// Returns a new [FailureClassRegexApiResult] instance.
+  FailureClassRegexApiResult({
     required this.id,
     required this.isDeleted,
-    this.failureClassId,
+    required this.regexText,
+    required this.failureClassId,
   });
 
-  String regexText;
-
-  /// Unique ID of the entity
+  /// Regex unique identifier
   String id;
 
   /// Indicates if the entity is deleted
   bool isDeleted;
 
-  String? failureClassId;
+  /// Regex value
+  String regexText;
+
+  /// Failure category identifier
+  String failureClassId;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is FailureClassRegexModel &&
-    other.regexText == regexText &&
+  bool operator ==(Object other) => identical(this, other) || other is FailureClassRegexApiResult &&
     other.id == id &&
     other.isDeleted == isDeleted &&
+    other.regexText == regexText &&
     other.failureClassId == failureClassId;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (regexText.hashCode) +
     (id.hashCode) +
     (isDeleted.hashCode) +
-    (failureClassId == null ? 0 : failureClassId!.hashCode);
+    (regexText.hashCode) +
+    (failureClassId.hashCode);
 
   @override
-  String toString() => 'FailureClassRegexModel[regexText=$regexText, id=$id, isDeleted=$isDeleted, failureClassId=$failureClassId]';
+  String toString() => 'FailureClassRegexApiResult[id=$id, isDeleted=$isDeleted, regexText=$regexText, failureClassId=$failureClassId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'regexText'] = this.regexText;
       json[r'id'] = this.id;
       json[r'isDeleted'] = this.isDeleted;
-    if (this.failureClassId != null) {
+      json[r'regexText'] = this.regexText;
       json[r'failureClassId'] = this.failureClassId;
-    } else {
-      json[r'failureClassId'] = null;
-    }
     return json;
   }
 
-  /// Returns a new [FailureClassRegexModel] instance and imports its values from
+  /// Returns a new [FailureClassRegexApiResult] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static FailureClassRegexModel? fromJson(dynamic value) {
+  static FailureClassRegexApiResult? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -72,27 +70,27 @@ class FailureClassRegexModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "FailureClassRegexModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "FailureClassRegexModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "FailureClassRegexApiResult[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "FailureClassRegexApiResult[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return FailureClassRegexModel(
-        regexText: mapValueOfType<String>(json, r'regexText')!,
+      return FailureClassRegexApiResult(
         id: mapValueOfType<String>(json, r'id')!,
         isDeleted: mapValueOfType<bool>(json, r'isDeleted')!,
-        failureClassId: mapValueOfType<String>(json, r'failureClassId'),
+        regexText: mapValueOfType<String>(json, r'regexText')!,
+        failureClassId: mapValueOfType<String>(json, r'failureClassId')!,
       );
     }
     return null;
   }
 
-  static List<FailureClassRegexModel> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <FailureClassRegexModel>[];
+  static List<FailureClassRegexApiResult> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <FailureClassRegexApiResult>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = FailureClassRegexModel.fromJson(row);
+        final value = FailureClassRegexApiResult.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -101,12 +99,12 @@ class FailureClassRegexModel {
     return result.toList(growable: growable);
   }
 
-  static Map<String, FailureClassRegexModel> mapFromJson(dynamic json) {
-    final map = <String, FailureClassRegexModel>{};
+  static Map<String, FailureClassRegexApiResult> mapFromJson(dynamic json) {
+    final map = <String, FailureClassRegexApiResult>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = FailureClassRegexModel.fromJson(entry.value);
+        final value = FailureClassRegexApiResult.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -115,14 +113,14 @@ class FailureClassRegexModel {
     return map;
   }
 
-  // maps a json object with a list of FailureClassRegexModel-objects as value to a dart map
-  static Map<String, List<FailureClassRegexModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<FailureClassRegexModel>>{};
+  // maps a json object with a list of FailureClassRegexApiResult-objects as value to a dart map
+  static Map<String, List<FailureClassRegexApiResult>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<FailureClassRegexApiResult>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = FailureClassRegexModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = FailureClassRegexApiResult.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -130,9 +128,10 @@ class FailureClassRegexModel {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'regexText',
     'id',
     'isDeleted',
+    'regexText',
+    'failureClassId',
   };
 }
 

@@ -17,9 +17,9 @@ class WorkflowStatusApiResult {
     required this.name,
     required this.code,
     required this.type,
+    required this.description,
     required this.isSystem,
     required this.priority,
-    this.description,
   });
 
   String id;
@@ -31,11 +31,11 @@ class WorkflowStatusApiResult {
   /// Collection of possible status types
   TestStatusApiType type;
 
+  String? description;
+
   bool isSystem;
 
   int priority;
-
-  String? description;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is WorkflowStatusApiResult &&
@@ -43,9 +43,9 @@ class WorkflowStatusApiResult {
     other.name == name &&
     other.code == code &&
     other.type == type &&
+    other.description == description &&
     other.isSystem == isSystem &&
-    other.priority == priority &&
-    other.description == description;
+    other.priority == priority;
 
   @override
   int get hashCode =>
@@ -54,12 +54,12 @@ class WorkflowStatusApiResult {
     (name.hashCode) +
     (code.hashCode) +
     (type.hashCode) +
+    (description == null ? 0 : description!.hashCode) +
     (isSystem.hashCode) +
-    (priority.hashCode) +
-    (description == null ? 0 : description!.hashCode);
+    (priority.hashCode);
 
   @override
-  String toString() => 'WorkflowStatusApiResult[id=$id, name=$name, code=$code, type=$type, isSystem=$isSystem, priority=$priority, description=$description]';
+  String toString() => 'WorkflowStatusApiResult[id=$id, name=$name, code=$code, type=$type, description=$description, isSystem=$isSystem, priority=$priority]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -67,13 +67,13 @@ class WorkflowStatusApiResult {
       json[r'name'] = this.name;
       json[r'code'] = this.code;
       json[r'type'] = this.type;
-      json[r'isSystem'] = this.isSystem;
-      json[r'priority'] = this.priority;
     if (this.description != null) {
       json[r'description'] = this.description;
     } else {
       json[r'description'] = null;
     }
+      json[r'isSystem'] = this.isSystem;
+      json[r'priority'] = this.priority;
     return json;
   }
 
@@ -100,9 +100,9 @@ class WorkflowStatusApiResult {
         name: mapValueOfType<String>(json, r'name')!,
         code: mapValueOfType<String>(json, r'code')!,
         type: TestStatusApiType.fromJson(json[r'type'])!,
+        description: mapValueOfType<String>(json, r'description'),
         isSystem: mapValueOfType<bool>(json, r'isSystem')!,
         priority: mapValueOfType<int>(json, r'priority')!,
-        description: mapValueOfType<String>(json, r'description'),
       );
     }
     return null;
@@ -154,6 +154,7 @@ class WorkflowStatusApiResult {
     'name',
     'code',
     'type',
+    'description',
     'isSystem',
     'priority',
   };

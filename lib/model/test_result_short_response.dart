@@ -25,6 +25,7 @@ class TestResultShortResponse {
     this.links = const [],
     this.attachments = const [],
     required this.rerunCompletedCount,
+    this.autotestExternalId,
     this.outcome,
     this.status,
     this.comment,
@@ -70,6 +71,9 @@ class TestResultShortResponse {
   /// Run count
   int rerunCompletedCount;
 
+  /// External ID of autotest represented by the test result
+  String? autotestExternalId;
+
   /// Outcome of the test result
   String? outcome;
 
@@ -104,6 +108,7 @@ class TestResultShortResponse {
     _deepEquality.equals(other.links, links) &&
     _deepEquality.equals(other.attachments, attachments) &&
     other.rerunCompletedCount == rerunCompletedCount &&
+    other.autotestExternalId == autotestExternalId &&
     other.outcome == outcome &&
     other.status == status &&
     other.comment == comment &&
@@ -127,6 +132,7 @@ class TestResultShortResponse {
     (links.hashCode) +
     (attachments.hashCode) +
     (rerunCompletedCount.hashCode) +
+    (autotestExternalId == null ? 0 : autotestExternalId!.hashCode) +
     (outcome == null ? 0 : outcome!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
     (comment == null ? 0 : comment!.hashCode) +
@@ -136,7 +142,7 @@ class TestResultShortResponse {
     (duration == null ? 0 : duration!.hashCode);
 
   @override
-  String toString() => 'TestResultShortResponse[id=$id, name=$name, autotestGlobalId=$autotestGlobalId, testRunId=$testRunId, configurationId=$configurationId, configurationName=$configurationName, resultReasons=$resultReasons, date=$date, createdDate=$createdDate, links=$links, attachments=$attachments, rerunCompletedCount=$rerunCompletedCount, outcome=$outcome, status=$status, comment=$comment, modifiedDate=$modifiedDate, startedOn=$startedOn, completedOn=$completedOn, duration=$duration]';
+  String toString() => 'TestResultShortResponse[id=$id, name=$name, autotestGlobalId=$autotestGlobalId, testRunId=$testRunId, configurationId=$configurationId, configurationName=$configurationName, resultReasons=$resultReasons, date=$date, createdDate=$createdDate, links=$links, attachments=$attachments, rerunCompletedCount=$rerunCompletedCount, autotestExternalId=$autotestExternalId, outcome=$outcome, status=$status, comment=$comment, modifiedDate=$modifiedDate, startedOn=$startedOn, completedOn=$completedOn, duration=$duration]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -152,6 +158,11 @@ class TestResultShortResponse {
       json[r'links'] = this.links;
       json[r'attachments'] = this.attachments;
       json[r'rerunCompletedCount'] = this.rerunCompletedCount;
+    if (this.autotestExternalId != null) {
+      json[r'autotestExternalId'] = this.autotestExternalId;
+    } else {
+      json[r'autotestExternalId'] = null;
+    }
     if (this.outcome != null) {
       json[r'outcome'] = this.outcome;
     } else {
@@ -221,6 +232,7 @@ class TestResultShortResponse {
         links: LinkShort.listFromJson(json[r'links']),
         attachments: AttachmentApiResult.listFromJson(json[r'attachments']),
         rerunCompletedCount: mapValueOfType<int>(json, r'rerunCompletedCount')!,
+        autotestExternalId: mapValueOfType<String>(json, r'autotestExternalId'),
         outcome: mapValueOfType<String>(json, r'outcome'),
         status: TestStatusApiResult.fromJson(json[r'status']),
         comment: mapValueOfType<String>(json, r'comment'),

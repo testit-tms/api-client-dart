@@ -380,7 +380,22 @@ class ParametersApi {
   /// Parameters:
   ///
   /// * [List<String>] projectIds:
-  Future<Response> apiV2ParametersKeysGetWithHttpInfo({ List<String>? projectIds, }) async {
+  ///
+  /// * [int] skip:
+  ///   Amount of items to be skipped (offset)
+  ///
+  /// * [int] take:
+  ///   Amount of items to be taken (limit)
+  ///
+  /// * [String] orderBy:
+  ///   SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC)
+  ///
+  /// * [String] searchField:
+  ///   Property name for searching
+  ///
+  /// * [String] searchValue:
+  ///   Value for searching
+  Future<Response> apiV2ParametersKeysGetWithHttpInfo({ List<String>? projectIds, int? skip, int? take, String? orderBy, String? searchField, String? searchValue, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/parameters/keys';
 
@@ -393,6 +408,21 @@ class ParametersApi {
 
     if (projectIds != null) {
       queryParams.addAll(_queryParams('multi', 'projectIds', projectIds));
+    }
+    if (skip != null) {
+      queryParams.addAll(_queryParams('', 'Skip', skip));
+    }
+    if (take != null) {
+      queryParams.addAll(_queryParams('', 'Take', take));
+    }
+    if (orderBy != null) {
+      queryParams.addAll(_queryParams('', 'OrderBy', orderBy));
+    }
+    if (searchField != null) {
+      queryParams.addAll(_queryParams('', 'SearchField', searchField));
+    }
+    if (searchValue != null) {
+      queryParams.addAll(_queryParams('', 'SearchValue', searchValue));
     }
 
     const contentTypes = <String>[];
@@ -416,8 +446,23 @@ class ParametersApi {
   /// Parameters:
   ///
   /// * [List<String>] projectIds:
-  Future<List<String>?> apiV2ParametersKeysGet({ List<String>? projectIds, }) async {
-    final response = await apiV2ParametersKeysGetWithHttpInfo( projectIds: projectIds, );
+  ///
+  /// * [int] skip:
+  ///   Amount of items to be skipped (offset)
+  ///
+  /// * [int] take:
+  ///   Amount of items to be taken (limit)
+  ///
+  /// * [String] orderBy:
+  ///   SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC)
+  ///
+  /// * [String] searchField:
+  ///   Property name for searching
+  ///
+  /// * [String] searchValue:
+  ///   Value for searching
+  Future<List<String>?> apiV2ParametersKeysGet({ List<String>? projectIds, int? skip, int? take, String? orderBy, String? searchField, String? searchValue, }) async {
+    final response = await apiV2ParametersKeysGetWithHttpInfo( projectIds: projectIds, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

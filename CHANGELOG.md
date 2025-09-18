@@ -1,3 +1,7 @@
+## 1.2.4
+
+* TMS Cloud support
+
 ## 1.2.2
 
 * TMS Cloud support

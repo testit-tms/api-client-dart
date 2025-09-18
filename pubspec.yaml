@@ -3,7 +3,7 @@
 #
 
 name: 'testit_api_client_dart'
-version: '1.2.2'
+version: '1.2.4'
 description: 'Auto-generated Dart API client for Test IT'
 repository: https://github.com/testit-tms/api-client-dart/
 homepage: https://testit.software/

@@ -14,25 +14,33 @@ class ExternalIssueApiFieldSuggestion {
   /// Returns a new [ExternalIssueApiFieldSuggestion] instance.
   ExternalIssueApiFieldSuggestion({
     required this.value,
+    required this.externalService,
   });
 
+  /// Value of the external issue field
   String value;
+
+  /// Associated external service with this value
+  ExternalIssueExternalServiceApiResult externalService;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ExternalIssueApiFieldSuggestion &&
-    other.value == value;
+    other.value == value &&
+    other.externalService == externalService;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (value.hashCode);
+    (value.hashCode) +
+    (externalService.hashCode);
 
   @override
-  String toString() => 'ExternalIssueApiFieldSuggestion[value=$value]';
+  String toString() => 'ExternalIssueApiFieldSuggestion[value=$value, externalService=$externalService]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'value'] = this.value;
+      json[r'externalService'] = this.externalService;
     return json;
   }
 
@@ -56,6 +64,7 @@ class ExternalIssueApiFieldSuggestion {
 
       return ExternalIssueApiFieldSuggestion(
         value: mapValueOfType<String>(json, r'value')!,
+        externalService: ExternalIssueExternalServiceApiResult.fromJson(json[r'externalService'])!,
       );
     }
     return null;
@@ -104,6 +113,7 @@ class ExternalIssueApiFieldSuggestion {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'value',
+    'externalService',
   };
 }
 

@@ -9,15 +9,15 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**apiV2WebhooksLogsGet**](WebhooksLogsApi.md#apiv2webhookslogsget) | **GET** /api/v2/webhooks/logs | Get all webhook logs
+[**apiV2WebhooksLogsGet**](WebhooksLogsApi.md#apiv2webhookslogsget) | **GET** /api/v2/webhooks/logs | Get last webhook logs
 [**apiV2WebhooksLogsIdDelete**](WebhooksLogsApi.md#apiv2webhookslogsiddelete) | **DELETE** /api/v2/webhooks/logs/{id} | Delete webhook log by ID
 [**apiV2WebhooksLogsIdGet**](WebhooksLogsApi.md#apiv2webhookslogsidget) | **GET** /api/v2/webhooks/logs/{id} | Get webhook log by ID
 
 
 # **apiV2WebhooksLogsGet**
-> List<WebHookLogModel> apiV2WebhooksLogsGet(projectId, skip, take, orderBy, searchField, searchValue)
+> List<WebhookLogApiResult> apiV2WebhooksLogsGet(projectId, skip, take, orderBy, searchField, searchValue)
 
-Get all webhook logs
+Get last webhook logs
 
 ### Example
 ```dart
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<WebHookLogModel>**](WebHookLogModel.md)
+[**List<WebhookLogApiResult>**](WebhookLogApiResult.md)
 
 ### Authorization
 
@@ -114,7 +114,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apiV2WebhooksLogsIdGet**
-> WebHookLogModel apiV2WebhooksLogsIdGet(id)
+> WebhookLogApiResult apiV2WebhooksLogsIdGet(id)
 
 Get webhook log by ID
 
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**WebHookLogModel**](WebHookLogModel.md)
+[**WebhookLogApiResult**](WebhookLogApiResult.md)
 
 ### Authorization
 

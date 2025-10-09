@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **autoTests** | [**List<AutoTestModel>**](AutoTestModel.md) | Automated tests associated with the work item | [default to const []]
 **attachments** | [**List<AttachmentModel>**](AttachmentModel.md) | Files attached to the work item | [default to const []]
 **links** | [**List<LinkModel>**](LinkModel.md) | Set of links related to the work item | [default to const []]
+**externalIssues** | [**List<ExternalIssueApiResult>**](ExternalIssueApiResult.md) | Set of external issues related to the work item | [default to const []]
 **createdDate** | [**DateTime**](DateTime.md) | Creation date of the work item | 
 **createdById** | **String** | Unique identifier of the work item creator | 
 **isDeleted** | **bool** | Indicates whether the work item is marked as deleted | 

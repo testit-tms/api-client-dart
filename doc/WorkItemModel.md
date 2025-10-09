@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **createdDate** | [**DateTime**](DateTime.md) |  | 
 **createdById** | **String** |  | 
 **globalId** | **int** |  | 
+**externalIssues** | [**List<ExternalIssueModel>**](ExternalIssueModel.md) |  | [default to const []]
 **id** | **String** |  | 
 **sectionId** | **String** |  | 
 **state** | [**WorkItemStates**](WorkItemStates.md) |  | 

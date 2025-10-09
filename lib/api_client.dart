@@ -446,6 +446,24 @@ class ApiClient {
           return ExternalIssueApiFieldSuggestion.fromJson(value);
         case 'ExternalIssueApiFieldSuggestionReply':
           return ExternalIssueApiFieldSuggestionReply.fromJson(value);
+        case 'ExternalIssueApiMetadata':
+          return ExternalIssueApiMetadata.fromJson(value);
+        case 'ExternalIssueApiPriority':
+          return ExternalIssueApiPriority.fromJson(value);
+        case 'ExternalIssueApiResult':
+          return ExternalIssueApiResult.fromJson(value);
+        case 'ExternalIssueApiType':
+          return ExternalIssueApiType.fromJson(value);
+        case 'ExternalIssueExternalServiceApiResult':
+          return ExternalIssueExternalServiceApiResult.fromJson(value);
+        case 'ExternalIssueMetadataModel':
+          return ExternalIssueMetadataModel.fromJson(value);
+        case 'ExternalIssueModel':
+          return ExternalIssueModel.fromJson(value);
+        case 'ExternalIssuePriorityModel':
+          return ExternalIssuePriorityModel.fromJson(value);
+        case 'ExternalIssueTypeModel':
+          return ExternalIssueTypeModel.fromJson(value);
         case 'ExternalLinkModel':
           return ExternalLinkModel.fromJson(value);
         case 'ExternalServiceCategoryApiResult':
@@ -634,6 +652,8 @@ class ApiClient {
           return PublicTestRunModel.fromJson(value);
         case 'ReplaceProjectExternalServiceApiModel':
           return ReplaceProjectExternalServiceApiModel.fromJson(value);
+        case 'RequestType':
+          return RequestTypeTypeTransformer().decode(value);
         case 'RequestTypeApiModel':
           return RequestTypeApiModelTypeTransformer().decode(value);
         case 'RequestTypeModel':
@@ -646,6 +666,8 @@ class ApiClient {
           return RerunsModel.fromJson(value);
         case 'SearchCustomAttributeTemplateGetModel':
           return SearchCustomAttributeTemplateGetModel.fromJson(value);
+        case 'SearchExternalIssuesApiModel':
+          return SearchExternalIssuesApiModel.fromJson(value);
         case 'SearchTestRunsApiModel':
           return SearchTestRunsApiModel.fromJson(value);
         case 'SearchTestStatusesApiModel':
@@ -996,8 +1018,6 @@ class ApiClient {
           return WebHookEventTypeModelTypeTransformer().decode(value);
         case 'WebHookEventTypeRequest':
           return WebHookEventTypeRequestTypeTransformer().decode(value);
-        case 'WebHookLogModel':
-          return WebHookLogModel.fromJson(value);
         case 'WebHookModel':
           return WebHookModel.fromJson(value);
         case 'WebHookPostModel':
@@ -1006,6 +1026,8 @@ class ApiClient {
           return WebHookTestModel.fromJson(value);
         case 'WebhookBulkUpdateApiModel':
           return WebhookBulkUpdateApiModel.fromJson(value);
+        case 'WebhookLogApiResult':
+          return WebhookLogApiResult.fromJson(value);
         case 'WebhookResponse':
           return WebhookResponse.fromJson(value);
         case 'WebhookVariablesType':
@@ -1040,6 +1062,14 @@ class ApiClient {
           return WorkItemEntityTypeApiModelTypeTransformer().decode(value);
         case 'WorkItemEntityTypes':
           return WorkItemEntityTypesTypeTransformer().decode(value);
+        case 'WorkItemExternalMetadataFieldFilterApiModel':
+          return WorkItemExternalMetadataFieldFilterApiModel.fromJson(value);
+        case 'WorkItemExternalMetadataFieldFilterModel':
+          return WorkItemExternalMetadataFieldFilterModel.fromJson(value);
+        case 'WorkItemExternalMetadataFilterApiModel':
+          return WorkItemExternalMetadataFilterApiModel.fromJson(value);
+        case 'WorkItemExternalMetadataFilterModel':
+          return WorkItemExternalMetadataFilterModel.fromJson(value);
         case 'WorkItemExtractionApiModel':
           return WorkItemExtractionApiModel.fromJson(value);
         case 'WorkItemExtractionModel':
@@ -1058,6 +1088,8 @@ class ApiClient {
           return WorkItemIdModel.fromJson(value);
         case 'WorkItemIdentifierModel':
           return WorkItemIdentifierModel.fromJson(value);
+        case 'WorkItemIndexApiResult':
+          return WorkItemIndexApiResult.fromJson(value);
         case 'WorkItemLikeModel':
           return WorkItemLikeModel.fromJson(value);
         case 'WorkItemLinkChangeViewModel':

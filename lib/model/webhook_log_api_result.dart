@@ -10,9 +10,11 @@
 
 part of testit_api_client_dart;
 
-class WebHookLogModel {
-  /// Returns a new [WebHookLogModel] instance.
-  WebHookLogModel({
+class WebhookLogApiResult {
+  /// Returns a new [WebhookLogApiResult] instance.
+  WebhookLogApiResult({
+    required this.id,
+    required this.isDeleted,
     required this.webHookName,
     required this.eventType,
     required this.webHookId,
@@ -21,8 +23,6 @@ class WebHookLogModel {
     required this.url,
     required this.requestType,
     required this.createdById,
-    required this.id,
-    required this.isDeleted,
     this.requestBody,
     this.requestMeta,
     this.responseBody,
@@ -32,9 +32,13 @@ class WebHookLogModel {
     this.modifiedById,
   });
 
+  String id;
+
+  bool isDeleted;
+
   String webHookName;
 
-  WebHookEventTypeModel eventType;
+  WebHookEventType eventType;
 
   String webHookId;
 
@@ -44,15 +48,9 @@ class WebHookLogModel {
 
   String url;
 
-  RequestTypeModel requestType;
+  RequestType requestType;
 
   String createdById;
-
-  /// Unique ID of the entity
-  String id;
-
-  /// Indicates if the entity is deleted
-  bool isDeleted;
 
   String? requestBody;
 
@@ -69,7 +67,9 @@ class WebHookLogModel {
   String? modifiedById;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is WebHookLogModel &&
+  bool operator ==(Object other) => identical(this, other) || other is WebhookLogApiResult &&
+    other.id == id &&
+    other.isDeleted == isDeleted &&
     other.webHookName == webHookName &&
     other.eventType == eventType &&
     other.webHookId == webHookId &&
@@ -78,8 +78,6 @@ class WebHookLogModel {
     other.url == url &&
     other.requestType == requestType &&
     other.createdById == createdById &&
-    other.id == id &&
-    other.isDeleted == isDeleted &&
     other.requestBody == requestBody &&
     other.requestMeta == requestMeta &&
     other.responseBody == responseBody &&
@@ -91,6 +89,8 @@ class WebHookLogModel {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (id.hashCode) +
+    (isDeleted.hashCode) +
     (webHookName.hashCode) +
     (eventType.hashCode) +
     (webHookId.hashCode) +
@@ -99,8 +99,6 @@ class WebHookLogModel {
     (url.hashCode) +
     (requestType.hashCode) +
     (createdById.hashCode) +
-    (id.hashCode) +
-    (isDeleted.hashCode) +
     (requestBody == null ? 0 : requestBody!.hashCode) +
     (requestMeta == null ? 0 : requestMeta!.hashCode) +
     (responseBody == null ? 0 : responseBody!.hashCode) +
@@ -110,10 +108,12 @@ class WebHookLogModel {
     (modifiedById == null ? 0 : modifiedById!.hashCode);
 
   @override
-  String toString() => 'WebHookLogModel[webHookName=$webHookName, eventType=$eventType, webHookId=$webHookId, responseStatusCode=$responseStatusCode, projectId=$projectId, url=$url, requestType=$requestType, createdById=$createdById, id=$id, isDeleted=$isDeleted, requestBody=$requestBody, requestMeta=$requestMeta, responseBody=$responseBody, responseMeta=$responseMeta, createdDate=$createdDate, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
+  String toString() => 'WebhookLogApiResult[id=$id, isDeleted=$isDeleted, webHookName=$webHookName, eventType=$eventType, webHookId=$webHookId, responseStatusCode=$responseStatusCode, projectId=$projectId, url=$url, requestType=$requestType, createdById=$createdById, requestBody=$requestBody, requestMeta=$requestMeta, responseBody=$responseBody, responseMeta=$responseMeta, createdDate=$createdDate, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+      json[r'id'] = this.id;
+      json[r'isDeleted'] = this.isDeleted;
       json[r'webHookName'] = this.webHookName;
       json[r'eventType'] = this.eventType;
       json[r'webHookId'] = this.webHookId;
@@ -122,8 +122,6 @@ class WebHookLogModel {
       json[r'url'] = this.url;
       json[r'requestType'] = this.requestType;
       json[r'createdById'] = this.createdById;
-      json[r'id'] = this.id;
-      json[r'isDeleted'] = this.isDeleted;
     if (this.requestBody != null) {
       json[r'requestBody'] = this.requestBody;
     } else {
@@ -162,10 +160,10 @@ class WebHookLogModel {
     return json;
   }
 
-  /// Returns a new [WebHookLogModel] instance and imports its values from
+  /// Returns a new [WebhookLogApiResult] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static WebHookLogModel? fromJson(dynamic value) {
+  static WebhookLogApiResult? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -174,23 +172,23 @@ class WebHookLogModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "WebHookLogModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "WebHookLogModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "WebhookLogApiResult[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "WebhookLogApiResult[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return WebHookLogModel(
+      return WebhookLogApiResult(
+        id: mapValueOfType<String>(json, r'id')!,
+        isDeleted: mapValueOfType<bool>(json, r'isDeleted')!,
         webHookName: mapValueOfType<String>(json, r'webHookName')!,
-        eventType: WebHookEventTypeModel.fromJson(json[r'eventType'])!,
+        eventType: WebHookEventType.fromJson(json[r'eventType'])!,
         webHookId: mapValueOfType<String>(json, r'webHookId')!,
         responseStatusCode: mapValueOfType<int>(json, r'responseStatusCode')!,
         projectId: mapValueOfType<String>(json, r'projectId')!,
         url: mapValueOfType<String>(json, r'url')!,
-        requestType: RequestTypeModel.fromJson(json[r'requestType'])!,
+        requestType: RequestType.fromJson(json[r'requestType'])!,
         createdById: mapValueOfType<String>(json, r'createdById')!,
-        id: mapValueOfType<String>(json, r'id')!,
-        isDeleted: mapValueOfType<bool>(json, r'isDeleted')!,
         requestBody: mapValueOfType<String>(json, r'requestBody'),
         requestMeta: mapValueOfType<String>(json, r'requestMeta'),
         responseBody: mapValueOfType<String>(json, r'responseBody'),
@@ -203,11 +201,11 @@ class WebHookLogModel {
     return null;
   }
 
-  static List<WebHookLogModel> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <WebHookLogModel>[];
+  static List<WebhookLogApiResult> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <WebhookLogApiResult>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = WebHookLogModel.fromJson(row);
+        final value = WebhookLogApiResult.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -216,12 +214,12 @@ class WebHookLogModel {
     return result.toList(growable: growable);
   }
 
-  static Map<String, WebHookLogModel> mapFromJson(dynamic json) {
-    final map = <String, WebHookLogModel>{};
+  static Map<String, WebhookLogApiResult> mapFromJson(dynamic json) {
+    final map = <String, WebhookLogApiResult>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = WebHookLogModel.fromJson(entry.value);
+        final value = WebhookLogApiResult.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -230,14 +228,14 @@ class WebHookLogModel {
     return map;
   }
 
-  // maps a json object with a list of WebHookLogModel-objects as value to a dart map
-  static Map<String, List<WebHookLogModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<WebHookLogModel>>{};
+  // maps a json object with a list of WebhookLogApiResult-objects as value to a dart map
+  static Map<String, List<WebhookLogApiResult>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<WebhookLogApiResult>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = WebHookLogModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = WebhookLogApiResult.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -245,6 +243,8 @@ class WebHookLogModel {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'id',
+    'isDeleted',
     'webHookName',
     'eventType',
     'webHookId',
@@ -253,8 +253,6 @@ class WebHookLogModel {
     'url',
     'requestType',
     'createdById',
-    'id',
-    'isDeleted',
   };
 }
 

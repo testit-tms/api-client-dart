@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**apiV2ProjectsProjectIdWorkItemsSearchGroupedPost**](ProjectWorkItemsApi.md#apiv2projectsprojectidworkitemssearchgroupedpost) | **POST** /api/v2/projects/{projectId}/workItems/search/grouped | Search for work items and group results by attribute
 [**apiV2ProjectsProjectIdWorkItemsSearchIdPost**](ProjectWorkItemsApi.md#apiv2projectsprojectidworkitemssearchidpost) | **POST** /api/v2/projects/{projectId}/workItems/search/id | Search for work items and extract IDs only
 [**apiV2ProjectsProjectIdWorkItemsSearchPost**](ProjectWorkItemsApi.md#apiv2projectsprojectidworkitemssearchpost) | **POST** /api/v2/projects/{projectId}/workItems/search | Search for work items
+[**apiV2ProjectsProjectIdWorkItemsSearchWorkItemIdIndexPost**](ProjectWorkItemsApi.md#apiv2projectsprojectidworkitemssearchworkitemidindexpost) | **POST** /api/v2/projects/{projectId}/workItems/search/{workItemId}/index | Get work item index (position) in a collection by its id.
 [**apiV2ProjectsProjectIdWorkItemsTagsGet**](ProjectWorkItemsApi.md#apiv2projectsprojectidworkitemstagsget) | **GET** /api/v2/projects/{projectId}/workItems/tags | Get WorkItems Tags
 [**getWorkItemsByProjectId**](ProjectWorkItemsApi.md#getworkitemsbyprojectid) | **GET** /api/v2/projects/{projectId}/workItems | Get project work items
 
@@ -175,6 +176,65 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**List<WorkItemShortApiResult>**](WorkItemShortApiResult.md)
+
+### Authorization
+
+[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **apiV2ProjectsProjectIdWorkItemsSearchWorkItemIdIndexPost**
+> WorkItemIndexApiResult apiV2ProjectsProjectIdWorkItemsSearchWorkItemIdIndexPost(projectId, workItemId, skip, take, orderBy, searchField, searchValue, workItemSelectApiModel)
+
+Get work item index (position) in a collection by its id.
+
+### Example
+```dart
+import 'package:testit_api_client_dart/api.dart';
+// TODO Configure API key authorization: Bearer or PrivateToken
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
+
+final api_instance = ProjectWorkItemsApi();
+final projectId = projectId_example; // String | 
+final workItemId = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+final skip = 56; // int | Amount of items to be skipped (offset)
+final take = 56; // int | Amount of items to be taken (limit)
+final orderBy = orderBy_example; // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC)
+final searchField = searchField_example; // String | Property name for searching
+final searchValue = searchValue_example; // String | Value for searching
+final workItemSelectApiModel = WorkItemSelectApiModel(); // WorkItemSelectApiModel | 
+
+try {
+    final result = api_instance.apiV2ProjectsProjectIdWorkItemsSearchWorkItemIdIndexPost(projectId, workItemId, skip, take, orderBy, searchField, searchValue, workItemSelectApiModel);
+    print(result);
+} catch (e) {
+    print('Exception when calling ProjectWorkItemsApi->apiV2ProjectsProjectIdWorkItemsSearchWorkItemIdIndexPost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectId** | **String**|  | 
+ **workItemId** | **String**|  | 
+ **skip** | **int**| Amount of items to be skipped (offset) | [optional] 
+ **take** | **int**| Amount of items to be taken (limit) | [optional] 
+ **orderBy** | **String**| SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) | [optional] 
+ **searchField** | **String**| Property name for searching | [optional] 
+ **searchValue** | **String**| Value for searching | [optional] 
+ **workItemSelectApiModel** | [**WorkItemSelectApiModel**](WorkItemSelectApiModel.md)|  | [optional] 
+
+### Return type
+
+[**WorkItemIndexApiResult**](WorkItemIndexApiResult.md)
 
 ### Authorization
 

@@ -1,9 +1,5 @@
-#
-# AUTO-GENERATED FILE, DO NOT MODIFY!
-#
-
 name: 'testit_api_client_dart'
-version: '1.2.4'
+version: '1.2.5-TMS-5.5'
 description: 'Auto-generated Dart API client for Test IT'
 repository: https://github.com/testit-tms/api-client-dart/
 homepage: https://testit.software/

@@ -16,6 +16,7 @@ class LinkShortModel {
     required this.id,
     required this.title,
     required this.url,
+    this.type,
   });
 
   String id;
@@ -24,27 +25,36 @@ class LinkShortModel {
 
   String url;
 
+  String? type;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is LinkShortModel &&
     other.id == id &&
     other.title == title &&
-    other.url == url;
+    other.url == url &&
+    other.type == type;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id.hashCode) +
     (title.hashCode) +
-    (url.hashCode);
+    (url.hashCode) +
+    (type == null ? 0 : type!.hashCode);
 
   @override
-  String toString() => 'LinkShortModel[id=$id, title=$title, url=$url]';
+  String toString() => 'LinkShortModel[id=$id, title=$title, url=$url, type=$type]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
       json[r'title'] = this.title;
       json[r'url'] = this.url;
+    if (this.type != null) {
+      json[r'type'] = this.type;
+    } else {
+      json[r'type'] = null;
+    }
     return json;
   }
 
@@ -70,6 +80,7 @@ class LinkShortModel {
         id: mapValueOfType<String>(json, r'id')!,
         title: mapValueOfType<String>(json, r'title')!,
         url: mapValueOfType<String>(json, r'url')!,
+        type: mapValueOfType<String>(json, r'type'),
       );
     }
     return null;

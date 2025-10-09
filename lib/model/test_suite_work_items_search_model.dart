@@ -18,6 +18,7 @@ class TestSuiteWorkItemsSearchModel {
     this.nameOrId,
     this.includeIds = const {},
     this.excludeIds = const {},
+    this.externalMetadata,
     this.projectIds = const {},
     this.links,
     this.name,
@@ -56,6 +57,9 @@ class TestSuiteWorkItemsSearchModel {
 
   /// Collection of identifiers of work items which need to be excluded from result regardless of filtering
   Set<String>? excludeIds;
+
+  /// Specifies work item filter by its external metadata
+  WorkItemExternalMetadataFilterModel? externalMetadata;
 
   /// Collection of project identifiers
   Set<String>? projectIds;
@@ -130,6 +134,7 @@ class TestSuiteWorkItemsSearchModel {
     other.nameOrId == nameOrId &&
     _deepEquality.equals(other.includeIds, includeIds) &&
     _deepEquality.equals(other.excludeIds, excludeIds) &&
+    other.externalMetadata == externalMetadata &&
     _deepEquality.equals(other.projectIds, projectIds) &&
     other.links == links &&
     other.name == name &&
@@ -161,6 +166,7 @@ class TestSuiteWorkItemsSearchModel {
     (nameOrId == null ? 0 : nameOrId!.hashCode) +
     (includeIds == null ? 0 : includeIds!.hashCode) +
     (excludeIds == null ? 0 : excludeIds!.hashCode) +
+    (externalMetadata == null ? 0 : externalMetadata!.hashCode) +
     (projectIds == null ? 0 : projectIds!.hashCode) +
     (links == null ? 0 : links!.hashCode) +
     (name == null ? 0 : name!.hashCode) +
@@ -185,7 +191,7 @@ class TestSuiteWorkItemsSearchModel {
     (workItemVersionIds == null ? 0 : workItemVersionIds!.hashCode);
 
   @override
-  String toString() => 'TestSuiteWorkItemsSearchModel[tagNames=$tagNames, entityTypes=$entityTypes, nameOrId=$nameOrId, includeIds=$includeIds, excludeIds=$excludeIds, projectIds=$projectIds, links=$links, name=$name, ids=$ids, globalIds=$globalIds, attributes=$attributes, isDeleted=$isDeleted, sectionIds=$sectionIds, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds, states=$states, priorities=$priorities, sourceTypes=$sourceTypes, types=$types, createdDate=$createdDate, modifiedDate=$modifiedDate, duration=$duration, medianDuration=$medianDuration, isAutomated=$isAutomated, tags=$tags, autoTestIds=$autoTestIds, workItemVersionIds=$workItemVersionIds]';
+  String toString() => 'TestSuiteWorkItemsSearchModel[tagNames=$tagNames, entityTypes=$entityTypes, nameOrId=$nameOrId, includeIds=$includeIds, excludeIds=$excludeIds, externalMetadata=$externalMetadata, projectIds=$projectIds, links=$links, name=$name, ids=$ids, globalIds=$globalIds, attributes=$attributes, isDeleted=$isDeleted, sectionIds=$sectionIds, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds, states=$states, priorities=$priorities, sourceTypes=$sourceTypes, types=$types, createdDate=$createdDate, modifiedDate=$modifiedDate, duration=$duration, medianDuration=$medianDuration, isAutomated=$isAutomated, tags=$tags, autoTestIds=$autoTestIds, workItemVersionIds=$workItemVersionIds]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -213,6 +219,11 @@ class TestSuiteWorkItemsSearchModel {
       json[r'excludeIds'] = this.excludeIds!.toList(growable: false);
     } else {
       json[r'excludeIds'] = null;
+    }
+    if (this.externalMetadata != null) {
+      json[r'externalMetadata'] = this.externalMetadata;
+    } else {
+      json[r'externalMetadata'] = null;
     }
     if (this.projectIds != null) {
       json[r'projectIds'] = this.projectIds!.toList(growable: false);
@@ -357,6 +368,7 @@ class TestSuiteWorkItemsSearchModel {
         excludeIds: json[r'excludeIds'] is Iterable
             ? (json[r'excludeIds'] as Iterable).cast<String>().toSet()
             : const {},
+        externalMetadata: WorkItemExternalMetadataFilterModel.fromJson(json[r'externalMetadata']),
         projectIds: json[r'projectIds'] is Iterable
             ? (json[r'projectIds'] as Iterable).cast<String>().toSet()
             : const {},

@@ -16,7 +16,7 @@ class WebhooksLogsApi {
 
   final ApiClient apiClient;
 
-  /// Get all webhook logs
+  /// Get last webhook logs
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -83,7 +83,7 @@ class WebhooksLogsApi {
     );
   }
 
-  /// Get all webhook logs
+  /// Get last webhook logs
   ///
   /// Parameters:
   ///
@@ -104,7 +104,7 @@ class WebhooksLogsApi {
   ///
   /// * [String] searchValue:
   ///   Value for searching
-  Future<List<WebHookLogModel>?> apiV2WebhooksLogsGet({ String? projectId, int? skip, int? take, String? orderBy, String? searchField, String? searchValue, }) async {
+  Future<List<WebhookLogApiResult>?> apiV2WebhooksLogsGet({ String? projectId, int? skip, int? take, String? orderBy, String? searchField, String? searchValue, }) async {
     final response = await apiV2WebhooksLogsGetWithHttpInfo( projectId: projectId, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -114,8 +114,8 @@ class WebhooksLogsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<WebHookLogModel>') as List)
-        .cast<WebHookLogModel>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<WebhookLogApiResult>') as List)
+        .cast<WebhookLogApiResult>()
         .toList(growable: false);
 
     }
@@ -209,7 +209,7 @@ class WebhooksLogsApi {
   ///
   /// * [String] id (required):
   ///   Webhook log unique ID
-  Future<WebHookLogModel?> apiV2WebhooksLogsIdGet(String id,) async {
+  Future<WebhookLogApiResult?> apiV2WebhooksLogsIdGet(String id,) async {
     final response = await apiV2WebhooksLogsIdGetWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -218,7 +218,7 @@ class WebhooksLogsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'WebHookLogModel',) as WebHookLogModel;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'WebhookLogApiResult',) as WebhookLogApiResult;
     
     }
     return null;

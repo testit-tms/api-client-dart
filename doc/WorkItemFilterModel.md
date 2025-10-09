@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **nameOrId** | **String** | Name or identifier (UUID) of work item | [optional] 
 **includeIds** | **Set<String>** | Collection of identifiers of work items which need to be included in result regardless of filtering | [optional] [default to const {}]
 **excludeIds** | **Set<String>** | Collection of identifiers of work items which need to be excluded from result regardless of filtering | [optional] [default to const {}]
+**externalMetadata** | [**WorkItemExternalMetadataFilterModel**](WorkItemExternalMetadataFilterModel.md) | Specifies work item filter by its external metadata | [optional] 
 **projectIds** | **Set<String>** | Collection of project identifiers | [optional] [default to const {}]
 **links** | [**WorkItemLinkFilterModel**](WorkItemLinkFilterModel.md) | Specifies a work item filter by its links | [optional] 
 **name** | **String** | Name of work item | [optional] 

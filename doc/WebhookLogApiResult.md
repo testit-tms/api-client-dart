@@ -1,4 +1,4 @@
-# testit_api_client_dart.model.WebHookLogModel
+# testit_api_client_dart.model.WebhookLogApiResult
 
 ## Load the model package
 ```dart
@@ -8,16 +8,16 @@ import 'package:testit_api_client_dart/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **String** |  | 
+**isDeleted** | **bool** |  | 
 **webHookName** | **String** |  | 
-**eventType** | [**WebHookEventTypeModel**](WebHookEventTypeModel.md) |  | 
+**eventType** | [**WebHookEventType**](WebHookEventType.md) |  | 
 **webHookId** | **String** |  | 
 **responseStatusCode** | **int** |  | 
 **projectId** | **String** |  | 
 **url** | **String** |  | 
-**requestType** | [**RequestTypeModel**](RequestTypeModel.md) |  | 
+**requestType** | [**RequestType**](RequestType.md) |  | 
 **createdById** | **String** |  | 
-**id** | **String** | Unique ID of the entity | 
-**isDeleted** | **bool** | Indicates if the entity is deleted | 
 **requestBody** | **String** |  | [optional] 
 **requestMeta** | **String** |  | [optional] 
 **responseBody** | **String** |  | [optional] 

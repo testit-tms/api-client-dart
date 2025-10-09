@@ -38,6 +38,7 @@ class WorkItemFilterApiModel {
     this.autoTestIds = const {},
     this.workItemVersionIds = const [],
     this.links,
+    this.externalMetadata,
   });
 
   /// Name or identifier (UUID) of work item
@@ -115,6 +116,9 @@ class WorkItemFilterApiModel {
   /// Specifies a work item filter by its links
   WorkItemLinkFilterApiModel? links;
 
+  /// Specifies work item filter by its external metadata
+  WorkItemExternalMetadataFilterApiModel? externalMetadata;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is WorkItemFilterApiModel &&
     other.nameOrId == nameOrId &&
@@ -141,7 +145,8 @@ class WorkItemFilterApiModel {
     _deepEquality.equals(other.tags, tags) &&
     _deepEquality.equals(other.autoTestIds, autoTestIds) &&
     _deepEquality.equals(other.workItemVersionIds, workItemVersionIds) &&
-    other.links == links;
+    other.links == links &&
+    other.externalMetadata == externalMetadata;
 
   @override
   int get hashCode =>
@@ -170,10 +175,11 @@ class WorkItemFilterApiModel {
     (tags == null ? 0 : tags!.hashCode) +
     (autoTestIds == null ? 0 : autoTestIds!.hashCode) +
     (workItemVersionIds == null ? 0 : workItemVersionIds!.hashCode) +
-    (links == null ? 0 : links!.hashCode);
+    (links == null ? 0 : links!.hashCode) +
+    (externalMetadata == null ? 0 : externalMetadata!.hashCode);
 
   @override
-  String toString() => 'WorkItemFilterApiModel[nameOrId=$nameOrId, includeIds=$includeIds, excludeIds=$excludeIds, projectIds=$projectIds, name=$name, ids=$ids, globalIds=$globalIds, attributes=$attributes, isDeleted=$isDeleted, sectionIds=$sectionIds, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds, states=$states, priorities=$priorities, sourceTypes=$sourceTypes, types=$types, createdDate=$createdDate, modifiedDate=$modifiedDate, duration=$duration, medianDuration=$medianDuration, isAutomated=$isAutomated, tags=$tags, autoTestIds=$autoTestIds, workItemVersionIds=$workItemVersionIds, links=$links]';
+  String toString() => 'WorkItemFilterApiModel[nameOrId=$nameOrId, includeIds=$includeIds, excludeIds=$excludeIds, projectIds=$projectIds, name=$name, ids=$ids, globalIds=$globalIds, attributes=$attributes, isDeleted=$isDeleted, sectionIds=$sectionIds, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds, states=$states, priorities=$priorities, sourceTypes=$sourceTypes, types=$types, createdDate=$createdDate, modifiedDate=$modifiedDate, duration=$duration, medianDuration=$medianDuration, isAutomated=$isAutomated, tags=$tags, autoTestIds=$autoTestIds, workItemVersionIds=$workItemVersionIds, links=$links, externalMetadata=$externalMetadata]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -302,6 +308,11 @@ class WorkItemFilterApiModel {
     } else {
       json[r'links'] = null;
     }
+    if (this.externalMetadata != null) {
+      json[r'externalMetadata'] = this.externalMetadata;
+    } else {
+      json[r'externalMetadata'] = null;
+    }
     return json;
   }
 
@@ -373,6 +384,7 @@ class WorkItemFilterApiModel {
             ? (json[r'workItemVersionIds'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         links: WorkItemLinkFilterApiModel.fromJson(json[r'links']),
+        externalMetadata: WorkItemExternalMetadataFilterApiModel.fromJson(json[r'externalMetadata']),
       );
     }
     return null;

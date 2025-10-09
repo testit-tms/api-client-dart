@@ -340,6 +340,114 @@ class ProjectWorkItemsApi {
     return null;
   }
 
+  /// Get work item index (position) in a collection by its id.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] projectId (required):
+  ///
+  /// * [String] workItemId (required):
+  ///
+  /// * [int] skip:
+  ///   Amount of items to be skipped (offset)
+  ///
+  /// * [int] take:
+  ///   Amount of items to be taken (limit)
+  ///
+  /// * [String] orderBy:
+  ///   SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC)
+  ///
+  /// * [String] searchField:
+  ///   Property name for searching
+  ///
+  /// * [String] searchValue:
+  ///   Value for searching
+  ///
+  /// * [WorkItemSelectApiModel] workItemSelectApiModel:
+  Future<Response> apiV2ProjectsProjectIdWorkItemsSearchWorkItemIdIndexPostWithHttpInfo(String projectId, String workItemId, { int? skip, int? take, String? orderBy, String? searchField, String? searchValue, WorkItemSelectApiModel? workItemSelectApiModel, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/v2/projects/{projectId}/workItems/search/{workItemId}/index'
+      .replaceAll('{projectId}', projectId)
+      .replaceAll('{workItemId}', workItemId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = workItemSelectApiModel;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (skip != null) {
+      queryParams.addAll(_queryParams('', 'Skip', skip));
+    }
+    if (take != null) {
+      queryParams.addAll(_queryParams('', 'Take', take));
+    }
+    if (orderBy != null) {
+      queryParams.addAll(_queryParams('', 'OrderBy', orderBy));
+    }
+    if (searchField != null) {
+      queryParams.addAll(_queryParams('', 'SearchField', searchField));
+    }
+    if (searchValue != null) {
+      queryParams.addAll(_queryParams('', 'SearchValue', searchValue));
+    }
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Get work item index (position) in a collection by its id.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] projectId (required):
+  ///
+  /// * [String] workItemId (required):
+  ///
+  /// * [int] skip:
+  ///   Amount of items to be skipped (offset)
+  ///
+  /// * [int] take:
+  ///   Amount of items to be taken (limit)
+  ///
+  /// * [String] orderBy:
+  ///   SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC)
+  ///
+  /// * [String] searchField:
+  ///   Property name for searching
+  ///
+  /// * [String] searchValue:
+  ///   Value for searching
+  ///
+  /// * [WorkItemSelectApiModel] workItemSelectApiModel:
+  Future<WorkItemIndexApiResult?> apiV2ProjectsProjectIdWorkItemsSearchWorkItemIdIndexPost(String projectId, String workItemId, { int? skip, int? take, String? orderBy, String? searchField, String? searchValue, WorkItemSelectApiModel? workItemSelectApiModel, }) async {
+    final response = await apiV2ProjectsProjectIdWorkItemsSearchWorkItemIdIndexPostWithHttpInfo(projectId, workItemId,  skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, workItemSelectApiModel: workItemSelectApiModel, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'WorkItemIndexApiResult',) as WorkItemIndexApiResult;
+    
+    }
+    return null;
+  }
+
   /// Get WorkItems Tags
   ///
   ///  Use case  User sets project internal identifier  User runs method execution  System returns work items tags

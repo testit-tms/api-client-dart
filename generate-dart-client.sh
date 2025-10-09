@@ -5,7 +5,6 @@
 
 # Configuration
 CONFIG_FILE="openapi-generator-config.yaml"
-OPENAPI_SPEC="source/swagger11_09.json"
 OUTPUT_DIR="./generated-dart-client"
 
 # Colors for output
@@ -33,14 +32,9 @@ if [ ! -f "$CONFIG_FILE" ]; then
     exit 1
 fi
 
-if [ ! -f "$OPENAPI_SPEC" ]; then
-    print_error "❌ Error: OpenAPI specification file $OPENAPI_SPEC not found"
-    exit 1
-fi
 
 print_message "🚀 Starting Dart API client generation..."
 print_message "📋 Configuration: $CONFIG_FILE"
-print_message "📄 OpenAPI spec: $OPENAPI_SPEC"
 print_message "📁 Output directory: $OUTPUT_DIR"
 
 # Remove old generated client if exists
@@ -129,4 +123,4 @@ echo ""
 echo "🎉 Done! Client created and files copied to root directory!"
 echo "📝 Don't forget to:"
 echo "   1. Update information in pubspec.yaml"
-echo "   2. Configure base API URL in code"
+echo "   2. Read how-to-reproduce.md"

@@ -17,8 +17,10 @@ class WorkflowProjectApiResultApiCollectionPreview {
     required this.totalCount,
   });
 
+  /// Preview items
   List<WorkflowProjectApiResult> data;
 
+  /// Total count
   int totalCount;
 
   @override

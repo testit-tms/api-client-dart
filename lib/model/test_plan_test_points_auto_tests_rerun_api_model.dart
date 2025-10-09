@@ -15,25 +15,33 @@ class TestPlanTestPointsAutoTestsRerunApiModel {
   TestPlanTestPointsAutoTestsRerunApiModel({
     this.filter,
     this.extractionModel,
+    this.webhookIds = const [],
   });
 
+  /// Test points filters.
   TestPlanTestPointsSearchApiModel? filter;
 
+  /// Test points extraction model.
   TestPlanTestPointsExtractionApiModel? extractionModel;
+
+  /// Webhook ids to rerun.
+  List<String>? webhookIds;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is TestPlanTestPointsAutoTestsRerunApiModel &&
     other.filter == filter &&
-    other.extractionModel == extractionModel;
+    other.extractionModel == extractionModel &&
+    _deepEquality.equals(other.webhookIds, webhookIds);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (filter == null ? 0 : filter!.hashCode) +
-    (extractionModel == null ? 0 : extractionModel!.hashCode);
+    (extractionModel == null ? 0 : extractionModel!.hashCode) +
+    (webhookIds == null ? 0 : webhookIds!.hashCode);
 
   @override
-  String toString() => 'TestPlanTestPointsAutoTestsRerunApiModel[filter=$filter, extractionModel=$extractionModel]';
+  String toString() => 'TestPlanTestPointsAutoTestsRerunApiModel[filter=$filter, extractionModel=$extractionModel, webhookIds=$webhookIds]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -46,6 +54,11 @@ class TestPlanTestPointsAutoTestsRerunApiModel {
       json[r'extractionModel'] = this.extractionModel;
     } else {
       json[r'extractionModel'] = null;
+    }
+    if (this.webhookIds != null) {
+      json[r'webhookIds'] = this.webhookIds;
+    } else {
+      json[r'webhookIds'] = null;
     }
     return json;
   }
@@ -71,6 +84,9 @@ class TestPlanTestPointsAutoTestsRerunApiModel {
       return TestPlanTestPointsAutoTestsRerunApiModel(
         filter: TestPlanTestPointsSearchApiModel.fromJson(json[r'filter']),
         extractionModel: TestPlanTestPointsExtractionApiModel.fromJson(json[r'extractionModel']),
+        webhookIds: json[r'webhookIds'] is Iterable
+            ? (json[r'webhookIds'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
       );
     }
     return null;

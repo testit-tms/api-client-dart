@@ -8,8 +8,9 @@ import 'package:testit_api_client_dart/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**filter** | [**TestResultsFilterApiModel**](TestResultsFilterApiModel.md) |  | [optional] 
-**extractionModel** | [**ManualRerunTestResultApiModel**](ManualRerunTestResultApiModel.md) |  | [optional] 
+**filter** | [**TestResultsFilterApiModel**](TestResultsFilterApiModel.md) | Test results filter. | [optional] 
+**extractionModel** | [**ManualRerunTestResultApiModel**](ManualRerunTestResultApiModel.md) | Test results extraction model. | [optional] 
+**webhookIds** | **List<String>** | Webhook ids to rerun. | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

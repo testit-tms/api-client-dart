@@ -38,6 +38,7 @@ class WorkItemApiResult {
     this.autoTests = const [],
     this.attachments = const [],
     this.links = const [],
+    this.externalIssues = const [],
     required this.createdDate,
     required this.createdById,
     required this.isDeleted,
@@ -120,6 +121,9 @@ class WorkItemApiResult {
   /// Set of links related to the work item
   List<LinkModel> links;
 
+  /// Set of external issues related to the work item
+  List<ExternalIssueApiResult> externalIssues;
+
   /// Creation date of the work item
   DateTime createdDate;
 
@@ -165,6 +169,7 @@ class WorkItemApiResult {
     _deepEquality.equals(other.autoTests, autoTests) &&
     _deepEquality.equals(other.attachments, attachments) &&
     _deepEquality.equals(other.links, links) &&
+    _deepEquality.equals(other.externalIssues, externalIssues) &&
     other.createdDate == createdDate &&
     other.createdById == createdById &&
     other.isDeleted == isDeleted &&
@@ -200,6 +205,7 @@ class WorkItemApiResult {
     (autoTests.hashCode) +
     (attachments.hashCode) +
     (links.hashCode) +
+    (externalIssues.hashCode) +
     (createdDate.hashCode) +
     (createdById.hashCode) +
     (isDeleted.hashCode) +
@@ -208,7 +214,7 @@ class WorkItemApiResult {
     (modifiedById == null ? 0 : modifiedById!.hashCode);
 
   @override
-  String toString() => 'WorkItemApiResult[id=$id, globalId=$globalId, versionId=$versionId, versionNumber=$versionNumber, projectId=$projectId, sectionId=$sectionId, name=$name, sourceType=$sourceType, entityTypeName=$entityTypeName, duration=$duration, medianDuration=$medianDuration, state=$state, priority=$priority, isAutomated=$isAutomated, attributes=$attributes, tags=$tags, sectionPreconditionSteps=$sectionPreconditionSteps, sectionPostconditionSteps=$sectionPostconditionSteps, preconditionSteps=$preconditionSteps, steps=$steps, postconditionSteps=$postconditionSteps, iterations=$iterations, autoTests=$autoTests, attachments=$attachments, links=$links, createdDate=$createdDate, createdById=$createdById, isDeleted=$isDeleted, description=$description, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
+  String toString() => 'WorkItemApiResult[id=$id, globalId=$globalId, versionId=$versionId, versionNumber=$versionNumber, projectId=$projectId, sectionId=$sectionId, name=$name, sourceType=$sourceType, entityTypeName=$entityTypeName, duration=$duration, medianDuration=$medianDuration, state=$state, priority=$priority, isAutomated=$isAutomated, attributes=$attributes, tags=$tags, sectionPreconditionSteps=$sectionPreconditionSteps, sectionPostconditionSteps=$sectionPostconditionSteps, preconditionSteps=$preconditionSteps, steps=$steps, postconditionSteps=$postconditionSteps, iterations=$iterations, autoTests=$autoTests, attachments=$attachments, links=$links, externalIssues=$externalIssues, createdDate=$createdDate, createdById=$createdById, isDeleted=$isDeleted, description=$description, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -237,6 +243,7 @@ class WorkItemApiResult {
       json[r'autoTests'] = this.autoTests;
       json[r'attachments'] = this.attachments;
       json[r'links'] = this.links;
+      json[r'externalIssues'] = this.externalIssues;
       json[r'createdDate'] = this.createdDate.toUtc().toIso8601String();
       json[r'createdById'] = this.createdById;
       json[r'isDeleted'] = this.isDeleted;
@@ -302,6 +309,7 @@ class WorkItemApiResult {
         autoTests: AutoTestModel.listFromJson(json[r'autoTests']),
         attachments: AttachmentModel.listFromJson(json[r'attachments']),
         links: LinkModel.listFromJson(json[r'links']),
+        externalIssues: ExternalIssueApiResult.listFromJson(json[r'externalIssues']),
         createdDate: mapDateTime(json, r'createdDate', r'')!,
         createdById: mapValueOfType<String>(json, r'createdById')!,
         isDeleted: mapValueOfType<bool>(json, r'isDeleted')!,
@@ -380,6 +388,7 @@ class WorkItemApiResult {
     'autoTests',
     'attachments',
     'links',
+    'externalIssues',
     'createdDate',
     'createdById',
     'isDeleted',

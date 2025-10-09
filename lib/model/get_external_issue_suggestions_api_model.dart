@@ -14,30 +14,43 @@ class GetExternalIssueSuggestionsApiModel {
   /// Returns a new [GetExternalIssueSuggestionsApiModel] instance.
   GetExternalIssueSuggestionsApiModel({
     required this.field,
-    required this.inquiry,
+    this.projectIds = const [],
+    this.inquiry,
   });
 
+  /// Field of external issue metadata to get
   ExternalIssueApiField field;
 
+  /// List of project identifiers where external issue is available
+  List<String>? projectIds;
+
+  /// Inquiry
   Inquiry? inquiry;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is GetExternalIssueSuggestionsApiModel &&
     other.field == field &&
+    _deepEquality.equals(other.projectIds, projectIds) &&
     other.inquiry == inquiry;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (field.hashCode) +
+    (projectIds == null ? 0 : projectIds!.hashCode) +
     (inquiry == null ? 0 : inquiry!.hashCode);
 
   @override
-  String toString() => 'GetExternalIssueSuggestionsApiModel[field=$field, inquiry=$inquiry]';
+  String toString() => 'GetExternalIssueSuggestionsApiModel[field=$field, projectIds=$projectIds, inquiry=$inquiry]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'field'] = this.field;
+    if (this.projectIds != null) {
+      json[r'projectIds'] = this.projectIds;
+    } else {
+      json[r'projectIds'] = null;
+    }
     if (this.inquiry != null) {
       json[r'inquiry'] = this.inquiry;
     } else {
@@ -66,6 +79,9 @@ class GetExternalIssueSuggestionsApiModel {
 
       return GetExternalIssueSuggestionsApiModel(
         field: ExternalIssueApiField.fromJson(json[r'field'])!,
+        projectIds: json[r'projectIds'] is Iterable
+            ? (json[r'projectIds'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
         inquiry: Inquiry.fromJson(json[r'inquiry']),
       );
     }
@@ -115,7 +131,6 @@ class GetExternalIssueSuggestionsApiModel {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'field',
-    'inquiry',
   };
 }
 

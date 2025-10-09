@@ -115,6 +115,9 @@ String parameterToString(dynamic value) {
   if (value is ProjectTypeModel) {
     return ProjectTypeModelTypeTransformer().encode(value).toString();
   }
+  if (value is RequestType) {
+    return RequestTypeTypeTransformer().encode(value).toString();
+  }
   if (value is RequestTypeApiModel) {
     return RequestTypeApiModelTypeTransformer().encode(value).toString();
   }

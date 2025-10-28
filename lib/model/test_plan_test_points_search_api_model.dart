@@ -30,6 +30,7 @@ class TestPlanTestPointsSearchApiModel {
     this.modifiedDate,
     this.modifiedByIds = const [],
     this.tags = const [],
+    this.excludeTags = const [],
     this.attributes = const {},
     this.workItemCreatedDate,
     this.workItemCreatedByIds = const [],
@@ -88,6 +89,9 @@ class TestPlanTestPointsSearchApiModel {
   /// Specifies a test point tags to search for
   List<String>? tags;
 
+  /// Specifies a test point tags to exclude to search for
+  List<String>? excludeTags;
+
   /// Specifies a test point attributes to search for
   Map<String, Set<String>>? attributes;
 
@@ -122,6 +126,7 @@ class TestPlanTestPointsSearchApiModel {
     other.modifiedDate == modifiedDate &&
     _deepEquality.equals(other.modifiedByIds, modifiedByIds) &&
     _deepEquality.equals(other.tags, tags) &&
+    _deepEquality.equals(other.excludeTags, excludeTags) &&
     _deepEquality.equals(other.attributes, attributes) &&
     other.workItemCreatedDate == workItemCreatedDate &&
     _deepEquality.equals(other.workItemCreatedByIds, workItemCreatedByIds) &&
@@ -148,6 +153,7 @@ class TestPlanTestPointsSearchApiModel {
     (modifiedDate == null ? 0 : modifiedDate!.hashCode) +
     (modifiedByIds == null ? 0 : modifiedByIds!.hashCode) +
     (tags == null ? 0 : tags!.hashCode) +
+    (excludeTags == null ? 0 : excludeTags!.hashCode) +
     (attributes == null ? 0 : attributes!.hashCode) +
     (workItemCreatedDate == null ? 0 : workItemCreatedDate!.hashCode) +
     (workItemCreatedByIds == null ? 0 : workItemCreatedByIds!.hashCode) +
@@ -155,7 +161,7 @@ class TestPlanTestPointsSearchApiModel {
     (workItemModifiedByIds == null ? 0 : workItemModifiedByIds!.hashCode);
 
   @override
-  String toString() => 'TestPlanTestPointsSearchApiModel[testSuiteIds=$testSuiteIds, workItemGlobalIds=$workItemGlobalIds, workItemMedianDuration=$workItemMedianDuration, statuses=$statuses, statusCodes=$statusCodes, priorities=$priorities, isAutomated=$isAutomated, name=$name, configurationIds=$configurationIds, testerIds=$testerIds, duration=$duration, sectionIds=$sectionIds, createdDate=$createdDate, createdByIds=$createdByIds, modifiedDate=$modifiedDate, modifiedByIds=$modifiedByIds, tags=$tags, attributes=$attributes, workItemCreatedDate=$workItemCreatedDate, workItemCreatedByIds=$workItemCreatedByIds, workItemModifiedDate=$workItemModifiedDate, workItemModifiedByIds=$workItemModifiedByIds]';
+  String toString() => 'TestPlanTestPointsSearchApiModel[testSuiteIds=$testSuiteIds, workItemGlobalIds=$workItemGlobalIds, workItemMedianDuration=$workItemMedianDuration, statuses=$statuses, statusCodes=$statusCodes, priorities=$priorities, isAutomated=$isAutomated, name=$name, configurationIds=$configurationIds, testerIds=$testerIds, duration=$duration, sectionIds=$sectionIds, createdDate=$createdDate, createdByIds=$createdByIds, modifiedDate=$modifiedDate, modifiedByIds=$modifiedByIds, tags=$tags, excludeTags=$excludeTags, attributes=$attributes, workItemCreatedDate=$workItemCreatedDate, workItemCreatedByIds=$workItemCreatedByIds, workItemModifiedDate=$workItemModifiedDate, workItemModifiedByIds=$workItemModifiedByIds]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -244,6 +250,11 @@ class TestPlanTestPointsSearchApiModel {
     } else {
       json[r'tags'] = null;
     }
+    if (this.excludeTags != null) {
+      json[r'excludeTags'] = this.excludeTags;
+    } else {
+      json[r'excludeTags'] = null;
+    }
     if (this.attributes != null) {
       json[r'attributes'] = this.attributes;
     } else {
@@ -325,6 +336,9 @@ class TestPlanTestPointsSearchApiModel {
             : const [],
         tags: json[r'tags'] is Iterable
             ? (json[r'tags'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
+        excludeTags: json[r'excludeTags'] is Iterable
+            ? (json[r'excludeTags'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         attributes: json[r'attributes'] == null
           ? const {}

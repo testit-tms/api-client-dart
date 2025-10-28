@@ -30,7 +30,7 @@ class AutoTestFilterApiModel {
     this.className,
     this.isEmptyClassName,
     this.lastTestResultOutcome,
-    this.lastTestResultStatusCode,
+    this.lastTestResultStatusCodes = const {},
     this.externalKey,
     this.lastTestResultConfigurationIds = const {},
   });
@@ -86,8 +86,8 @@ class AutoTestFilterApiModel {
   /// Specifies an autotest outcome of the last test result to search for
   AutotestResultOutcome? lastTestResultOutcome;
 
-  /// Specifies an autotest status code of the last test result to search for
-  String? lastTestResultStatusCode;
+  /// Specifies an autotest status codes of the last test result to search for
+  Set<String>? lastTestResultStatusCodes;
 
   /// Specifies an autotest external key to search for
   String? externalKey;
@@ -114,7 +114,7 @@ class AutoTestFilterApiModel {
     other.className == className &&
     other.isEmptyClassName == isEmptyClassName &&
     other.lastTestResultOutcome == lastTestResultOutcome &&
-    other.lastTestResultStatusCode == lastTestResultStatusCode &&
+    _deepEquality.equals(other.lastTestResultStatusCodes, lastTestResultStatusCodes) &&
     other.externalKey == externalKey &&
     _deepEquality.equals(other.lastTestResultConfigurationIds, lastTestResultConfigurationIds);
 
@@ -138,12 +138,12 @@ class AutoTestFilterApiModel {
     (className == null ? 0 : className!.hashCode) +
     (isEmptyClassName == null ? 0 : isEmptyClassName!.hashCode) +
     (lastTestResultOutcome == null ? 0 : lastTestResultOutcome!.hashCode) +
-    (lastTestResultStatusCode == null ? 0 : lastTestResultStatusCode!.hashCode) +
+    (lastTestResultStatusCodes == null ? 0 : lastTestResultStatusCodes!.hashCode) +
     (externalKey == null ? 0 : externalKey!.hashCode) +
     (lastTestResultConfigurationIds == null ? 0 : lastTestResultConfigurationIds!.hashCode);
 
   @override
-  String toString() => 'AutoTestFilterApiModel[projectIds=$projectIds, externalIds=$externalIds, globalIds=$globalIds, name=$name, isFlaky=$isFlaky, mustBeApproved=$mustBeApproved, stabilityPercentage=$stabilityPercentage, createdDate=$createdDate, createdByIds=$createdByIds, modifiedDate=$modifiedDate, modifiedByIds=$modifiedByIds, isDeleted=$isDeleted, namespace=$namespace, isEmptyNamespace=$isEmptyNamespace, className=$className, isEmptyClassName=$isEmptyClassName, lastTestResultOutcome=$lastTestResultOutcome, lastTestResultStatusCode=$lastTestResultStatusCode, externalKey=$externalKey, lastTestResultConfigurationIds=$lastTestResultConfigurationIds]';
+  String toString() => 'AutoTestFilterApiModel[projectIds=$projectIds, externalIds=$externalIds, globalIds=$globalIds, name=$name, isFlaky=$isFlaky, mustBeApproved=$mustBeApproved, stabilityPercentage=$stabilityPercentage, createdDate=$createdDate, createdByIds=$createdByIds, modifiedDate=$modifiedDate, modifiedByIds=$modifiedByIds, isDeleted=$isDeleted, namespace=$namespace, isEmptyNamespace=$isEmptyNamespace, className=$className, isEmptyClassName=$isEmptyClassName, lastTestResultOutcome=$lastTestResultOutcome, lastTestResultStatusCodes=$lastTestResultStatusCodes, externalKey=$externalKey, lastTestResultConfigurationIds=$lastTestResultConfigurationIds]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -232,10 +232,10 @@ class AutoTestFilterApiModel {
     } else {
       json[r'lastTestResultOutcome'] = null;
     }
-    if (this.lastTestResultStatusCode != null) {
-      json[r'lastTestResultStatusCode'] = this.lastTestResultStatusCode;
+    if (this.lastTestResultStatusCodes != null) {
+      json[r'lastTestResultStatusCodes'] = this.lastTestResultStatusCodes!.toList(growable: false);
     } else {
-      json[r'lastTestResultStatusCode'] = null;
+      json[r'lastTestResultStatusCodes'] = null;
     }
     if (this.externalKey != null) {
       json[r'externalKey'] = this.externalKey;
@@ -296,7 +296,9 @@ class AutoTestFilterApiModel {
         className: mapValueOfType<String>(json, r'className'),
         isEmptyClassName: mapValueOfType<bool>(json, r'isEmptyClassName'),
         lastTestResultOutcome: AutotestResultOutcome.fromJson(json[r'lastTestResultOutcome']),
-        lastTestResultStatusCode: mapValueOfType<String>(json, r'lastTestResultStatusCode'),
+        lastTestResultStatusCodes: json[r'lastTestResultStatusCodes'] is Iterable
+            ? (json[r'lastTestResultStatusCodes'] as Iterable).cast<String>().toSet()
+            : const {},
         externalKey: mapValueOfType<String>(json, r'externalKey'),
         lastTestResultConfigurationIds: json[r'lastTestResultConfigurationIds'] is Iterable
             ? (json[r'lastTestResultConfigurationIds'] as Iterable).cast<String>().toSet()

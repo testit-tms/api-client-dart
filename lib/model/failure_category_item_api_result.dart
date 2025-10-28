@@ -10,16 +10,17 @@
 
 part of testit_api_client_dart;
 
-class AutoTestResultReasonProjectApiResult {
-  /// Returns a new [AutoTestResultReasonProjectApiResult] instance.
-  AutoTestResultReasonProjectApiResult({
+class FailureCategoryItemApiResult {
+  /// Returns a new [FailureCategoryItemApiResult] instance.
+  FailureCategoryItemApiResult({
     required this.id,
-    required this.isDeleted,
     required this.failureCategory,
     required this.createdDate,
     required this.createdById,
+    required this.failureCategoryId,
+    required this.regexCount,
     this.projects = const [],
-    this.failureClassRegexes = const [],
+    this.projectIds = const [],
     this.name,
     this.modifiedDate,
     this.modifiedById,
@@ -27,9 +28,6 @@ class AutoTestResultReasonProjectApiResult {
 
   /// Failure category identifier
   String id;
-
-  /// Indicates if the entity is deleted
-  bool isDeleted;
 
   /// Category type
   FailureCategory failureCategory;
@@ -40,11 +38,17 @@ class AutoTestResultReasonProjectApiResult {
   /// Failure category creator identifier
   String createdById;
 
+  /// Category type index
+  int failureCategoryId;
+
+  /// Regexes count
+  int regexCount;
+
   /// Projects names
   List<ProjectNameApiResult> projects;
 
-  /// Failure category regexes
-  List<FailureClassRegexApiResult> failureClassRegexes;
+  /// Projects identifiers
+  List<String> projectIds;
 
   /// Failure category name
   String? name;
@@ -56,14 +60,15 @@ class AutoTestResultReasonProjectApiResult {
   String? modifiedById;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is AutoTestResultReasonProjectApiResult &&
+  bool operator ==(Object other) => identical(this, other) || other is FailureCategoryItemApiResult &&
     other.id == id &&
-    other.isDeleted == isDeleted &&
     other.failureCategory == failureCategory &&
     other.createdDate == createdDate &&
     other.createdById == createdById &&
+    other.failureCategoryId == failureCategoryId &&
+    other.regexCount == regexCount &&
     _deepEquality.equals(other.projects, projects) &&
-    _deepEquality.equals(other.failureClassRegexes, failureClassRegexes) &&
+    _deepEquality.equals(other.projectIds, projectIds) &&
     other.name == name &&
     other.modifiedDate == modifiedDate &&
     other.modifiedById == modifiedById;
@@ -72,28 +77,30 @@ class AutoTestResultReasonProjectApiResult {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id.hashCode) +
-    (isDeleted.hashCode) +
     (failureCategory.hashCode) +
     (createdDate.hashCode) +
     (createdById.hashCode) +
+    (failureCategoryId.hashCode) +
+    (regexCount.hashCode) +
     (projects.hashCode) +
-    (failureClassRegexes.hashCode) +
+    (projectIds.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (modifiedDate == null ? 0 : modifiedDate!.hashCode) +
     (modifiedById == null ? 0 : modifiedById!.hashCode);
 
   @override
-  String toString() => 'AutoTestResultReasonProjectApiResult[id=$id, isDeleted=$isDeleted, failureCategory=$failureCategory, createdDate=$createdDate, createdById=$createdById, projects=$projects, failureClassRegexes=$failureClassRegexes, name=$name, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
+  String toString() => 'FailureCategoryItemApiResult[id=$id, failureCategory=$failureCategory, createdDate=$createdDate, createdById=$createdById, failureCategoryId=$failureCategoryId, regexCount=$regexCount, projects=$projects, projectIds=$projectIds, name=$name, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
-      json[r'isDeleted'] = this.isDeleted;
       json[r'failureCategory'] = this.failureCategory;
       json[r'createdDate'] = this.createdDate.toUtc().toIso8601String();
       json[r'createdById'] = this.createdById;
+      json[r'failureCategoryId'] = this.failureCategoryId;
+      json[r'regexCount'] = this.regexCount;
       json[r'projects'] = this.projects;
-      json[r'failureClassRegexes'] = this.failureClassRegexes;
+      json[r'projectIds'] = this.projectIds;
     if (this.name != null) {
       json[r'name'] = this.name;
     } else {
@@ -112,10 +119,10 @@ class AutoTestResultReasonProjectApiResult {
     return json;
   }
 
-  /// Returns a new [AutoTestResultReasonProjectApiResult] instance and imports its values from
+  /// Returns a new [FailureCategoryItemApiResult] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static AutoTestResultReasonProjectApiResult? fromJson(dynamic value) {
+  static FailureCategoryItemApiResult? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -124,20 +131,23 @@ class AutoTestResultReasonProjectApiResult {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AutoTestResultReasonProjectApiResult[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AutoTestResultReasonProjectApiResult[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "FailureCategoryItemApiResult[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "FailureCategoryItemApiResult[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return AutoTestResultReasonProjectApiResult(
+      return FailureCategoryItemApiResult(
         id: mapValueOfType<String>(json, r'id')!,
-        isDeleted: mapValueOfType<bool>(json, r'isDeleted')!,
         failureCategory: FailureCategory.fromJson(json[r'failureCategory'])!,
         createdDate: mapDateTime(json, r'createdDate', r'')!,
         createdById: mapValueOfType<String>(json, r'createdById')!,
+        failureCategoryId: mapValueOfType<int>(json, r'failureCategoryId')!,
+        regexCount: mapValueOfType<int>(json, r'regexCount')!,
         projects: ProjectNameApiResult.listFromJson(json[r'projects']),
-        failureClassRegexes: FailureClassRegexApiResult.listFromJson(json[r'failureClassRegexes']),
+        projectIds: json[r'projectIds'] is Iterable
+            ? (json[r'projectIds'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
         name: mapValueOfType<String>(json, r'name'),
         modifiedDate: mapDateTime(json, r'modifiedDate', r''),
         modifiedById: mapValueOfType<String>(json, r'modifiedById'),
@@ -146,11 +156,11 @@ class AutoTestResultReasonProjectApiResult {
     return null;
   }
 
-  static List<AutoTestResultReasonProjectApiResult> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <AutoTestResultReasonProjectApiResult>[];
+  static List<FailureCategoryItemApiResult> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <FailureCategoryItemApiResult>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = AutoTestResultReasonProjectApiResult.fromJson(row);
+        final value = FailureCategoryItemApiResult.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -159,12 +169,12 @@ class AutoTestResultReasonProjectApiResult {
     return result.toList(growable: growable);
   }
 
-  static Map<String, AutoTestResultReasonProjectApiResult> mapFromJson(dynamic json) {
-    final map = <String, AutoTestResultReasonProjectApiResult>{};
+  static Map<String, FailureCategoryItemApiResult> mapFromJson(dynamic json) {
+    final map = <String, FailureCategoryItemApiResult>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = AutoTestResultReasonProjectApiResult.fromJson(entry.value);
+        final value = FailureCategoryItemApiResult.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -173,14 +183,14 @@ class AutoTestResultReasonProjectApiResult {
     return map;
   }
 
-  // maps a json object with a list of AutoTestResultReasonProjectApiResult-objects as value to a dart map
-  static Map<String, List<AutoTestResultReasonProjectApiResult>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<AutoTestResultReasonProjectApiResult>>{};
+  // maps a json object with a list of FailureCategoryItemApiResult-objects as value to a dart map
+  static Map<String, List<FailureCategoryItemApiResult>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<FailureCategoryItemApiResult>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = AutoTestResultReasonProjectApiResult.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = FailureCategoryItemApiResult.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -189,12 +199,13 @@ class AutoTestResultReasonProjectApiResult {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'id',
-    'isDeleted',
     'failureCategory',
     'createdDate',
     'createdById',
+    'failureCategoryId',
+    'regexCount',
     'projects',
-    'failureClassRegexes',
+    'projectIds',
   };
 }
 

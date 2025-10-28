@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **medianDuration** | [**Int64RangeSelectorModel**](Int64RangeSelectorModel.md) | Specifies a work item median duration range to search for | [optional] 
 **isAutomated** | **bool** | Is result must consist of only manual/automated work items | [optional] 
 **tags** | **Set<String>** | Collection of tags | [optional] [default to const {}]
+**excludeTags** | **Set<String>** | Collection of tags to exclude | [optional] [default to const {}]
 **autoTestIds** | **Set<String>** | Collection of identifiers of linked autotests | [optional] [default to const {}]
 **workItemVersionIds** | **List<String>** | Collection of identifiers work items versions. | [optional] [default to const []]
 **links** | [**WorkItemLinkFilterApiModel**](WorkItemLinkFilterApiModel.md) | Specifies a work item filter by its links | [optional] 

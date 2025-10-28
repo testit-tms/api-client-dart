@@ -10,9 +10,9 @@
 
 part of testit_api_client_dart;
 
-class UpdateAutoTestResultReasonProjectApiModel {
-  /// Returns a new [UpdateAutoTestResultReasonProjectApiModel] instance.
-  UpdateAutoTestResultReasonProjectApiModel({
+class UpdateFailureCategoryApiModel {
+  /// Returns a new [UpdateFailureCategoryApiModel] instance.
+  UpdateFailureCategoryApiModel({
     required this.id,
     required this.name,
     required this.failureCategory,
@@ -36,7 +36,7 @@ class UpdateAutoTestResultReasonProjectApiModel {
   List<String>? projectIds;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is UpdateAutoTestResultReasonProjectApiModel &&
+  bool operator ==(Object other) => identical(this, other) || other is UpdateFailureCategoryApiModel &&
     other.id == id &&
     other.name == name &&
     other.failureCategory == failureCategory &&
@@ -53,7 +53,7 @@ class UpdateAutoTestResultReasonProjectApiModel {
     (projectIds == null ? 0 : projectIds!.hashCode);
 
   @override
-  String toString() => 'UpdateAutoTestResultReasonProjectApiModel[id=$id, name=$name, failureCategory=$failureCategory, failureClassRegexes=$failureClassRegexes, projectIds=$projectIds]';
+  String toString() => 'UpdateFailureCategoryApiModel[id=$id, name=$name, failureCategory=$failureCategory, failureClassRegexes=$failureClassRegexes, projectIds=$projectIds]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -73,10 +73,10 @@ class UpdateAutoTestResultReasonProjectApiModel {
     return json;
   }
 
-  /// Returns a new [UpdateAutoTestResultReasonProjectApiModel] instance and imports its values from
+  /// Returns a new [UpdateFailureCategoryApiModel] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static UpdateAutoTestResultReasonProjectApiModel? fromJson(dynamic value) {
+  static UpdateFailureCategoryApiModel? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -85,13 +85,13 @@ class UpdateAutoTestResultReasonProjectApiModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "UpdateAutoTestResultReasonProjectApiModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "UpdateAutoTestResultReasonProjectApiModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "UpdateFailureCategoryApiModel[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "UpdateFailureCategoryApiModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return UpdateAutoTestResultReasonProjectApiModel(
+      return UpdateFailureCategoryApiModel(
         id: mapValueOfType<String>(json, r'id')!,
         name: mapValueOfType<String>(json, r'name')!,
         failureCategory: FailureCategory.fromJson(json[r'failureCategory'])!,
@@ -104,11 +104,11 @@ class UpdateAutoTestResultReasonProjectApiModel {
     return null;
   }
 
-  static List<UpdateAutoTestResultReasonProjectApiModel> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <UpdateAutoTestResultReasonProjectApiModel>[];
+  static List<UpdateFailureCategoryApiModel> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <UpdateFailureCategoryApiModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = UpdateAutoTestResultReasonProjectApiModel.fromJson(row);
+        final value = UpdateFailureCategoryApiModel.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -117,12 +117,12 @@ class UpdateAutoTestResultReasonProjectApiModel {
     return result.toList(growable: growable);
   }
 
-  static Map<String, UpdateAutoTestResultReasonProjectApiModel> mapFromJson(dynamic json) {
-    final map = <String, UpdateAutoTestResultReasonProjectApiModel>{};
+  static Map<String, UpdateFailureCategoryApiModel> mapFromJson(dynamic json) {
+    final map = <String, UpdateFailureCategoryApiModel>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = UpdateAutoTestResultReasonProjectApiModel.fromJson(entry.value);
+        final value = UpdateFailureCategoryApiModel.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -131,14 +131,14 @@ class UpdateAutoTestResultReasonProjectApiModel {
     return map;
   }
 
-  // maps a json object with a list of UpdateAutoTestResultReasonProjectApiModel-objects as value to a dart map
-  static Map<String, List<UpdateAutoTestResultReasonProjectApiModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<UpdateAutoTestResultReasonProjectApiModel>>{};
+  // maps a json object with a list of UpdateFailureCategoryApiModel-objects as value to a dart map
+  static Map<String, List<UpdateFailureCategoryApiModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<UpdateFailureCategoryApiModel>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = UpdateAutoTestResultReasonProjectApiModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = UpdateFailureCategoryApiModel.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

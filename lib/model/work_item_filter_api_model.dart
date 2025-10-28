@@ -35,6 +35,7 @@ class WorkItemFilterApiModel {
     this.medianDuration,
     this.isAutomated,
     this.tags = const {},
+    this.excludeTags = const {},
     this.autoTestIds = const {},
     this.workItemVersionIds = const [],
     this.links,
@@ -107,6 +108,9 @@ class WorkItemFilterApiModel {
   /// Collection of tags
   Set<String>? tags;
 
+  /// Collection of tags to exclude
+  Set<String>? excludeTags;
+
   /// Collection of identifiers of linked autotests
   Set<String>? autoTestIds;
 
@@ -143,6 +147,7 @@ class WorkItemFilterApiModel {
     other.medianDuration == medianDuration &&
     other.isAutomated == isAutomated &&
     _deepEquality.equals(other.tags, tags) &&
+    _deepEquality.equals(other.excludeTags, excludeTags) &&
     _deepEquality.equals(other.autoTestIds, autoTestIds) &&
     _deepEquality.equals(other.workItemVersionIds, workItemVersionIds) &&
     other.links == links &&
@@ -173,13 +178,14 @@ class WorkItemFilterApiModel {
     (medianDuration == null ? 0 : medianDuration!.hashCode) +
     (isAutomated == null ? 0 : isAutomated!.hashCode) +
     (tags == null ? 0 : tags!.hashCode) +
+    (excludeTags == null ? 0 : excludeTags!.hashCode) +
     (autoTestIds == null ? 0 : autoTestIds!.hashCode) +
     (workItemVersionIds == null ? 0 : workItemVersionIds!.hashCode) +
     (links == null ? 0 : links!.hashCode) +
     (externalMetadata == null ? 0 : externalMetadata!.hashCode);
 
   @override
-  String toString() => 'WorkItemFilterApiModel[nameOrId=$nameOrId, includeIds=$includeIds, excludeIds=$excludeIds, projectIds=$projectIds, name=$name, ids=$ids, globalIds=$globalIds, attributes=$attributes, isDeleted=$isDeleted, sectionIds=$sectionIds, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds, states=$states, priorities=$priorities, sourceTypes=$sourceTypes, types=$types, createdDate=$createdDate, modifiedDate=$modifiedDate, duration=$duration, medianDuration=$medianDuration, isAutomated=$isAutomated, tags=$tags, autoTestIds=$autoTestIds, workItemVersionIds=$workItemVersionIds, links=$links, externalMetadata=$externalMetadata]';
+  String toString() => 'WorkItemFilterApiModel[nameOrId=$nameOrId, includeIds=$includeIds, excludeIds=$excludeIds, projectIds=$projectIds, name=$name, ids=$ids, globalIds=$globalIds, attributes=$attributes, isDeleted=$isDeleted, sectionIds=$sectionIds, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds, states=$states, priorities=$priorities, sourceTypes=$sourceTypes, types=$types, createdDate=$createdDate, modifiedDate=$modifiedDate, duration=$duration, medianDuration=$medianDuration, isAutomated=$isAutomated, tags=$tags, excludeTags=$excludeTags, autoTestIds=$autoTestIds, workItemVersionIds=$workItemVersionIds, links=$links, externalMetadata=$externalMetadata]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -293,6 +299,11 @@ class WorkItemFilterApiModel {
     } else {
       json[r'tags'] = null;
     }
+    if (this.excludeTags != null) {
+      json[r'excludeTags'] = this.excludeTags!.toList(growable: false);
+    } else {
+      json[r'excludeTags'] = null;
+    }
     if (this.autoTestIds != null) {
       json[r'autoTestIds'] = this.autoTestIds!.toList(growable: false);
     } else {
@@ -376,6 +387,9 @@ class WorkItemFilterApiModel {
         isAutomated: mapValueOfType<bool>(json, r'isAutomated'),
         tags: json[r'tags'] is Iterable
             ? (json[r'tags'] as Iterable).cast<String>().toSet()
+            : const {},
+        excludeTags: json[r'excludeTags'] is Iterable
+            ? (json[r'excludeTags'] as Iterable).cast<String>().toSet()
             : const {},
         autoTestIds: json[r'autoTestIds'] is Iterable
             ? (json[r'autoTestIds'] as Iterable).cast<String>().toSet()

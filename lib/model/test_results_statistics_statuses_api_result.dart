@@ -15,6 +15,7 @@ class TestResultsStatisticsStatusesApiResult {
   TestResultsStatisticsStatusesApiResult({
     required this.inProgress,
     required this.passed,
+    required this.succeeded,
     required this.failed,
     required this.skipped,
     required this.blocked,
@@ -26,6 +27,9 @@ class TestResultsStatisticsStatusesApiResult {
 
   /// Number of test results which successfully passed
   int passed;
+
+  /// Number of successful test results
+  int succeeded;
 
   /// Number of test results which failed with an error
   int failed;
@@ -43,6 +47,7 @@ class TestResultsStatisticsStatusesApiResult {
   bool operator ==(Object other) => identical(this, other) || other is TestResultsStatisticsStatusesApiResult &&
     other.inProgress == inProgress &&
     other.passed == passed &&
+    other.succeeded == succeeded &&
     other.failed == failed &&
     other.skipped == skipped &&
     other.blocked == blocked &&
@@ -53,18 +58,20 @@ class TestResultsStatisticsStatusesApiResult {
     // ignore: unnecessary_parenthesis
     (inProgress.hashCode) +
     (passed.hashCode) +
+    (succeeded.hashCode) +
     (failed.hashCode) +
     (skipped.hashCode) +
     (blocked.hashCode) +
     (incomplete.hashCode);
 
   @override
-  String toString() => 'TestResultsStatisticsStatusesApiResult[inProgress=$inProgress, passed=$passed, failed=$failed, skipped=$skipped, blocked=$blocked, incomplete=$incomplete]';
+  String toString() => 'TestResultsStatisticsStatusesApiResult[inProgress=$inProgress, passed=$passed, succeeded=$succeeded, failed=$failed, skipped=$skipped, blocked=$blocked, incomplete=$incomplete]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'inProgress'] = this.inProgress;
       json[r'passed'] = this.passed;
+      json[r'succeeded'] = this.succeeded;
       json[r'failed'] = this.failed;
       json[r'skipped'] = this.skipped;
       json[r'blocked'] = this.blocked;
@@ -93,6 +100,7 @@ class TestResultsStatisticsStatusesApiResult {
       return TestResultsStatisticsStatusesApiResult(
         inProgress: mapValueOfType<int>(json, r'inProgress')!,
         passed: mapValueOfType<int>(json, r'passed')!,
+        succeeded: mapValueOfType<int>(json, r'succeeded')!,
         failed: mapValueOfType<int>(json, r'failed')!,
         skipped: mapValueOfType<int>(json, r'skipped')!,
         blocked: mapValueOfType<int>(json, r'blocked')!,
@@ -146,6 +154,7 @@ class TestResultsStatisticsStatusesApiResult {
   static const requiredKeys = <String>{
     'inProgress',
     'passed',
+    'succeeded',
     'failed',
     'skipped',
     'blocked',

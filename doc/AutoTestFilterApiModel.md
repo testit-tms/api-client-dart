@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **className** | **String** | Specifies an autotest class name to search for | [optional] 
 **isEmptyClassName** | **bool** | Specifies an autotest class name presence status to search for | [optional] 
 **lastTestResultOutcome** | [**AutotestResultOutcome**](AutotestResultOutcome.md) | Specifies an autotest outcome of the last test result to search for | [optional] 
-**lastTestResultStatusCode** | **String** | Specifies an autotest status code of the last test result to search for | [optional] 
+**lastTestResultStatusCodes** | **Set<String>** | Specifies an autotest status codes of the last test result to search for | [optional] [default to const {}]
 **externalKey** | **String** | Specifies an autotest external key to search for | [optional] 
 **lastTestResultConfigurationIds** | **Set<String>** | Specifies an autotest configuration IDs of the last test result to search for | [optional] [default to const {}]
 

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **name** | **String** | Test run name | 
 **stateName** | [**TestRunState**](TestRunState.md) | Test run state | 
 **status** | [**TestStatusApiResult**](TestStatusApiResult.md) | Test run status | 
-**projectId** | **String** | Project unique identifier              This property is used to link test run with project. | 
+**projectId** | **String** | Project unique identifier                This property is used to link test run with project. | 
 **createdDate** | [**DateTime**](DateTime.md) | Date and time of test run creation | 
 **createdById** | **String** | Unique identifier of user who created test run | 
 **attachments** | [**List<AttachmentApiResult>**](AttachmentApiResult.md) | Collection of attachments related to the test run | [default to const []]
@@ -20,10 +20,10 @@ Name | Type | Description | Notes
 **webhooks** | [**List<NamedEntityApiModel>**](NamedEntityApiModel.md) | Enabled webhooks | [default to const []]
 **runCount** | **int** | Run count | 
 **description** | **String** | Test run description | [optional] 
-**launchSource** | **String** | Test run launch source              Once launch source is specified it cannot be updated. | [optional] 
+**launchSource** | **String** | Test run launch source                Once launch source is specified it cannot be updated. | [optional] 
 **startedOn** | [**DateTime**](DateTime.md) | Date and time of test run start | [optional] 
 **completedOn** | [**DateTime**](DateTime.md) | Date and time of test run end | [optional] 
-**testPlanId** | **String** | Test plan unique identifier              This property is used to link test run with test plan. | [optional] 
+**testPlanId** | **String** | Test plan unique identifier                This property is used to link test run with test plan. | [optional] 
 **testResults** | [**List<TestResultV2GetModel>**](TestResultV2GetModel.md) | Enumeration of test results related to test run | [optional] [default to const []]
 **modifiedDate** | [**DateTime**](DateTime.md) | Date and time of last test run  modification | [optional] 
 **modifiedById** | **String** | Unique identifier of user who applied last test run  modification | [optional] 

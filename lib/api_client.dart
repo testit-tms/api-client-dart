@@ -248,36 +248,22 @@ class ApiClient {
           return AutoTestOutcomeTypeTransformer().decode(value);
         case 'AutoTestPostModel':
           return AutoTestPostModel.fromJson(value);
-        case 'AutoTestProjectSettingsGetModel':
-          return AutoTestProjectSettingsGetModel.fromJson(value);
-        case 'AutoTestProjectSettingsPostModel':
-          return AutoTestProjectSettingsPostModel.fromJson(value);
+        case 'AutoTestProjectSettingsApiModel':
+          return AutoTestProjectSettingsApiModel.fromJson(value);
+        case 'AutoTestProjectSettingsApiResult':
+          return AutoTestProjectSettingsApiResult.fromJson(value);
         case 'AutoTestPutModel':
           return AutoTestPutModel.fromJson(value);
         case 'AutoTestResultHistoryApiResult':
           return AutoTestResultHistoryApiResult.fromJson(value);
         case 'AutoTestResultHistorySelectApiModel':
           return AutoTestResultHistorySelectApiModel.fromJson(value);
-        case 'AutoTestResultReasonGroupApiModel':
-          return AutoTestResultReasonGroupApiModel.fromJson(value);
-        case 'AutoTestResultReasonGroupApiResult':
-          return AutoTestResultReasonGroupApiResult.fromJson(value);
-        case 'AutoTestResultReasonGroupItemApiResult':
-          return AutoTestResultReasonGroupItemApiResult.fromJson(value);
-        case 'AutoTestResultReasonGroupItemApiResultReply':
-          return AutoTestResultReasonGroupItemApiResultReply.fromJson(value);
-        case 'AutoTestResultReasonGroupSearchApiModel':
-          return AutoTestResultReasonGroupSearchApiModel.fromJson(value);
-        case 'AutoTestResultReasonProjectApiResult':
-          return AutoTestResultReasonProjectApiResult.fromJson(value);
         case 'AutoTestResultReasonShort':
           return AutoTestResultReasonShort.fromJson(value);
         case 'AutoTestResultReasonsCountItemModel':
           return AutoTestResultReasonsCountItemModel.fromJson(value);
         case 'AutoTestResultReasonsCountModel':
           return AutoTestResultReasonsCountModel.fromJson(value);
-        case 'AutoTestResultReasonsProjectApiResult':
-          return AutoTestResultReasonsProjectApiResult.fromJson(value);
         case 'AutoTestResultsForTestRunModel':
           return AutoTestResultsForTestRunModel.fromJson(value);
         case 'AutoTestSearchApiModel':
@@ -328,6 +314,10 @@ class ApiClient {
           return BooleanChangedFieldViewModel.fromJson(value);
         case 'BooleanNullableChangedFieldViewModel':
           return BooleanNullableChangedFieldViewModel.fromJson(value);
+        case 'CollectionFilter':
+          return CollectionFilter.fromJson(value);
+        case 'CollectionOperator':
+          return CollectionOperatorTypeTransformer().decode(value);
         case 'CompositeFilter':
           return CompositeFilter.fromJson(value);
         case 'ConfigurationByParametersModel':
@@ -350,12 +340,12 @@ class ApiClient {
           return ConfigurationShortApiResult.fromJson(value);
         case 'ConfigurationShortModel':
           return ConfigurationShortModel.fromJson(value);
-        case 'CreateAutoTestResultReasonProjectApiModel':
-          return CreateAutoTestResultReasonProjectApiModel.fromJson(value);
         case 'CreateDefectApiModel':
           return CreateDefectApiModel.fromJson(value);
         case 'CreateEmptyTestRunApiModel':
           return CreateEmptyTestRunApiModel.fromJson(value);
+        case 'CreateFailureCategoryApiModel':
+          return CreateFailureCategoryApiModel.fromJson(value);
         case 'CreateFailureClassRegexApiModel':
           return CreateFailureClassRegexApiModel.fromJson(value);
         case 'CreateLinkApiModel':
@@ -474,12 +464,30 @@ class ApiClient {
           return ExternalServicesMetadataApiResult.fromJson(value);
         case 'FailureCategory':
           return FailureCategoryTypeTransformer().decode(value);
+        case 'FailureCategoryApiResult':
+          return FailureCategoryApiResult.fromJson(value);
+        case 'FailureCategoryGroupApiModel':
+          return FailureCategoryGroupApiModel.fromJson(value);
+        case 'FailureCategoryGroupApiResult':
+          return FailureCategoryGroupApiResult.fromJson(value);
+        case 'FailureCategoryGroupItemApiResult':
+          return FailureCategoryGroupItemApiResult.fromJson(value);
+        case 'FailureCategoryGroupItemApiResultReply':
+          return FailureCategoryGroupItemApiResultReply.fromJson(value);
+        case 'FailureCategoryGroupSearchApiModel':
+          return FailureCategoryGroupSearchApiModel.fromJson(value);
+        case 'FailureCategoryItemApiResult':
+          return FailureCategoryItemApiResult.fromJson(value);
         case 'FailureCategoryModel':
           return FailureCategoryModelTypeTransformer().decode(value);
         case 'FailureClassRegexApiResult':
           return FailureClassRegexApiResult.fromJson(value);
+        case 'Filter':
+          return Filter.fromJson(value);
         case 'FilterModel':
           return FilterModel.fromJson(value);
+        case 'FilterOperator':
+          return FilterOperatorTypeTransformer().decode(value);
         case 'GenerateWorkItemPreviewsApiModel':
           return GenerateWorkItemPreviewsApiModel.fromJson(value);
         case 'GenerateWorkItemPreviewsApiResult':
@@ -508,6 +516,8 @@ class ApiClient {
           return GuidChangedFieldViewModel.fromJson(value);
         case 'GuidExtractionModel':
           return GuidExtractionModel.fromJson(value);
+        case 'IFilter':
+          return IFilter.fromJson(value);
         case 'ImageResizeType':
           return ImageResizeTypeTypeTransformer().decode(value);
         case 'Inquiry':
@@ -970,10 +980,10 @@ class ApiClient {
           return TestSuiteWithChildrenModel.fromJson(value);
         case 'TestSuiteWorkItemsSearchModel':
           return TestSuiteWorkItemsSearchModel.fromJson(value);
-        case 'UpdateAutoTestResultReasonProjectApiModel':
-          return UpdateAutoTestResultReasonProjectApiModel.fromJson(value);
         case 'UpdateEmptyTestRunApiModel':
           return UpdateEmptyTestRunApiModel.fromJson(value);
+        case 'UpdateFailureCategoryApiModel':
+          return UpdateFailureCategoryApiModel.fromJson(value);
         case 'UpdateFailureCategoryProjectApiModel':
           return UpdateFailureCategoryProjectApiModel.fromJson(value);
         case 'UpdateFailureClassRegexApiModel':
@@ -1084,8 +1094,8 @@ class ApiClient {
           return WorkItemGroupModel.fromJson(value);
         case 'WorkItemGroupType':
           return WorkItemGroupTypeTypeTransformer().decode(value);
-        case 'WorkItemIdModel':
-          return WorkItemIdModel.fromJson(value);
+        case 'WorkItemIdApiModel':
+          return WorkItemIdApiModel.fromJson(value);
         case 'WorkItemIdentifierModel':
           return WorkItemIdentifierModel.fromJson(value);
         case 'WorkItemIndexApiResult':

@@ -202,7 +202,7 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = ProjectWorkItemsApi();
-final projectId = projectId_example; // String | 
+final projectId = projectId_example; // String | Internal (UUID) or global (integer) identifier
 final workItemId = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 final skip = 56; // int | Amount of items to be skipped (offset)
 final take = 56; // int | Amount of items to be taken (limit)
@@ -223,7 +223,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **String**|  | 
+ **projectId** | **String**| Internal (UUID) or global (integer) identifier | 
  **workItemId** | **String**|  | 
  **skip** | **int**| Amount of items to be skipped (offset) | [optional] 
  **take** | **int**| Amount of items to be taken (limit) | [optional] 
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 
 Get WorkItems Tags
 
- Use case  User sets project internal identifier  User runs method execution  System returns work items tags
+  Use case    User sets project internal identifier    User runs method execution    System returns work items tags
 
 ### Example
 ```dart
@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 
 Get project work items
 
- Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted workitems related to project  [Optional] If User sets isDeleted field value as false, System search all workitems related to project which are not deleted  If User did not set isDeleted field value, System search all  workitems related to project  System returns array of found workitems (listed in response model)
+  Use case    User sets project internal or global identifier    [Optional] User sets isDeleted field value    User runs method execution    System search project    [Optional] If User sets isDeleted field value as true, System search all deleted workitems related to project    [Optional] If User sets isDeleted field value as false, System search all workitems related to project which are not deleted    If User did not set isDeleted field value, System search all  workitems related to project    System returns array of found workitems (listed in response model)
 
 ### Example
 ```dart

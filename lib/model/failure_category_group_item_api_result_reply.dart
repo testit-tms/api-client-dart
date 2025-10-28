@@ -10,19 +10,19 @@
 
 part of testit_api_client_dart;
 
-class AutoTestResultReasonGroupItemApiResultReply {
-  /// Returns a new [AutoTestResultReasonGroupItemApiResultReply] instance.
-  AutoTestResultReasonGroupItemApiResultReply({
+class FailureCategoryGroupItemApiResultReply {
+  /// Returns a new [FailureCategoryGroupItemApiResultReply] instance.
+  FailureCategoryGroupItemApiResultReply({
     this.data = const [],
     required this.totalCount,
   });
 
-  List<AutoTestResultReasonGroupItemApiResult> data;
+  List<FailureCategoryGroupItemApiResult> data;
 
   int totalCount;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is AutoTestResultReasonGroupItemApiResultReply &&
+  bool operator ==(Object other) => identical(this, other) || other is FailureCategoryGroupItemApiResultReply &&
     _deepEquality.equals(other.data, data) &&
     other.totalCount == totalCount;
 
@@ -33,7 +33,7 @@ class AutoTestResultReasonGroupItemApiResultReply {
     (totalCount.hashCode);
 
   @override
-  String toString() => 'AutoTestResultReasonGroupItemApiResultReply[data=$data, totalCount=$totalCount]';
+  String toString() => 'FailureCategoryGroupItemApiResultReply[data=$data, totalCount=$totalCount]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -42,10 +42,10 @@ class AutoTestResultReasonGroupItemApiResultReply {
     return json;
   }
 
-  /// Returns a new [AutoTestResultReasonGroupItemApiResultReply] instance and imports its values from
+  /// Returns a new [FailureCategoryGroupItemApiResultReply] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static AutoTestResultReasonGroupItemApiResultReply? fromJson(dynamic value) {
+  static FailureCategoryGroupItemApiResultReply? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -54,25 +54,25 @@ class AutoTestResultReasonGroupItemApiResultReply {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AutoTestResultReasonGroupItemApiResultReply[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AutoTestResultReasonGroupItemApiResultReply[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "FailureCategoryGroupItemApiResultReply[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "FailureCategoryGroupItemApiResultReply[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return AutoTestResultReasonGroupItemApiResultReply(
-        data: AutoTestResultReasonGroupItemApiResult.listFromJson(json[r'data']),
+      return FailureCategoryGroupItemApiResultReply(
+        data: FailureCategoryGroupItemApiResult.listFromJson(json[r'data']),
         totalCount: mapValueOfType<int>(json, r'totalCount')!,
       );
     }
     return null;
   }
 
-  static List<AutoTestResultReasonGroupItemApiResultReply> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <AutoTestResultReasonGroupItemApiResultReply>[];
+  static List<FailureCategoryGroupItemApiResultReply> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <FailureCategoryGroupItemApiResultReply>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = AutoTestResultReasonGroupItemApiResultReply.fromJson(row);
+        final value = FailureCategoryGroupItemApiResultReply.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -81,12 +81,12 @@ class AutoTestResultReasonGroupItemApiResultReply {
     return result.toList(growable: growable);
   }
 
-  static Map<String, AutoTestResultReasonGroupItemApiResultReply> mapFromJson(dynamic json) {
-    final map = <String, AutoTestResultReasonGroupItemApiResultReply>{};
+  static Map<String, FailureCategoryGroupItemApiResultReply> mapFromJson(dynamic json) {
+    final map = <String, FailureCategoryGroupItemApiResultReply>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = AutoTestResultReasonGroupItemApiResultReply.fromJson(entry.value);
+        final value = FailureCategoryGroupItemApiResultReply.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -95,14 +95,14 @@ class AutoTestResultReasonGroupItemApiResultReply {
     return map;
   }
 
-  // maps a json object with a list of AutoTestResultReasonGroupItemApiResultReply-objects as value to a dart map
-  static Map<String, List<AutoTestResultReasonGroupItemApiResultReply>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<AutoTestResultReasonGroupItemApiResultReply>>{};
+  // maps a json object with a list of FailureCategoryGroupItemApiResultReply-objects as value to a dart map
+  static Map<String, List<FailureCategoryGroupItemApiResultReply>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<FailureCategoryGroupItemApiResultReply>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = AutoTestResultReasonGroupItemApiResultReply.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = FailureCategoryGroupItemApiResultReply.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

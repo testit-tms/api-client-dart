@@ -23,15 +23,16 @@ class ProjectSettingsApi {
   /// Parameters:
   ///
   /// * [String] projectId (required):
+  ///   Internal (UUID) or global (integer) identifier
   ///
-  /// * [AutoTestProjectSettingsPostModel] autoTestProjectSettingsPostModel:
-  Future<Response> apiV2ProjectsProjectIdSettingsAutotestsPostWithHttpInfo(String projectId, { AutoTestProjectSettingsPostModel? autoTestProjectSettingsPostModel, }) async {
+  /// * [AutoTestProjectSettingsApiModel] autoTestProjectSettingsApiModel:
+  Future<Response> apiV2ProjectsProjectIdSettingsAutotestsPostWithHttpInfo(String projectId, { AutoTestProjectSettingsApiModel? autoTestProjectSettingsApiModel, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/projects/{projectId}/settings/autotests'
       .replaceAll('{projectId}', projectId);
 
     // ignore: prefer_final_locals
-    Object? postBody = autoTestProjectSettingsPostModel;
+    Object? postBody = autoTestProjectSettingsApiModel;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -56,10 +57,11 @@ class ProjectSettingsApi {
   /// Parameters:
   ///
   /// * [String] projectId (required):
+  ///   Internal (UUID) or global (integer) identifier
   ///
-  /// * [AutoTestProjectSettingsPostModel] autoTestProjectSettingsPostModel:
-  Future<void> apiV2ProjectsProjectIdSettingsAutotestsPost(String projectId, { AutoTestProjectSettingsPostModel? autoTestProjectSettingsPostModel, }) async {
-    final response = await apiV2ProjectsProjectIdSettingsAutotestsPostWithHttpInfo(projectId,  autoTestProjectSettingsPostModel: autoTestProjectSettingsPostModel, );
+  /// * [AutoTestProjectSettingsApiModel] autoTestProjectSettingsApiModel:
+  Future<void> apiV2ProjectsProjectIdSettingsAutotestsPost(String projectId, { AutoTestProjectSettingsApiModel? autoTestProjectSettingsApiModel, }) async {
+    final response = await apiV2ProjectsProjectIdSettingsAutotestsPostWithHttpInfo(projectId,  autoTestProjectSettingsApiModel: autoTestProjectSettingsApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -72,6 +74,7 @@ class ProjectSettingsApi {
   /// Parameters:
   ///
   /// * [String] projectId (required):
+  ///   Internal (UUID) or global (integer) identifier
   Future<Response> getAutotestProjectSettingsWithHttpInfo(String projectId,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/projects/{projectId}/settings/autotests'
@@ -103,7 +106,8 @@ class ProjectSettingsApi {
   /// Parameters:
   ///
   /// * [String] projectId (required):
-  Future<AutoTestProjectSettingsGetModel?> getAutotestProjectSettings(String projectId,) async {
+  ///   Internal (UUID) or global (integer) identifier
+  Future<AutoTestProjectSettingsApiResult?> getAutotestProjectSettings(String projectId,) async {
     final response = await getAutotestProjectSettingsWithHttpInfo(projectId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -112,7 +116,7 @@ class ProjectSettingsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AutoTestProjectSettingsGetModel',) as AutoTestProjectSettingsGetModel;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AutoTestProjectSettingsApiResult',) as AutoTestProjectSettingsApiResult;
     
     }
     return null;

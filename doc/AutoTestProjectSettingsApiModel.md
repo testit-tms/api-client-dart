@@ -1,4 +1,4 @@
-# testit_api_client_dart.model.AutoTestProjectSettingsGetModel
+# testit_api_client_dart.model.AutoTestProjectSettingsApiModel
 
 ## Load the model package
 ```dart
@@ -8,7 +8,6 @@ import 'package:testit_api_client_dart/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**projectId** | **String** | Unique ID of the project. | 
 **rerunEnabled** | **bool** | Auto rerun enabled | 
 **rerunAttemptsCount** | **int** | Auto rerun attempt count | 
 **isFlakyAuto** | **bool** | Indicates if the status \"Flaky/Stable\" sets automatically | [optional] [default to false]

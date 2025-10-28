@@ -20,6 +20,8 @@ class UserRankModel {
     required this.skippedTestPoints,
     required this.blockedTestPoints,
     required this.levelAvatarEnabled,
+    required this.succeededTestPoints,
+    required this.incompleteTestPoints,
   });
 
   int score;
@@ -36,6 +38,10 @@ class UserRankModel {
 
   bool levelAvatarEnabled;
 
+  int succeededTestPoints;
+
+  int incompleteTestPoints;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UserRankModel &&
     other.score == score &&
@@ -44,7 +50,9 @@ class UserRankModel {
     other.failedTestPoints == failedTestPoints &&
     other.skippedTestPoints == skippedTestPoints &&
     other.blockedTestPoints == blockedTestPoints &&
-    other.levelAvatarEnabled == levelAvatarEnabled;
+    other.levelAvatarEnabled == levelAvatarEnabled &&
+    other.succeededTestPoints == succeededTestPoints &&
+    other.incompleteTestPoints == incompleteTestPoints;
 
   @override
   int get hashCode =>
@@ -55,10 +63,12 @@ class UserRankModel {
     (failedTestPoints.hashCode) +
     (skippedTestPoints.hashCode) +
     (blockedTestPoints.hashCode) +
-    (levelAvatarEnabled.hashCode);
+    (levelAvatarEnabled.hashCode) +
+    (succeededTestPoints.hashCode) +
+    (incompleteTestPoints.hashCode);
 
   @override
-  String toString() => 'UserRankModel[score=$score, workItemsCreated=$workItemsCreated, passedTestPoints=$passedTestPoints, failedTestPoints=$failedTestPoints, skippedTestPoints=$skippedTestPoints, blockedTestPoints=$blockedTestPoints, levelAvatarEnabled=$levelAvatarEnabled]';
+  String toString() => 'UserRankModel[score=$score, workItemsCreated=$workItemsCreated, passedTestPoints=$passedTestPoints, failedTestPoints=$failedTestPoints, skippedTestPoints=$skippedTestPoints, blockedTestPoints=$blockedTestPoints, levelAvatarEnabled=$levelAvatarEnabled, succeededTestPoints=$succeededTestPoints, incompleteTestPoints=$incompleteTestPoints]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -69,6 +79,8 @@ class UserRankModel {
       json[r'skippedTestPoints'] = this.skippedTestPoints;
       json[r'blockedTestPoints'] = this.blockedTestPoints;
       json[r'levelAvatarEnabled'] = this.levelAvatarEnabled;
+      json[r'succeededTestPoints'] = this.succeededTestPoints;
+      json[r'incompleteTestPoints'] = this.incompleteTestPoints;
     return json;
   }
 
@@ -98,6 +110,8 @@ class UserRankModel {
         skippedTestPoints: mapValueOfType<int>(json, r'skippedTestPoints')!,
         blockedTestPoints: mapValueOfType<int>(json, r'blockedTestPoints')!,
         levelAvatarEnabled: mapValueOfType<bool>(json, r'levelAvatarEnabled')!,
+        succeededTestPoints: mapValueOfType<int>(json, r'succeededTestPoints')!,
+        incompleteTestPoints: mapValueOfType<int>(json, r'incompleteTestPoints')!,
       );
     }
     return null;
@@ -152,6 +166,8 @@ class UserRankModel {
     'skippedTestPoints',
     'blockedTestPoints',
     'levelAvatarEnabled',
+    'succeededTestPoints',
+    'incompleteTestPoints',
   };
 }
 

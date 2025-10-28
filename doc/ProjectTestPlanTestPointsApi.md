@@ -27,7 +27,7 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = ProjectTestPlanTestPointsApi();
-final projectId = projectId_example; // String | 
+final projectId = projectId_example; // String | Internal (UUID) or global (integer) identifier
 final testPlanId = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 final testPlanTestPointsAutoTestsRerunApiModel = TestPlanTestPointsAutoTestsRerunApiModel(); // TestPlanTestPointsAutoTestsRerunApiModel | 
 
@@ -42,7 +42,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **String**|  | 
+ **projectId** | **String**| Internal (UUID) or global (integer) identifier | 
  **testPlanId** | **String**|  | 
  **testPlanTestPointsAutoTestsRerunApiModel** | [**TestPlanTestPointsAutoTestsRerunApiModel**](TestPlanTestPointsAutoTestsRerunApiModel.md)|  | [optional] 
 
@@ -75,7 +75,7 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = ProjectTestPlanTestPointsApi();
-final projectId = projectId_example; // String | 
+final projectId = projectId_example; // String | Internal (UUID) or global (integer) identifier
 final testPlanId = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 final testPlanTestPointsAutoTestsRunApiModel = TestPlanTestPointsAutoTestsRunApiModel(); // TestPlanTestPointsAutoTestsRunApiModel | 
 
@@ -91,7 +91,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **String**|  | 
+ **projectId** | **String**| Internal (UUID) or global (integer) identifier | 
  **testPlanId** | **String**|  | 
  **testPlanTestPointsAutoTestsRunApiModel** | [**TestPlanTestPointsAutoTestsRunApiModel**](TestPlanTestPointsAutoTestsRunApiModel.md)|  | [optional] 
 

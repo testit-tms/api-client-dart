@@ -76,6 +76,9 @@ String parameterToString(dynamic value) {
   if (value is BackgroundJobType) {
     return BackgroundJobTypeTypeTransformer().encode(value).toString();
   }
+  if (value is CollectionOperator) {
+    return CollectionOperatorTypeTransformer().encode(value).toString();
+  }
   if (value is CustomAttributeTypesEnum) {
     return CustomAttributeTypesEnumTypeTransformer().encode(value).toString();
   }
@@ -93,6 +96,9 @@ String parameterToString(dynamic value) {
   }
   if (value is FailureCategoryModel) {
     return FailureCategoryModelTypeTransformer().encode(value).toString();
+  }
+  if (value is FilterOperator) {
+    return FilterOperatorTypeTransformer().encode(value).toString();
   }
   if (value is ImageResizeType) {
     return ImageResizeTypeTypeTransformer().encode(value).toString();

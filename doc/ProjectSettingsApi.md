@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **apiV2ProjectsProjectIdSettingsAutotestsPost**
-> apiV2ProjectsProjectIdSettingsAutotestsPost(projectId, autoTestProjectSettingsPostModel)
+> apiV2ProjectsProjectIdSettingsAutotestsPost(projectId, autoTestProjectSettingsApiModel)
 
 Set autotest project settings.
 
@@ -27,11 +27,11 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = ProjectSettingsApi();
-final projectId = projectId_example; // String | 
-final autoTestProjectSettingsPostModel = AutoTestProjectSettingsPostModel(); // AutoTestProjectSettingsPostModel | 
+final projectId = projectId_example; // String | Internal (UUID) or global (integer) identifier
+final autoTestProjectSettingsApiModel = AutoTestProjectSettingsApiModel(); // AutoTestProjectSettingsApiModel | 
 
 try {
-    api_instance.apiV2ProjectsProjectIdSettingsAutotestsPost(projectId, autoTestProjectSettingsPostModel);
+    api_instance.apiV2ProjectsProjectIdSettingsAutotestsPost(projectId, autoTestProjectSettingsApiModel);
 } catch (e) {
     print('Exception when calling ProjectSettingsApi->apiV2ProjectsProjectIdSettingsAutotestsPost: $e\n');
 }
@@ -41,8 +41,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **String**|  | 
- **autoTestProjectSettingsPostModel** | [**AutoTestProjectSettingsPostModel**](AutoTestProjectSettingsPostModel.md)|  | [optional] 
+ **projectId** | **String**| Internal (UUID) or global (integer) identifier | 
+ **autoTestProjectSettingsApiModel** | [**AutoTestProjectSettingsApiModel**](AutoTestProjectSettingsApiModel.md)|  | [optional] 
 
 ### Return type
 
@@ -60,7 +60,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAutotestProjectSettings**
-> AutoTestProjectSettingsGetModel getAutotestProjectSettings(projectId)
+> AutoTestProjectSettingsApiResult getAutotestProjectSettings(projectId)
 
 Get autotest project settings.
 
@@ -73,7 +73,7 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = ProjectSettingsApi();
-final projectId = projectId_example; // String | 
+final projectId = projectId_example; // String | Internal (UUID) or global (integer) identifier
 
 try {
     final result = api_instance.getAutotestProjectSettings(projectId);
@@ -87,11 +87,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **String**|  | 
+ **projectId** | **String**| Internal (UUID) or global (integer) identifier | 
 
 ### Return type
 
-[**AutoTestProjectSettingsGetModel**](AutoTestProjectSettingsGetModel.md)
+[**AutoTestProjectSettingsApiResult**](AutoTestProjectSettingsApiResult.md)
 
 ### Authorization
 

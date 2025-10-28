@@ -1,4 +1,4 @@
-# testit_api_client_dart.model.AutoTestResultReasonGroupSearchApiModel
+# testit_api_client_dart.model.Filter
 
 ## Load the model package
 ```dart
@@ -8,8 +8,9 @@ import 'package:testit_api_client_dart/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**inquiry** | [**Inquiry**](Inquiry.md) | Inquiry details | 
-**group** | [**AutoTestResultReasonGroupApiModel**](AutoTestResultReasonGroupApiModel.md) | Group details | [optional] 
+**operator_** | [**FilterOperator**](FilterOperator.md) |  | 
+**field** | **String** |  | [readonly] 
+**value** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

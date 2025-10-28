@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **className** | **String** |  | [optional] 
 **isEmptyClassName** | **bool** |  | [optional] 
 **lastTestResultOutcome** | [**AutotestResultOutcome**](AutotestResultOutcome.md) |  | [optional] 
-**lastTestResultStatusCode** | **String** |  | [optional] 
+**lastTestResultStatusCodes** | **List<String>** |  | [optional] [default to const []]
 **externalKey** | **String** |  | [optional] 
 **lastTestResultConfigurationIds** | **List<String>** |  | [optional] [default to const []]
 

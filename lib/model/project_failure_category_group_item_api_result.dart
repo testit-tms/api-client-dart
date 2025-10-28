@@ -21,7 +21,7 @@ class ProjectFailureCategoryGroupItemApiResult {
   List<ProjectFailureCategoryApiResult> items;
 
   /// Group details
-  AutoTestResultReasonGroupApiResult? group;
+  FailureCategoryGroupApiResult? group;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProjectFailureCategoryGroupItemApiResult &&
@@ -68,7 +68,7 @@ class ProjectFailureCategoryGroupItemApiResult {
 
       return ProjectFailureCategoryGroupItemApiResult(
         items: ProjectFailureCategoryApiResult.listFromJson(json[r'items']),
-        group: AutoTestResultReasonGroupApiResult.fromJson(json[r'group']),
+        group: FailureCategoryGroupApiResult.fromJson(json[r'group']),
       );
     }
     return null;

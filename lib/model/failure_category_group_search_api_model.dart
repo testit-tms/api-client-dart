@@ -10,9 +10,9 @@
 
 part of testit_api_client_dart;
 
-class AutoTestResultReasonGroupSearchApiModel {
-  /// Returns a new [AutoTestResultReasonGroupSearchApiModel] instance.
-  AutoTestResultReasonGroupSearchApiModel({
+class FailureCategoryGroupSearchApiModel {
+  /// Returns a new [FailureCategoryGroupSearchApiModel] instance.
+  FailureCategoryGroupSearchApiModel({
     required this.inquiry,
     this.group,
   });
@@ -21,10 +21,10 @@ class AutoTestResultReasonGroupSearchApiModel {
   Inquiry inquiry;
 
   /// Group details
-  AutoTestResultReasonGroupApiModel? group;
+  FailureCategoryGroupApiModel? group;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is AutoTestResultReasonGroupSearchApiModel &&
+  bool operator ==(Object other) => identical(this, other) || other is FailureCategoryGroupSearchApiModel &&
     other.inquiry == inquiry &&
     other.group == group;
 
@@ -35,7 +35,7 @@ class AutoTestResultReasonGroupSearchApiModel {
     (group == null ? 0 : group!.hashCode);
 
   @override
-  String toString() => 'AutoTestResultReasonGroupSearchApiModel[inquiry=$inquiry, group=$group]';
+  String toString() => 'FailureCategoryGroupSearchApiModel[inquiry=$inquiry, group=$group]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -48,10 +48,10 @@ class AutoTestResultReasonGroupSearchApiModel {
     return json;
   }
 
-  /// Returns a new [AutoTestResultReasonGroupSearchApiModel] instance and imports its values from
+  /// Returns a new [FailureCategoryGroupSearchApiModel] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static AutoTestResultReasonGroupSearchApiModel? fromJson(dynamic value) {
+  static FailureCategoryGroupSearchApiModel? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -60,25 +60,25 @@ class AutoTestResultReasonGroupSearchApiModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AutoTestResultReasonGroupSearchApiModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AutoTestResultReasonGroupSearchApiModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "FailureCategoryGroupSearchApiModel[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "FailureCategoryGroupSearchApiModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return AutoTestResultReasonGroupSearchApiModel(
+      return FailureCategoryGroupSearchApiModel(
         inquiry: Inquiry.fromJson(json[r'inquiry'])!,
-        group: AutoTestResultReasonGroupApiModel.fromJson(json[r'group']),
+        group: FailureCategoryGroupApiModel.fromJson(json[r'group']),
       );
     }
     return null;
   }
 
-  static List<AutoTestResultReasonGroupSearchApiModel> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <AutoTestResultReasonGroupSearchApiModel>[];
+  static List<FailureCategoryGroupSearchApiModel> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <FailureCategoryGroupSearchApiModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = AutoTestResultReasonGroupSearchApiModel.fromJson(row);
+        final value = FailureCategoryGroupSearchApiModel.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -87,12 +87,12 @@ class AutoTestResultReasonGroupSearchApiModel {
     return result.toList(growable: growable);
   }
 
-  static Map<String, AutoTestResultReasonGroupSearchApiModel> mapFromJson(dynamic json) {
-    final map = <String, AutoTestResultReasonGroupSearchApiModel>{};
+  static Map<String, FailureCategoryGroupSearchApiModel> mapFromJson(dynamic json) {
+    final map = <String, FailureCategoryGroupSearchApiModel>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = AutoTestResultReasonGroupSearchApiModel.fromJson(entry.value);
+        final value = FailureCategoryGroupSearchApiModel.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -101,14 +101,14 @@ class AutoTestResultReasonGroupSearchApiModel {
     return map;
   }
 
-  // maps a json object with a list of AutoTestResultReasonGroupSearchApiModel-objects as value to a dart map
-  static Map<String, List<AutoTestResultReasonGroupSearchApiModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<AutoTestResultReasonGroupSearchApiModel>>{};
+  // maps a json object with a list of FailureCategoryGroupSearchApiModel-objects as value to a dart map
+  static Map<String, List<FailureCategoryGroupSearchApiModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<FailureCategoryGroupSearchApiModel>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = AutoTestResultReasonGroupSearchApiModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = FailureCategoryGroupSearchApiModel.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

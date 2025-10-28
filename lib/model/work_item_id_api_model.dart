@@ -10,17 +10,17 @@
 
 part of testit_api_client_dart;
 
-class WorkItemIdModel {
-  /// Returns a new [WorkItemIdModel] instance.
-  WorkItemIdModel({
+class WorkItemIdApiModel {
+  /// Returns a new [WorkItemIdApiModel] instance.
+  WorkItemIdApiModel({
     required this.id,
   });
 
-  /// Used for search WorkItem. Internal identifier has a Guid data format. Global identifier has an integer data format
+  /// Work Item ID or Global ID
   String id;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is WorkItemIdModel &&
+  bool operator ==(Object other) => identical(this, other) || other is WorkItemIdApiModel &&
     other.id == id;
 
   @override
@@ -29,7 +29,7 @@ class WorkItemIdModel {
     (id.hashCode);
 
   @override
-  String toString() => 'WorkItemIdModel[id=$id]';
+  String toString() => 'WorkItemIdApiModel[id=$id]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -37,10 +37,10 @@ class WorkItemIdModel {
     return json;
   }
 
-  /// Returns a new [WorkItemIdModel] instance and imports its values from
+  /// Returns a new [WorkItemIdApiModel] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static WorkItemIdModel? fromJson(dynamic value) {
+  static WorkItemIdApiModel? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -49,24 +49,24 @@ class WorkItemIdModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "WorkItemIdModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "WorkItemIdModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "WorkItemIdApiModel[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "WorkItemIdApiModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return WorkItemIdModel(
+      return WorkItemIdApiModel(
         id: mapValueOfType<String>(json, r'id')!,
       );
     }
     return null;
   }
 
-  static List<WorkItemIdModel> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <WorkItemIdModel>[];
+  static List<WorkItemIdApiModel> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <WorkItemIdApiModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = WorkItemIdModel.fromJson(row);
+        final value = WorkItemIdApiModel.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -75,12 +75,12 @@ class WorkItemIdModel {
     return result.toList(growable: growable);
   }
 
-  static Map<String, WorkItemIdModel> mapFromJson(dynamic json) {
-    final map = <String, WorkItemIdModel>{};
+  static Map<String, WorkItemIdApiModel> mapFromJson(dynamic json) {
+    final map = <String, WorkItemIdApiModel>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = WorkItemIdModel.fromJson(entry.value);
+        final value = WorkItemIdApiModel.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -89,14 +89,14 @@ class WorkItemIdModel {
     return map;
   }
 
-  // maps a json object with a list of WorkItemIdModel-objects as value to a dart map
-  static Map<String, List<WorkItemIdModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<WorkItemIdModel>>{};
+  // maps a json object with a list of WorkItemIdApiModel-objects as value to a dart map
+  static Map<String, List<WorkItemIdApiModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<WorkItemIdApiModel>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = WorkItemIdModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = WorkItemIdApiModel.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

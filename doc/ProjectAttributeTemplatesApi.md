@@ -28,7 +28,7 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = ProjectAttributeTemplatesApi();
-final projectId = projectId_example; // String | 
+final projectId = projectId_example; // String | Internal (UUID) or global (integer) identifier
 final skip = 56; // int | Amount of items to be skipped (offset)
 final take = 56; // int | Amount of items to be taken (limit)
 final orderBy = orderBy_example; // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC)
@@ -48,7 +48,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **String**|  | 
+ **projectId** | **String**| Internal (UUID) or global (integer) identifier | 
  **skip** | **int**| Amount of items to be skipped (offset) | [optional] 
  **take** | **int**| Amount of items to be taken (limit) | [optional] 
  **orderBy** | **String**| SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) | [optional] 
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 
 Delete CustomAttributeTemplate from Project
 
- Use case  User sets project internal or global identifier  User sets attribute template internal identifier  User runs method execution  System delete attribute template from project
+  Use case    User sets project internal or global identifier    User sets attribute template internal identifier    User runs method execution    System delete attribute template from project
 
 ### Example
 ```dart
@@ -124,7 +124,7 @@ void (empty response body)
 
 Add CustomAttributeTemplate to Project
 
- Use case  User sets project internal or global identifier  User sets attribute template internal identifier  User runs method execution  System add attribute template to project
+  Use case    User sets project internal or global identifier    User sets attribute template internal identifier    User runs method execution    System add attribute template to project
 
 ### Example
 ```dart

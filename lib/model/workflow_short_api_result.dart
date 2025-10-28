@@ -17,6 +17,10 @@ class WorkflowShortApiResult {
     required this.name,
     required this.isSystem,
     required this.isDefault,
+    required this.createdDate,
+    required this.createdById,
+    required this.modifiedDate,
+    required this.modifiedById,
     required this.projects,
   });
 
@@ -28,6 +32,14 @@ class WorkflowShortApiResult {
 
   bool isDefault;
 
+  DateTime createdDate;
+
+  String createdById;
+
+  DateTime modifiedDate;
+
+  String modifiedById;
+
   WorkflowProjectApiResultApiCollectionPreview projects;
 
   @override
@@ -36,6 +48,10 @@ class WorkflowShortApiResult {
     other.name == name &&
     other.isSystem == isSystem &&
     other.isDefault == isDefault &&
+    other.createdDate == createdDate &&
+    other.createdById == createdById &&
+    other.modifiedDate == modifiedDate &&
+    other.modifiedById == modifiedById &&
     other.projects == projects;
 
   @override
@@ -45,10 +61,14 @@ class WorkflowShortApiResult {
     (name.hashCode) +
     (isSystem.hashCode) +
     (isDefault.hashCode) +
+    (createdDate.hashCode) +
+    (createdById.hashCode) +
+    (modifiedDate.hashCode) +
+    (modifiedById.hashCode) +
     (projects.hashCode);
 
   @override
-  String toString() => 'WorkflowShortApiResult[id=$id, name=$name, isSystem=$isSystem, isDefault=$isDefault, projects=$projects]';
+  String toString() => 'WorkflowShortApiResult[id=$id, name=$name, isSystem=$isSystem, isDefault=$isDefault, createdDate=$createdDate, createdById=$createdById, modifiedDate=$modifiedDate, modifiedById=$modifiedById, projects=$projects]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -56,6 +76,10 @@ class WorkflowShortApiResult {
       json[r'name'] = this.name;
       json[r'isSystem'] = this.isSystem;
       json[r'isDefault'] = this.isDefault;
+      json[r'createdDate'] = this.createdDate.toUtc().toIso8601String();
+      json[r'createdById'] = this.createdById;
+      json[r'modifiedDate'] = this.modifiedDate.toUtc().toIso8601String();
+      json[r'modifiedById'] = this.modifiedById;
       json[r'projects'] = this.projects;
     return json;
   }
@@ -83,6 +107,10 @@ class WorkflowShortApiResult {
         name: mapValueOfType<String>(json, r'name')!,
         isSystem: mapValueOfType<bool>(json, r'isSystem')!,
         isDefault: mapValueOfType<bool>(json, r'isDefault')!,
+        createdDate: mapDateTime(json, r'createdDate', r'')!,
+        createdById: mapValueOfType<String>(json, r'createdById')!,
+        modifiedDate: mapDateTime(json, r'modifiedDate', r'')!,
+        modifiedById: mapValueOfType<String>(json, r'modifiedById')!,
         projects: WorkflowProjectApiResultApiCollectionPreview.fromJson(json[r'projects'])!,
       );
     }
@@ -135,6 +163,10 @@ class WorkflowShortApiResult {
     'name',
     'isSystem',
     'isDefault',
+    'createdDate',
+    'createdById',
+    'modifiedDate',
+    'modifiedById',
     'projects',
   };
 }

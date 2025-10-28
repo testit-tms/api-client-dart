@@ -12,6 +12,10 @@ Name | Type | Description | Notes
 **name** | **String** |  | 
 **isSystem** | **bool** |  | 
 **isDefault** | **bool** |  | 
+**createdDate** | [**DateTime**](DateTime.md) |  | 
+**createdById** | **String** |  | 
+**modifiedDate** | [**DateTime**](DateTime.md) |  | 
+**modifiedById** | **String** |  | 
 **projects** | [**WorkflowProjectApiResultApiCollectionPreview**](WorkflowProjectApiResultApiCollectionPreview.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

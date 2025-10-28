@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **modifiedDate** | [**DateTimeRangeSelectorModel**](DateTimeRangeSelectorModel.md) | Specifies a test point range of last modification date to search for | [optional] 
 **modifiedByIds** | **List<String>** | Specifies a test point last editor IDs to search for | [optional] [default to const []]
 **tags** | **List<String>** | Specifies a test point tags to search for | [optional] [default to const []]
+**excludeTags** | **List<String>** | Specifies a test point tags to exclude to search for | [optional] [default to const []]
 **attributes** | [**Map<String, Set<String>>**](Set.md) | Specifies a test point attributes to search for | [optional] [default to const {}]
 **workItemCreatedDate** | [**DateTimeRangeSelectorModel**](DateTimeRangeSelectorModel.md) | Specifies a work item range of creation date to search for | [optional] 
 **workItemCreatedByIds** | **List<String>** | Specifies a work item creator IDs to search for | [optional] [default to const []]

@@ -21,7 +21,6 @@ class ProjectShortModel {
     required this.createdById,
     required this.globalId,
     required this.type,
-    required this.isFlakyAuto,
     required this.workflowId,
     this.description,
     this.testCasesCount,
@@ -30,6 +29,7 @@ class ProjectShortModel {
     this.autoTestsCount,
     this.modifiedDate,
     this.modifiedById,
+    this.isFlakyAuto,
   });
 
   /// Unique ID of the project
@@ -56,9 +56,6 @@ class ProjectShortModel {
   /// Type of the project
   ProjectTypeModel type;
 
-  /// Indicates if the status \"Flaky/Stable\" sets automatically
-  bool isFlakyAuto;
-
   String workflowId;
 
   /// Description of the project
@@ -82,6 +79,9 @@ class ProjectShortModel {
   /// Unique ID of the project last editor
   String? modifiedById;
 
+  /// Indicates if the status \"Flaky/Stable\" sets automatically
+  bool? isFlakyAuto;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProjectShortModel &&
     other.id == id &&
@@ -92,7 +92,6 @@ class ProjectShortModel {
     other.createdById == createdById &&
     other.globalId == globalId &&
     other.type == type &&
-    other.isFlakyAuto == isFlakyAuto &&
     other.workflowId == workflowId &&
     other.description == description &&
     other.testCasesCount == testCasesCount &&
@@ -100,7 +99,8 @@ class ProjectShortModel {
     other.checkListsCount == checkListsCount &&
     other.autoTestsCount == autoTestsCount &&
     other.modifiedDate == modifiedDate &&
-    other.modifiedById == modifiedById;
+    other.modifiedById == modifiedById &&
+    other.isFlakyAuto == isFlakyAuto;
 
   @override
   int get hashCode =>
@@ -113,7 +113,6 @@ class ProjectShortModel {
     (createdById.hashCode) +
     (globalId.hashCode) +
     (type.hashCode) +
-    (isFlakyAuto.hashCode) +
     (workflowId.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (testCasesCount == null ? 0 : testCasesCount!.hashCode) +
@@ -121,10 +120,11 @@ class ProjectShortModel {
     (checkListsCount == null ? 0 : checkListsCount!.hashCode) +
     (autoTestsCount == null ? 0 : autoTestsCount!.hashCode) +
     (modifiedDate == null ? 0 : modifiedDate!.hashCode) +
-    (modifiedById == null ? 0 : modifiedById!.hashCode);
+    (modifiedById == null ? 0 : modifiedById!.hashCode) +
+    (isFlakyAuto == null ? 0 : isFlakyAuto!.hashCode);
 
   @override
-  String toString() => 'ProjectShortModel[id=$id, name=$name, isFavorite=$isFavorite, isDeleted=$isDeleted, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, type=$type, isFlakyAuto=$isFlakyAuto, workflowId=$workflowId, description=$description, testCasesCount=$testCasesCount, sharedStepsCount=$sharedStepsCount, checkListsCount=$checkListsCount, autoTestsCount=$autoTestsCount, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
+  String toString() => 'ProjectShortModel[id=$id, name=$name, isFavorite=$isFavorite, isDeleted=$isDeleted, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, type=$type, workflowId=$workflowId, description=$description, testCasesCount=$testCasesCount, sharedStepsCount=$sharedStepsCount, checkListsCount=$checkListsCount, autoTestsCount=$autoTestsCount, modifiedDate=$modifiedDate, modifiedById=$modifiedById, isFlakyAuto=$isFlakyAuto]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -136,7 +136,6 @@ class ProjectShortModel {
       json[r'createdById'] = this.createdById;
       json[r'globalId'] = this.globalId;
       json[r'type'] = this.type;
-      json[r'isFlakyAuto'] = this.isFlakyAuto;
       json[r'workflowId'] = this.workflowId;
     if (this.description != null) {
       json[r'description'] = this.description;
@@ -173,6 +172,11 @@ class ProjectShortModel {
     } else {
       json[r'modifiedById'] = null;
     }
+    if (this.isFlakyAuto != null) {
+      json[r'isFlakyAuto'] = this.isFlakyAuto;
+    } else {
+      json[r'isFlakyAuto'] = null;
+    }
     return json;
   }
 
@@ -203,7 +207,6 @@ class ProjectShortModel {
         createdById: mapValueOfType<String>(json, r'createdById')!,
         globalId: mapValueOfType<int>(json, r'globalId')!,
         type: ProjectTypeModel.fromJson(json[r'type'])!,
-        isFlakyAuto: mapValueOfType<bool>(json, r'isFlakyAuto')!,
         workflowId: mapValueOfType<String>(json, r'workflowId')!,
         description: mapValueOfType<String>(json, r'description'),
         testCasesCount: mapValueOfType<int>(json, r'testCasesCount'),
@@ -212,6 +215,7 @@ class ProjectShortModel {
         autoTestsCount: mapValueOfType<int>(json, r'autoTestsCount'),
         modifiedDate: mapDateTime(json, r'modifiedDate', r''),
         modifiedById: mapValueOfType<String>(json, r'modifiedById'),
+        isFlakyAuto: mapValueOfType<bool>(json, r'isFlakyAuto'),
       );
     }
     return null;
@@ -267,7 +271,6 @@ class ProjectShortModel {
     'createdById',
     'globalId',
     'type',
-    'isFlakyAuto',
     'workflowId',
   };
 }

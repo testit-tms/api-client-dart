@@ -17,7 +17,7 @@ class CompositeFilter {
     required this.operator_,
   });
 
-  List<Object> filters;
+  List<IFilter> filters;
 
   LogicalOperator operator_;
 
@@ -61,7 +61,7 @@ class CompositeFilter {
       }());
 
       return CompositeFilter(
-        filters: CompositeFilter.listFromJson(json[r'filters']),
+        filters: IFilter.listFromJson(json[r'filters']),
         operator_: LogicalOperator.fromJson(json[r'operator'])!,
       );
     }

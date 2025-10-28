@@ -23,6 +23,7 @@ class ProjectTestPlanTestPointsApi {
   /// Parameters:
   ///
   /// * [String] projectId (required):
+  ///   Internal (UUID) or global (integer) identifier
   ///
   /// * [String] testPlanId (required):
   ///
@@ -59,6 +60,7 @@ class ProjectTestPlanTestPointsApi {
   /// Parameters:
   ///
   /// * [String] projectId (required):
+  ///   Internal (UUID) or global (integer) identifier
   ///
   /// * [String] testPlanId (required):
   ///
@@ -77,6 +79,7 @@ class ProjectTestPlanTestPointsApi {
   /// Parameters:
   ///
   /// * [String] projectId (required):
+  ///   Internal (UUID) or global (integer) identifier
   ///
   /// * [String] testPlanId (required):
   ///
@@ -113,6 +116,7 @@ class ProjectTestPlanTestPointsApi {
   /// Parameters:
   ///
   /// * [String] projectId (required):
+  ///   Internal (UUID) or global (integer) identifier
   ///
   /// * [String] testPlanId (required):
   ///

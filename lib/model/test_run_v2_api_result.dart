@@ -48,7 +48,7 @@ class TestRunV2ApiResult {
   /// Test run status
   TestStatusApiResult status;
 
-  /// Project unique identifier              This property is used to link test run with project.
+  /// Project unique identifier                This property is used to link test run with project.
   String projectId;
 
   /// Date and time of test run creation
@@ -72,7 +72,7 @@ class TestRunV2ApiResult {
   /// Test run description
   String? description;
 
-  /// Test run launch source              Once launch source is specified it cannot be updated.
+  /// Test run launch source                Once launch source is specified it cannot be updated.
   String? launchSource;
 
   /// Date and time of test run start
@@ -81,7 +81,7 @@ class TestRunV2ApiResult {
   /// Date and time of test run end
   DateTime? completedOn;
 
-  /// Test plan unique identifier              This property is used to link test run with test plan.
+  /// Test plan unique identifier                This property is used to link test run with test plan.
   String? testPlanId;
 
   /// Enumeration of test results related to test run

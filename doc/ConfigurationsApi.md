@@ -294,7 +294,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apiV2ConfigurationsPurgeBulkPost**
-> apiV2ConfigurationsPurgeBulkPost(configurationSelectModel)
+> int apiV2ConfigurationsPurgeBulkPost(configurationSelectModel)
 
 Permanently delete multiple archived configurations
 
@@ -310,7 +310,8 @@ final api_instance = ConfigurationsApi();
 final configurationSelectModel = ConfigurationSelectModel(); // ConfigurationSelectModel | 
 
 try {
-    api_instance.apiV2ConfigurationsPurgeBulkPost(configurationSelectModel);
+    final result = api_instance.apiV2ConfigurationsPurgeBulkPost(configurationSelectModel);
+    print(result);
 } catch (e) {
     print('Exception when calling ConfigurationsApi->apiV2ConfigurationsPurgeBulkPost: $e\n');
 }
@@ -324,7 +325,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**int**
 
 ### Authorization
 
@@ -486,7 +487,7 @@ Name | Type | Description  | Notes
 
 Create Configuration
 
- Use case  User sets configuration model (listed in the request example)  User runs method execution  System creates configuration  System returns created configuration (listed in the response example)
+  Use case    User sets configuration model (listed in the request example)    User runs method execution    System creates configuration    System returns created configuration (listed in the response example)
 
 ### Example
 ```dart
@@ -533,7 +534,7 @@ Name | Type | Description  | Notes
 
 Get configuration by internal or global ID
 
- Use case  User sets configuration internal (guid format) or global (integer format) identifier  User runs method execution  System search configuration using the identifier  System returns configuration
+  Use case    User sets configuration internal (guid format) or global (integer format) identifier    User runs method execution    System search configuration using the identifier    System returns configuration
 
 ### Example
 ```dart

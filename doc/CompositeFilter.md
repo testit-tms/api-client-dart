@@ -8,7 +8,7 @@ import 'package:testit_api_client_dart/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**filters** | [**List<Object>**](Object.md) |  | [default to const []]
+**filters** | [**List<IFilter>**](IFilter.md) |  | [default to const []]
 **operator_** | [**LogicalOperator**](LogicalOperator.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

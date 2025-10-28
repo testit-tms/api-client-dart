@@ -10,9 +10,9 @@
 
 part of testit_api_client_dart;
 
-class CreateAutoTestResultReasonProjectApiModel {
-  /// Returns a new [CreateAutoTestResultReasonProjectApiModel] instance.
-  CreateAutoTestResultReasonProjectApiModel({
+class CreateFailureCategoryApiModel {
+  /// Returns a new [CreateFailureCategoryApiModel] instance.
+  CreateFailureCategoryApiModel({
     required this.name,
     required this.failureCategory,
     this.failureClassRegexes = const [],
@@ -32,7 +32,7 @@ class CreateAutoTestResultReasonProjectApiModel {
   List<String>? projectIds;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is CreateAutoTestResultReasonProjectApiModel &&
+  bool operator ==(Object other) => identical(this, other) || other is CreateFailureCategoryApiModel &&
     other.name == name &&
     other.failureCategory == failureCategory &&
     _deepEquality.equals(other.failureClassRegexes, failureClassRegexes) &&
@@ -47,7 +47,7 @@ class CreateAutoTestResultReasonProjectApiModel {
     (projectIds == null ? 0 : projectIds!.hashCode);
 
   @override
-  String toString() => 'CreateAutoTestResultReasonProjectApiModel[name=$name, failureCategory=$failureCategory, failureClassRegexes=$failureClassRegexes, projectIds=$projectIds]';
+  String toString() => 'CreateFailureCategoryApiModel[name=$name, failureCategory=$failureCategory, failureClassRegexes=$failureClassRegexes, projectIds=$projectIds]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -66,10 +66,10 @@ class CreateAutoTestResultReasonProjectApiModel {
     return json;
   }
 
-  /// Returns a new [CreateAutoTestResultReasonProjectApiModel] instance and imports its values from
+  /// Returns a new [CreateFailureCategoryApiModel] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static CreateAutoTestResultReasonProjectApiModel? fromJson(dynamic value) {
+  static CreateFailureCategoryApiModel? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -78,13 +78,13 @@ class CreateAutoTestResultReasonProjectApiModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CreateAutoTestResultReasonProjectApiModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CreateAutoTestResultReasonProjectApiModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "CreateFailureCategoryApiModel[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "CreateFailureCategoryApiModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return CreateAutoTestResultReasonProjectApiModel(
+      return CreateFailureCategoryApiModel(
         name: mapValueOfType<String>(json, r'name')!,
         failureCategory: FailureCategory.fromJson(json[r'failureCategory'])!,
         failureClassRegexes: CreateFailureClassRegexApiModel.listFromJson(json[r'failureClassRegexes']),
@@ -96,11 +96,11 @@ class CreateAutoTestResultReasonProjectApiModel {
     return null;
   }
 
-  static List<CreateAutoTestResultReasonProjectApiModel> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <CreateAutoTestResultReasonProjectApiModel>[];
+  static List<CreateFailureCategoryApiModel> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CreateFailureCategoryApiModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = CreateAutoTestResultReasonProjectApiModel.fromJson(row);
+        final value = CreateFailureCategoryApiModel.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -109,12 +109,12 @@ class CreateAutoTestResultReasonProjectApiModel {
     return result.toList(growable: growable);
   }
 
-  static Map<String, CreateAutoTestResultReasonProjectApiModel> mapFromJson(dynamic json) {
-    final map = <String, CreateAutoTestResultReasonProjectApiModel>{};
+  static Map<String, CreateFailureCategoryApiModel> mapFromJson(dynamic json) {
+    final map = <String, CreateFailureCategoryApiModel>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = CreateAutoTestResultReasonProjectApiModel.fromJson(entry.value);
+        final value = CreateFailureCategoryApiModel.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -123,14 +123,14 @@ class CreateAutoTestResultReasonProjectApiModel {
     return map;
   }
 
-  // maps a json object with a list of CreateAutoTestResultReasonProjectApiModel-objects as value to a dart map
-  static Map<String, List<CreateAutoTestResultReasonProjectApiModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<CreateAutoTestResultReasonProjectApiModel>>{};
+  // maps a json object with a list of CreateFailureCategoryApiModel-objects as value to a dart map
+  static Map<String, List<CreateFailureCategoryApiModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<CreateFailureCategoryApiModel>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = CreateAutoTestResultReasonProjectApiModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = CreateFailureCategoryApiModel.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

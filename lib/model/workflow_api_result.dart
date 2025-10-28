@@ -17,7 +17,12 @@ class WorkflowApiResult {
     required this.name,
     required this.isSystem,
     required this.isDefault,
+    required this.createdDate,
+    required this.createdById,
+    required this.modifiedDate,
+    required this.modifiedById,
     this.statuses = const [],
+    this.projects = const [],
   });
 
   String id;
@@ -28,7 +33,17 @@ class WorkflowApiResult {
 
   bool isDefault;
 
+  DateTime createdDate;
+
+  String createdById;
+
+  DateTime modifiedDate;
+
+  String modifiedById;
+
   List<WorkflowStatusApiResult> statuses;
+
+  List<WorkflowProjectApiResult> projects;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is WorkflowApiResult &&
@@ -36,7 +51,12 @@ class WorkflowApiResult {
     other.name == name &&
     other.isSystem == isSystem &&
     other.isDefault == isDefault &&
-    _deepEquality.equals(other.statuses, statuses);
+    other.createdDate == createdDate &&
+    other.createdById == createdById &&
+    other.modifiedDate == modifiedDate &&
+    other.modifiedById == modifiedById &&
+    _deepEquality.equals(other.statuses, statuses) &&
+    _deepEquality.equals(other.projects, projects);
 
   @override
   int get hashCode =>
@@ -45,10 +65,15 @@ class WorkflowApiResult {
     (name.hashCode) +
     (isSystem.hashCode) +
     (isDefault.hashCode) +
-    (statuses.hashCode);
+    (createdDate.hashCode) +
+    (createdById.hashCode) +
+    (modifiedDate.hashCode) +
+    (modifiedById.hashCode) +
+    (statuses.hashCode) +
+    (projects.hashCode);
 
   @override
-  String toString() => 'WorkflowApiResult[id=$id, name=$name, isSystem=$isSystem, isDefault=$isDefault, statuses=$statuses]';
+  String toString() => 'WorkflowApiResult[id=$id, name=$name, isSystem=$isSystem, isDefault=$isDefault, createdDate=$createdDate, createdById=$createdById, modifiedDate=$modifiedDate, modifiedById=$modifiedById, statuses=$statuses, projects=$projects]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -56,7 +81,12 @@ class WorkflowApiResult {
       json[r'name'] = this.name;
       json[r'isSystem'] = this.isSystem;
       json[r'isDefault'] = this.isDefault;
+      json[r'createdDate'] = this.createdDate.toUtc().toIso8601String();
+      json[r'createdById'] = this.createdById;
+      json[r'modifiedDate'] = this.modifiedDate.toUtc().toIso8601String();
+      json[r'modifiedById'] = this.modifiedById;
       json[r'statuses'] = this.statuses;
+      json[r'projects'] = this.projects;
     return json;
   }
 
@@ -83,7 +113,12 @@ class WorkflowApiResult {
         name: mapValueOfType<String>(json, r'name')!,
         isSystem: mapValueOfType<bool>(json, r'isSystem')!,
         isDefault: mapValueOfType<bool>(json, r'isDefault')!,
+        createdDate: mapDateTime(json, r'createdDate', r'')!,
+        createdById: mapValueOfType<String>(json, r'createdById')!,
+        modifiedDate: mapDateTime(json, r'modifiedDate', r'')!,
+        modifiedById: mapValueOfType<String>(json, r'modifiedById')!,
         statuses: WorkflowStatusApiResult.listFromJson(json[r'statuses']),
+        projects: WorkflowProjectApiResult.listFromJson(json[r'projects']),
       );
     }
     return null;
@@ -135,7 +170,12 @@ class WorkflowApiResult {
     'name',
     'isSystem',
     'isDefault',
+    'createdDate',
+    'createdById',
+    'modifiedDate',
+    'modifiedById',
     'statuses',
+    'projects',
   };
 }
 

@@ -16,7 +16,6 @@ Name | Type | Description | Notes
 **createdById** | **String** | Unique ID of the project creator | 
 **globalId** | **int** | Global ID of the project | 
 **type** | [**ProjectTypeModel**](ProjectTypeModel.md) | Type of the project | 
-**isFlakyAuto** | **bool** | Indicates if the status \"Flaky/Stable\" sets automatically | 
 **workflowId** | **String** |  | 
 **description** | **String** | Description of the project | [optional] 
 **testCasesCount** | **int** | Number of test cases in the project | [optional] 
@@ -25,6 +24,7 @@ Name | Type | Description | Notes
 **autoTestsCount** | **int** | Number of autotests in the project | [optional] 
 **modifiedDate** | [**DateTime**](DateTime.md) | Last modification date of the project | [optional] 
 **modifiedById** | **String** | Unique ID of the project last editor | [optional] 
+**isFlakyAuto** | **bool** | Indicates if the status \"Flaky/Stable\" sets automatically | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

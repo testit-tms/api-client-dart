@@ -158,6 +158,7 @@ else
     echo "⚠️ dart command not found. Install Dart SDK to complete setup."
 fi
 
+rm README-NEW.md
 
 echo ""
 echo "🎉 Done! Client created and files copied to root directory!"

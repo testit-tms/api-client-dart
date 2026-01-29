@@ -29,6 +29,7 @@ class ProjectShortModel {
     this.autoTestsCount,
     this.modifiedDate,
     this.modifiedById,
+    this.isFlakyAuto,
   });
 
   /// Unique ID of the project
@@ -78,6 +79,9 @@ class ProjectShortModel {
   /// Unique ID of the project last editor
   String? modifiedById;
 
+  /// Indicates if the status \"Flaky/Stable\" sets automatically
+  bool? isFlakyAuto;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProjectShortModel &&
     other.id == id &&
@@ -95,7 +99,8 @@ class ProjectShortModel {
     other.checkListsCount == checkListsCount &&
     other.autoTestsCount == autoTestsCount &&
     other.modifiedDate == modifiedDate &&
-    other.modifiedById == modifiedById;
+    other.modifiedById == modifiedById &&
+    other.isFlakyAuto == isFlakyAuto;
 
   @override
   int get hashCode =>
@@ -115,10 +120,11 @@ class ProjectShortModel {
     (checkListsCount == null ? 0 : checkListsCount!.hashCode) +
     (autoTestsCount == null ? 0 : autoTestsCount!.hashCode) +
     (modifiedDate == null ? 0 : modifiedDate!.hashCode) +
-    (modifiedById == null ? 0 : modifiedById!.hashCode);
+    (modifiedById == null ? 0 : modifiedById!.hashCode) +
+    (isFlakyAuto == null ? 0 : isFlakyAuto!.hashCode);
 
   @override
-  String toString() => 'ProjectShortModel[id=$id, name=$name, isFavorite=$isFavorite, isDeleted=$isDeleted, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, type=$type, workflowId=$workflowId, description=$description, testCasesCount=$testCasesCount, sharedStepsCount=$sharedStepsCount, checkListsCount=$checkListsCount, autoTestsCount=$autoTestsCount, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
+  String toString() => 'ProjectShortModel[id=$id, name=$name, isFavorite=$isFavorite, isDeleted=$isDeleted, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, type=$type, workflowId=$workflowId, description=$description, testCasesCount=$testCasesCount, sharedStepsCount=$sharedStepsCount, checkListsCount=$checkListsCount, autoTestsCount=$autoTestsCount, modifiedDate=$modifiedDate, modifiedById=$modifiedById, isFlakyAuto=$isFlakyAuto]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -166,6 +172,11 @@ class ProjectShortModel {
     } else {
       json[r'modifiedById'] = null;
     }
+    if (this.isFlakyAuto != null) {
+      json[r'isFlakyAuto'] = this.isFlakyAuto;
+    } else {
+      json[r'isFlakyAuto'] = null;
+    }
     return json;
   }
 
@@ -204,6 +215,7 @@ class ProjectShortModel {
         autoTestsCount: mapValueOfType<int>(json, r'autoTestsCount'),
         modifiedDate: mapDateTime(json, r'modifiedDate', r''),
         modifiedById: mapValueOfType<String>(json, r'modifiedById'),
+        isFlakyAuto: mapValueOfType<bool>(json, r'isFlakyAuto'),
       );
     }
     return null;

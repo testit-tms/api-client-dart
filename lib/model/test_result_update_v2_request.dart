@@ -44,11 +44,11 @@ class TestResultUpdateV2Request {
   List<AttachmentUpdateRequest>? attachments;
 
   /// Minimum value: 0
-  /// Maximum value: 9223372036854775807
+  /// Maximum value: -9223372036854775616
   int? durationInMs;
 
   /// Minimum value: 0
-  /// Maximum value: 9223372036854775807
+  /// Maximum value: -9223372036854775616
   int? duration;
 
   List<TestResultStepCommentUpdateRequest>? stepComments;

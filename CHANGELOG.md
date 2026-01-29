@@ -1,7 +1,3 @@
-## 1.4.0-TMS-5.6
-
-* TMS 5.6 support
-
 ## 1.3.0
 
 * TMS Cloud support

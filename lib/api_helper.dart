@@ -58,9 +58,6 @@ String parameterToString(dynamic value) {
   if (value is ActionUpdate) {
     return ActionUpdateTypeTransformer().encode(value).toString();
   }
-  if (value is ApiExternalServiceCategory) {
-    return ApiExternalServiceCategoryTypeTransformer().encode(value).toString();
-  }
   if (value is AutoTestOutcome) {
     return AutoTestOutcomeTypeTransformer().encode(value).toString();
   }
@@ -82,9 +79,6 @@ String parameterToString(dynamic value) {
   if (value is CollectionOperator) {
     return CollectionOperatorTypeTransformer().encode(value).toString();
   }
-  if (value is CustomAttributeType) {
-    return CustomAttributeTypeTypeTransformer().encode(value).toString();
-  }
   if (value is CustomAttributeTypesEnum) {
     return CustomAttributeTypesEnumTypeTransformer().encode(value).toString();
   }
@@ -93,6 +87,9 @@ String parameterToString(dynamic value) {
   }
   if (value is ExternalIssueApiField) {
     return ExternalIssueApiFieldTypeTransformer().encode(value).toString();
+  }
+  if (value is ExternalServiceCategoryApiResult) {
+    return ExternalServiceCategoryApiResultTypeTransformer().encode(value).toString();
   }
   if (value is FailureCategory) {
     return FailureCategoryTypeTransformer().encode(value).toString();

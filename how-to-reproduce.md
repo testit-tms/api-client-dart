@@ -21,6 +21,7 @@ postgen:
 dart pub get
 
 ```
-
-1. Write in the CHANGELOG.md for new version
-2. manually update Readme.md from generated-dart-client
+3. Return the dependencies in the pubspec.yaml
+4. Return the repository and the homepage in the pubspec.yaml
+5. Write in the CHANGELOG.md for new version
+6. manually update Readme.md from generated-dart-client

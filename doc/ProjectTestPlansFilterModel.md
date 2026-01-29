@@ -22,7 +22,6 @@ Name | Type | Description | Notes
 **startDate** | [**DateTimeRangeSelectorModel**](DateTimeRangeSelectorModel.md) |  | [optional] 
 **endDate** | [**DateTimeRangeSelectorModel**](DateTimeRangeSelectorModel.md) |  | [optional] 
 **tagNames** | **Set<String>** |  | [optional] [default to const {}]
-**excludeTagNames** | **Set<String>** |  | [optional] [default to const {}]
 **attributes** | [**Map<String, Set<String>>**](Set.md) |  | [optional] [default to const {}]
 **isDeleted** | **bool** |  | [optional] 
 

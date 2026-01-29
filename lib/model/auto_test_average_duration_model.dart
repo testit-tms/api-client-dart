@@ -10,21 +10,19 @@
 
 part of testit_api_client_dart;
 
-class AutoTestAverageDurationApiResult {
-  /// Returns a new [AutoTestAverageDurationApiResult] instance.
-  AutoTestAverageDurationApiResult({
+class AutoTestAverageDurationModel {
+  /// Returns a new [AutoTestAverageDurationModel] instance.
+  AutoTestAverageDurationModel({
     required this.passedAverageDuration,
     required this.failedAverageDuration,
   });
 
-  /// Pass average duration of autotest from all related test results
   double passedAverageDuration;
 
-  /// Fail average duration of autotest from all related test results
   double failedAverageDuration;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is AutoTestAverageDurationApiResult &&
+  bool operator ==(Object other) => identical(this, other) || other is AutoTestAverageDurationModel &&
     other.passedAverageDuration == passedAverageDuration &&
     other.failedAverageDuration == failedAverageDuration;
 
@@ -35,7 +33,7 @@ class AutoTestAverageDurationApiResult {
     (failedAverageDuration.hashCode);
 
   @override
-  String toString() => 'AutoTestAverageDurationApiResult[passedAverageDuration=$passedAverageDuration, failedAverageDuration=$failedAverageDuration]';
+  String toString() => 'AutoTestAverageDurationModel[passedAverageDuration=$passedAverageDuration, failedAverageDuration=$failedAverageDuration]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -44,10 +42,10 @@ class AutoTestAverageDurationApiResult {
     return json;
   }
 
-  /// Returns a new [AutoTestAverageDurationApiResult] instance and imports its values from
+  /// Returns a new [AutoTestAverageDurationModel] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static AutoTestAverageDurationApiResult? fromJson(dynamic value) {
+  static AutoTestAverageDurationModel? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -56,13 +54,13 @@ class AutoTestAverageDurationApiResult {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AutoTestAverageDurationApiResult[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AutoTestAverageDurationApiResult[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "AutoTestAverageDurationModel[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "AutoTestAverageDurationModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return AutoTestAverageDurationApiResult(
+      return AutoTestAverageDurationModel(
         passedAverageDuration: mapValueOfType<double>(json, r'passedAverageDuration')!,
         failedAverageDuration: mapValueOfType<double>(json, r'failedAverageDuration')!,
       );
@@ -70,11 +68,11 @@ class AutoTestAverageDurationApiResult {
     return null;
   }
 
-  static List<AutoTestAverageDurationApiResult> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <AutoTestAverageDurationApiResult>[];
+  static List<AutoTestAverageDurationModel> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <AutoTestAverageDurationModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = AutoTestAverageDurationApiResult.fromJson(row);
+        final value = AutoTestAverageDurationModel.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -83,12 +81,12 @@ class AutoTestAverageDurationApiResult {
     return result.toList(growable: growable);
   }
 
-  static Map<String, AutoTestAverageDurationApiResult> mapFromJson(dynamic json) {
-    final map = <String, AutoTestAverageDurationApiResult>{};
+  static Map<String, AutoTestAverageDurationModel> mapFromJson(dynamic json) {
+    final map = <String, AutoTestAverageDurationModel>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = AutoTestAverageDurationApiResult.fromJson(entry.value);
+        final value = AutoTestAverageDurationModel.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -97,14 +95,14 @@ class AutoTestAverageDurationApiResult {
     return map;
   }
 
-  // maps a json object with a list of AutoTestAverageDurationApiResult-objects as value to a dart map
-  static Map<String, List<AutoTestAverageDurationApiResult>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<AutoTestAverageDurationApiResult>>{};
+  // maps a json object with a list of AutoTestAverageDurationModel-objects as value to a dart map
+  static Map<String, List<AutoTestAverageDurationModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<AutoTestAverageDurationModel>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = AutoTestAverageDurationApiResult.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = AutoTestAverageDurationModel.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

@@ -18,7 +18,7 @@ class ProjectsApi {
 
   /// Add global attributes to project
   ///
-  ///  Use case  User sets project internal or global identifier and attributes identifiers  System search project  System relates global attributes with project  System returns no content response
+  ///   Use case    User sets project internal or global identifier and attributes identifiers    System search project    System relates global attributes with project    System returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -56,7 +56,7 @@ class ProjectsApi {
 
   /// Add global attributes to project
   ///
-  ///  Use case  User sets project internal or global identifier and attributes identifiers  System search project  System relates global attributes with project  System returns no content response
+  ///   Use case    User sets project internal or global identifier and attributes identifiers    System search project    System relates global attributes with project    System returns no content response
   ///
   /// Parameters:
   ///
@@ -233,7 +233,7 @@ class ProjectsApi {
 
   /// Get Project filters
   ///
-  ///  Use case  User sets project internal or global identifier  User runs method execution  System returns project filters
+  ///   Use case    User sets project internal or global identifier    User runs method execution    System returns project filters
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -269,7 +269,7 @@ class ProjectsApi {
 
   /// Get Project filters
   ///
-  ///  Use case  User sets project internal or global identifier  User runs method execution  System returns project filters
+  ///   Use case    User sets project internal or global identifier    User runs method execution    System returns project filters
   ///
   /// Parameters:
   ///
@@ -444,7 +444,7 @@ class ProjectsApi {
 
   /// Delete attribute from project's test plans
   ///
-  ///  Use case  User sets project internal or global identifier and attribute identifier  User runs method execution  System updates project and delete attribute from project for test plans  System returns no content response
+  ///   Use case    User sets project internal or global identifier and attribute identifier    User runs method execution    System updates project and delete attribute from project for test plans    System returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -483,7 +483,7 @@ class ProjectsApi {
 
   /// Delete attribute from project's test plans
   ///
-  ///  Use case  User sets project internal or global identifier and attribute identifier  User runs method execution  System updates project and delete attribute from project for test plans  System returns no content response
+  ///   Use case    User sets project internal or global identifier and attribute identifier    User runs method execution    System updates project and delete attribute from project for test plans    System returns no content response
   ///
   /// Parameters:
   ///
@@ -500,7 +500,7 @@ class ProjectsApi {
 
   /// Update attribute of project's test plans
   ///
-  ///  Use case  User sets project internal or global identifier and attribute model  User runs method execution  System updates project and project attribute for test plan  System returns no content response
+  ///   Use case    User sets project internal or global identifier and attribute model    User runs method execution    System updates project and project attribute for test plan    System returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -538,7 +538,7 @@ class ProjectsApi {
 
   /// Update attribute of project's test plans
   ///
-  ///  Use case  User sets project internal or global identifier and attribute model  User runs method execution  System updates project and project attribute for test plan  System returns no content response
+  ///   Use case    User sets project internal or global identifier and attribute model    User runs method execution    System updates project and project attribute for test plan    System returns no content response
   ///
   /// Parameters:
   ///
@@ -553,9 +553,71 @@ class ProjectsApi {
     }
   }
 
+  /// Get active Project TestRuns
+  ///
+  ///   Use case    User sets project internal or global identifier    User runs method execution    System returns active testruns
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   Project internal (UUID) or global (integer) identifier
+  Future<Response> apiV2ProjectsIdTestRunsActiveGetWithHttpInfo(String id,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/v2/projects/{id}/testRuns/active'
+      .replaceAll('{id}', id);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Get active Project TestRuns
+  ///
+  ///   Use case    User sets project internal or global identifier    User runs method execution    System returns active testruns
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   Project internal (UUID) or global (integer) identifier
+  Future<List<PublicTestRunModel>?> apiV2ProjectsIdTestRunsActiveGet(String id,) async {
+    final response = await apiV2ProjectsIdTestRunsActiveGetWithHttpInfo(id,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<PublicTestRunModel>') as List)
+        .cast<PublicTestRunModel>()
+        .toList(growable: false);
+
+    }
+    return null;
+  }
+
   /// Get Project TestRuns full models
   ///
-  ///  Use case  User sets project internal or global identifier  User sets query params  User runs method execution  System returns project test runs full models
+  ///   Use case    User sets project internal or global identifier    User sets query params    User runs method execution    System returns project test runs full models
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -667,7 +729,7 @@ class ProjectsApi {
 
   /// Get Project TestRuns full models
   ///
-  ///  Use case  User sets project internal or global identifier  User sets query params  User runs method execution  System returns project test runs full models
+  ///   Use case    User sets project internal or global identifier    User sets query params    User runs method execution    System returns project test runs full models
   ///
   /// Parameters:
   ///
@@ -979,7 +1041,7 @@ class ProjectsApi {
 
   /// Get projects short models
   ///
-  ///  Use case  User sets query params  User runs method execution  System return projects short models
+  ///   Use case    User sets query params    User runs method execution    System return projects short models
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1013,7 +1075,7 @@ class ProjectsApi {
 
   /// Get projects short models
   ///
-  ///  Use case  User sets query params  User runs method execution  System return projects short models
+  ///   Use case    User sets query params    User runs method execution    System return projects short models
   ///
   /// Parameters:
   ///
@@ -1035,7 +1097,7 @@ class ProjectsApi {
 
   /// Create project
   ///
-  ///  Use case  User sets project parameters (listed in request example) and runs method execution  System creates project  System returns project model (example listed in response parameters)
+  ///   Use case    User sets project parameters (listed in request example) and runs method execution    System creates project    System returns project model (example listed in response parameters)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1069,12 +1131,12 @@ class ProjectsApi {
 
   /// Create project
   ///
-  ///  Use case  User sets project parameters (listed in request example) and runs method execution  System creates project  System returns project model (example listed in response parameters)
+  ///   Use case    User sets project parameters (listed in request example) and runs method execution    System creates project    System returns project model (example listed in response parameters)
   ///
   /// Parameters:
   ///
   /// * [CreateProjectApiModel] createProjectApiModel:
-  Future<ProjectApiResult?> createProject({ CreateProjectApiModel? createProjectApiModel, }) async {
+  Future<ProjectModel?> createProject({ CreateProjectApiModel? createProjectApiModel, }) async {
     final response = await createProjectWithHttpInfo( createProjectApiModel: createProjectApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -1083,7 +1145,7 @@ class ProjectsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProjectApiResult',) as ProjectApiResult;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProjectModel',) as ProjectModel;
     
     }
     return null;
@@ -1138,7 +1200,7 @@ class ProjectsApi {
 
   /// Get all projects
   ///
-  ///  Use case  [Optional] User sets isDeleted field value  [Optional] If User sets isDeleted field value as true, System search all deleted projects  [Optional] If User sets isDeleted field value as false, System search all projects which are not deleted  If User did not set isDeleted field value, System search all projects  System returns array of all found projects(listed in response model)
+  ///   Use case    [Optional] User sets isDeleted field value    [Optional] If User sets isDeleted field value as true, System search all deleted projects    [Optional] If User sets isDeleted field value as false, System search all projects which are not deleted    If User did not set isDeleted field value, System search all projects    System returns array of all found projects(listed in response model)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1212,7 +1274,7 @@ class ProjectsApi {
 
   /// Get all projects
   ///
-  ///  Use case  [Optional] User sets isDeleted field value  [Optional] If User sets isDeleted field value as true, System search all deleted projects  [Optional] If User sets isDeleted field value as false, System search all projects which are not deleted  If User did not set isDeleted field value, System search all projects  System returns array of all found projects(listed in response model)
+  ///   Use case    [Optional] User sets isDeleted field value    [Optional] If User sets isDeleted field value as true, System search all deleted projects    [Optional] If User sets isDeleted field value as false, System search all projects which are not deleted    If User did not set isDeleted field value, System search all projects    System returns array of all found projects(listed in response model)
   ///
   /// Parameters:
   ///
@@ -1255,7 +1317,7 @@ class ProjectsApi {
 
   /// Get namespaces of autotests in project
   ///
-  ///  Use case  User sets project internal or global identifier and runs method execution  System search project  System search all autotest related to the project  System returns array of autotest with namespaces and classnames (listed in response)
+  ///   Use case    User sets project internal or global identifier and runs method execution    System search project    System search all autotest related to the project    System returns array of autotest with namespaces and classnames (listed in response)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1291,13 +1353,13 @@ class ProjectsApi {
 
   /// Get namespaces of autotests in project
   ///
-  ///  Use case  User sets project internal or global identifier and runs method execution  System search project  System search all autotest related to the project  System returns array of autotest with namespaces and classnames (listed in response)
+  ///   Use case    User sets project internal or global identifier and runs method execution    System search project    System search all autotest related to the project    System returns array of autotest with namespaces and classnames (listed in response)
   ///
   /// Parameters:
   ///
   /// * [String] id (required):
   ///   Project internal (UUID) or global (integer) identifier
-  Future<List<AutoTestNamespaceApiResult>?> getAutoTestsNamespaces(String id,) async {
+  Future<List<AutoTestNamespaceModel>?> getAutoTestsNamespaces(String id,) async {
     final response = await getAutoTestsNamespacesWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -1307,8 +1369,8 @@ class ProjectsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<AutoTestNamespaceApiResult>') as List)
-        .cast<AutoTestNamespaceApiResult>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<AutoTestNamespaceModel>') as List)
+        .cast<AutoTestNamespaceModel>()
         .toList(growable: false);
 
     }
@@ -1317,7 +1379,7 @@ class ProjectsApi {
 
   /// Get project by ID
   ///
-  ///  Use case  User sets project internal or global identifier and runs method execution  System search project  System returns project (example listed in response parameters)
+  ///   Use case    User sets project internal or global identifier and runs method execution    System search project    System returns project (example listed in response parameters)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1353,7 +1415,7 @@ class ProjectsApi {
 
   /// Get project by ID
   ///
-  ///  Use case  User sets project internal or global identifier and runs method execution  System search project  System returns project (example listed in response parameters)
+  ///   Use case    User sets project internal or global identifier and runs method execution    System search project    System returns project (example listed in response parameters)
   ///
   /// Parameters:
   ///
@@ -1376,7 +1438,7 @@ class ProjectsApi {
 
   /// Get project test plans
   ///
-  ///  Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to project  [Optional] If User sets isDeleted field value as false, System search all test plans related to project which are not deleted  [Optional] If User did not set isDeleted field value, System search all v related to project  System returns array of found test plans (listed in response model)
+  ///   Use case    User sets project internal or global identifier    [Optional] User sets isDeleted field value    User runs method execution    System search project    [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to project    [Optional] If User sets isDeleted field value as false, System search all test plans related to project which are not deleted    [Optional] If User did not set isDeleted field value, System search all v related to project    System returns array of found test plans (listed in response model)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1419,7 +1481,7 @@ class ProjectsApi {
 
   /// Get project test plans
   ///
-  ///  Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to project  [Optional] If User sets isDeleted field value as false, System search all test plans related to project which are not deleted  [Optional] If User did not set isDeleted field value, System search all v related to project  System returns array of found test plans (listed in response model)
+  ///   Use case    User sets project internal or global identifier    [Optional] User sets isDeleted field value    User runs method execution    System search project    [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to project    [Optional] If User sets isDeleted field value as false, System search all test plans related to project which are not deleted    [Optional] If User did not set isDeleted field value, System search all v related to project    System returns array of found test plans (listed in response model)
   ///
   /// Parameters:
   ///
@@ -1448,7 +1510,7 @@ class ProjectsApi {
 
   /// Get project test runs
   ///
-  ///  Use case  User sets project internal or global identifier  User runs method execution  System search project  System search all test runs related to project  System returns array of found test runs (listed in response model)
+  ///   Use case    User sets project internal or global identifier    User runs method execution    System search project    System search all test runs related to project    System returns array of found test runs (listed in response model)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1542,7 +1604,7 @@ class ProjectsApi {
 
   /// Get project test runs
   ///
-  ///  Use case  User sets project internal or global identifier  User runs method execution  System search project  System search all test runs related to project  System returns array of found test runs (listed in response model)
+  ///   Use case    User sets project internal or global identifier    User runs method execution    System search project    System search all test runs related to project    System returns array of found test runs (listed in response model)
   ///
   /// Parameters:
   ///
@@ -1597,7 +1659,7 @@ class ProjectsApi {
 
   /// Update project
   ///
-  ///  Use case  User sets project parameters (listed in request example) and runs method execution  System updates project  System returns updated project model (example listed in response parameters)
+  ///   Use case    User sets project parameters (listed in request example) and runs method execution    System updates project    System returns updated project model (example listed in response parameters)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1631,7 +1693,7 @@ class ProjectsApi {
 
   /// Update project
   ///
-  ///  Use case  User sets project parameters (listed in request example) and runs method execution  System updates project  System returns updated project model (example listed in response parameters)
+  ///   Use case    User sets project parameters (listed in request example) and runs method execution    System updates project    System returns updated project model (example listed in response parameters)
   ///
   /// Parameters:
   ///

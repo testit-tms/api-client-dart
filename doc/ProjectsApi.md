@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**apiV2ProjectsIdRestorePost**](ProjectsApi.md#apiv2projectsidrestorepost) | **POST** /api/v2/projects/{id}/restore | Restore archived project
 [**apiV2ProjectsIdTestPlansAttributeAttributeIdDelete**](ProjectsApi.md#apiv2projectsidtestplansattributeattributeiddelete) | **DELETE** /api/v2/projects/{id}/testPlans/attribute/{attributeId} | Delete attribute from project's test plans
 [**apiV2ProjectsIdTestPlansAttributePut**](ProjectsApi.md#apiv2projectsidtestplansattributeput) | **PUT** /api/v2/projects/{id}/testPlans/attribute | Update attribute of project's test plans
+[**apiV2ProjectsIdTestRunsActiveGet**](ProjectsApi.md#apiv2projectsidtestrunsactiveget) | **GET** /api/v2/projects/{id}/testRuns/active | Get active Project TestRuns
 [**apiV2ProjectsIdTestRunsFullGet**](ProjectsApi.md#apiv2projectsidtestrunsfullget) | **GET** /api/v2/projects/{id}/testRuns/full | Get Project TestRuns full models
 [**apiV2ProjectsNameNameExistsGet**](ProjectsApi.md#apiv2projectsnamenameexistsget) | **GET** /api/v2/projects/name/{name}/exists | 
 [**apiV2ProjectsPurgeBulkPost**](ProjectsApi.md#apiv2projectspurgebulkpost) | **POST** /api/v2/projects/purge/bulk | Purge multiple projects
@@ -40,7 +41,7 @@ Method | HTTP request | Description
 
 Add global attributes to project
 
- Use case  User sets project internal or global identifier and attributes identifiers  System search project  System relates global attributes with project  System returns no content response
+  Use case    User sets project internal or global identifier and attributes identifiers    System search project    System relates global attributes with project    System returns no content response
 
 ### Example
 ```dart
@@ -223,7 +224,7 @@ void (empty response body)
 
 Get Project filters
 
- Use case  User sets project internal or global identifier  User runs method execution  System returns project filters
+  Use case    User sets project internal or global identifier    User runs method execution    System returns project filters
 
 ### Example
 ```dart
@@ -406,7 +407,7 @@ void (empty response body)
 
 Delete attribute from project's test plans
 
- Use case  User sets project internal or global identifier and attribute identifier  User runs method execution  System updates project and delete attribute from project for test plans  System returns no content response
+  Use case    User sets project internal or global identifier and attribute identifier    User runs method execution    System updates project and delete attribute from project for test plans    System returns no content response
 
 ### Example
 ```dart
@@ -454,7 +455,7 @@ void (empty response body)
 
 Update attribute of project's test plans
 
- Use case  User sets project internal or global identifier and attribute model  User runs method execution  System updates project and project attribute for test plan  System returns no content response
+  Use case    User sets project internal or global identifier and attribute model    User runs method execution    System updates project and project attribute for test plan    System returns no content response
 
 ### Example
 ```dart
@@ -497,12 +498,59 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **apiV2ProjectsIdTestRunsActiveGet**
+> List<PublicTestRunModel> apiV2ProjectsIdTestRunsActiveGet(id)
+
+Get active Project TestRuns
+
+  Use case    User sets project internal or global identifier    User runs method execution    System returns active testruns
+
+### Example
+```dart
+import 'package:testit_api_client_dart/api.dart';
+// TODO Configure API key authorization: Bearer or PrivateToken
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
+
+final api_instance = ProjectsApi();
+final id = id_example; // String | Project internal (UUID) or global (integer) identifier
+
+try {
+    final result = api_instance.apiV2ProjectsIdTestRunsActiveGet(id);
+    print(result);
+} catch (e) {
+    print('Exception when calling ProjectsApi->apiV2ProjectsIdTestRunsActiveGet: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Project internal (UUID) or global (integer) identifier | 
+
+### Return type
+
+[**List<PublicTestRunModel>**](PublicTestRunModel.md)
+
+### Authorization
+
+[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **apiV2ProjectsIdTestRunsFullGet**
 > List<TestRunApiResult> apiV2ProjectsIdTestRunsFullGet(id, includeTestResults, mustAggregateTestResults, notStarted, inProgress, stopped, completed, createdDateFrom, createdDateTo, testPlanId, skip, take, orderBy, searchField, searchValue)
 
 Get Project TestRuns full models
 
- Use case  User sets project internal or global identifier  User sets query params  User runs method execution  System returns project test runs full models
+  Use case    User sets project internal or global identifier    User sets query params    User runs method execution    System returns project test runs full models
 
 ### Example
 ```dart
@@ -767,7 +815,7 @@ Name | Type | Description  | Notes
 
 Get projects short models
 
- Use case  User sets query params  User runs method execution  System return projects short models
+  Use case    User sets query params    User runs method execution    System return projects short models
 
 ### Example
 ```dart
@@ -810,11 +858,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createProject**
-> ProjectApiResult createProject(createProjectApiModel)
+> ProjectModel createProject(createProjectApiModel)
 
 Create project
 
- Use case  User sets project parameters (listed in request example) and runs method execution  System creates project  System returns project model (example listed in response parameters)
+  Use case    User sets project parameters (listed in request example) and runs method execution    System creates project    System returns project model (example listed in response parameters)
 
 ### Example
 ```dart
@@ -843,7 +891,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectApiResult**](ProjectApiResult.md)
+[**ProjectModel**](ProjectModel.md)
 
 ### Authorization
 
@@ -905,7 +953,7 @@ void (empty response body)
 
 Get all projects
 
- Use case  [Optional] User sets isDeleted field value  [Optional] If User sets isDeleted field value as true, System search all deleted projects  [Optional] If User sets isDeleted field value as false, System search all projects which are not deleted  If User did not set isDeleted field value, System search all projects  System returns array of all found projects(listed in response model)
+  Use case    [Optional] User sets isDeleted field value    [Optional] If User sets isDeleted field value as true, System search all deleted projects    [Optional] If User sets isDeleted field value as false, System search all projects which are not deleted    If User did not set isDeleted field value, System search all projects    System returns array of all found projects(listed in response model)
 
 ### Example
 ```dart
@@ -960,11 +1008,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAutoTestsNamespaces**
-> List<AutoTestNamespaceApiResult> getAutoTestsNamespaces(id)
+> List<AutoTestNamespaceModel> getAutoTestsNamespaces(id)
 
 Get namespaces of autotests in project
 
- Use case  User sets project internal or global identifier and runs method execution  System search project  System search all autotest related to the project  System returns array of autotest with namespaces and classnames (listed in response)
+  Use case    User sets project internal or global identifier and runs method execution    System search project    System search all autotest related to the project    System returns array of autotest with namespaces and classnames (listed in response)
 
 ### Example
 ```dart
@@ -993,7 +1041,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<AutoTestNamespaceApiResult>**](AutoTestNamespaceApiResult.md)
+[**List<AutoTestNamespaceModel>**](AutoTestNamespaceModel.md)
 
 ### Authorization
 
@@ -1011,7 +1059,7 @@ Name | Type | Description  | Notes
 
 Get project by ID
 
- Use case  User sets project internal or global identifier and runs method execution  System search project  System returns project (example listed in response parameters)
+  Use case    User sets project internal or global identifier and runs method execution    System search project    System returns project (example listed in response parameters)
 
 ### Example
 ```dart
@@ -1058,7 +1106,7 @@ Name | Type | Description  | Notes
 
 Get project test plans
 
- Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to project  [Optional] If User sets isDeleted field value as false, System search all test plans related to project which are not deleted  [Optional] If User did not set isDeleted field value, System search all v related to project  System returns array of found test plans (listed in response model)
+  Use case    User sets project internal or global identifier    [Optional] User sets isDeleted field value    User runs method execution    System search project    [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to project    [Optional] If User sets isDeleted field value as false, System search all test plans related to project which are not deleted    [Optional] If User did not set isDeleted field value, System search all v related to project    System returns array of found test plans (listed in response model)
 
 ### Example
 ```dart
@@ -1107,7 +1155,7 @@ Name | Type | Description  | Notes
 
 Get project test runs
 
- Use case  User sets project internal or global identifier  User runs method execution  System search project  System search all test runs related to project  System returns array of found test runs (listed in response model)
+  Use case    User sets project internal or global identifier    User runs method execution    System search project    System search all test runs related to project    System returns array of found test runs (listed in response model)
 
 ### Example
 ```dart
@@ -1178,7 +1226,7 @@ Name | Type | Description  | Notes
 
 Update project
 
- Use case  User sets project parameters (listed in request example) and runs method execution  System updates project  System returns updated project model (example listed in response parameters)
+  Use case    User sets project parameters (listed in request example) and runs method execution    System updates project    System returns updated project model (example listed in response parameters)
 
 ### Example
 ```dart

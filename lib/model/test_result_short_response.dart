@@ -19,7 +19,6 @@ class TestResultShortResponse {
     required this.testRunId,
     required this.configurationId,
     required this.configurationName,
-    required this.status,
     this.resultReasons = const [],
     required this.date,
     required this.createdDate,
@@ -28,6 +27,7 @@ class TestResultShortResponse {
     required this.rerunCompletedCount,
     this.autotestExternalId,
     this.outcome,
+    this.status,
     this.comment,
     this.modifiedDate,
     this.startedOn,
@@ -53,8 +53,6 @@ class TestResultShortResponse {
   /// Name of configuration which the test result uses
   String configurationName;
 
-  TestStatusApiResult status;
-
   /// Collection of result reasons which the test result have
   List<AutoTestResultReasonShort> resultReasons;
 
@@ -79,6 +77,8 @@ class TestResultShortResponse {
   /// Outcome of the test result
   String? outcome;
 
+  TestStatusApiResult? status;
+
   /// Comment to the test result
   String? comment;
 
@@ -102,7 +102,6 @@ class TestResultShortResponse {
     other.testRunId == testRunId &&
     other.configurationId == configurationId &&
     other.configurationName == configurationName &&
-    other.status == status &&
     _deepEquality.equals(other.resultReasons, resultReasons) &&
     other.date == date &&
     other.createdDate == createdDate &&
@@ -111,6 +110,7 @@ class TestResultShortResponse {
     other.rerunCompletedCount == rerunCompletedCount &&
     other.autotestExternalId == autotestExternalId &&
     other.outcome == outcome &&
+    other.status == status &&
     other.comment == comment &&
     other.modifiedDate == modifiedDate &&
     other.startedOn == startedOn &&
@@ -126,7 +126,6 @@ class TestResultShortResponse {
     (testRunId.hashCode) +
     (configurationId.hashCode) +
     (configurationName.hashCode) +
-    (status.hashCode) +
     (resultReasons.hashCode) +
     (date.hashCode) +
     (createdDate.hashCode) +
@@ -135,6 +134,7 @@ class TestResultShortResponse {
     (rerunCompletedCount.hashCode) +
     (autotestExternalId == null ? 0 : autotestExternalId!.hashCode) +
     (outcome == null ? 0 : outcome!.hashCode) +
+    (status == null ? 0 : status!.hashCode) +
     (comment == null ? 0 : comment!.hashCode) +
     (modifiedDate == null ? 0 : modifiedDate!.hashCode) +
     (startedOn == null ? 0 : startedOn!.hashCode) +
@@ -142,7 +142,7 @@ class TestResultShortResponse {
     (duration == null ? 0 : duration!.hashCode);
 
   @override
-  String toString() => 'TestResultShortResponse[id=$id, name=$name, autotestGlobalId=$autotestGlobalId, testRunId=$testRunId, configurationId=$configurationId, configurationName=$configurationName, status=$status, resultReasons=$resultReasons, date=$date, createdDate=$createdDate, links=$links, attachments=$attachments, rerunCompletedCount=$rerunCompletedCount, autotestExternalId=$autotestExternalId, outcome=$outcome, comment=$comment, modifiedDate=$modifiedDate, startedOn=$startedOn, completedOn=$completedOn, duration=$duration]';
+  String toString() => 'TestResultShortResponse[id=$id, name=$name, autotestGlobalId=$autotestGlobalId, testRunId=$testRunId, configurationId=$configurationId, configurationName=$configurationName, resultReasons=$resultReasons, date=$date, createdDate=$createdDate, links=$links, attachments=$attachments, rerunCompletedCount=$rerunCompletedCount, autotestExternalId=$autotestExternalId, outcome=$outcome, status=$status, comment=$comment, modifiedDate=$modifiedDate, startedOn=$startedOn, completedOn=$completedOn, duration=$duration]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -152,7 +152,6 @@ class TestResultShortResponse {
       json[r'testRunId'] = this.testRunId;
       json[r'configurationId'] = this.configurationId;
       json[r'configurationName'] = this.configurationName;
-      json[r'status'] = this.status;
       json[r'resultReasons'] = this.resultReasons;
       json[r'date'] = this.date.toUtc().toIso8601String();
       json[r'createdDate'] = this.createdDate.toUtc().toIso8601String();
@@ -168,6 +167,11 @@ class TestResultShortResponse {
       json[r'outcome'] = this.outcome;
     } else {
       json[r'outcome'] = null;
+    }
+    if (this.status != null) {
+      json[r'status'] = this.status;
+    } else {
+      json[r'status'] = null;
     }
     if (this.comment != null) {
       json[r'comment'] = this.comment;
@@ -222,7 +226,6 @@ class TestResultShortResponse {
         testRunId: mapValueOfType<String>(json, r'testRunId')!,
         configurationId: mapValueOfType<String>(json, r'configurationId')!,
         configurationName: mapValueOfType<String>(json, r'configurationName')!,
-        status: TestStatusApiResult.fromJson(json[r'status'])!,
         resultReasons: AutoTestResultReasonShort.listFromJson(json[r'resultReasons']),
         date: mapDateTime(json, r'date', r'')!,
         createdDate: mapDateTime(json, r'createdDate', r'')!,
@@ -231,6 +234,7 @@ class TestResultShortResponse {
         rerunCompletedCount: mapValueOfType<int>(json, r'rerunCompletedCount')!,
         autotestExternalId: mapValueOfType<String>(json, r'autotestExternalId'),
         outcome: mapValueOfType<String>(json, r'outcome'),
+        status: TestStatusApiResult.fromJson(json[r'status']),
         comment: mapValueOfType<String>(json, r'comment'),
         modifiedDate: mapDateTime(json, r'modifiedDate', r''),
         startedOn: mapDateTime(json, r'startedOn', r''),
@@ -289,7 +293,6 @@ class TestResultShortResponse {
     'testRunId',
     'configurationId',
     'configurationName',
-    'status',
     'resultReasons',
     'date',
     'createdDate',

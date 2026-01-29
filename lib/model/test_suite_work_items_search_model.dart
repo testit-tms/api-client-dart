@@ -47,7 +47,7 @@ class TestSuiteWorkItemsSearchModel {
   /// Collection of tags
   Set<String>? tagNames;
 
-  /// Collection of types of work item  Allowed values: `TestCases`, `CheckLists`, `SharedSteps`
+  /// Collection of types of work item    Allowed values: `TestCases`, `CheckLists`, `SharedSteps`
   Set<WorkItemEntityTypes>? entityTypes;
 
   /// Name or identifier (UUID) of work item

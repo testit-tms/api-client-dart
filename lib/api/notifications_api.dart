@@ -18,7 +18,7 @@ class NotificationsApi {
 
   /// Get unread Notifications total in last 7 days
   ///
-  ///  Use case  User runs method execution  System returns unread notifications total (listed in the response example)
+  ///   Use case    User runs method execution    System returns unread notifications total (listed in the response example)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -56,7 +56,7 @@ class NotificationsApi {
 
   /// Get unread Notifications total in last 7 days
   ///
-  ///  Use case  User runs method execution  System returns unread notifications total (listed in the response example)
+  ///   Use case    User runs method execution    System returns unread notifications total (listed in the response example)
   ///
   /// Parameters:
   ///
@@ -78,7 +78,7 @@ class NotificationsApi {
 
   /// Get all Notifications for current User
   ///
-  ///  Use case  User runs method execution  System returns notifications (listed in the response example)
+  ///   Use case    User runs method execution    System returns notifications (listed in the response example)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -146,7 +146,7 @@ class NotificationsApi {
 
   /// Get all Notifications for current User
   ///
-  ///  Use case  User runs method execution  System returns notifications (listed in the response example)
+  ///   Use case    User runs method execution    System returns notifications (listed in the response example)
   ///
   /// Parameters:
   ///
@@ -186,7 +186,7 @@ class NotificationsApi {
 
   /// Set Notification as read
   ///
-  ///  Use case  User sets notification internal (guid format) identifier  User runs method execution  System set notification as read
+  ///   Use case    User sets notification internal (guid format) identifier    User runs method execution    System set notification as read
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -221,7 +221,7 @@ class NotificationsApi {
 
   /// Set Notification as read
   ///
-  ///  Use case  User sets notification internal (guid format) identifier  User runs method execution  System set notification as read
+  ///   Use case    User sets notification internal (guid format) identifier    User runs method execution    System set notification as read
   ///
   /// Parameters:
   ///
@@ -235,7 +235,7 @@ class NotificationsApi {
 
   /// Set all Notifications as read
   ///
-  ///  Use case  User runs method execution  System set all notifications as read
+  ///   Use case    User runs method execution    System set all notifications as read
   ///
   /// Note: This method returns the HTTP [Response].
   Future<Response> apiV2NotificationsReadPostWithHttpInfo() async {
@@ -265,7 +265,7 @@ class NotificationsApi {
 
   /// Set all Notifications as read
   ///
-  ///  Use case  User runs method execution  System set all notifications as read
+  ///   Use case    User runs method execution    System set all notifications as read
   Future<void> apiV2NotificationsReadPost() async {
     final response = await apiV2NotificationsReadPostWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -275,7 +275,7 @@ class NotificationsApi {
 
   /// Search Notifications for current User
   ///
-  ///  Use case  User set filter and runs method execution  System returns notifications (listed in the response example)
+  ///   Use case    User set filter and runs method execution    System returns notifications (listed in the response example)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -340,7 +340,7 @@ class NotificationsApi {
 
   /// Search Notifications for current User
   ///
-  ///  Use case  User set filter and runs method execution  System returns notifications (listed in the response example)
+  ///   Use case    User set filter and runs method execution    System returns notifications (listed in the response example)
   ///
   /// Parameters:
   ///

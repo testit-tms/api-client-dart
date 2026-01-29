@@ -9,7 +9,7 @@ import 'package:testit_api_client_dart/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tagNames** | **Set<String>** | Collection of tags | [optional] [default to const {}]
-**entityTypes** | [**Set<WorkItemEntityTypes>**](WorkItemEntityTypes.md) | Collection of types of work item  Allowed values: `TestCases`, `CheckLists`, `SharedSteps` | [optional] [default to const {}]
+**entityTypes** | [**Set<WorkItemEntityTypes>**](WorkItemEntityTypes.md) | Collection of types of work item    Allowed values: `TestCases`, `CheckLists`, `SharedSteps` | [optional] [default to const {}]
 **nameOrId** | **String** | Name or identifier (UUID) of work item | [optional] 
 **includeIds** | **Set<String>** | Collection of identifiers of work items which need to be included in result regardless of filtering | [optional] [default to const {}]
 **excludeIds** | **Set<String>** | Collection of identifiers of work items which need to be excluded from result regardless of filtering | [optional] [default to const {}]

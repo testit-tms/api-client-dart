@@ -14,7 +14,7 @@ class ReplaceProjectExternalServiceApiModel {
   /// Returns a new [ReplaceProjectExternalServiceApiModel] instance.
   ReplaceProjectExternalServiceApiModel({
     required this.newExternalServiceId,
-    required this.settings,
+    this.settings,
   });
 
   /// The unique ID of the new external service that will replace the current one
@@ -117,7 +117,6 @@ class ReplaceProjectExternalServiceApiModel {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'newExternalServiceId',
-    'settings',
   };
 }
 

@@ -13,7 +13,7 @@ part of testit_api_client_dart;
 class EnableProjectExternalServiceApiModel {
   /// Returns a new [EnableProjectExternalServiceApiModel] instance.
   EnableProjectExternalServiceApiModel({
-    required this.settings,
+    this.settings,
   });
 
   /// External service settings
@@ -108,7 +108,6 @@ class EnableProjectExternalServiceApiModel {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'settings',
   };
 }
 

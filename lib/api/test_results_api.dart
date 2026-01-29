@@ -269,7 +269,7 @@ class TestResultsApi {
   ///
   /// * [String] id (required):
   ///   Test result unique ID
-  Future<List<AttachmentApiResult>?> apiV2TestResultsIdAttachmentsInfoGet(String id,) async {
+  Future<List<AttachmentModel>?> apiV2TestResultsIdAttachmentsInfoGet(String id,) async {
     final response = await apiV2TestResultsIdAttachmentsInfoGetWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -279,8 +279,8 @@ class TestResultsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<AttachmentApiResult>') as List)
-        .cast<AttachmentApiResult>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<AttachmentModel>') as List)
+        .cast<AttachmentModel>()
         .toList(growable: false);
 
     }
@@ -603,7 +603,7 @@ class TestResultsApi {
 
   /// Upload and link attachment to TestResult
   ///
-  ///  Use case  User sets testResultId  User attaches a file  System creates attachment and links it to the test result  System returns attachment identifier
+  ///   Use case    User sets testResultId    User attaches a file    System creates attachment and links it to the test result    System returns attachment identifier
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -652,7 +652,7 @@ class TestResultsApi {
 
   /// Upload and link attachment to TestResult
   ///
-  ///  Use case  User sets testResultId  User attaches a file  System creates attachment and links it to the test result  System returns attachment identifier
+  ///   Use case    User sets testResultId    User attaches a file    System creates attachment and links it to the test result    System returns attachment identifier
   ///
   /// Parameters:
   ///
@@ -670,7 +670,7 @@ class TestResultsApi {
 
   /// Remove attachment and unlink from TestResult
   ///
-  ///  Use case  User sets testResultId and attachmentId  User attaches a file  User runs method execution  System deletes attachment and unlinks it from the test result  System returns attachment identifier
+  ///   Use case    User sets testResultId and attachmentId    User attaches a file    User runs method execution    System deletes attachment and unlinks it from the test result    System returns attachment identifier
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -710,7 +710,7 @@ class TestResultsApi {
 
   /// Remove attachment and unlink from TestResult
   ///
-  ///  Use case  User sets testResultId and attachmentId  User attaches a file  User runs method execution  System deletes attachment and unlinks it from the test result  System returns attachment identifier
+  ///   Use case    User sets testResultId and attachmentId    User attaches a file    User runs method execution    System deletes attachment and unlinks it from the test result    System returns attachment identifier
   ///
   /// Parameters:
   ///
@@ -728,7 +728,7 @@ class TestResultsApi {
 
   /// Get attachment of TestResult
   ///
-  ///  Use case  User sets attachmentId and testResultId  [Optional] User sets resize configuration  User runs method execution  System search attachments by the attachmentId and the testResultId  [Optional] If resize configuration is set, System resizes the attachment according to the resize                     configuration  [Optional] Otherwise, System does not resize the attachment  System returns attachment as a file
+  ///   Use case    User sets attachmentId and testResultId    [Optional] User sets resize configuration    User runs method execution    System search attachments by the attachmentId and the testResultId    [Optional] If resize configuration is set, System resizes the attachment according to the resize                      configuration    [Optional] Otherwise, System does not resize the attachment    System returns attachment as a file
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -799,7 +799,7 @@ class TestResultsApi {
 
   /// Get attachment of TestResult
   ///
-  ///  Use case  User sets attachmentId and testResultId  [Optional] User sets resize configuration  User runs method execution  System search attachments by the attachmentId and the testResultId  [Optional] If resize configuration is set, System resizes the attachment according to the resize                     configuration  [Optional] Otherwise, System does not resize the attachment  System returns attachment as a file
+  ///   Use case    User sets attachmentId and testResultId    [Optional] User sets resize configuration    User runs method execution    System search attachments by the attachmentId and the testResultId    [Optional] If resize configuration is set, System resizes the attachment according to the resize                      configuration    [Optional] Otherwise, System does not resize the attachment    System returns attachment as a file
   ///
   /// Parameters:
   ///
@@ -832,7 +832,7 @@ class TestResultsApi {
 
   /// Get Metadata of TestResult's attachment
   ///
-  ///  Use case  User sets attachmentId and testResultId  User runs method execution  System search attachment by the attachmentId and the testResultId  System returns attachment data
+  ///   Use case    User sets attachmentId and testResultId    User runs method execution    System search attachment by the attachmentId and the testResultId    System returns attachment data
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -872,7 +872,7 @@ class TestResultsApi {
 
   /// Get Metadata of TestResult's attachment
   ///
-  ///  Use case  User sets attachmentId and testResultId  User runs method execution  System search attachment by the attachmentId and the testResultId  System returns attachment data
+  ///   Use case    User sets attachmentId and testResultId    User runs method execution    System search attachment by the attachmentId and the testResultId    System returns attachment data
   ///
   /// Parameters:
   ///
@@ -881,7 +881,7 @@ class TestResultsApi {
   ///
   /// * [String] attachmentId (required):
   ///   Attachment internal identifier (guid format)
-  Future<AttachmentApiResult?> getAttachment(String id, String attachmentId,) async {
+  Future<AttachmentModel?> getAttachment(String id, String attachmentId,) async {
     final response = await getAttachmentWithHttpInfo(id, attachmentId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -890,7 +890,7 @@ class TestResultsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AttachmentApiResult',) as AttachmentApiResult;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AttachmentModel',) as AttachmentModel;
     
     }
     return null;
@@ -898,7 +898,7 @@ class TestResultsApi {
 
   /// Get all attachments of TestResult
   ///
-  ///  Use case  User sets testResultId  User runs method execution  System search all attachments of the test result  System returns attachments enumeration
+  ///   Use case    User sets testResultId    User runs method execution    System search all attachments of the test result    System returns attachments enumeration
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -934,13 +934,13 @@ class TestResultsApi {
 
   /// Get all attachments of TestResult
   ///
-  ///  Use case  User sets testResultId  User runs method execution  System search all attachments of the test result  System returns attachments enumeration
+  ///   Use case    User sets testResultId    User runs method execution    System search all attachments of the test result    System returns attachments enumeration
   ///
   /// Parameters:
   ///
   /// * [String] id (required):
   ///   Test result internal identifier (guid format)
-  Future<List<AttachmentApiResult>?> getAttachments(String id,) async {
+  Future<List<AttachmentModel>?> getAttachments(String id,) async {
     final response = await getAttachmentsWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -950,8 +950,8 @@ class TestResultsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<AttachmentApiResult>') as List)
-        .cast<AttachmentApiResult>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<AttachmentModel>') as List)
+        .cast<AttachmentModel>()
         .toList(growable: false);
 
     }

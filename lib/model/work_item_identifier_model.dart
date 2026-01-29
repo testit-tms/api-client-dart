@@ -10,21 +10,20 @@
 
 part of testit_api_client_dart;
 
-class AutoTestWorkItemIdentifierApiResult {
-  /// Returns a new [AutoTestWorkItemIdentifierApiResult] instance.
-  AutoTestWorkItemIdentifierApiResult({
+class WorkItemIdentifierModel {
+  /// Returns a new [WorkItemIdentifierModel] instance.
+  WorkItemIdentifierModel({
     required this.id,
     required this.globalId,
   });
 
-  /// WorkItem unique internal identifier
+  /// Used for search WorkItem. Internal identifier has a Guid data format. Global identifier has an integer data format
   String id;
 
-  /// WorkItem Global unique identifier
   int globalId;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is AutoTestWorkItemIdentifierApiResult &&
+  bool operator ==(Object other) => identical(this, other) || other is WorkItemIdentifierModel &&
     other.id == id &&
     other.globalId == globalId;
 
@@ -35,7 +34,7 @@ class AutoTestWorkItemIdentifierApiResult {
     (globalId.hashCode);
 
   @override
-  String toString() => 'AutoTestWorkItemIdentifierApiResult[id=$id, globalId=$globalId]';
+  String toString() => 'WorkItemIdentifierModel[id=$id, globalId=$globalId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -44,10 +43,10 @@ class AutoTestWorkItemIdentifierApiResult {
     return json;
   }
 
-  /// Returns a new [AutoTestWorkItemIdentifierApiResult] instance and imports its values from
+  /// Returns a new [WorkItemIdentifierModel] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static AutoTestWorkItemIdentifierApiResult? fromJson(dynamic value) {
+  static WorkItemIdentifierModel? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -56,13 +55,13 @@ class AutoTestWorkItemIdentifierApiResult {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AutoTestWorkItemIdentifierApiResult[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AutoTestWorkItemIdentifierApiResult[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "WorkItemIdentifierModel[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "WorkItemIdentifierModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return AutoTestWorkItemIdentifierApiResult(
+      return WorkItemIdentifierModel(
         id: mapValueOfType<String>(json, r'id')!,
         globalId: mapValueOfType<int>(json, r'globalId')!,
       );
@@ -70,11 +69,11 @@ class AutoTestWorkItemIdentifierApiResult {
     return null;
   }
 
-  static List<AutoTestWorkItemIdentifierApiResult> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <AutoTestWorkItemIdentifierApiResult>[];
+  static List<WorkItemIdentifierModel> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <WorkItemIdentifierModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = AutoTestWorkItemIdentifierApiResult.fromJson(row);
+        final value = WorkItemIdentifierModel.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -83,12 +82,12 @@ class AutoTestWorkItemIdentifierApiResult {
     return result.toList(growable: growable);
   }
 
-  static Map<String, AutoTestWorkItemIdentifierApiResult> mapFromJson(dynamic json) {
-    final map = <String, AutoTestWorkItemIdentifierApiResult>{};
+  static Map<String, WorkItemIdentifierModel> mapFromJson(dynamic json) {
+    final map = <String, WorkItemIdentifierModel>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = AutoTestWorkItemIdentifierApiResult.fromJson(entry.value);
+        final value = WorkItemIdentifierModel.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -97,14 +96,14 @@ class AutoTestWorkItemIdentifierApiResult {
     return map;
   }
 
-  // maps a json object with a list of AutoTestWorkItemIdentifierApiResult-objects as value to a dart map
-  static Map<String, List<AutoTestWorkItemIdentifierApiResult>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<AutoTestWorkItemIdentifierApiResult>>{};
+  // maps a json object with a list of WorkItemIdentifierModel-objects as value to a dart map
+  static Map<String, List<WorkItemIdentifierModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<WorkItemIdentifierModel>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = AutoTestWorkItemIdentifierApiResult.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = WorkItemIdentifierModel.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

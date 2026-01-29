@@ -188,8 +188,6 @@ class ApiClient {
           return AIServiceModelApiResultReply.fromJson(value);
         case 'ActionUpdate':
           return ActionUpdateTypeTransformer().decode(value);
-        case 'ApiExternalServiceCategory':
-          return ApiExternalServiceCategoryTypeTransformer().decode(value);
         case 'AssignAttachmentApiModel':
           return AssignAttachmentApiModel.fromJson(value);
         case 'AssignIterationApiModel':
@@ -214,8 +212,8 @@ class ApiClient {
           return AutoTest.fromJson(value);
         case 'AutoTestApiResult':
           return AutoTestApiResult.fromJson(value);
-        case 'AutoTestAverageDurationApiResult':
-          return AutoTestAverageDurationApiResult.fromJson(value);
+        case 'AutoTestAverageDurationModel':
+          return AutoTestAverageDurationModel.fromJson(value);
         case 'AutoTestBulkDeleteApiModel':
           return AutoTestBulkDeleteApiModel.fromJson(value);
         case 'AutoTestBulkDeleteApiResult':
@@ -226,8 +224,6 @@ class ApiClient {
           return AutoTestChangeViewModelArrayChangedFieldViewModel.fromJson(value);
         case 'AutoTestClassCountApiModel':
           return AutoTestClassCountApiModel.fromJson(value);
-        case 'AutoTestCreateApiModel':
-          return AutoTestCreateApiModel.fromJson(value);
         case 'AutoTestExtractionApiModel':
           return AutoTestExtractionApiModel.fromJson(value);
         case 'AutoTestFilterApiModel':
@@ -242,18 +238,22 @@ class ApiClient {
           return AutoTestModel.fromJson(value);
         case 'AutoTestModelV2GetModel':
           return AutoTestModelV2GetModel.fromJson(value);
-        case 'AutoTestNamespaceApiResult':
-          return AutoTestNamespaceApiResult.fromJson(value);
         case 'AutoTestNamespaceCountApiModel':
           return AutoTestNamespaceCountApiModel.fromJson(value);
+        case 'AutoTestNamespaceModel':
+          return AutoTestNamespaceModel.fromJson(value);
         case 'AutoTestNamespacesCountResponse':
           return AutoTestNamespacesCountResponse.fromJson(value);
         case 'AutoTestOutcome':
           return AutoTestOutcomeTypeTransformer().decode(value);
+        case 'AutoTestPostModel':
+          return AutoTestPostModel.fromJson(value);
         case 'AutoTestProjectSettingsApiModel':
           return AutoTestProjectSettingsApiModel.fromJson(value);
         case 'AutoTestProjectSettingsApiResult':
           return AutoTestProjectSettingsApiResult.fromJson(value);
+        case 'AutoTestPutModel':
+          return AutoTestPutModel.fromJson(value);
         case 'AutoTestResultHistoryApiResult':
           return AutoTestResultHistoryApiResult.fromJson(value);
         case 'AutoTestResultHistorySelectApiModel':
@@ -278,8 +278,6 @@ class ApiClient {
           return AutoTestShortApiResult.fromJson(value);
         case 'AutoTestStep':
           return AutoTestStep.fromJson(value);
-        case 'AutoTestStepApiModel':
-          return AutoTestStepApiModel.fromJson(value);
         case 'AutoTestStepApiResult':
           return AutoTestStepApiResult.fromJson(value);
         case 'AutoTestStepModel':
@@ -290,10 +288,6 @@ class ApiClient {
           return AutoTestStepResultUpdateRequest.fromJson(value);
         case 'AutoTestStepResultsApiResult':
           return AutoTestStepResultsApiResult.fromJson(value);
-        case 'AutoTestUpdateApiModel':
-          return AutoTestUpdateApiModel.fromJson(value);
-        case 'AutoTestWorkItemIdentifierApiResult':
-          return AutoTestWorkItemIdentifierApiResult.fromJson(value);
         case 'AutoTestsExtractionModel':
           return AutoTestsExtractionModel.fromJson(value);
         case 'AutotestResultOutcome':
@@ -328,12 +322,8 @@ class ApiClient {
           return CompositeFilter.fromJson(value);
         case 'ConfigurationByParametersModel':
           return ConfigurationByParametersModel.fromJson(value);
-        case 'ConfigurationExtractionApiModel':
-          return ConfigurationExtractionApiModel.fromJson(value);
         case 'ConfigurationExtractionModel':
           return ConfigurationExtractionModel.fromJson(value);
-        case 'ConfigurationFilterApiModel':
-          return ConfigurationFilterApiModel.fromJson(value);
         case 'ConfigurationFilterModel':
           return ConfigurationFilterModel.fromJson(value);
         case 'ConfigurationModel':
@@ -342,8 +332,6 @@ class ApiClient {
           return ConfigurationPostModel.fromJson(value);
         case 'ConfigurationPutModel':
           return ConfigurationPutModel.fromJson(value);
-        case 'ConfigurationSelectApiModel':
-          return ConfigurationSelectApiModel.fromJson(value);
         case 'ConfigurationSelectModel':
           return ConfigurationSelectModel.fromJson(value);
         case 'ConfigurationShort':
@@ -388,16 +376,12 @@ class ApiClient {
           return CreateWorkItemPreviewsApiModel.fromJson(value);
         case 'CreateWorkflowApiModel':
           return CreateWorkflowApiModel.fromJson(value);
-        case 'CustomAttributeApiResult':
-          return CustomAttributeApiResult.fromJson(value);
         case 'CustomAttributeChangeModel':
           return CustomAttributeChangeModel.fromJson(value);
         case 'CustomAttributeGetModel':
           return CustomAttributeGetModel.fromJson(value);
         case 'CustomAttributeModel':
           return CustomAttributeModel.fromJson(value);
-        case 'CustomAttributeOptionApiResult':
-          return CustomAttributeOptionApiResult.fromJson(value);
         case 'CustomAttributeOptionModel':
           return CustomAttributeOptionModel.fromJson(value);
         case 'CustomAttributeOptionPostModel':
@@ -422,8 +406,6 @@ class ApiClient {
           return CustomAttributeTemplateValidationResult.fromJson(value);
         case 'CustomAttributeTestPlanProjectRelationPutModel':
           return CustomAttributeTestPlanProjectRelationPutModel.fromJson(value);
-        case 'CustomAttributeType':
-          return CustomAttributeTypeTypeTransformer().decode(value);
         case 'CustomAttributeTypesEnum':
           return CustomAttributeTypesEnumTypeTransformer().decode(value);
         case 'CustomAttributeValidationResult':
@@ -474,6 +456,8 @@ class ApiClient {
           return ExternalIssueTypeModel.fromJson(value);
         case 'ExternalLinkModel':
           return ExternalLinkModel.fromJson(value);
+        case 'ExternalServiceCategoryApiResult':
+          return ExternalServiceCategoryApiResultTypeTransformer().decode(value);
         case 'ExternalServiceMetadataApiResult':
           return ExternalServiceMetadataApiResult.fromJson(value);
         case 'ExternalServicesMetadataApiResult':
@@ -552,10 +536,10 @@ class ApiClient {
           return IterationModel.fromJson(value);
         case 'Label':
           return Label.fromJson(value);
-        case 'LabelApiModel':
-          return LabelApiModel.fromJson(value);
         case 'LabelApiResult':
           return LabelApiResult.fromJson(value);
+        case 'LabelPostModel':
+          return LabelPostModel.fromJson(value);
         case 'LabelShortModel':
           return LabelShortModel.fromJson(value);
         case 'LastTestResultApiResult':
@@ -566,8 +550,6 @@ class ApiClient {
           return Link.fromJson(value);
         case 'LinkApiResult':
           return LinkApiResult.fromJson(value);
-        case 'LinkCreateApiModel':
-          return LinkCreateApiModel.fromJson(value);
         case 'LinkModel':
           return LinkModel.fromJson(value);
         case 'LinkPostModel':
@@ -582,8 +564,6 @@ class ApiClient {
           return LinkShortModel.fromJson(value);
         case 'LinkType':
           return LinkTypeTypeTransformer().decode(value);
-        case 'LinkUpdateApiModel':
-          return LinkUpdateApiModel.fromJson(value);
         case 'ListSortDirection':
           return ListSortDirectionTypeTransformer().decode(value);
         case 'LogicalOperator':
@@ -632,8 +612,6 @@ class ApiClient {
           return PreviewsIssueLinkApiResult.fromJson(value);
         case 'ProblemDetails':
           return ProblemDetails.fromJson(value);
-        case 'ProjectApiResult':
-          return ProjectApiResult.fromJson(value);
         case 'ProjectAttributesFilterModel':
           return ProjectAttributesFilterModel.fromJson(value);
         case 'ProjectCustomAttributeTemplateGetModel':
@@ -678,6 +656,10 @@ class ApiClient {
           return ProjectTypeModelTypeTransformer().decode(value);
         case 'ProjectsFilterModel':
           return ProjectsFilterModel.fromJson(value);
+        case 'PublicTestPointModel':
+          return PublicTestPointModel.fromJson(value);
+        case 'PublicTestRunModel':
+          return PublicTestRunModel.fromJson(value);
         case 'ReplaceProjectExternalServiceApiModel':
           return ReplaceProjectExternalServiceApiModel.fromJson(value);
         case 'RequestType':
@@ -838,8 +820,6 @@ class ApiClient {
           return TestPlanTestPointsSectionSearchApiResult.fromJson(value);
         case 'TestPlanTestPointsSetTestersApiModel':
           return TestPlanTestPointsSetTestersApiModel.fromJson(value);
-        case 'TestPlanTestPointsStatusCodeGroupApiResult':
-          return TestPlanTestPointsStatusCodeGroupApiResult.fromJson(value);
         case 'TestPlanTestPointsStatusGroupApiResult':
           return TestPlanTestPointsStatusGroupApiResult.fromJson(value);
         case 'TestPlanTestPointsStatusTypeGroupApiResult':
@@ -1116,6 +1096,8 @@ class ApiClient {
           return WorkItemGroupTypeTypeTransformer().decode(value);
         case 'WorkItemIdApiModel':
           return WorkItemIdApiModel.fromJson(value);
+        case 'WorkItemIdentifierModel':
+          return WorkItemIdentifierModel.fromJson(value);
         case 'WorkItemIndexApiResult':
           return WorkItemIndexApiResult.fromJson(value);
         case 'WorkItemLikeModel':

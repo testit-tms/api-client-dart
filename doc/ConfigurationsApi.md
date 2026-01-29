@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apiV2ConfigurationsDeleteBulkPost**
-> int apiV2ConfigurationsDeleteBulkPost(configurationSelectModel)
+> int apiV2ConfigurationsDeleteBulkPost(configurationSelectApiModel)
 
 Delete multiple configurations
 
@@ -82,10 +82,10 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = ConfigurationsApi();
-final configurationSelectModel = ConfigurationSelectModel(); // ConfigurationSelectModel | 
+final configurationSelectApiModel = ConfigurationSelectApiModel(); // ConfigurationSelectApiModel | 
 
 try {
-    final result = api_instance.apiV2ConfigurationsDeleteBulkPost(configurationSelectModel);
+    final result = api_instance.apiV2ConfigurationsDeleteBulkPost(configurationSelectApiModel);
     print(result);
 } catch (e) {
     print('Exception when calling ConfigurationsApi->apiV2ConfigurationsDeleteBulkPost: $e\n');
@@ -96,7 +96,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **configurationSelectModel** | [**ConfigurationSelectModel**](ConfigurationSelectModel.md)|  | [optional] 
+ **configurationSelectApiModel** | [**ConfigurationSelectApiModel**](ConfigurationSelectApiModel.md)|  | [optional] 
 
 ### Return type
 
@@ -487,7 +487,7 @@ Name | Type | Description  | Notes
 
 Create Configuration
 
-  Use case    User sets configuration model (listed in the request example)    User runs method execution    System creates configuration    System returns created configuration (listed in the response example)
+ Use case  User sets configuration model (listed in the request example)  User runs method execution  System creates configuration  System returns created configuration (listed in the response example)
 
 ### Example
 ```dart
@@ -534,7 +534,7 @@ Name | Type | Description  | Notes
 
 Get configuration by internal or global ID
 
-  Use case    User sets configuration internal (guid format) or global (integer format) identifier    User runs method execution    System search configuration using the identifier    System returns configuration
+ Use case  User sets configuration internal (guid format) or global (integer format) identifier  User runs method execution  System search configuration using the identifier  System returns configuration
 
 ### Example
 ```dart

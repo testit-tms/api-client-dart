@@ -77,13 +77,13 @@ class ConfigurationsApi {
   ///
   /// Parameters:
   ///
-  /// * [ConfigurationSelectModel] configurationSelectModel:
-  Future<Response> apiV2ConfigurationsDeleteBulkPostWithHttpInfo({ ConfigurationSelectModel? configurationSelectModel, }) async {
+  /// * [ConfigurationSelectApiModel] configurationSelectApiModel:
+  Future<Response> apiV2ConfigurationsDeleteBulkPostWithHttpInfo({ ConfigurationSelectApiModel? configurationSelectApiModel, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/configurations/delete/bulk';
 
     // ignore: prefer_final_locals
-    Object? postBody = configurationSelectModel;
+    Object? postBody = configurationSelectApiModel;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -107,9 +107,9 @@ class ConfigurationsApi {
   ///
   /// Parameters:
   ///
-  /// * [ConfigurationSelectModel] configurationSelectModel:
-  Future<int?> apiV2ConfigurationsDeleteBulkPost({ ConfigurationSelectModel? configurationSelectModel, }) async {
-    final response = await apiV2ConfigurationsDeleteBulkPostWithHttpInfo( configurationSelectModel: configurationSelectModel, );
+  /// * [ConfigurationSelectApiModel] configurationSelectApiModel:
+  Future<int?> apiV2ConfigurationsDeleteBulkPost({ ConfigurationSelectApiModel? configurationSelectApiModel, }) async {
+    final response = await apiV2ConfigurationsDeleteBulkPostWithHttpInfo( configurationSelectApiModel: configurationSelectApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -572,7 +572,7 @@ class ConfigurationsApi {
 
   /// Create Configuration
   ///
-  ///   Use case    User sets configuration model (listed in the request example)    User runs method execution    System creates configuration    System returns created configuration (listed in the response example)
+  ///  Use case  User sets configuration model (listed in the request example)  User runs method execution  System creates configuration  System returns created configuration (listed in the response example)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -606,7 +606,7 @@ class ConfigurationsApi {
 
   /// Create Configuration
   ///
-  ///   Use case    User sets configuration model (listed in the request example)    User runs method execution    System creates configuration    System returns created configuration (listed in the response example)
+  ///  Use case  User sets configuration model (listed in the request example)  User runs method execution  System creates configuration  System returns created configuration (listed in the response example)
   ///
   /// Parameters:
   ///
@@ -628,7 +628,7 @@ class ConfigurationsApi {
 
   /// Get configuration by internal or global ID
   ///
-  ///   Use case    User sets configuration internal (guid format) or global (integer format) identifier    User runs method execution    System search configuration using the identifier    System returns configuration
+  ///  Use case  User sets configuration internal (guid format) or global (integer format) identifier  User runs method execution  System search configuration using the identifier  System returns configuration
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -664,7 +664,7 @@ class ConfigurationsApi {
 
   /// Get configuration by internal or global ID
   ///
-  ///   Use case    User sets configuration internal (guid format) or global (integer format) identifier    User runs method execution    System search configuration using the identifier    System returns configuration
+  ///  Use case  User sets configuration internal (guid format) or global (integer format) identifier  User runs method execution  System search configuration using the identifier  System returns configuration
   ///
   /// Parameters:
   ///

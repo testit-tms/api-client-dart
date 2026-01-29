@@ -48,7 +48,7 @@ class TestResultHistoryReportApiResult {
   /// Test result creation date
   DateTime createdDate;
 
-  /// Internal identifier of user who stopped test run related to the test result or user who created the test result                If test run was stopped, this property equals identifier of user who stopped it.  Otherwise, the property equals identifier of user who created the test result
+  /// Internal identifier of user who stopped test run related to the test result or user who created the test result              If test run was stopped, this property equals identifier of user who stopped it. Otherwise, the property equals identifier of user who created the test result
   String userId;
 
   /// Boolean flag defines if test point related to the test result is automated or not
@@ -84,16 +84,16 @@ class TestResultHistoryReportApiResult {
   /// Name of test plan related to the test result's test run
   String? testPlanName;
 
-  /// Configuration name of test point related to the test result or from test result itself                If test point related to the test result has configuration, this property will be equal to the test point configuration name.  Otherwise, this property will be equal to the test result configuration name
+  /// Configuration name of test point related to the test result or from test result itself              If test point related to the test result has configuration, this property will be equal to the test point configuration name. Otherwise, this property will be equal to the test result configuration name
   String? configurationName;
 
-  /// Outcome from test result with max modified date or from first created test result                Property can contain one of these values: Passed, Failed, InProgress, Blocked, Skipped.                If any test result related to the test run is linked with autotest and the run has an outcome, the outcome value equals to the  worst outcome of the last modified test result. Otherwise, the outcome equals to the outcome of first created test result in the  test run.
+  /// Outcome from test result with max modified date or from first created test result              Property can contain one of these values: Passed, Failed, InProgress, Blocked, Skipped.              If any test result related to the test run is linked with autotest and the run has an outcome, the outcome value equals to the worst outcome of the last modified test result. Otherwise, the outcome equals to the outcome of first created test result in the test run.
   String? outcome;
 
-  /// Test result comment                If any test result related to the test run is linked with autotest, comment will have default value.  Otherwise, the comment equals to the comment of first created test result in the test run
+  /// Test result comment              If any test result related to the test run is linked with autotest, comment will have default value. Otherwise, the comment equals to the comment of first created test result in the test run
   String? comment;
 
-  /// Test result links                If any test result related to the test run is linked with autotest, link will be equal to the links of last modified test result.  Otherwise, the links equals to the links of first created test result in the test run.
+  /// Test result links              If any test result related to the test run is linked with autotest, link will be equal to the links of last modified test result. Otherwise, the links equals to the links of first created test result in the test run.
   List<LinkApiResult>? links;
 
   /// Start date time from test result or from test run (if test run new state is Running or Completed state)
@@ -108,7 +108,7 @@ class TestResultHistoryReportApiResult {
   /// Unique identifier of user who applied last modification of first test result in the test run
   String? modifiedById;
 
-  /// Attachments related to the test result                If any test result related to the test run is linked with autotest, attachments will be equal to the attachments of last modified  test result. Otherwise, the attachments equals to the attachments of first created test result in the test run.
+  /// Attachments related to the test result              If any test result related to the test run is linked with autotest, attachments will be equal to the attachments of last modified test result. Otherwise, the attachments equals to the attachments of first created test result in the test run.
   List<AttachmentApiResult>? attachments;
 
   /// Unique identifier of workitem version related to the first test result in the test run

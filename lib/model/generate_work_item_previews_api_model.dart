@@ -16,6 +16,8 @@ class GenerateWorkItemPreviewsApiModel {
     required this.externalServiceId,
     required this.taskKey,
     required this.sectionId,
+    required this.temperature,
+    required this.previewLimit,
   });
 
   String externalServiceId;
@@ -24,27 +26,41 @@ class GenerateWorkItemPreviewsApiModel {
 
   String sectionId;
 
+  /// Minimum value: 0
+  /// Maximum value: 1
+  double temperature;
+
+  /// Minimum value: 1
+  /// Maximum value: 30
+  int previewLimit;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is GenerateWorkItemPreviewsApiModel &&
     other.externalServiceId == externalServiceId &&
     other.taskKey == taskKey &&
-    other.sectionId == sectionId;
+    other.sectionId == sectionId &&
+    other.temperature == temperature &&
+    other.previewLimit == previewLimit;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (externalServiceId.hashCode) +
     (taskKey.hashCode) +
-    (sectionId.hashCode);
+    (sectionId.hashCode) +
+    (temperature.hashCode) +
+    (previewLimit.hashCode);
 
   @override
-  String toString() => 'GenerateWorkItemPreviewsApiModel[externalServiceId=$externalServiceId, taskKey=$taskKey, sectionId=$sectionId]';
+  String toString() => 'GenerateWorkItemPreviewsApiModel[externalServiceId=$externalServiceId, taskKey=$taskKey, sectionId=$sectionId, temperature=$temperature, previewLimit=$previewLimit]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'externalServiceId'] = this.externalServiceId;
       json[r'taskKey'] = this.taskKey;
       json[r'sectionId'] = this.sectionId;
+      json[r'temperature'] = this.temperature;
+      json[r'previewLimit'] = this.previewLimit;
     return json;
   }
 
@@ -70,6 +86,8 @@ class GenerateWorkItemPreviewsApiModel {
         externalServiceId: mapValueOfType<String>(json, r'externalServiceId')!,
         taskKey: mapValueOfType<String>(json, r'taskKey')!,
         sectionId: mapValueOfType<String>(json, r'sectionId')!,
+        temperature: mapValueOfType<double>(json, r'temperature')!,
+        previewLimit: mapValueOfType<int>(json, r'previewLimit')!,
       );
     }
     return null;
@@ -120,6 +138,8 @@ class GenerateWorkItemPreviewsApiModel {
     'externalServiceId',
     'taskKey',
     'sectionId',
+    'temperature',
+    'previewLimit',
   };
 }
 

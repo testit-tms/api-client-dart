@@ -15,7 +15,7 @@ class TestPlanTestPointsTesterAndStatusTypeGroupApiResult {
   TestPlanTestPointsTesterAndStatusTypeGroupApiResult({
     required this.userId,
     required this.statusType,
-    required this.value,
+    this.statuses = const [],
   });
 
   String? userId;
@@ -23,23 +23,23 @@ class TestPlanTestPointsTesterAndStatusTypeGroupApiResult {
   /// Collection of possible status types
   TestStatusApiType statusType;
 
-  int value;
+  List<TestPlanTestPointsStatusCodeGroupApiResult> statuses;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is TestPlanTestPointsTesterAndStatusTypeGroupApiResult &&
     other.userId == userId &&
     other.statusType == statusType &&
-    other.value == value;
+    _deepEquality.equals(other.statuses, statuses);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (userId == null ? 0 : userId!.hashCode) +
     (statusType.hashCode) +
-    (value.hashCode);
+    (statuses.hashCode);
 
   @override
-  String toString() => 'TestPlanTestPointsTesterAndStatusTypeGroupApiResult[userId=$userId, statusType=$statusType, value=$value]';
+  String toString() => 'TestPlanTestPointsTesterAndStatusTypeGroupApiResult[userId=$userId, statusType=$statusType, statuses=$statuses]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -49,7 +49,7 @@ class TestPlanTestPointsTesterAndStatusTypeGroupApiResult {
       json[r'userId'] = null;
     }
       json[r'statusType'] = this.statusType;
-      json[r'value'] = this.value;
+      json[r'statuses'] = this.statuses;
     return json;
   }
 
@@ -74,7 +74,7 @@ class TestPlanTestPointsTesterAndStatusTypeGroupApiResult {
       return TestPlanTestPointsTesterAndStatusTypeGroupApiResult(
         userId: mapValueOfType<String>(json, r'userId'),
         statusType: TestStatusApiType.fromJson(json[r'statusType'])!,
-        value: mapValueOfType<int>(json, r'value')!,
+        statuses: TestPlanTestPointsStatusCodeGroupApiResult.listFromJson(json[r'statuses']),
       );
     }
     return null;
@@ -124,7 +124,7 @@ class TestPlanTestPointsTesterAndStatusTypeGroupApiResult {
   static const requiredKeys = <String>{
     'userId',
     'statusType',
-    'value',
+    'statuses',
   };
 }
 

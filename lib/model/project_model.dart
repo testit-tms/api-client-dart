@@ -31,7 +31,6 @@ class ProjectModel {
     this.autoTestsCount,
     this.modifiedDate,
     this.modifiedById,
-    this.isFlakyAuto,
   });
 
   /// Unique ID of the project
@@ -87,9 +86,6 @@ class ProjectModel {
   /// Unique ID of the project last editor
   String? modifiedById;
 
-  /// Indicates if the status \"Flaky/Stable\" sets automatically
-  bool? isFlakyAuto;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProjectModel &&
     other.id == id &&
@@ -109,8 +105,7 @@ class ProjectModel {
     other.checkListsCount == checkListsCount &&
     other.autoTestsCount == autoTestsCount &&
     other.modifiedDate == modifiedDate &&
-    other.modifiedById == modifiedById &&
-    other.isFlakyAuto == isFlakyAuto;
+    other.modifiedById == modifiedById;
 
   @override
   int get hashCode =>
@@ -132,11 +127,10 @@ class ProjectModel {
     (checkListsCount == null ? 0 : checkListsCount!.hashCode) +
     (autoTestsCount == null ? 0 : autoTestsCount!.hashCode) +
     (modifiedDate == null ? 0 : modifiedDate!.hashCode) +
-    (modifiedById == null ? 0 : modifiedById!.hashCode) +
-    (isFlakyAuto == null ? 0 : isFlakyAuto!.hashCode);
+    (modifiedById == null ? 0 : modifiedById!.hashCode);
 
   @override
-  String toString() => 'ProjectModel[id=$id, name=$name, isFavorite=$isFavorite, isDeleted=$isDeleted, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, type=$type, workflowId=$workflowId, description=$description, attributesScheme=$attributesScheme, testPlansAttributesScheme=$testPlansAttributesScheme, testCasesCount=$testCasesCount, sharedStepsCount=$sharedStepsCount, checkListsCount=$checkListsCount, autoTestsCount=$autoTestsCount, modifiedDate=$modifiedDate, modifiedById=$modifiedById, isFlakyAuto=$isFlakyAuto]';
+  String toString() => 'ProjectModel[id=$id, name=$name, isFavorite=$isFavorite, isDeleted=$isDeleted, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, type=$type, workflowId=$workflowId, description=$description, attributesScheme=$attributesScheme, testPlansAttributesScheme=$testPlansAttributesScheme, testCasesCount=$testCasesCount, sharedStepsCount=$sharedStepsCount, checkListsCount=$checkListsCount, autoTestsCount=$autoTestsCount, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -194,11 +188,6 @@ class ProjectModel {
     } else {
       json[r'modifiedById'] = null;
     }
-    if (this.isFlakyAuto != null) {
-      json[r'isFlakyAuto'] = this.isFlakyAuto;
-    } else {
-      json[r'isFlakyAuto'] = null;
-    }
     return json;
   }
 
@@ -239,7 +228,6 @@ class ProjectModel {
         autoTestsCount: mapValueOfType<int>(json, r'autoTestsCount'),
         modifiedDate: mapDateTime(json, r'modifiedDate', r''),
         modifiedById: mapValueOfType<String>(json, r'modifiedById'),
-        isFlakyAuto: mapValueOfType<bool>(json, r'isFlakyAuto'),
       );
     }
     return null;

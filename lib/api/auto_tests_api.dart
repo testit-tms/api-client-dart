@@ -70,7 +70,7 @@ class AutoTestsApi {
 
   /// Set \"Flaky\" status for multiple autotests
   ///
-  /// User permissions for project:  - Read only  - Execute  - Write  - Full control
+  /// User permissions for project: - Read only - Execute - Write - Full control
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -135,7 +135,7 @@ class AutoTestsApi {
 
   /// Set \"Flaky\" status for multiple autotests
   ///
-  /// User permissions for project:  - Read only  - Execute  - Write  - Full control
+  /// User permissions for project: - Read only - Execute - Write - Full control
   ///
   /// Parameters:
   ///
@@ -219,7 +219,7 @@ class AutoTestsApi {
 
   /// Get test results history for autotest
   ///
-  ///   Use case    User sets autotest internal (guid format) or global (integer format) identifier    User sets getTestResultHistoryReportQuery (listed in the example)    User runs method execution    System search for test results using filters set by user in getTestResultHistoryReportQuery and id    System returns the enumeration of test results
+  ///  Use case  User sets autotest internal (guid format) or global (integer format) identifier  User sets getTestResultHistoryReportQuery (listed in the example)  User runs method execution  System search for test results using filters set by user in getTestResultHistoryReportQuery and id  System returns the enumeration of test results
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -288,7 +288,7 @@ class AutoTestsApi {
 
   /// Get test results history for autotest
   ///
-  ///   Use case    User sets autotest internal (guid format) or global (integer format) identifier    User sets getTestResultHistoryReportQuery (listed in the example)    User runs method execution    System search for test results using filters set by user in getTestResultHistoryReportQuery and id    System returns the enumeration of test results
+  ///  Use case  User sets autotest internal (guid format) or global (integer format) identifier  User sets getTestResultHistoryReportQuery (listed in the example)  User runs method execution  System search for test results using filters set by user in getTestResultHistoryReportQuery and id  System returns the enumeration of test results
   ///
   /// Parameters:
   ///
@@ -331,7 +331,7 @@ class AutoTestsApi {
 
   /// Get identifiers of changed linked work items
   ///
-  /// User permissions for project:  - Read only  - Execute  - Write  - Full control
+  /// User permissions for project: - Read only - Execute - Write - Full control
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -366,7 +366,7 @@ class AutoTestsApi {
 
   /// Get identifiers of changed linked work items
   ///
-  /// User permissions for project:  - Read only  - Execute  - Write  - Full control
+  /// User permissions for project: - Read only - Execute - Write - Full control
   ///
   /// Parameters:
   ///
@@ -391,7 +391,7 @@ class AutoTestsApi {
 
   /// Approve changes to work items linked to autotest
   ///
-  /// User permissions for project:  - Read only  - Execute  - Write  - Full control
+  /// User permissions for project: - Read only - Execute - Write - Full control
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -429,7 +429,7 @@ class AutoTestsApi {
 
   /// Approve changes to work items linked to autotest
   ///
-  /// User permissions for project:  - Read only  - Execute  - Write  - Full control
+  /// User permissions for project: - Read only - Execute - Write - Full control
   ///
   /// Parameters:
   ///
@@ -546,19 +546,19 @@ class AutoTestsApi {
 
   /// Create autotest
   ///
-  ///   This method creates a new autotest.    To add an autotest to the test plan, link it to a work item using the `POST /api/v2/autoTests/{autoTestId}/workItems` method.    Use the `POST /api/v2/testRuns/byAutoTests` method to run autotest outside the test plan.
+  ///  This method creates a new autotest.  To add an autotest to the test plan, link it to a work item using the `POST /api/v2/autoTests/{autoTestId}/workItems` method.  Use the `POST /api/v2/testRuns/byAutoTests` method to run autotest outside the test plan.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [AutoTestPostModel] autoTestPostModel:
-  Future<Response> createAutoTestWithHttpInfo({ AutoTestPostModel? autoTestPostModel, }) async {
+  /// * [AutoTestCreateApiModel] autoTestCreateApiModel:
+  Future<Response> createAutoTestWithHttpInfo({ AutoTestCreateApiModel? autoTestCreateApiModel, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/autoTests';
 
     // ignore: prefer_final_locals
-    Object? postBody = autoTestPostModel;
+    Object? postBody = autoTestCreateApiModel;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -580,13 +580,13 @@ class AutoTestsApi {
 
   /// Create autotest
   ///
-  ///   This method creates a new autotest.    To add an autotest to the test plan, link it to a work item using the `POST /api/v2/autoTests/{autoTestId}/workItems` method.    Use the `POST /api/v2/testRuns/byAutoTests` method to run autotest outside the test plan.
+  ///  This method creates a new autotest.  To add an autotest to the test plan, link it to a work item using the `POST /api/v2/autoTests/{autoTestId}/workItems` method.  Use the `POST /api/v2/testRuns/byAutoTests` method to run autotest outside the test plan.
   ///
   /// Parameters:
   ///
-  /// * [AutoTestPostModel] autoTestPostModel:
-  Future<AutoTestModel?> createAutoTest({ AutoTestPostModel? autoTestPostModel, }) async {
-    final response = await createAutoTestWithHttpInfo( autoTestPostModel: autoTestPostModel, );
+  /// * [AutoTestCreateApiModel] autoTestCreateApiModel:
+  Future<AutoTestApiResult?> createAutoTest({ AutoTestCreateApiModel? autoTestCreateApiModel, }) async {
+    final response = await createAutoTestWithHttpInfo( autoTestCreateApiModel: autoTestCreateApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -594,7 +594,7 @@ class AutoTestsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AutoTestModel',) as AutoTestModel;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AutoTestApiResult',) as AutoTestApiResult;
     
     }
     return null;
@@ -602,19 +602,19 @@ class AutoTestsApi {
 
   /// Create multiple autotests
   ///
-  ///   Use case    User sets autotest parameters (listed in the example) and runs method execution    System creates autotest    [Optional] If steps enumeration is set, system creates step items and relates them to autotest    [Optional] If setup enumeration is set, system creates setup items and relates them to autotest    [Optional] If teardown enumeration is set, system creates teardown items and relates them to autotest    [Optional] If label enumeration is set, system creates labels and relates them to autotest    [Optional] If link enumeration is set, system creates links and relates them to autotest    System returns autotest model (example listed in response parameters)
+  ///  Use case  User sets autotest parameters (listed in the example) and runs method execution  System creates autotest  [Optional] If steps enumeration is set, system creates step items and relates them to autotest  [Optional] If setup enumeration is set, system creates setup items and relates them to autotest  [Optional] If teardown enumeration is set, system creates teardown items and relates them to autotest  [Optional] If label enumeration is set, system creates labels and relates them to autotest  [Optional] If link enumeration is set, system creates links and relates them to autotest  System returns autotest model (example listed in response parameters)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [List<AutoTestPostModel>] autoTestPostModel:
-  Future<Response> createMultipleWithHttpInfo({ List<AutoTestPostModel>? autoTestPostModel, }) async {
+  /// * [List<AutoTestCreateApiModel>] autoTestCreateApiModel:
+  Future<Response> createMultipleWithHttpInfo({ List<AutoTestCreateApiModel>? autoTestCreateApiModel, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/autoTests/bulk';
 
     // ignore: prefer_final_locals
-    Object? postBody = autoTestPostModel;
+    Object? postBody = autoTestCreateApiModel;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -636,13 +636,13 @@ class AutoTestsApi {
 
   /// Create multiple autotests
   ///
-  ///   Use case    User sets autotest parameters (listed in the example) and runs method execution    System creates autotest    [Optional] If steps enumeration is set, system creates step items and relates them to autotest    [Optional] If setup enumeration is set, system creates setup items and relates them to autotest    [Optional] If teardown enumeration is set, system creates teardown items and relates them to autotest    [Optional] If label enumeration is set, system creates labels and relates them to autotest    [Optional] If link enumeration is set, system creates links and relates them to autotest    System returns autotest model (example listed in response parameters)
+  ///  Use case  User sets autotest parameters (listed in the example) and runs method execution  System creates autotest  [Optional] If steps enumeration is set, system creates step items and relates them to autotest  [Optional] If setup enumeration is set, system creates setup items and relates them to autotest  [Optional] If teardown enumeration is set, system creates teardown items and relates them to autotest  [Optional] If label enumeration is set, system creates labels and relates them to autotest  [Optional] If link enumeration is set, system creates links and relates them to autotest  System returns autotest model (example listed in response parameters)
   ///
   /// Parameters:
   ///
-  /// * [List<AutoTestPostModel>] autoTestPostModel:
-  Future<List<AutoTestModel>?> createMultiple({ List<AutoTestPostModel>? autoTestPostModel, }) async {
-    final response = await createMultipleWithHttpInfo( autoTestPostModel: autoTestPostModel, );
+  /// * [List<AutoTestCreateApiModel>] autoTestCreateApiModel:
+  Future<List<AutoTestApiResult>?> createMultiple({ List<AutoTestCreateApiModel>? autoTestCreateApiModel, }) async {
+    final response = await createMultipleWithHttpInfo( autoTestCreateApiModel: autoTestCreateApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -651,8 +651,8 @@ class AutoTestsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<AutoTestModel>') as List)
-        .cast<AutoTestModel>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<AutoTestApiResult>') as List)
+        .cast<AutoTestApiResult>()
         .toList(growable: false);
 
     }
@@ -661,7 +661,7 @@ class AutoTestsApi {
 
   /// Delete autotest
   ///
-  ///   Use case    User sets autotest internal (guid format) or global (integer format) identifier and runs method execution    System finds the autotest by the identifier    System deletes autotest and returns no content response
+  ///  Use case  User sets autotest internal (guid format) or global (integer format) identifier and runs method execution  System finds the autotest by the identifier  System deletes autotest and returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -697,7 +697,7 @@ class AutoTestsApi {
 
   /// Delete autotest
   ///
-  ///   Use case    User sets autotest internal (guid format) or global (integer format) identifier and runs method execution    System finds the autotest by the identifier    System deletes autotest and returns no content response
+  ///  Use case  User sets autotest internal (guid format) or global (integer format) identifier and runs method execution  System finds the autotest by the identifier  System deletes autotest and returns no content response
   ///
   /// Parameters:
   ///
@@ -712,7 +712,7 @@ class AutoTestsApi {
 
   /// Unlink autotest from work item
   ///
-  ///   Use case    User sets autotest internal (guid format) or global (integer format) identifier    [Optional] User sets workitem internal (guid format) or global (integer format) identifier    User runs method execution    System finds the autotest by the autotest identifier    [Optional] if workitem id is set by User, System finds the workitem by the workitem identifier and unlinks it              from autotest.    [Optional] Otherwise, if workitem id is not specified, System unlinks all workitems linked to autotest.    System returns no content response
+  ///  Use case  User sets autotest internal (guid format) or global (integer format) identifier  [Optional] User sets workitem internal (guid format) or global (integer format) identifier  User runs method execution  System finds the autotest by the autotest identifier  [Optional] if workitem id is set by User, System finds the workitem by the workitem identifier and unlinks it             from autotest.  [Optional] Otherwise, if workitem id is not specified, System unlinks all workitems linked to autotest.  System returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -755,7 +755,7 @@ class AutoTestsApi {
 
   /// Unlink autotest from work item
   ///
-  ///   Use case    User sets autotest internal (guid format) or global (integer format) identifier    [Optional] User sets workitem internal (guid format) or global (integer format) identifier    User runs method execution    System finds the autotest by the autotest identifier    [Optional] if workitem id is set by User, System finds the workitem by the workitem identifier and unlinks it              from autotest.    [Optional] Otherwise, if workitem id is not specified, System unlinks all workitems linked to autotest.    System returns no content response
+  ///  Use case  User sets autotest internal (guid format) or global (integer format) identifier  [Optional] User sets workitem internal (guid format) or global (integer format) identifier  User runs method execution  System finds the autotest by the autotest identifier  [Optional] if workitem id is set by User, System finds the workitem by the workitem identifier and unlinks it             from autotest.  [Optional] Otherwise, if workitem id is not specified, System unlinks all workitems linked to autotest.  System returns no content response
   ///
   /// Parameters:
   ///
@@ -1054,7 +1054,7 @@ class AutoTestsApi {
 
   /// Get average autotest duration
   ///
-  ///   Use case    User sets autotest internal (guid format) or global (integer format) identifier    User runs method execution    System calculates pass average duration and fail average duration of autotest from all related test results    System returns pass average duration and fail average duration for autotest
+  ///  Use case  User sets autotest internal (guid format) or global (integer format) identifier  User runs method execution  System calculates pass average duration and fail average duration of autotest from all related test results  System returns pass average duration and fail average duration for autotest
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1090,13 +1090,13 @@ class AutoTestsApi {
 
   /// Get average autotest duration
   ///
-  ///   Use case    User sets autotest internal (guid format) or global (integer format) identifier    User runs method execution    System calculates pass average duration and fail average duration of autotest from all related test results    System returns pass average duration and fail average duration for autotest
+  ///  Use case  User sets autotest internal (guid format) or global (integer format) identifier  User runs method execution  System calculates pass average duration and fail average duration of autotest from all related test results  System returns pass average duration and fail average duration for autotest
   ///
   /// Parameters:
   ///
   /// * [String] id (required):
   ///   Autotest internal (UUID) or global (integer) identifier
-  Future<AutoTestAverageDurationModel?> getAutoTestAverageDuration(String id,) async {
+  Future<AutoTestAverageDurationApiResult?> getAutoTestAverageDuration(String id,) async {
     final response = await getAutoTestAverageDurationWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -1105,7 +1105,7 @@ class AutoTestsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AutoTestAverageDurationModel',) as AutoTestAverageDurationModel;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AutoTestAverageDurationApiResult',) as AutoTestAverageDurationApiResult;
     
     }
     return null;
@@ -1113,7 +1113,7 @@ class AutoTestsApi {
 
   /// Get autotest by internal or global ID
   ///
-  ///   Use case    User sets autotest internal or global identifier and runs method execution    System returns autotest, which internal or global identifier equals the identifier value set in the previous action
+  ///  Use case  User sets autotest internal or global identifier and runs method execution  System returns autotest, which internal or global identifier equals the identifier value set in the previous action
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1149,13 +1149,13 @@ class AutoTestsApi {
 
   /// Get autotest by internal or global ID
   ///
-  ///   Use case    User sets autotest internal or global identifier and runs method execution    System returns autotest, which internal or global identifier equals the identifier value set in the previous action
+  ///  Use case  User sets autotest internal or global identifier and runs method execution  System returns autotest, which internal or global identifier equals the identifier value set in the previous action
   ///
   /// Parameters:
   ///
   /// * [String] id (required):
   ///   Autotest internal (UUID) or global (integer) identifier
-  Future<AutoTestModel?> getAutoTestById(String id,) async {
+  Future<AutoTestApiResult?> getAutoTestById(String id,) async {
     final response = await getAutoTestByIdWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -1164,7 +1164,7 @@ class AutoTestsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AutoTestModel',) as AutoTestModel;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AutoTestApiResult',) as AutoTestApiResult;
     
     }
     return null;
@@ -1172,7 +1172,7 @@ class AutoTestsApi {
 
   /// Get autotest chronology
   ///
-  ///   Use case    User sets autotest internal (guid format) or global (integer format) identifier    User runs method execution    System search all test results related to autotest (with default limit equal 100)    System orders the test results by CompletedOn property descending and then orders by CreatedDate property descending    System returns test result chronology for autotest
+  ///  Use case  User sets autotest internal (guid format) or global (integer format) identifier  User runs method execution  System search all test results related to autotest (with default limit equal 100)  System orders the test results by CompletedOn property descending and then orders by CreatedDate property descending  System returns test result chronology for autotest
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1208,7 +1208,7 @@ class AutoTestsApi {
 
   /// Get autotest chronology
   ///
-  ///   Use case    User sets autotest internal (guid format) or global (integer format) identifier    User runs method execution    System search all test results related to autotest (with default limit equal 100)    System orders the test results by CompletedOn property descending and then orders by CreatedDate property descending    System returns test result chronology for autotest
+  ///  Use case  User sets autotest internal (guid format) or global (integer format) identifier  User runs method execution  System search all test results related to autotest (with default limit equal 100)  System orders the test results by CompletedOn property descending and then orders by CreatedDate property descending  System returns test result chronology for autotest
   ///
   /// Parameters:
   ///
@@ -1234,7 +1234,7 @@ class AutoTestsApi {
 
   /// Get completed tests runs for autotests
   ///
-  ///   Use case    User sets autotest internal (guid format) or global (integer format) identifier    User runs method execution    System search for all test runs related to the autotest    System returns the enumeration of test runs
+  ///  Use case  User sets autotest internal (guid format) or global (integer format) identifier  User runs method execution  System search for all test runs related to the autotest  System returns the enumeration of test runs
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1270,7 +1270,7 @@ class AutoTestsApi {
 
   /// Get completed tests runs for autotests
   ///
-  ///   Use case    User sets autotest internal (guid format) or global (integer format) identifier    User runs method execution    System search for all test runs related to the autotest    System returns the enumeration of test runs
+  ///  Use case  User sets autotest internal (guid format) or global (integer format) identifier  User runs method execution  System search for all test runs related to the autotest  System returns the enumeration of test runs
   ///
   /// Parameters:
   ///
@@ -1296,14 +1296,14 @@ class AutoTestsApi {
 
   /// Get work items linked to autotest
   ///
-  ///   This method links an autotest to a test case or a checklist.              A manual test case with a linked automated work item is marked in the test management system as an autotest.              You can run it from graphical user interface (GUI). To do that:    1. Open the project in GUI.                2. Go to <b>Test plans</b> section and switch to the <b>Execution</b> tab.                3. Select the autotest(s) you want to run using checkboxes.                4. In the toolbar above the test list, click <b>Run autotests</b>.
+  ///  This method links an autotest to a test case or a checklist.             A manual test case with a linked automated work item is marked in the test management system as an autotest.             You can run it from graphical user interface (GUI). To do that:  1. Open the project in GUI.              2. Go to <b>Test plans</b> section and switch to the <b>Execution</b> tab.              3. Select the autotest(s) you want to run using checkboxes.              4. In the toolbar above the test list, click <b>Run autotests</b>.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   Specifies the autotest entity ID.    You can copy it from the address bar in your web browser or use autotest GUID.
+  ///   Specifies the autotest entity ID.  You can copy it from the address bar in your web browser or use autotest GUID.
   ///
   /// * [bool] isDeleted:
   ///   Specifies that a test is deleted or still relevant.
@@ -1345,19 +1345,19 @@ class AutoTestsApi {
 
   /// Get work items linked to autotest
   ///
-  ///   This method links an autotest to a test case or a checklist.              A manual test case with a linked automated work item is marked in the test management system as an autotest.              You can run it from graphical user interface (GUI). To do that:    1. Open the project in GUI.                2. Go to <b>Test plans</b> section and switch to the <b>Execution</b> tab.                3. Select the autotest(s) you want to run using checkboxes.                4. In the toolbar above the test list, click <b>Run autotests</b>.
+  ///  This method links an autotest to a test case or a checklist.             A manual test case with a linked automated work item is marked in the test management system as an autotest.             You can run it from graphical user interface (GUI). To do that:  1. Open the project in GUI.              2. Go to <b>Test plans</b> section and switch to the <b>Execution</b> tab.              3. Select the autotest(s) you want to run using checkboxes.              4. In the toolbar above the test list, click <b>Run autotests</b>.
   ///
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   Specifies the autotest entity ID.    You can copy it from the address bar in your web browser or use autotest GUID.
+  ///   Specifies the autotest entity ID.  You can copy it from the address bar in your web browser or use autotest GUID.
   ///
   /// * [bool] isDeleted:
   ///   Specifies that a test is deleted or still relevant.
   ///
   /// * [bool] isWorkItemDeleted:
   ///   OBSOLETE: Use `isDeleted` instead
-  Future<List<WorkItemIdentifierModel>?> getWorkItemsLinkedToAutoTest(String id, { bool? isDeleted, bool? isWorkItemDeleted, }) async {
+  Future<List<AutoTestWorkItemIdentifierApiResult>?> getWorkItemsLinkedToAutoTest(String id, { bool? isDeleted, bool? isWorkItemDeleted, }) async {
     final response = await getWorkItemsLinkedToAutoTestWithHttpInfo(id,  isDeleted: isDeleted, isWorkItemDeleted: isWorkItemDeleted, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -1367,8 +1367,8 @@ class AutoTestsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<WorkItemIdentifierModel>') as List)
-        .cast<WorkItemIdentifierModel>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<AutoTestWorkItemIdentifierApiResult>') as List)
+        .cast<AutoTestWorkItemIdentifierApiResult>()
         .toList(growable: false);
 
     }
@@ -1377,7 +1377,7 @@ class AutoTestsApi {
 
   /// Link autotest with work items
   ///
-  ///   Use case    User sets autotest internal (guid format) or global (integer format) identifier    User sets work item internal (guid format) or global (integer format) identifier    User runs method execution    System finds the autotest by the autotest identifier    System finds the work item by the work item identifier    System relates the work item with the autotest and returns no content response
+  ///  Use case  User sets autotest internal (guid format) or global (integer format) identifier  User sets work item internal (guid format) or global (integer format) identifier  User runs method execution  System finds the autotest by the autotest identifier  System finds the work item by the work item identifier  System relates the work item with the autotest and returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1415,7 +1415,7 @@ class AutoTestsApi {
 
   /// Link autotest with work items
   ///
-  ///   Use case    User sets autotest internal (guid format) or global (integer format) identifier    User sets work item internal (guid format) or global (integer format) identifier    User runs method execution    System finds the autotest by the autotest identifier    System finds the work item by the work item identifier    System relates the work item with the autotest and returns no content response
+  ///  Use case  User sets autotest internal (guid format) or global (integer format) identifier  User sets work item internal (guid format) or global (integer format) identifier  User runs method execution  System finds the autotest by the autotest identifier  System finds the work item by the work item identifier  System relates the work item with the autotest and returns no content response
   ///
   /// Parameters:
   ///
@@ -1432,19 +1432,19 @@ class AutoTestsApi {
 
   /// Update autotest
   ///
-  ///   Use case    User sets autotest updated parameters values (listed in the example) and runs method execution    System finds the autotest by the identifier    System updates autotest parameters    [Optional] If steps enumeration is set, system creates step items, relates them to autotest              and deletes relations with current steps( if exist)    [Optional] If Setup enumeration is set, system creates setup items and relates them to autotest              and deletes relations with current Setup items (if exist)    [Optional] If teardown enumeration is set, system creates teardown items and relates them to autotest              and deletes relations with current teardown items (if exist)    [Optional] If label enumeration is set, system creates labels and relates them to autotest              and deletes relations with current Labels (if exist)    [Optional] If link enumeration is set, system creates links and relates them to autotest              and deletes relations with current Links (if exist)    System updates autotest and returns no content response
+  ///  Use case  User sets autotest updated parameters values (listed in the example) and runs method execution  System finds the autotest by the identifier  System updates autotest parameters  [Optional] If steps enumeration is set, system creates step items, relates them to autotest             and deletes relations with current steps( if exist)  [Optional] If Setup enumeration is set, system creates setup items and relates them to autotest             and deletes relations with current Setup items (if exist)  [Optional] If teardown enumeration is set, system creates teardown items and relates them to autotest             and deletes relations with current teardown items (if exist)  [Optional] If label enumeration is set, system creates labels and relates them to autotest             and deletes relations with current Labels (if exist)  [Optional] If link enumeration is set, system creates links and relates them to autotest             and deletes relations with current Links (if exist)  System updates autotest and returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [AutoTestPutModel] autoTestPutModel:
-  Future<Response> updateAutoTestWithHttpInfo({ AutoTestPutModel? autoTestPutModel, }) async {
+  /// * [AutoTestUpdateApiModel] autoTestUpdateApiModel:
+  Future<Response> updateAutoTestWithHttpInfo({ AutoTestUpdateApiModel? autoTestUpdateApiModel, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/autoTests';
 
     // ignore: prefer_final_locals
-    Object? postBody = autoTestPutModel;
+    Object? postBody = autoTestUpdateApiModel;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -1466,13 +1466,13 @@ class AutoTestsApi {
 
   /// Update autotest
   ///
-  ///   Use case    User sets autotest updated parameters values (listed in the example) and runs method execution    System finds the autotest by the identifier    System updates autotest parameters    [Optional] If steps enumeration is set, system creates step items, relates them to autotest              and deletes relations with current steps( if exist)    [Optional] If Setup enumeration is set, system creates setup items and relates them to autotest              and deletes relations with current Setup items (if exist)    [Optional] If teardown enumeration is set, system creates teardown items and relates them to autotest              and deletes relations with current teardown items (if exist)    [Optional] If label enumeration is set, system creates labels and relates them to autotest              and deletes relations with current Labels (if exist)    [Optional] If link enumeration is set, system creates links and relates them to autotest              and deletes relations with current Links (if exist)    System updates autotest and returns no content response
+  ///  Use case  User sets autotest updated parameters values (listed in the example) and runs method execution  System finds the autotest by the identifier  System updates autotest parameters  [Optional] If steps enumeration is set, system creates step items, relates them to autotest             and deletes relations with current steps( if exist)  [Optional] If Setup enumeration is set, system creates setup items and relates them to autotest             and deletes relations with current Setup items (if exist)  [Optional] If teardown enumeration is set, system creates teardown items and relates them to autotest             and deletes relations with current teardown items (if exist)  [Optional] If label enumeration is set, system creates labels and relates them to autotest             and deletes relations with current Labels (if exist)  [Optional] If link enumeration is set, system creates links and relates them to autotest             and deletes relations with current Links (if exist)  System updates autotest and returns no content response
   ///
   /// Parameters:
   ///
-  /// * [AutoTestPutModel] autoTestPutModel:
-  Future<void> updateAutoTest({ AutoTestPutModel? autoTestPutModel, }) async {
-    final response = await updateAutoTestWithHttpInfo( autoTestPutModel: autoTestPutModel, );
+  /// * [AutoTestUpdateApiModel] autoTestUpdateApiModel:
+  Future<void> updateAutoTest({ AutoTestUpdateApiModel? autoTestUpdateApiModel, }) async {
+    final response = await updateAutoTestWithHttpInfo( autoTestUpdateApiModel: autoTestUpdateApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1480,19 +1480,19 @@ class AutoTestsApi {
 
   /// Update multiple autotests
   ///
-  ///   Use case    User sets autotest updated parameters values (listed in the example) and runs method execution    System finds the autotest by the identifier    System updates autotest parameters    [Optional] If steps enumeration is set, system creates step items, relates them to autotest              and deletes relations with current steps( if exist)    [Optional] If Setup enumeration is set, system creates setup items and relates them to autotest              and deletes relations with current Setup items (if exist)    [Optional] If teardown enumeration is set, system creates teardown items and relates them to autotest              and deletes relations with current teardown items (if exist)    [Optional] If label enumeration is set, system creates labels and relates them to autotest              and deletes relations with current Labels (if exist)    [Optional] If link enumeration is set, system creates links and relates them to autotest              and deletes relations with current Links (if exist)    System updates autotest and returns no content response
+  ///  Use case  User sets autotest updated parameters values (listed in the example) and runs method execution  System finds the autotest by the identifier  System updates autotest parameters  [Optional] If steps enumeration is set, system creates step items, relates them to autotest             and deletes relations with current steps( if exist)  [Optional] If Setup enumeration is set, system creates setup items and relates them to autotest             and deletes relations with current Setup items (if exist)  [Optional] If teardown enumeration is set, system creates teardown items and relates them to autotest             and deletes relations with current teardown items (if exist)  [Optional] If label enumeration is set, system creates labels and relates them to autotest             and deletes relations with current Labels (if exist)  [Optional] If link enumeration is set, system creates links and relates them to autotest             and deletes relations with current Links (if exist)  System updates autotest and returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [List<AutoTestPutModel>] autoTestPutModel:
-  Future<Response> updateMultipleWithHttpInfo({ List<AutoTestPutModel>? autoTestPutModel, }) async {
+  /// * [List<AutoTestUpdateApiModel>] autoTestUpdateApiModel:
+  Future<Response> updateMultipleWithHttpInfo({ List<AutoTestUpdateApiModel>? autoTestUpdateApiModel, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/autoTests/bulk';
 
     // ignore: prefer_final_locals
-    Object? postBody = autoTestPutModel;
+    Object? postBody = autoTestUpdateApiModel;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -1514,13 +1514,13 @@ class AutoTestsApi {
 
   /// Update multiple autotests
   ///
-  ///   Use case    User sets autotest updated parameters values (listed in the example) and runs method execution    System finds the autotest by the identifier    System updates autotest parameters    [Optional] If steps enumeration is set, system creates step items, relates them to autotest              and deletes relations with current steps( if exist)    [Optional] If Setup enumeration is set, system creates setup items and relates them to autotest              and deletes relations with current Setup items (if exist)    [Optional] If teardown enumeration is set, system creates teardown items and relates them to autotest              and deletes relations with current teardown items (if exist)    [Optional] If label enumeration is set, system creates labels and relates them to autotest              and deletes relations with current Labels (if exist)    [Optional] If link enumeration is set, system creates links and relates them to autotest              and deletes relations with current Links (if exist)    System updates autotest and returns no content response
+  ///  Use case  User sets autotest updated parameters values (listed in the example) and runs method execution  System finds the autotest by the identifier  System updates autotest parameters  [Optional] If steps enumeration is set, system creates step items, relates them to autotest             and deletes relations with current steps( if exist)  [Optional] If Setup enumeration is set, system creates setup items and relates them to autotest             and deletes relations with current Setup items (if exist)  [Optional] If teardown enumeration is set, system creates teardown items and relates them to autotest             and deletes relations with current teardown items (if exist)  [Optional] If label enumeration is set, system creates labels and relates them to autotest             and deletes relations with current Labels (if exist)  [Optional] If link enumeration is set, system creates links and relates them to autotest             and deletes relations with current Links (if exist)  System updates autotest and returns no content response
   ///
   /// Parameters:
   ///
-  /// * [List<AutoTestPutModel>] autoTestPutModel:
-  Future<void> updateMultiple({ List<AutoTestPutModel>? autoTestPutModel, }) async {
-    final response = await updateMultipleWithHttpInfo( autoTestPutModel: autoTestPutModel, );
+  /// * [List<AutoTestUpdateApiModel>] autoTestUpdateApiModel:
+  Future<void> updateMultiple({ List<AutoTestUpdateApiModel>? autoTestUpdateApiModel, }) async {
+    final response = await updateMultipleWithHttpInfo( autoTestUpdateApiModel: autoTestUpdateApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

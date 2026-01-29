@@ -27,6 +27,7 @@ class ProjectTestPlansFilterModel {
     this.startDate,
     this.endDate,
     this.tagNames = const {},
+    this.excludeTagNames = const {},
     this.attributes = const {},
     this.isDeleted,
   });
@@ -59,6 +60,8 @@ class ProjectTestPlansFilterModel {
 
   Set<String>? tagNames;
 
+  Set<String>? excludeTagNames;
+
   Map<String, Set<String>>? attributes;
 
   bool? isDeleted;
@@ -79,6 +82,7 @@ class ProjectTestPlansFilterModel {
     other.startDate == startDate &&
     other.endDate == endDate &&
     _deepEquality.equals(other.tagNames, tagNames) &&
+    _deepEquality.equals(other.excludeTagNames, excludeTagNames) &&
     _deepEquality.equals(other.attributes, attributes) &&
     other.isDeleted == isDeleted;
 
@@ -99,11 +103,12 @@ class ProjectTestPlansFilterModel {
     (startDate == null ? 0 : startDate!.hashCode) +
     (endDate == null ? 0 : endDate!.hashCode) +
     (tagNames == null ? 0 : tagNames!.hashCode) +
+    (excludeTagNames == null ? 0 : excludeTagNames!.hashCode) +
     (attributes == null ? 0 : attributes!.hashCode) +
     (isDeleted == null ? 0 : isDeleted!.hashCode);
 
   @override
-  String toString() => 'ProjectTestPlansFilterModel[name=$name, description=$description, build=$build, productName=$productName, status=$status, globalIds=$globalIds, isLocked=$isLocked, lockedDate=$lockedDate, automaticDurationTimer=$automaticDurationTimer, createdByIds=$createdByIds, createdDate=$createdDate, startDate=$startDate, endDate=$endDate, tagNames=$tagNames, attributes=$attributes, isDeleted=$isDeleted]';
+  String toString() => 'ProjectTestPlansFilterModel[name=$name, description=$description, build=$build, productName=$productName, status=$status, globalIds=$globalIds, isLocked=$isLocked, lockedDate=$lockedDate, automaticDurationTimer=$automaticDurationTimer, createdByIds=$createdByIds, createdDate=$createdDate, startDate=$startDate, endDate=$endDate, tagNames=$tagNames, excludeTagNames=$excludeTagNames, attributes=$attributes, isDeleted=$isDeleted]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -177,6 +182,11 @@ class ProjectTestPlansFilterModel {
     } else {
       json[r'tagNames'] = null;
     }
+    if (this.excludeTagNames != null) {
+      json[r'excludeTagNames'] = this.excludeTagNames!.toList(growable: false);
+    } else {
+      json[r'excludeTagNames'] = null;
+    }
     if (this.attributes != null) {
       json[r'attributes'] = this.attributes;
     } else {
@@ -230,6 +240,9 @@ class ProjectTestPlansFilterModel {
         endDate: DateTimeRangeSelectorModel.fromJson(json[r'endDate']),
         tagNames: json[r'tagNames'] is Iterable
             ? (json[r'tagNames'] as Iterable).cast<String>().toSet()
+            : const {},
+        excludeTagNames: json[r'excludeTagNames'] is Iterable
+            ? (json[r'excludeTagNames'] as Iterable).cast<String>().toSet()
             : const {},
         attributes: json[r'attributes'] == null
           ? const {}

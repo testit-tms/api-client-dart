@@ -26,6 +26,7 @@ class BackgroundJobType {
   static const exportXlsxTestResultsByTestPlan = BackgroundJobType._(r'ExportXlsxTestResultsByTestPlan');
   static const exportXlsxWorkItemsByProject = BackgroundJobType._(r'ExportXlsxWorkItemsByProject');
   static const exportXlsxTestPointsByTestPlan = BackgroundJobType._(r'ExportXlsxTestPointsByTestPlan');
+  static const exportXlsxWorkItemLinks = BackgroundJobType._(r'ExportXlsxWorkItemLinks');
   static const exportJsonProject = BackgroundJobType._(r'ExportJsonProject');
   static const exportZipProject = BackgroundJobType._(r'ExportZipProject');
   static const exportJsonProjectWithTestPlans = BackgroundJobType._(r'ExportJsonProjectWithTestPlans');
@@ -39,12 +40,15 @@ class BackgroundJobType {
   static const importProjects = BackgroundJobType._(r'ImportProjects');
   static const purgeEntities = BackgroundJobType._(r'PurgeEntities');
   static const deleteCompletedJobs = BackgroundJobType._(r'DeleteCompletedJobs');
+  static const copySections = BackgroundJobType._(r'CopySections');
+  static const deleteSection = BackgroundJobType._(r'DeleteSection');
 
   /// List of all possible values in this [enum][BackgroundJobType].
   static const values = <BackgroundJobType>[
     exportXlsxTestResultsByTestPlan,
     exportXlsxWorkItemsByProject,
     exportXlsxTestPointsByTestPlan,
+    exportXlsxWorkItemLinks,
     exportJsonProject,
     exportZipProject,
     exportJsonProjectWithTestPlans,
@@ -58,6 +62,8 @@ class BackgroundJobType {
     importProjects,
     purgeEntities,
     deleteCompletedJobs,
+    copySections,
+    deleteSection,
   ];
 
   static BackgroundJobType? fromJson(dynamic value) => BackgroundJobTypeTypeTransformer().decode(value);
@@ -99,6 +105,7 @@ class BackgroundJobTypeTypeTransformer {
         case r'ExportXlsxTestResultsByTestPlan': return BackgroundJobType.exportXlsxTestResultsByTestPlan;
         case r'ExportXlsxWorkItemsByProject': return BackgroundJobType.exportXlsxWorkItemsByProject;
         case r'ExportXlsxTestPointsByTestPlan': return BackgroundJobType.exportXlsxTestPointsByTestPlan;
+        case r'ExportXlsxWorkItemLinks': return BackgroundJobType.exportXlsxWorkItemLinks;
         case r'ExportJsonProject': return BackgroundJobType.exportJsonProject;
         case r'ExportZipProject': return BackgroundJobType.exportZipProject;
         case r'ExportJsonProjectWithTestPlans': return BackgroundJobType.exportJsonProjectWithTestPlans;
@@ -112,6 +119,8 @@ class BackgroundJobTypeTypeTransformer {
         case r'ImportProjects': return BackgroundJobType.importProjects;
         case r'PurgeEntities': return BackgroundJobType.purgeEntities;
         case r'DeleteCompletedJobs': return BackgroundJobType.deleteCompletedJobs;
+        case r'CopySections': return BackgroundJobType.copySections;
+        case r'DeleteSection': return BackgroundJobType.deleteSection;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

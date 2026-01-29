@@ -22,7 +22,7 @@ class GlobalCustomAttributeUpdateModel {
   /// Name of attribute
   String name;
 
-  /// Collection of attribute options      Available for attributes of type `options` and `multiple options` only
+  /// Collection of attribute options   Available for attributes of type `options` and `multiple options` only
   List<CustomAttributeOptionModel>? options;
 
   /// Indicates whether the attribute is available

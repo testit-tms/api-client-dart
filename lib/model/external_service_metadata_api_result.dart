@@ -29,7 +29,7 @@ class ExternalServiceMetadataApiResult {
   String iconUrl;
 
   /// The category of the external service
-  ExternalServiceCategoryApiResult category;
+  ApiExternalServiceCategory category;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ExternalServiceMetadataApiResult &&
@@ -80,7 +80,7 @@ class ExternalServiceMetadataApiResult {
         name: mapValueOfType<String>(json, r'name')!,
         code: mapValueOfType<String>(json, r'code')!,
         iconUrl: mapValueOfType<String>(json, r'iconUrl')!,
-        category: ExternalServiceCategoryApiResult.fromJson(json[r'category'])!,
+        category: ApiExternalServiceCategory.fromJson(json[r'category'])!,
       );
     }
     return null;

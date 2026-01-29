@@ -14,32 +14,32 @@ class TestPlanTestPointsStatusTypeGroupApiResult {
   /// Returns a new [TestPlanTestPointsStatusTypeGroupApiResult] instance.
   TestPlanTestPointsStatusTypeGroupApiResult({
     required this.statusType,
-    required this.value,
+    this.statuses = const [],
   });
 
   /// Collection of possible status types
   TestStatusApiType statusType;
 
-  int value;
+  List<TestPlanTestPointsStatusCodeGroupApiResult> statuses;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is TestPlanTestPointsStatusTypeGroupApiResult &&
     other.statusType == statusType &&
-    other.value == value;
+    _deepEquality.equals(other.statuses, statuses);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (statusType.hashCode) +
-    (value.hashCode);
+    (statuses.hashCode);
 
   @override
-  String toString() => 'TestPlanTestPointsStatusTypeGroupApiResult[statusType=$statusType, value=$value]';
+  String toString() => 'TestPlanTestPointsStatusTypeGroupApiResult[statusType=$statusType, statuses=$statuses]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'statusType'] = this.statusType;
-      json[r'value'] = this.value;
+      json[r'statuses'] = this.statuses;
     return json;
   }
 
@@ -63,7 +63,7 @@ class TestPlanTestPointsStatusTypeGroupApiResult {
 
       return TestPlanTestPointsStatusTypeGroupApiResult(
         statusType: TestStatusApiType.fromJson(json[r'statusType'])!,
-        value: mapValueOfType<int>(json, r'value')!,
+        statuses: TestPlanTestPointsStatusCodeGroupApiResult.listFromJson(json[r'statuses']),
       );
     }
     return null;
@@ -112,7 +112,7 @@ class TestPlanTestPointsStatusTypeGroupApiResult {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'statusType',
-    'value',
+    'statuses',
   };
 }
 

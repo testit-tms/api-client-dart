@@ -50,7 +50,7 @@ class TestPointShortApiResult {
   /// Configuration to which test point relates unique identifier
   String? configurationId;
 
-  /// Test point status    Applies one of these values: Blocked, NoResults, Failed, Passed
+  /// Test point status  Applies one of these values: Blocked, NoResults, Failed, Passed
   String? status;
 
   /// Last test result unique identifier

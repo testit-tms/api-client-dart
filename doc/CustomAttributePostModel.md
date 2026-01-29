@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **isEnabled** | **bool** | Indicates if the attribute is enabled | 
 **isRequired** | **bool** | Indicates if the attribute value is mandatory to specify | 
 **isGlobal** | **bool** | Indicates if the attribute is available across all projects | 
-**options** | [**List<CustomAttributeOptionPostModel>**](CustomAttributeOptionPostModel.md) | Collection of attribute options      Available for attributes of type `options` and `multiple options` only | [optional] [default to const []]
+**options** | [**List<CustomAttributeOptionPostModel>**](CustomAttributeOptionPostModel.md) | Collection of attribute options   Available for attributes of type `options` and `multiple options` only | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

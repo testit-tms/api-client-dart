@@ -18,7 +18,7 @@ class TagsApi {
 
   /// Delete tags
   ///
-  ///   Use case    User sets collection of tags internal (guid format) identifiers    System searches and deletes a collection of tags
+  ///  Use case  User sets collection of tags internal (guid format) identifiers  System searches and deletes a collection of tags
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -52,7 +52,7 @@ class TagsApi {
 
   /// Delete tags
   ///
-  ///   Use case    User sets collection of tags internal (guid format) identifiers    System searches and deletes a collection of tags
+  ///  Use case  User sets collection of tags internal (guid format) identifiers  System searches and deletes a collection of tags
   ///
   /// Parameters:
   ///
@@ -66,7 +66,7 @@ class TagsApi {
 
   /// Delete tag
   ///
-  ///   Use case    User sets tag internal (guid format) identifier    System search and delete tag
+  ///  Use case  User sets tag internal (guid format) identifier  System search and delete tag
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -102,7 +102,7 @@ class TagsApi {
 
   /// Delete tag
   ///
-  ///   Use case    User sets tag internal (guid format) identifier    System search and delete tag
+  ///  Use case  User sets tag internal (guid format) identifier  System search and delete tag
   ///
   /// Parameters:
   ///
@@ -117,7 +117,7 @@ class TagsApi {
 
   /// Create tag
   ///
-  ///   Use case    User sets tag model (listed in the request example)    User runs method execution    System creates tag    System returns tag model (listed in the response example)
+  ///  Use case  User sets tag model (listed in the request example)  User runs method execution  System creates tag  System returns tag model (listed in the response example)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -151,7 +151,7 @@ class TagsApi {
 
   /// Create tag
   ///
-  ///   Use case    User sets tag model (listed in the request example)    User runs method execution    System creates tag    System returns tag model (listed in the response example)
+  ///  Use case  User sets tag model (listed in the request example)  User runs method execution  System creates tag  System returns tag model (listed in the response example)
   ///
   /// Parameters:
   ///
@@ -173,7 +173,7 @@ class TagsApi {
 
   /// Update tag
   ///
-  ///   Use case    User sets tag ID and model (listed in the request example)    User runs method execution    System updates tag    System returns tag model (listed in the response example)
+  ///  Use case  User sets tag ID and model (listed in the request example)  User runs method execution  System updates tag  System returns tag model (listed in the response example)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -213,7 +213,7 @@ class TagsApi {
 
   /// Update tag
   ///
-  ///   Use case    User sets tag ID and model (listed in the request example)    User runs method execution    System updates tag    System returns tag model (listed in the response example)
+  ///  Use case  User sets tag ID and model (listed in the request example)  User runs method execution  System updates tag  System returns tag model (listed in the response example)
   ///
   /// Parameters:
   ///
@@ -237,7 +237,7 @@ class TagsApi {
 
   /// Search tags
   ///
-  ///   Use case    User runs method execution    System returns collection of tags (listed in the response example)
+  ///  Use case  User runs method execution  System returns collection of tags (listed in the response example)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -300,7 +300,7 @@ class TagsApi {
 
   /// Search tags
   ///
-  ///   Use case    User runs method execution    System returns collection of tags (listed in the response example)
+  ///  Use case  User runs method execution  System returns collection of tags (listed in the response example)
   ///
   /// Parameters:
   ///
@@ -338,7 +338,7 @@ class TagsApi {
 
   /// Get all Tags that are used in TestPlans
   ///
-  ///   Use case    User runs method execution    System returns tags (listed in the response example)
+  ///  Use case  User runs method execution  System returns tags (listed in the response example)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -401,7 +401,7 @@ class TagsApi {
 
   /// Get all Tags that are used in TestPlans
   ///
-  ///   Use case    User runs method execution    System returns tags (listed in the response example)
+  ///  Use case  User runs method execution  System returns tags (listed in the response example)
   ///
   /// Parameters:
   ///

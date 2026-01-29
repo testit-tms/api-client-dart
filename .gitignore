@@ -17,6 +17,7 @@ doc/api/
 
 # Mac
 .DS_Store
-generated-dart-client/
+new/
 *.backup
 source/*.json
+README-NEW.md

@@ -3,15 +3,23 @@
 # Script for generating Dart API client from OpenAPI specification
 # Uses OpenAPI Generator to create client library
 
+# generated with 7.19.0
+
+
 # Configuration
+SWAGGER_FILE=".swagger/swagger5.6.json"
 CONFIG_FILE="openapi-generator-config.yaml"
-OUTPUT_DIR="./generated-dart-client"
+OUTPUT_DIR="./new"
+VERSION="1.4.0-TMS-5.6"
 
 # Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
+
+
+
 
 # Function to display messages with color
 print_message() {
@@ -32,6 +40,14 @@ if [ ! -f "$CONFIG_FILE" ]; then
     exit 1
 fi
 
+echo "Обновление версии в $CONFIG_FILE..."
+sed -i "s/pubVersion: .*/pubVersion: "$VERSION"/" $CONFIG_FILE
+
+echo "Обновление версии в pubspec.yaml..."
+sed -i "s/version: .*/version: "$VERSION"/" pubspec.yaml
+
+echo "Обновление inputSpec в $CONFIG_FILE..."
+sed -i "s|inputSpec: .*|inputSpec: "$SWAGGER_FILE"|" $CONFIG_FILE
 
 print_message "🚀 Starting Dart API client generation..."
 print_message "📋 Configuration: $CONFIG_FILE"
@@ -92,8 +108,8 @@ cp -r "lib" "../"
 echo "  📋 Copying doc/ ..."
 cp -r "doc" "../"
 
-echo "  📋 Copying pubspec.yaml ..."
-cp "pubspec.yaml" "../"
+# echo "  📋 Copying pubspec.yaml ..."
+# cp "pubspec.yaml" "../"
 
 echo "  📋 Copying analysis_options.yaml ..."
 cp "analysis_options.yaml" "../"
@@ -102,6 +118,29 @@ echo "✅ Files successfully copied to root directory"
 
 # Go to root directory for dependency installation
 cd ".."
+
+# Замена некорректного максимального значения long на правильное значение MaxValue для Int64
+# Это необходимо, потому что OpenAPI генератор иногда использует -9223372036854775616 либо 9223372036854776000 вместо правильного 9223372036854775807
+echo "Замена 9223372036854776000 на 9223372036854775807 в сгенерированных моделях..."
+find lib/model -name "*.dart" -exec sed -i 's/9223372036854776000/9223372036854775807/g' {} +
+
+
+# Копирование документации если она была сгенерирована
+if [ -d "new/docs" ]; then
+    echo "Копирование документации..."
+    rm -rf docs/* || true
+    cp -r new/docs/* docs/ || true
+fi
+
+
+# Частичное обновление README.md
+echo "Частичное обновление README.md..."
+if [ -f "new/README.md" ]; then
+    # Создаем копию нового README для обновления
+    cp new/README.md README-NEW.md
+    # Предполагается, что update-docs.sh обрабатывает README
+    ./update-docs.sh
+fi
 
 echo "📦 Installing Dart dependencies..."
 if command -v dart &> /dev/null; then
@@ -118,6 +157,7 @@ if command -v dart &> /dev/null; then
 else
     echo "⚠️ dart command not found. Install Dart SDK to complete setup."
 fi
+
 
 echo ""
 echo "🎉 Done! Client created and files copied to root directory!"

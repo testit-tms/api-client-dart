@@ -10,17 +10,14 @@
 
 part of testit_api_client_dart;
 
-class AutoTestPostModel {
-  /// Returns a new [AutoTestPostModel] instance.
-  AutoTestPostModel({
+class AutoTestUpdateApiModel {
+  /// Returns a new [AutoTestUpdateApiModel] instance.
+  AutoTestUpdateApiModel({
     required this.externalId,
     required this.projectId,
     required this.name,
-    this.workItemIdsForLinkWithAutoTest = const {},
-    this.workItemIds = const [],
-    this.shouldCreateWorkItem,
-    this.attributes = const {},
-    this.links = const [],
+    this.id,
+    this.externalKey,
     this.namespace,
     this.classname,
     this.steps = const [],
@@ -29,8 +26,10 @@ class AutoTestPostModel {
     this.title,
     this.description,
     this.labels = const [],
+    this.links = const [],
     this.isFlaky,
-    this.externalKey,
+    this.workItemIdsForLinkWithAutoTest = const [],
+    this.workItemIds = const [],
   });
 
   /// External ID of the autotest
@@ -42,20 +41,11 @@ class AutoTestPostModel {
   /// Name of the autotest
   String name;
 
-  /// Specifies the IDs of work items to link your autotest to. You can specify several IDs.
-  Set<String>? workItemIdsForLinkWithAutoTest;
+  /// Autotest unique internal identifier
+  String? id;
 
-  /// Specifies the IDs of work items to link your autotest to. You can specify several IDs.
-  List<String>? workItemIds;
-
-  /// Creates a test case linked to the autotest.
-  bool? shouldCreateWorkItem;
-
-  /// Key value pair of custom work item attributes
-  Map<String, Object>? attributes;
-
-  /// Collection of the autotest links
-  List<LinkPostModel>? links;
+  /// External key of the autotest
+  String? externalKey;
 
   /// Name of the autotest namespace
   String? namespace;
@@ -64,13 +54,13 @@ class AutoTestPostModel {
   String? classname;
 
   /// Collection of the autotest steps
-  List<AutoTestStepModel>? steps;
+  List<AutoTestStepApiModel>? steps;
 
   /// Collection of the autotest setup steps
-  List<AutoTestStepModel>? setup;
+  List<AutoTestStepApiModel>? setup;
 
   /// Collection of the autotest teardown steps
-  List<AutoTestStepModel>? teardown;
+  List<AutoTestStepApiModel>? teardown;
 
   /// Name of the autotest in autotest's card
   String? title;
@@ -79,24 +69,27 @@ class AutoTestPostModel {
   String? description;
 
   /// Collection of the autotest labels
-  List<LabelPostModel>? labels;
+  List<LabelApiModel>? labels;
+
+  /// Collection of the autotest links
+  List<LinkUpdateApiModel>? links;
 
   /// Indicates if the autotest is marked as flaky
   bool? isFlaky;
 
-  /// External key of the autotest
-  String? externalKey;
+  /// Specifies the IDs of work items to link your autotest to. You can specify several IDs.
+  List<String>? workItemIdsForLinkWithAutoTest;
+
+  /// Specifies the IDs of work items to link your autotest to. You can specify several IDs.
+  List<String>? workItemIds;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is AutoTestPostModel &&
+  bool operator ==(Object other) => identical(this, other) || other is AutoTestUpdateApiModel &&
     other.externalId == externalId &&
     other.projectId == projectId &&
     other.name == name &&
-    _deepEquality.equals(other.workItemIdsForLinkWithAutoTest, workItemIdsForLinkWithAutoTest) &&
-    _deepEquality.equals(other.workItemIds, workItemIds) &&
-    other.shouldCreateWorkItem == shouldCreateWorkItem &&
-    _deepEquality.equals(other.attributes, attributes) &&
-    _deepEquality.equals(other.links, links) &&
+    other.id == id &&
+    other.externalKey == externalKey &&
     other.namespace == namespace &&
     other.classname == classname &&
     _deepEquality.equals(other.steps, steps) &&
@@ -105,8 +98,10 @@ class AutoTestPostModel {
     other.title == title &&
     other.description == description &&
     _deepEquality.equals(other.labels, labels) &&
+    _deepEquality.equals(other.links, links) &&
     other.isFlaky == isFlaky &&
-    other.externalKey == externalKey;
+    _deepEquality.equals(other.workItemIdsForLinkWithAutoTest, workItemIdsForLinkWithAutoTest) &&
+    _deepEquality.equals(other.workItemIds, workItemIds);
 
   @override
   int get hashCode =>
@@ -114,11 +109,8 @@ class AutoTestPostModel {
     (externalId.hashCode) +
     (projectId.hashCode) +
     (name.hashCode) +
-    (workItemIdsForLinkWithAutoTest == null ? 0 : workItemIdsForLinkWithAutoTest!.hashCode) +
-    (workItemIds == null ? 0 : workItemIds!.hashCode) +
-    (shouldCreateWorkItem == null ? 0 : shouldCreateWorkItem!.hashCode) +
-    (attributes == null ? 0 : attributes!.hashCode) +
-    (links == null ? 0 : links!.hashCode) +
+    (id == null ? 0 : id!.hashCode) +
+    (externalKey == null ? 0 : externalKey!.hashCode) +
     (namespace == null ? 0 : namespace!.hashCode) +
     (classname == null ? 0 : classname!.hashCode) +
     (steps == null ? 0 : steps!.hashCode) +
@@ -127,41 +119,28 @@ class AutoTestPostModel {
     (title == null ? 0 : title!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (labels == null ? 0 : labels!.hashCode) +
+    (links == null ? 0 : links!.hashCode) +
     (isFlaky == null ? 0 : isFlaky!.hashCode) +
-    (externalKey == null ? 0 : externalKey!.hashCode);
+    (workItemIdsForLinkWithAutoTest == null ? 0 : workItemIdsForLinkWithAutoTest!.hashCode) +
+    (workItemIds == null ? 0 : workItemIds!.hashCode);
 
   @override
-  String toString() => 'AutoTestPostModel[externalId=$externalId, projectId=$projectId, name=$name, workItemIdsForLinkWithAutoTest=$workItemIdsForLinkWithAutoTest, workItemIds=$workItemIds, shouldCreateWorkItem=$shouldCreateWorkItem, attributes=$attributes, links=$links, namespace=$namespace, classname=$classname, steps=$steps, setup=$setup, teardown=$teardown, title=$title, description=$description, labels=$labels, isFlaky=$isFlaky, externalKey=$externalKey]';
+  String toString() => 'AutoTestUpdateApiModel[externalId=$externalId, projectId=$projectId, name=$name, id=$id, externalKey=$externalKey, namespace=$namespace, classname=$classname, steps=$steps, setup=$setup, teardown=$teardown, title=$title, description=$description, labels=$labels, links=$links, isFlaky=$isFlaky, workItemIdsForLinkWithAutoTest=$workItemIdsForLinkWithAutoTest, workItemIds=$workItemIds]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'externalId'] = this.externalId;
       json[r'projectId'] = this.projectId;
       json[r'name'] = this.name;
-    if (this.workItemIdsForLinkWithAutoTest != null) {
-      json[r'workItemIdsForLinkWithAutoTest'] = this.workItemIdsForLinkWithAutoTest!.toList(growable: false);
+    if (this.id != null) {
+      json[r'id'] = this.id;
     } else {
-      json[r'workItemIdsForLinkWithAutoTest'] = null;
+      json[r'id'] = null;
     }
-    if (this.workItemIds != null) {
-      json[r'workItemIds'] = this.workItemIds;
+    if (this.externalKey != null) {
+      json[r'externalKey'] = this.externalKey;
     } else {
-      json[r'workItemIds'] = null;
-    }
-    if (this.shouldCreateWorkItem != null) {
-      json[r'shouldCreateWorkItem'] = this.shouldCreateWorkItem;
-    } else {
-      json[r'shouldCreateWorkItem'] = null;
-    }
-    if (this.attributes != null) {
-      json[r'attributes'] = this.attributes;
-    } else {
-      json[r'attributes'] = null;
-    }
-    if (this.links != null) {
-      json[r'links'] = this.links;
-    } else {
-      json[r'links'] = null;
+      json[r'externalKey'] = null;
     }
     if (this.namespace != null) {
       json[r'namespace'] = this.namespace;
@@ -203,23 +182,33 @@ class AutoTestPostModel {
     } else {
       json[r'labels'] = null;
     }
+    if (this.links != null) {
+      json[r'links'] = this.links;
+    } else {
+      json[r'links'] = null;
+    }
     if (this.isFlaky != null) {
       json[r'isFlaky'] = this.isFlaky;
     } else {
       json[r'isFlaky'] = null;
     }
-    if (this.externalKey != null) {
-      json[r'externalKey'] = this.externalKey;
+    if (this.workItemIdsForLinkWithAutoTest != null) {
+      json[r'workItemIdsForLinkWithAutoTest'] = this.workItemIdsForLinkWithAutoTest;
     } else {
-      json[r'externalKey'] = null;
+      json[r'workItemIdsForLinkWithAutoTest'] = null;
+    }
+    if (this.workItemIds != null) {
+      json[r'workItemIds'] = this.workItemIds;
+    } else {
+      json[r'workItemIds'] = null;
     }
     return json;
   }
 
-  /// Returns a new [AutoTestPostModel] instance and imports its values from
+  /// Returns a new [AutoTestUpdateApiModel] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static AutoTestPostModel? fromJson(dynamic value) {
+  static AutoTestUpdateApiModel? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -228,45 +217,44 @@ class AutoTestPostModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AutoTestPostModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AutoTestPostModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "AutoTestUpdateApiModel[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "AutoTestUpdateApiModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return AutoTestPostModel(
+      return AutoTestUpdateApiModel(
         externalId: mapValueOfType<String>(json, r'externalId')!,
         projectId: mapValueOfType<String>(json, r'projectId')!,
         name: mapValueOfType<String>(json, r'name')!,
+        id: mapValueOfType<String>(json, r'id'),
+        externalKey: mapValueOfType<String>(json, r'externalKey'),
+        namespace: mapValueOfType<String>(json, r'namespace'),
+        classname: mapValueOfType<String>(json, r'classname'),
+        steps: AutoTestStepApiModel.listFromJson(json[r'steps']),
+        setup: AutoTestStepApiModel.listFromJson(json[r'setup']),
+        teardown: AutoTestStepApiModel.listFromJson(json[r'teardown']),
+        title: mapValueOfType<String>(json, r'title'),
+        description: mapValueOfType<String>(json, r'description'),
+        labels: LabelApiModel.listFromJson(json[r'labels']),
+        links: LinkUpdateApiModel.listFromJson(json[r'links']),
+        isFlaky: mapValueOfType<bool>(json, r'isFlaky'),
         workItemIdsForLinkWithAutoTest: json[r'workItemIdsForLinkWithAutoTest'] is Iterable
-            ? (json[r'workItemIdsForLinkWithAutoTest'] as Iterable).cast<String>().toSet()
-            : const {},
+            ? (json[r'workItemIdsForLinkWithAutoTest'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
         workItemIds: json[r'workItemIds'] is Iterable
             ? (json[r'workItemIds'] as Iterable).cast<String>().toList(growable: false)
             : const [],
-        shouldCreateWorkItem: mapValueOfType<bool>(json, r'shouldCreateWorkItem'),
-        attributes: mapCastOfType<String, Object>(json, r'attributes') ?? const {},
-        links: LinkPostModel.listFromJson(json[r'links']),
-        namespace: mapValueOfType<String>(json, r'namespace'),
-        classname: mapValueOfType<String>(json, r'classname'),
-        steps: AutoTestStepModel.listFromJson(json[r'steps']),
-        setup: AutoTestStepModel.listFromJson(json[r'setup']),
-        teardown: AutoTestStepModel.listFromJson(json[r'teardown']),
-        title: mapValueOfType<String>(json, r'title'),
-        description: mapValueOfType<String>(json, r'description'),
-        labels: LabelPostModel.listFromJson(json[r'labels']),
-        isFlaky: mapValueOfType<bool>(json, r'isFlaky'),
-        externalKey: mapValueOfType<String>(json, r'externalKey'),
       );
     }
     return null;
   }
 
-  static List<AutoTestPostModel> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <AutoTestPostModel>[];
+  static List<AutoTestUpdateApiModel> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <AutoTestUpdateApiModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = AutoTestPostModel.fromJson(row);
+        final value = AutoTestUpdateApiModel.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -275,12 +263,12 @@ class AutoTestPostModel {
     return result.toList(growable: growable);
   }
 
-  static Map<String, AutoTestPostModel> mapFromJson(dynamic json) {
-    final map = <String, AutoTestPostModel>{};
+  static Map<String, AutoTestUpdateApiModel> mapFromJson(dynamic json) {
+    final map = <String, AutoTestUpdateApiModel>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = AutoTestPostModel.fromJson(entry.value);
+        final value = AutoTestUpdateApiModel.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -289,14 +277,14 @@ class AutoTestPostModel {
     return map;
   }
 
-  // maps a json object with a list of AutoTestPostModel-objects as value to a dart map
-  static Map<String, List<AutoTestPostModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<AutoTestPostModel>>{};
+  // maps a json object with a list of AutoTestUpdateApiModel-objects as value to a dart map
+  static Map<String, List<AutoTestUpdateApiModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<AutoTestUpdateApiModel>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = AutoTestPostModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = AutoTestUpdateApiModel.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

@@ -7,10 +7,11 @@
 
 
 # Configuration
-SWAGGER_FILE=".swagger/swagger5.6.json"
+SWAGGER_FILE=".swagger/cloud_swagger.json"
 CONFIG_FILE="openapi-generator-config.yaml"
 OUTPUT_DIR="./new"
-VERSION="1.4.0-TMS-5.6"
+VERSION="1.5.0"
+GENERATOR="openapi-generator-cli-7.18.0.jar"
 
 # Colors for output
 RED='\033[0;31m'
@@ -62,7 +63,8 @@ fi
 # Generate Dart client using OpenAPI Generator
 print_message "⚙️  Running OpenAPI Generator..."
 
-npx @openapitools/openapi-generator-cli generate \
+java -jar .vendor/$GENERATOR generate \
+    -i $SWAGGER_FILE \
     -c "$CONFIG_FILE" --skip-validate-spec
 
 # Check if generation was successful

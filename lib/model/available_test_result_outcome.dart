@@ -27,6 +27,7 @@ class AvailableTestResultOutcome {
   static const failed = AvailableTestResultOutcome._(r'Failed');
   static const blocked = AvailableTestResultOutcome._(r'Blocked');
   static const skipped = AvailableTestResultOutcome._(r'Skipped');
+  static const inProgress = AvailableTestResultOutcome._(r'InProgress');
 
   /// List of all possible values in this [enum][AvailableTestResultOutcome].
   static const values = <AvailableTestResultOutcome>[
@@ -34,6 +35,7 @@ class AvailableTestResultOutcome {
     failed,
     blocked,
     skipped,
+    inProgress,
   ];
 
   static AvailableTestResultOutcome? fromJson(dynamic value) => AvailableTestResultOutcomeTypeTransformer().decode(value);
@@ -76,6 +78,7 @@ class AvailableTestResultOutcomeTypeTransformer {
         case r'Failed': return AvailableTestResultOutcome.failed;
         case r'Blocked': return AvailableTestResultOutcome.blocked;
         case r'Skipped': return AvailableTestResultOutcome.skipped;
+        case r'InProgress': return AvailableTestResultOutcome.inProgress;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

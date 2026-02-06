@@ -33,6 +33,7 @@ class AutoTestFilterApiModel {
     this.lastTestResultStatusCodes = const {},
     this.externalKey,
     this.lastTestResultConfigurationIds = const {},
+    this.tags = const {},
   });
 
   /// Specifies an autotest projects IDs to search for
@@ -95,6 +96,9 @@ class AutoTestFilterApiModel {
   /// Specifies an autotest configuration IDs of the last test result to search for
   Set<String>? lastTestResultConfigurationIds;
 
+  /// Specifies an autotest tags to search for
+  Set<String>? tags;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is AutoTestFilterApiModel &&
     _deepEquality.equals(other.projectIds, projectIds) &&
@@ -116,7 +120,8 @@ class AutoTestFilterApiModel {
     other.lastTestResultOutcome == lastTestResultOutcome &&
     _deepEquality.equals(other.lastTestResultStatusCodes, lastTestResultStatusCodes) &&
     other.externalKey == externalKey &&
-    _deepEquality.equals(other.lastTestResultConfigurationIds, lastTestResultConfigurationIds);
+    _deepEquality.equals(other.lastTestResultConfigurationIds, lastTestResultConfigurationIds) &&
+    _deepEquality.equals(other.tags, tags);
 
   @override
   int get hashCode =>
@@ -140,10 +145,11 @@ class AutoTestFilterApiModel {
     (lastTestResultOutcome == null ? 0 : lastTestResultOutcome!.hashCode) +
     (lastTestResultStatusCodes == null ? 0 : lastTestResultStatusCodes!.hashCode) +
     (externalKey == null ? 0 : externalKey!.hashCode) +
-    (lastTestResultConfigurationIds == null ? 0 : lastTestResultConfigurationIds!.hashCode);
+    (lastTestResultConfigurationIds == null ? 0 : lastTestResultConfigurationIds!.hashCode) +
+    (tags == null ? 0 : tags!.hashCode);
 
   @override
-  String toString() => 'AutoTestFilterApiModel[projectIds=$projectIds, externalIds=$externalIds, globalIds=$globalIds, name=$name, isFlaky=$isFlaky, mustBeApproved=$mustBeApproved, stabilityPercentage=$stabilityPercentage, createdDate=$createdDate, createdByIds=$createdByIds, modifiedDate=$modifiedDate, modifiedByIds=$modifiedByIds, isDeleted=$isDeleted, namespace=$namespace, isEmptyNamespace=$isEmptyNamespace, className=$className, isEmptyClassName=$isEmptyClassName, lastTestResultOutcome=$lastTestResultOutcome, lastTestResultStatusCodes=$lastTestResultStatusCodes, externalKey=$externalKey, lastTestResultConfigurationIds=$lastTestResultConfigurationIds]';
+  String toString() => 'AutoTestFilterApiModel[projectIds=$projectIds, externalIds=$externalIds, globalIds=$globalIds, name=$name, isFlaky=$isFlaky, mustBeApproved=$mustBeApproved, stabilityPercentage=$stabilityPercentage, createdDate=$createdDate, createdByIds=$createdByIds, modifiedDate=$modifiedDate, modifiedByIds=$modifiedByIds, isDeleted=$isDeleted, namespace=$namespace, isEmptyNamespace=$isEmptyNamespace, className=$className, isEmptyClassName=$isEmptyClassName, lastTestResultOutcome=$lastTestResultOutcome, lastTestResultStatusCodes=$lastTestResultStatusCodes, externalKey=$externalKey, lastTestResultConfigurationIds=$lastTestResultConfigurationIds, tags=$tags]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -247,6 +253,11 @@ class AutoTestFilterApiModel {
     } else {
       json[r'lastTestResultConfigurationIds'] = null;
     }
+    if (this.tags != null) {
+      json[r'tags'] = this.tags!.toList(growable: false);
+    } else {
+      json[r'tags'] = null;
+    }
     return json;
   }
 
@@ -302,6 +313,9 @@ class AutoTestFilterApiModel {
         externalKey: mapValueOfType<String>(json, r'externalKey'),
         lastTestResultConfigurationIds: json[r'lastTestResultConfigurationIds'] is Iterable
             ? (json[r'lastTestResultConfigurationIds'] as Iterable).cast<String>().toSet()
+            : const {},
+        tags: json[r'tags'] is Iterable
+            ? (json[r'tags'] as Iterable).cast<String>().toSet()
             : const {},
       );
     }

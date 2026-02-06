@@ -16,7 +16,6 @@ class TestPointAnalyticResult {
     this.countGroupByStatus = const [],
     this.sumGroupByTester = const [],
     this.countGroupByTester = const [],
-    this.countGroupByTestSuite = const [],
     this.countGroupByTesterAndStatus = const [],
     this.countGroupByStatusCode = const [],
     this.countGroupByTesterAndStatusCode = const [],
@@ -28,8 +27,6 @@ class TestPointAnalyticResult {
   List<TestPlanGroupByTester> sumGroupByTester;
 
   List<TestPlanGroupByTester> countGroupByTester;
-
-  List<TestPlanGroupByTestSuite> countGroupByTestSuite;
 
   List<TestPlanGroupByTesterAndStatus> countGroupByTesterAndStatus;
 
@@ -44,7 +41,6 @@ class TestPointAnalyticResult {
     _deepEquality.equals(other.countGroupByStatus, countGroupByStatus) &&
     _deepEquality.equals(other.sumGroupByTester, sumGroupByTester) &&
     _deepEquality.equals(other.countGroupByTester, countGroupByTester) &&
-    _deepEquality.equals(other.countGroupByTestSuite, countGroupByTestSuite) &&
     _deepEquality.equals(other.countGroupByTesterAndStatus, countGroupByTesterAndStatus) &&
     _deepEquality.equals(other.countGroupByStatusCode, countGroupByStatusCode) &&
     _deepEquality.equals(other.countGroupByTesterAndStatusCode, countGroupByTesterAndStatusCode) &&
@@ -56,21 +52,19 @@ class TestPointAnalyticResult {
     (countGroupByStatus.hashCode) +
     (sumGroupByTester.hashCode) +
     (countGroupByTester.hashCode) +
-    (countGroupByTestSuite.hashCode) +
     (countGroupByTesterAndStatus.hashCode) +
     (countGroupByStatusCode.hashCode) +
     (countGroupByTesterAndStatusCode.hashCode) +
     (countGroupByStatusType.hashCode);
 
   @override
-  String toString() => 'TestPointAnalyticResult[countGroupByStatus=$countGroupByStatus, sumGroupByTester=$sumGroupByTester, countGroupByTester=$countGroupByTester, countGroupByTestSuite=$countGroupByTestSuite, countGroupByTesterAndStatus=$countGroupByTesterAndStatus, countGroupByStatusCode=$countGroupByStatusCode, countGroupByTesterAndStatusCode=$countGroupByTesterAndStatusCode, countGroupByStatusType=$countGroupByStatusType]';
+  String toString() => 'TestPointAnalyticResult[countGroupByStatus=$countGroupByStatus, sumGroupByTester=$sumGroupByTester, countGroupByTester=$countGroupByTester, countGroupByTesterAndStatus=$countGroupByTesterAndStatus, countGroupByStatusCode=$countGroupByStatusCode, countGroupByTesterAndStatusCode=$countGroupByTesterAndStatusCode, countGroupByStatusType=$countGroupByStatusType]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'countGroupByStatus'] = this.countGroupByStatus;
       json[r'sumGroupByTester'] = this.sumGroupByTester;
       json[r'countGroupByTester'] = this.countGroupByTester;
-      json[r'countGroupByTestSuite'] = this.countGroupByTestSuite;
       json[r'countGroupByTesterAndStatus'] = this.countGroupByTesterAndStatus;
       json[r'countGroupByStatusCode'] = this.countGroupByStatusCode;
       json[r'countGroupByTesterAndStatusCode'] = this.countGroupByTesterAndStatusCode;
@@ -100,7 +94,6 @@ class TestPointAnalyticResult {
         countGroupByStatus: TestPlanGroupByStatus.listFromJson(json[r'countGroupByStatus']),
         sumGroupByTester: TestPlanGroupByTester.listFromJson(json[r'sumGroupByTester']),
         countGroupByTester: TestPlanGroupByTester.listFromJson(json[r'countGroupByTester']),
-        countGroupByTestSuite: TestPlanGroupByTestSuite.listFromJson(json[r'countGroupByTestSuite']),
         countGroupByTesterAndStatus: TestPlanGroupByTesterAndStatus.listFromJson(json[r'countGroupByTesterAndStatus']),
         countGroupByStatusCode: TestPlanGroupByStatusCode.listFromJson(json[r'countGroupByStatusCode']),
         countGroupByTesterAndStatusCode: TestPlanGroupByTesterAndStatusCode.listFromJson(json[r'countGroupByTesterAndStatusCode']),
@@ -155,7 +148,6 @@ class TestPointAnalyticResult {
     'countGroupByStatus',
     'sumGroupByTester',
     'countGroupByTester',
-    'countGroupByTestSuite',
     'countGroupByTesterAndStatus',
     'countGroupByStatusCode',
     'countGroupByTesterAndStatusCode',

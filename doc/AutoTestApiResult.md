@@ -37,6 +37,7 @@ Name | Type | Description | Notes
 **stabilityPercentage** | **int** |  | [optional] 
 **links** | [**List<LinkApiResult>**](LinkApiResult.md) |  | [optional] [default to const []]
 **labels** | [**List<LabelApiResult>**](LabelApiResult.md) |  | [optional] [default to const []]
+**tags** | **List<String>** |  | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

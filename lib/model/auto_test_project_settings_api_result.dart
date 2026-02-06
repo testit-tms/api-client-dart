@@ -19,6 +19,8 @@ class AutoTestProjectSettingsApiResult {
     required this.flakyTestRunCount,
     required this.rerunEnabled,
     required this.rerunAttemptsCount,
+    required this.workItemUpdatingEnabled,
+    required this.workItemUpdatingFields,
   });
 
   /// Unique ID of the project.
@@ -39,6 +41,12 @@ class AutoTestProjectSettingsApiResult {
   /// Auto rerun attempt count
   int rerunAttemptsCount;
 
+  /// Autotest to work item updating enabled
+  bool workItemUpdatingEnabled;
+
+  /// Autotest to work item updating fields
+  WorkItemUpdatingFieldsApiResult workItemUpdatingFields;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is AutoTestProjectSettingsApiResult &&
     other.projectId == projectId &&
@@ -46,7 +54,9 @@ class AutoTestProjectSettingsApiResult {
     other.flakyStabilityPercentage == flakyStabilityPercentage &&
     other.flakyTestRunCount == flakyTestRunCount &&
     other.rerunEnabled == rerunEnabled &&
-    other.rerunAttemptsCount == rerunAttemptsCount;
+    other.rerunAttemptsCount == rerunAttemptsCount &&
+    other.workItemUpdatingEnabled == workItemUpdatingEnabled &&
+    other.workItemUpdatingFields == workItemUpdatingFields;
 
   @override
   int get hashCode =>
@@ -56,10 +66,12 @@ class AutoTestProjectSettingsApiResult {
     (flakyStabilityPercentage.hashCode) +
     (flakyTestRunCount.hashCode) +
     (rerunEnabled.hashCode) +
-    (rerunAttemptsCount.hashCode);
+    (rerunAttemptsCount.hashCode) +
+    (workItemUpdatingEnabled.hashCode) +
+    (workItemUpdatingFields.hashCode);
 
   @override
-  String toString() => 'AutoTestProjectSettingsApiResult[projectId=$projectId, isFlakyAuto=$isFlakyAuto, flakyStabilityPercentage=$flakyStabilityPercentage, flakyTestRunCount=$flakyTestRunCount, rerunEnabled=$rerunEnabled, rerunAttemptsCount=$rerunAttemptsCount]';
+  String toString() => 'AutoTestProjectSettingsApiResult[projectId=$projectId, isFlakyAuto=$isFlakyAuto, flakyStabilityPercentage=$flakyStabilityPercentage, flakyTestRunCount=$flakyTestRunCount, rerunEnabled=$rerunEnabled, rerunAttemptsCount=$rerunAttemptsCount, workItemUpdatingEnabled=$workItemUpdatingEnabled, workItemUpdatingFields=$workItemUpdatingFields]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -69,6 +81,8 @@ class AutoTestProjectSettingsApiResult {
       json[r'flakyTestRunCount'] = this.flakyTestRunCount;
       json[r'rerunEnabled'] = this.rerunEnabled;
       json[r'rerunAttemptsCount'] = this.rerunAttemptsCount;
+      json[r'workItemUpdatingEnabled'] = this.workItemUpdatingEnabled;
+      json[r'workItemUpdatingFields'] = this.workItemUpdatingFields;
     return json;
   }
 
@@ -97,6 +111,8 @@ class AutoTestProjectSettingsApiResult {
         flakyTestRunCount: mapValueOfType<int>(json, r'flakyTestRunCount')!,
         rerunEnabled: mapValueOfType<bool>(json, r'rerunEnabled')!,
         rerunAttemptsCount: mapValueOfType<int>(json, r'rerunAttemptsCount')!,
+        workItemUpdatingEnabled: mapValueOfType<bool>(json, r'workItemUpdatingEnabled')!,
+        workItemUpdatingFields: WorkItemUpdatingFieldsApiResult.fromJson(json[r'workItemUpdatingFields'])!,
       );
     }
     return null;
@@ -150,6 +166,8 @@ class AutoTestProjectSettingsApiResult {
     'flakyTestRunCount',
     'rerunEnabled',
     'rerunAttemptsCount',
+    'workItemUpdatingEnabled',
+    'workItemUpdatingFields',
   };
 }
 

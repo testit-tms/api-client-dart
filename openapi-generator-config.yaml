@@ -1,6 +1,6 @@
 # OpenAPI Generator configuration for Dart API client
 generatorName: dart
-inputSpec: .swagger/swagger5.6.json
+inputSpec: .swagger/cloud_swagger.json
 outputDir: ./new
 templateDir: null
 
@@ -8,7 +8,7 @@ templateDir: null
 additionalProperties:
   # Package information
   pubName: "testit_api_client_dart"
-  pubVersion: 1.4.0-TMS-5.6
+  pubVersion: 1.5.0
   pubDescription: "Auto-generated Dart API client for Test IT"
 
   

@@ -42,6 +42,7 @@ class AutoTestApiResult {
     this.stabilityPercentage,
     this.links = const [],
     this.labels = const [],
+    this.tags = const [],
   });
 
   String id;
@@ -102,6 +103,8 @@ class AutoTestApiResult {
 
   List<LabelApiResult>? labels;
 
+  List<String>? tags;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is AutoTestApiResult &&
     other.id == id &&
@@ -132,7 +135,8 @@ class AutoTestApiResult {
     other.lastTestResultStatus == lastTestResultStatus &&
     other.stabilityPercentage == stabilityPercentage &&
     _deepEquality.equals(other.links, links) &&
-    _deepEquality.equals(other.labels, labels);
+    _deepEquality.equals(other.labels, labels) &&
+    _deepEquality.equals(other.tags, tags);
 
   @override
   int get hashCode =>
@@ -165,10 +169,11 @@ class AutoTestApiResult {
     (lastTestResultStatus == null ? 0 : lastTestResultStatus!.hashCode) +
     (stabilityPercentage == null ? 0 : stabilityPercentage!.hashCode) +
     (links == null ? 0 : links!.hashCode) +
-    (labels == null ? 0 : labels!.hashCode);
+    (labels == null ? 0 : labels!.hashCode) +
+    (tags == null ? 0 : tags!.hashCode);
 
   @override
-  String toString() => 'AutoTestApiResult[id=$id, projectId=$projectId, name=$name, isFlaky=$isFlaky, globalId=$globalId, isDeleted=$isDeleted, mustBeApproved=$mustBeApproved, createdDate=$createdDate, createdById=$createdById, externalId=$externalId, namespace=$namespace, classname=$classname, steps=$steps, setup=$setup, teardown=$teardown, title=$title, description=$description, externalKey=$externalKey, modifiedDate=$modifiedDate, modifiedById=$modifiedById, lastTestRunId=$lastTestRunId, lastTestRunName=$lastTestRunName, lastTestResultId=$lastTestResultId, lastTestResultConfiguration=$lastTestResultConfiguration, lastTestResultOutcome=$lastTestResultOutcome, lastTestResultStatus=$lastTestResultStatus, stabilityPercentage=$stabilityPercentage, links=$links, labels=$labels]';
+  String toString() => 'AutoTestApiResult[id=$id, projectId=$projectId, name=$name, isFlaky=$isFlaky, globalId=$globalId, isDeleted=$isDeleted, mustBeApproved=$mustBeApproved, createdDate=$createdDate, createdById=$createdById, externalId=$externalId, namespace=$namespace, classname=$classname, steps=$steps, setup=$setup, teardown=$teardown, title=$title, description=$description, externalKey=$externalKey, modifiedDate=$modifiedDate, modifiedById=$modifiedById, lastTestRunId=$lastTestRunId, lastTestRunName=$lastTestRunName, lastTestResultId=$lastTestResultId, lastTestResultConfiguration=$lastTestResultConfiguration, lastTestResultOutcome=$lastTestResultOutcome, lastTestResultStatus=$lastTestResultStatus, stabilityPercentage=$stabilityPercentage, links=$links, labels=$labels, tags=$tags]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -281,6 +286,11 @@ class AutoTestApiResult {
     } else {
       json[r'labels'] = null;
     }
+    if (this.tags != null) {
+      json[r'tags'] = this.tags;
+    } else {
+      json[r'tags'] = null;
+    }
     return json;
   }
 
@@ -332,6 +342,9 @@ class AutoTestApiResult {
         stabilityPercentage: mapValueOfType<int>(json, r'stabilityPercentage'),
         links: LinkApiResult.listFromJson(json[r'links']),
         labels: LabelApiResult.listFromJson(json[r'labels']),
+        tags: json[r'tags'] is Iterable
+            ? (json[r'tags'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
       );
     }
     return null;

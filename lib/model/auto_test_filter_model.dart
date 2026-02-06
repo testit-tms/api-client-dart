@@ -33,6 +33,7 @@ class AutoTestFilterModel {
     this.lastTestResultStatusCodes = const [],
     this.externalKey,
     this.lastTestResultConfigurationIds = const [],
+    this.tags = const [],
   });
 
   List<String>? projectIds;
@@ -75,6 +76,8 @@ class AutoTestFilterModel {
 
   List<String>? lastTestResultConfigurationIds;
 
+  List<String>? tags;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is AutoTestFilterModel &&
     _deepEquality.equals(other.projectIds, projectIds) &&
@@ -96,7 +99,8 @@ class AutoTestFilterModel {
     other.lastTestResultOutcome == lastTestResultOutcome &&
     _deepEquality.equals(other.lastTestResultStatusCodes, lastTestResultStatusCodes) &&
     other.externalKey == externalKey &&
-    _deepEquality.equals(other.lastTestResultConfigurationIds, lastTestResultConfigurationIds);
+    _deepEquality.equals(other.lastTestResultConfigurationIds, lastTestResultConfigurationIds) &&
+    _deepEquality.equals(other.tags, tags);
 
   @override
   int get hashCode =>
@@ -120,10 +124,11 @@ class AutoTestFilterModel {
     (lastTestResultOutcome == null ? 0 : lastTestResultOutcome!.hashCode) +
     (lastTestResultStatusCodes == null ? 0 : lastTestResultStatusCodes!.hashCode) +
     (externalKey == null ? 0 : externalKey!.hashCode) +
-    (lastTestResultConfigurationIds == null ? 0 : lastTestResultConfigurationIds!.hashCode);
+    (lastTestResultConfigurationIds == null ? 0 : lastTestResultConfigurationIds!.hashCode) +
+    (tags == null ? 0 : tags!.hashCode);
 
   @override
-  String toString() => 'AutoTestFilterModel[projectIds=$projectIds, externalIds=$externalIds, globalIds=$globalIds, name=$name, isFlaky=$isFlaky, mustBeApproved=$mustBeApproved, stabilityPercentage=$stabilityPercentage, createdDate=$createdDate, createdByIds=$createdByIds, modifiedDate=$modifiedDate, modifiedByIds=$modifiedByIds, isDeleted=$isDeleted, namespace=$namespace, isEmptyNamespace=$isEmptyNamespace, className=$className, isEmptyClassName=$isEmptyClassName, lastTestResultOutcome=$lastTestResultOutcome, lastTestResultStatusCodes=$lastTestResultStatusCodes, externalKey=$externalKey, lastTestResultConfigurationIds=$lastTestResultConfigurationIds]';
+  String toString() => 'AutoTestFilterModel[projectIds=$projectIds, externalIds=$externalIds, globalIds=$globalIds, name=$name, isFlaky=$isFlaky, mustBeApproved=$mustBeApproved, stabilityPercentage=$stabilityPercentage, createdDate=$createdDate, createdByIds=$createdByIds, modifiedDate=$modifiedDate, modifiedByIds=$modifiedByIds, isDeleted=$isDeleted, namespace=$namespace, isEmptyNamespace=$isEmptyNamespace, className=$className, isEmptyClassName=$isEmptyClassName, lastTestResultOutcome=$lastTestResultOutcome, lastTestResultStatusCodes=$lastTestResultStatusCodes, externalKey=$externalKey, lastTestResultConfigurationIds=$lastTestResultConfigurationIds, tags=$tags]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -227,6 +232,11 @@ class AutoTestFilterModel {
     } else {
       json[r'lastTestResultConfigurationIds'] = null;
     }
+    if (this.tags != null) {
+      json[r'tags'] = this.tags;
+    } else {
+      json[r'tags'] = null;
+    }
     return json;
   }
 
@@ -282,6 +292,9 @@ class AutoTestFilterModel {
         externalKey: mapValueOfType<String>(json, r'externalKey'),
         lastTestResultConfigurationIds: json[r'lastTestResultConfigurationIds'] is Iterable
             ? (json[r'lastTestResultConfigurationIds'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
+        tags: json[r'tags'] is Iterable
+            ? (json[r'tags'] as Iterable).cast<String>().toList(growable: false)
             : const [],
       );
     }

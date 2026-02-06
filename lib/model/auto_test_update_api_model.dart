@@ -13,30 +13,31 @@ part of testit_api_client_dart;
 class AutoTestUpdateApiModel {
   /// Returns a new [AutoTestUpdateApiModel] instance.
   AutoTestUpdateApiModel({
-    required this.externalId,
     required this.projectId,
+    required this.externalId,
     required this.name,
     this.id,
     this.externalKey,
     this.namespace,
     this.classname,
+    this.title,
+    this.description,
+    this.isFlaky,
     this.steps = const [],
     this.setup = const [],
     this.teardown = const [],
-    this.title,
-    this.description,
+    this.workItemIds = const [],
+    this.workItemIdsForLinkWithAutoTest = const [],
     this.labels = const [],
     this.links = const [],
-    this.isFlaky,
-    this.workItemIdsForLinkWithAutoTest = const [],
-    this.workItemIds = const [],
+    this.tags = const [],
   });
-
-  /// External ID of the autotest
-  String externalId;
 
   /// Unique ID of the autotest project
   String projectId;
+
+  /// External ID of the autotest
+  String externalId;
 
   /// Name of the autotest
   String name;
@@ -53,6 +54,15 @@ class AutoTestUpdateApiModel {
   /// Name of the autotest class
   String? classname;
 
+  /// Name of the autotest in autotest's card
+  String? title;
+
+  /// Description of the autotest in autotest's card
+  String? description;
+
+  /// Indicates if the autotest is marked as flaky
+  bool? isFlaky;
+
   /// Collection of the autotest steps
   List<AutoTestStepApiModel>? steps;
 
@@ -62,11 +72,11 @@ class AutoTestUpdateApiModel {
   /// Collection of the autotest teardown steps
   List<AutoTestStepApiModel>? teardown;
 
-  /// Name of the autotest in autotest's card
-  String? title;
+  /// Specifies the IDs of work items to link your autotest to. You can specify several IDs.
+  List<String>? workItemIds;
 
-  /// Description of the autotest in autotest's card
-  String? description;
+  /// Specifies the IDs of work items to link your autotest to. You can specify several IDs.
+  List<String>? workItemIdsForLinkWithAutoTest;
 
   /// Collection of the autotest labels
   List<LabelApiModel>? labels;
@@ -74,63 +84,59 @@ class AutoTestUpdateApiModel {
   /// Collection of the autotest links
   List<LinkUpdateApiModel>? links;
 
-  /// Indicates if the autotest is marked as flaky
-  bool? isFlaky;
-
-  /// Specifies the IDs of work items to link your autotest to. You can specify several IDs.
-  List<String>? workItemIdsForLinkWithAutoTest;
-
-  /// Specifies the IDs of work items to link your autotest to. You can specify several IDs.
-  List<String>? workItemIds;
+  /// Collection of the autotest tags
+  List<String>? tags;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is AutoTestUpdateApiModel &&
-    other.externalId == externalId &&
     other.projectId == projectId &&
+    other.externalId == externalId &&
     other.name == name &&
     other.id == id &&
     other.externalKey == externalKey &&
     other.namespace == namespace &&
     other.classname == classname &&
+    other.title == title &&
+    other.description == description &&
+    other.isFlaky == isFlaky &&
     _deepEquality.equals(other.steps, steps) &&
     _deepEquality.equals(other.setup, setup) &&
     _deepEquality.equals(other.teardown, teardown) &&
-    other.title == title &&
-    other.description == description &&
+    _deepEquality.equals(other.workItemIds, workItemIds) &&
+    _deepEquality.equals(other.workItemIdsForLinkWithAutoTest, workItemIdsForLinkWithAutoTest) &&
     _deepEquality.equals(other.labels, labels) &&
     _deepEquality.equals(other.links, links) &&
-    other.isFlaky == isFlaky &&
-    _deepEquality.equals(other.workItemIdsForLinkWithAutoTest, workItemIdsForLinkWithAutoTest) &&
-    _deepEquality.equals(other.workItemIds, workItemIds);
+    _deepEquality.equals(other.tags, tags);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (externalId.hashCode) +
     (projectId.hashCode) +
+    (externalId.hashCode) +
     (name.hashCode) +
     (id == null ? 0 : id!.hashCode) +
     (externalKey == null ? 0 : externalKey!.hashCode) +
     (namespace == null ? 0 : namespace!.hashCode) +
     (classname == null ? 0 : classname!.hashCode) +
+    (title == null ? 0 : title!.hashCode) +
+    (description == null ? 0 : description!.hashCode) +
+    (isFlaky == null ? 0 : isFlaky!.hashCode) +
     (steps == null ? 0 : steps!.hashCode) +
     (setup == null ? 0 : setup!.hashCode) +
     (teardown == null ? 0 : teardown!.hashCode) +
-    (title == null ? 0 : title!.hashCode) +
-    (description == null ? 0 : description!.hashCode) +
+    (workItemIds == null ? 0 : workItemIds!.hashCode) +
+    (workItemIdsForLinkWithAutoTest == null ? 0 : workItemIdsForLinkWithAutoTest!.hashCode) +
     (labels == null ? 0 : labels!.hashCode) +
     (links == null ? 0 : links!.hashCode) +
-    (isFlaky == null ? 0 : isFlaky!.hashCode) +
-    (workItemIdsForLinkWithAutoTest == null ? 0 : workItemIdsForLinkWithAutoTest!.hashCode) +
-    (workItemIds == null ? 0 : workItemIds!.hashCode);
+    (tags == null ? 0 : tags!.hashCode);
 
   @override
-  String toString() => 'AutoTestUpdateApiModel[externalId=$externalId, projectId=$projectId, name=$name, id=$id, externalKey=$externalKey, namespace=$namespace, classname=$classname, steps=$steps, setup=$setup, teardown=$teardown, title=$title, description=$description, labels=$labels, links=$links, isFlaky=$isFlaky, workItemIdsForLinkWithAutoTest=$workItemIdsForLinkWithAutoTest, workItemIds=$workItemIds]';
+  String toString() => 'AutoTestUpdateApiModel[projectId=$projectId, externalId=$externalId, name=$name, id=$id, externalKey=$externalKey, namespace=$namespace, classname=$classname, title=$title, description=$description, isFlaky=$isFlaky, steps=$steps, setup=$setup, teardown=$teardown, workItemIds=$workItemIds, workItemIdsForLinkWithAutoTest=$workItemIdsForLinkWithAutoTest, labels=$labels, links=$links, tags=$tags]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'externalId'] = this.externalId;
       json[r'projectId'] = this.projectId;
+      json[r'externalId'] = this.externalId;
       json[r'name'] = this.name;
     if (this.id != null) {
       json[r'id'] = this.id;
@@ -152,6 +158,21 @@ class AutoTestUpdateApiModel {
     } else {
       json[r'classname'] = null;
     }
+    if (this.title != null) {
+      json[r'title'] = this.title;
+    } else {
+      json[r'title'] = null;
+    }
+    if (this.description != null) {
+      json[r'description'] = this.description;
+    } else {
+      json[r'description'] = null;
+    }
+    if (this.isFlaky != null) {
+      json[r'isFlaky'] = this.isFlaky;
+    } else {
+      json[r'isFlaky'] = null;
+    }
     if (this.steps != null) {
       json[r'steps'] = this.steps;
     } else {
@@ -167,15 +188,15 @@ class AutoTestUpdateApiModel {
     } else {
       json[r'teardown'] = null;
     }
-    if (this.title != null) {
-      json[r'title'] = this.title;
+    if (this.workItemIds != null) {
+      json[r'workItemIds'] = this.workItemIds;
     } else {
-      json[r'title'] = null;
+      json[r'workItemIds'] = null;
     }
-    if (this.description != null) {
-      json[r'description'] = this.description;
+    if (this.workItemIdsForLinkWithAutoTest != null) {
+      json[r'workItemIdsForLinkWithAutoTest'] = this.workItemIdsForLinkWithAutoTest;
     } else {
-      json[r'description'] = null;
+      json[r'workItemIdsForLinkWithAutoTest'] = null;
     }
     if (this.labels != null) {
       json[r'labels'] = this.labels;
@@ -187,20 +208,10 @@ class AutoTestUpdateApiModel {
     } else {
       json[r'links'] = null;
     }
-    if (this.isFlaky != null) {
-      json[r'isFlaky'] = this.isFlaky;
+    if (this.tags != null) {
+      json[r'tags'] = this.tags;
     } else {
-      json[r'isFlaky'] = null;
-    }
-    if (this.workItemIdsForLinkWithAutoTest != null) {
-      json[r'workItemIdsForLinkWithAutoTest'] = this.workItemIdsForLinkWithAutoTest;
-    } else {
-      json[r'workItemIdsForLinkWithAutoTest'] = null;
-    }
-    if (this.workItemIds != null) {
-      json[r'workItemIds'] = this.workItemIds;
-    } else {
-      json[r'workItemIds'] = null;
+      json[r'tags'] = null;
     }
     return json;
   }
@@ -224,26 +235,29 @@ class AutoTestUpdateApiModel {
       }());
 
       return AutoTestUpdateApiModel(
-        externalId: mapValueOfType<String>(json, r'externalId')!,
         projectId: mapValueOfType<String>(json, r'projectId')!,
+        externalId: mapValueOfType<String>(json, r'externalId')!,
         name: mapValueOfType<String>(json, r'name')!,
         id: mapValueOfType<String>(json, r'id'),
         externalKey: mapValueOfType<String>(json, r'externalKey'),
         namespace: mapValueOfType<String>(json, r'namespace'),
         classname: mapValueOfType<String>(json, r'classname'),
+        title: mapValueOfType<String>(json, r'title'),
+        description: mapValueOfType<String>(json, r'description'),
+        isFlaky: mapValueOfType<bool>(json, r'isFlaky'),
         steps: AutoTestStepApiModel.listFromJson(json[r'steps']),
         setup: AutoTestStepApiModel.listFromJson(json[r'setup']),
         teardown: AutoTestStepApiModel.listFromJson(json[r'teardown']),
-        title: mapValueOfType<String>(json, r'title'),
-        description: mapValueOfType<String>(json, r'description'),
-        labels: LabelApiModel.listFromJson(json[r'labels']),
-        links: LinkUpdateApiModel.listFromJson(json[r'links']),
-        isFlaky: mapValueOfType<bool>(json, r'isFlaky'),
+        workItemIds: json[r'workItemIds'] is Iterable
+            ? (json[r'workItemIds'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
         workItemIdsForLinkWithAutoTest: json[r'workItemIdsForLinkWithAutoTest'] is Iterable
             ? (json[r'workItemIdsForLinkWithAutoTest'] as Iterable).cast<String>().toList(growable: false)
             : const [],
-        workItemIds: json[r'workItemIds'] is Iterable
-            ? (json[r'workItemIds'] as Iterable).cast<String>().toList(growable: false)
+        labels: LabelApiModel.listFromJson(json[r'labels']),
+        links: LinkUpdateApiModel.listFromJson(json[r'links']),
+        tags: json[r'tags'] is Iterable
+            ? (json[r'tags'] as Iterable).cast<String>().toList(growable: false)
             : const [],
       );
     }
@@ -292,8 +306,8 @@ class AutoTestUpdateApiModel {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'externalId',
     'projectId',
+    'externalId',
     'name',
   };
 }

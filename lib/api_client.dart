@@ -782,8 +782,6 @@ class ApiClient {
           return TestPlanGroupByStatusCode.fromJson(value);
         case 'TestPlanGroupByStatusType':
           return TestPlanGroupByStatusType.fromJson(value);
-        case 'TestPlanGroupByTestSuite':
-          return TestPlanGroupByTestSuite.fromJson(value);
         case 'TestPlanGroupByTester':
           return TestPlanGroupByTester.fromJson(value);
         case 'TestPlanGroupByTesterAndStatus':
@@ -1178,6 +1176,10 @@ class ApiClient {
           return WorkItemStepChangeViewModel.fromJson(value);
         case 'WorkItemStepChangeViewModelArrayChangedFieldWithDiffsViewModel':
           return WorkItemStepChangeViewModelArrayChangedFieldWithDiffsViewModel.fromJson(value);
+        case 'WorkItemUpdatingFieldsApiModel':
+          return WorkItemUpdatingFieldsApiModel.fromJson(value);
+        case 'WorkItemUpdatingFieldsApiResult':
+          return WorkItemUpdatingFieldsApiResult.fromJson(value);
         case 'WorkItemVersionModel':
           return WorkItemVersionModel.fromJson(value);
         case 'WorkflowApiResult':

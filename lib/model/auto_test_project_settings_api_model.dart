@@ -15,9 +15,11 @@ class AutoTestProjectSettingsApiModel {
   AutoTestProjectSettingsApiModel({
     required this.rerunEnabled,
     required this.rerunAttemptsCount,
+    required this.workItemUpdatingFields,
     this.isFlakyAuto = false,
     this.flakyStabilityPercentage = 100,
     this.flakyTestRunCount = 100,
+    this.workItemUpdatingEnabled = false,
   });
 
   /// Auto rerun enabled
@@ -28,6 +30,9 @@ class AutoTestProjectSettingsApiModel {
   /// Minimum value: 1
   /// Maximum value: 10
   int rerunAttemptsCount;
+
+  /// Autotest to work item updating fields
+  WorkItemUpdatingFieldsApiModel workItemUpdatingFields;
 
   /// Indicates if the status \"Flaky/Stable\" sets automatically
   bool isFlakyAuto;
@@ -44,33 +49,42 @@ class AutoTestProjectSettingsApiModel {
   /// Maximum value: 1000
   int flakyTestRunCount;
 
+  /// Autotest to work item updating enabled
+  bool workItemUpdatingEnabled;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is AutoTestProjectSettingsApiModel &&
     other.rerunEnabled == rerunEnabled &&
     other.rerunAttemptsCount == rerunAttemptsCount &&
+    other.workItemUpdatingFields == workItemUpdatingFields &&
     other.isFlakyAuto == isFlakyAuto &&
     other.flakyStabilityPercentage == flakyStabilityPercentage &&
-    other.flakyTestRunCount == flakyTestRunCount;
+    other.flakyTestRunCount == flakyTestRunCount &&
+    other.workItemUpdatingEnabled == workItemUpdatingEnabled;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (rerunEnabled.hashCode) +
     (rerunAttemptsCount.hashCode) +
+    (workItemUpdatingFields.hashCode) +
     (isFlakyAuto.hashCode) +
     (flakyStabilityPercentage.hashCode) +
-    (flakyTestRunCount.hashCode);
+    (flakyTestRunCount.hashCode) +
+    (workItemUpdatingEnabled.hashCode);
 
   @override
-  String toString() => 'AutoTestProjectSettingsApiModel[rerunEnabled=$rerunEnabled, rerunAttemptsCount=$rerunAttemptsCount, isFlakyAuto=$isFlakyAuto, flakyStabilityPercentage=$flakyStabilityPercentage, flakyTestRunCount=$flakyTestRunCount]';
+  String toString() => 'AutoTestProjectSettingsApiModel[rerunEnabled=$rerunEnabled, rerunAttemptsCount=$rerunAttemptsCount, workItemUpdatingFields=$workItemUpdatingFields, isFlakyAuto=$isFlakyAuto, flakyStabilityPercentage=$flakyStabilityPercentage, flakyTestRunCount=$flakyTestRunCount, workItemUpdatingEnabled=$workItemUpdatingEnabled]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'rerunEnabled'] = this.rerunEnabled;
       json[r'rerunAttemptsCount'] = this.rerunAttemptsCount;
+      json[r'workItemUpdatingFields'] = this.workItemUpdatingFields;
       json[r'isFlakyAuto'] = this.isFlakyAuto;
       json[r'flakyStabilityPercentage'] = this.flakyStabilityPercentage;
       json[r'flakyTestRunCount'] = this.flakyTestRunCount;
+      json[r'workItemUpdatingEnabled'] = this.workItemUpdatingEnabled;
     return json;
   }
 
@@ -95,9 +109,11 @@ class AutoTestProjectSettingsApiModel {
       return AutoTestProjectSettingsApiModel(
         rerunEnabled: mapValueOfType<bool>(json, r'rerunEnabled')!,
         rerunAttemptsCount: mapValueOfType<int>(json, r'rerunAttemptsCount')!,
+        workItemUpdatingFields: WorkItemUpdatingFieldsApiModel.fromJson(json[r'workItemUpdatingFields'])!,
         isFlakyAuto: mapValueOfType<bool>(json, r'isFlakyAuto') ?? false,
         flakyStabilityPercentage: mapValueOfType<int>(json, r'flakyStabilityPercentage') ?? 100,
         flakyTestRunCount: mapValueOfType<int>(json, r'flakyTestRunCount') ?? 100,
+        workItemUpdatingEnabled: mapValueOfType<bool>(json, r'workItemUpdatingEnabled') ?? false,
       );
     }
     return null;
@@ -147,6 +163,7 @@ class AutoTestProjectSettingsApiModel {
   static const requiredKeys = <String>{
     'rerunEnabled',
     'rerunAttemptsCount',
+    'workItemUpdatingFields',
   };
 }
 

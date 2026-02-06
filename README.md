@@ -9,7 +9,7 @@
 | 5.4.1   | 1.2.3-TMS-5.4.1         |
 | 5.5     | 1.2.5-TMS-5.5           |
 | 5.6     | 1.4.0-TMS-5.6           |
-| Cloud   | 1.3.0 +                 | 
+| Cloud   | 1.5.0 +                 | 
 
 1. For current versions, see the releases tab. 
 2. Starting with 5.2, we have added a TMS postscript, which means that the utility is compatible with a specific enterprise version. 
@@ -190,6 +190,7 @@ Class | Method | HTTP request | Description
 *ProjectWorkItemsApi* | [**apiV2ProjectsProjectIdWorkItemsTagsGet**](doc//ProjectWorkItemsApi.md#apiv2projectsprojectidworkitemstagsget) | **GET** /api/v2/projects/{projectId}/workItems/tags | Get WorkItems Tags
 *ProjectWorkItemsApi* | [**getWorkItemsByProjectId**](doc//ProjectWorkItemsApi.md#getworkitemsbyprojectid) | **GET** /api/v2/projects/{projectId}/workItems | Get project work items
 *ProjectsApi* | [**addGlobalAttributesToProject**](doc//ProjectsApi.md#addglobalattributestoproject) | **POST** /api/v2/projects/{id}/globalAttributes | Add global attributes to project
+*ProjectsApi* | [**apiV2ProjectsDemoPost**](doc//ProjectsApi.md#apiv2projectsdemopost) | **POST** /api/v2/projects/demo | 
 *ProjectsApi* | [**apiV2ProjectsIdDelete**](doc//ProjectsApi.md#apiv2projectsiddelete) | **DELETE** /api/v2/projects/{id} | Archive project
 *ProjectsApi* | [**apiV2ProjectsIdFailureClassesGet**](doc//ProjectsApi.md#apiv2projectsidfailureclassesget) | **GET** /api/v2/projects/{id}/failureClasses | Get failure classes
 *ProjectsApi* | [**apiV2ProjectsIdFavoritePut**](doc//ProjectsApi.md#apiv2projectsidfavoriteput) | **PUT** /api/v2/projects/{id}/favorite | Mark Project as favorite
@@ -302,6 +303,13 @@ Class | Method | HTTP request | Description
 *TestRunsApi* | [**startTestRun**](doc//TestRunsApi.md#starttestrun) | **POST** /api/v2/testRuns/{id}/start | Start TestRun
 *TestRunsApi* | [**stopTestRun**](doc//TestRunsApi.md#stoptestrun) | **POST** /api/v2/testRuns/{id}/stop | Stop TestRun
 *TestRunsApi* | [**updateEmpty**](doc//TestRunsApi.md#updateempty) | **PUT** /api/v2/testRuns | Update empty TestRun
+*TestStatusesApi* | [**apiV2TestStatusesCodeCodeExistsGet**](doc//TestStatusesApi.md#apiv2teststatusescodecodeexistsget) | **GET** /api/v2/testStatuses/code/{code}/exists | 
+*TestStatusesApi* | [**apiV2TestStatusesIdDelete**](doc//TestStatusesApi.md#apiv2teststatusesiddelete) | **DELETE** /api/v2/testStatuses/{id} | 
+*TestStatusesApi* | [**apiV2TestStatusesIdGet**](doc//TestStatusesApi.md#apiv2teststatusesidget) | **GET** /api/v2/testStatuses/{id} | 
+*TestStatusesApi* | [**apiV2TestStatusesIdPut**](doc//TestStatusesApi.md#apiv2teststatusesidput) | **PUT** /api/v2/testStatuses/{id} | 
+*TestStatusesApi* | [**apiV2TestStatusesNameNameExistsGet**](doc//TestStatusesApi.md#apiv2teststatusesnamenameexistsget) | **GET** /api/v2/testStatuses/name/{name}/exists | 
+*TestStatusesApi* | [**apiV2TestStatusesPost**](doc//TestStatusesApi.md#apiv2teststatusespost) | **POST** /api/v2/testStatuses | 
+*TestStatusesApi* | [**apiV2TestStatusesSearchPost**](doc//TestStatusesApi.md#apiv2teststatusessearchpost) | **POST** /api/v2/testStatuses/search | 
 *TestSuitesApi* | [**addTestPointsToTestSuite**](doc//TestSuitesApi.md#addtestpointstotestsuite) | **POST** /api/v2/testSuites/{id}/test-points | Add test-points to test suite
 *TestSuitesApi* | [**apiV2TestSuitesIdPatch**](doc//TestSuitesApi.md#apiv2testsuitesidpatch) | **PATCH** /api/v2/testSuites/{id} | Patch test suite
 *TestSuitesApi* | [**apiV2TestSuitesIdRefreshPost**](doc//TestSuitesApi.md#apiv2testsuitesidrefreshpost) | **POST** /api/v2/testSuites/{id}/refresh | Refresh test suite. Only dynamic test suites are supported by this method
@@ -360,6 +368,14 @@ Class | Method | HTTP request | Description
 *WorkItemsCommentsApi* | [**apiV2WorkItemsCommentsPut**](doc//WorkItemsCommentsApi.md#apiv2workitemscommentsput) | **PUT** /api/v2/workItems/comments | Update work item comment
 *WorkItemsCommentsApi* | [**apiV2WorkItemsIdCommentsCountGet**](doc//WorkItemsCommentsApi.md#apiv2workitemsidcommentscountget) | **GET** /api/v2/workItems/{id}/comments/count | Get work item comments count
 *WorkItemsCommentsApi* | [**apiV2WorkItemsIdCommentsGet**](doc//WorkItemsCommentsApi.md#apiv2workitemsidcommentsget) | **GET** /api/v2/workItems/{id}/comments | Get work item comments
+*WorkflowsApi* | [**apiV2WorkflowsIdDelete**](doc//WorkflowsApi.md#apiv2workflowsiddelete) | **DELETE** /api/v2/workflows/{id} | 
+*WorkflowsApi* | [**apiV2WorkflowsIdGet**](doc//WorkflowsApi.md#apiv2workflowsidget) | **GET** /api/v2/workflows/{id} | 
+*WorkflowsApi* | [**apiV2WorkflowsIdPatch**](doc//WorkflowsApi.md#apiv2workflowsidpatch) | **PATCH** /api/v2/workflows/{id} | 
+*WorkflowsApi* | [**apiV2WorkflowsIdProjectsSearchPost**](doc//WorkflowsApi.md#apiv2workflowsidprojectssearchpost) | **POST** /api/v2/workflows/{id}/projects/search | 
+*WorkflowsApi* | [**apiV2WorkflowsIdPut**](doc//WorkflowsApi.md#apiv2workflowsidput) | **PUT** /api/v2/workflows/{id} | 
+*WorkflowsApi* | [**apiV2WorkflowsNameNameExistsGet**](doc//WorkflowsApi.md#apiv2workflowsnamenameexistsget) | **GET** /api/v2/workflows/name/{name}/exists | 
+*WorkflowsApi* | [**apiV2WorkflowsPost**](doc//WorkflowsApi.md#apiv2workflowspost) | **POST** /api/v2/workflows | 
+*WorkflowsApi* | [**apiV2WorkflowsSearchPost**](doc//WorkflowsApi.md#apiv2workflowssearchpost) | **POST** /api/v2/workflows/search | 
 
 
 ## Documentation For Models
@@ -664,7 +680,6 @@ Class | Method | HTTP request | Description
  - [TestPlanGroupByStatus](doc//TestPlanGroupByStatus.md)
  - [TestPlanGroupByStatusCode](doc//TestPlanGroupByStatusCode.md)
  - [TestPlanGroupByStatusType](doc//TestPlanGroupByStatusType.md)
- - [TestPlanGroupByTestSuite](doc//TestPlanGroupByTestSuite.md)
  - [TestPlanGroupByTester](doc//TestPlanGroupByTester.md)
  - [TestPlanGroupByTesterAndStatus](doc//TestPlanGroupByTesterAndStatus.md)
  - [TestPlanGroupByTesterAndStatusCode](doc//TestPlanGroupByTesterAndStatusCode.md)
@@ -862,6 +877,8 @@ Class | Method | HTTP request | Description
  - [WorkItemStates](doc//WorkItemStates.md)
  - [WorkItemStepChangeViewModel](doc//WorkItemStepChangeViewModel.md)
  - [WorkItemStepChangeViewModelArrayChangedFieldWithDiffsViewModel](doc//WorkItemStepChangeViewModelArrayChangedFieldWithDiffsViewModel.md)
+ - [WorkItemUpdatingFieldsApiModel](doc//WorkItemUpdatingFieldsApiModel.md)
+ - [WorkItemUpdatingFieldsApiResult](doc//WorkItemUpdatingFieldsApiResult.md)
  - [WorkItemVersionModel](doc//WorkItemVersionModel.md)
  - [WorkflowApiResult](doc//WorkflowApiResult.md)
  - [WorkflowExistsByNameApiResult](doc//WorkflowExistsByNameApiResult.md)

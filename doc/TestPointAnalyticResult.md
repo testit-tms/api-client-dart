@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **countGroupByStatus** | [**List<TestPlanGroupByStatus>**](TestPlanGroupByStatus.md) |  | [default to const []]
 **sumGroupByTester** | [**List<TestPlanGroupByTester>**](TestPlanGroupByTester.md) |  | [default to const []]
 **countGroupByTester** | [**List<TestPlanGroupByTester>**](TestPlanGroupByTester.md) |  | [default to const []]
-**countGroupByTestSuite** | [**List<TestPlanGroupByTestSuite>**](TestPlanGroupByTestSuite.md) |  | [default to const []]
 **countGroupByTesterAndStatus** | [**List<TestPlanGroupByTesterAndStatus>**](TestPlanGroupByTesterAndStatus.md) |  | [default to const []]
 **countGroupByStatusCode** | [**List<TestPlanGroupByStatusCode>**](TestPlanGroupByStatusCode.md) |  | [default to const []]
 **countGroupByTesterAndStatusCode** | [**List<TestPlanGroupByTesterAndStatusCode>**](TestPlanGroupByTesterAndStatusCode.md) |  | [default to const []]

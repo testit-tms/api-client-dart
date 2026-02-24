@@ -348,7 +348,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apiV2TestResultsIdRerunsGet**
-> RerunsModel apiV2TestResultsIdRerunsGet(id)
+> RerunsApiResult apiV2TestResultsIdRerunsGet(id)
 
 Get reruns
 
@@ -379,7 +379,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RerunsModel**](RerunsModel.md)
+[**RerunsApiResult**](RerunsApiResult.md)
 
 ### Authorization
 

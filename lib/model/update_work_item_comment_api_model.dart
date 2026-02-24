@@ -10,42 +10,44 @@
 
 part of testit_api_client_dart;
 
-class WorkItemCommentPostModel {
-  /// Returns a new [WorkItemCommentPostModel] instance.
-  WorkItemCommentPostModel({
+class UpdateWorkItemCommentApiModel {
+  /// Returns a new [UpdateWorkItemCommentApiModel] instance.
+  UpdateWorkItemCommentApiModel({
+    required this.id,
     required this.text,
-    required this.workItemId,
   });
 
+  /// ID of the comment
+  String id;
+
+  /// Text of the comment
   String text;
 
-  String workItemId;
-
   @override
-  bool operator ==(Object other) => identical(this, other) || other is WorkItemCommentPostModel &&
-    other.text == text &&
-    other.workItemId == workItemId;
+  bool operator ==(Object other) => identical(this, other) || other is UpdateWorkItemCommentApiModel &&
+    other.id == id &&
+    other.text == text;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (text.hashCode) +
-    (workItemId.hashCode);
+    (id.hashCode) +
+    (text.hashCode);
 
   @override
-  String toString() => 'WorkItemCommentPostModel[text=$text, workItemId=$workItemId]';
+  String toString() => 'UpdateWorkItemCommentApiModel[id=$id, text=$text]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+      json[r'id'] = this.id;
       json[r'text'] = this.text;
-      json[r'workItemId'] = this.workItemId;
     return json;
   }
 
-  /// Returns a new [WorkItemCommentPostModel] instance and imports its values from
+  /// Returns a new [UpdateWorkItemCommentApiModel] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static WorkItemCommentPostModel? fromJson(dynamic value) {
+  static UpdateWorkItemCommentApiModel? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -54,25 +56,25 @@ class WorkItemCommentPostModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "WorkItemCommentPostModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "WorkItemCommentPostModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "UpdateWorkItemCommentApiModel[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "UpdateWorkItemCommentApiModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return WorkItemCommentPostModel(
+      return UpdateWorkItemCommentApiModel(
+        id: mapValueOfType<String>(json, r'id')!,
         text: mapValueOfType<String>(json, r'text')!,
-        workItemId: mapValueOfType<String>(json, r'workItemId')!,
       );
     }
     return null;
   }
 
-  static List<WorkItemCommentPostModel> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <WorkItemCommentPostModel>[];
+  static List<UpdateWorkItemCommentApiModel> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <UpdateWorkItemCommentApiModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = WorkItemCommentPostModel.fromJson(row);
+        final value = UpdateWorkItemCommentApiModel.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -81,12 +83,12 @@ class WorkItemCommentPostModel {
     return result.toList(growable: growable);
   }
 
-  static Map<String, WorkItemCommentPostModel> mapFromJson(dynamic json) {
-    final map = <String, WorkItemCommentPostModel>{};
+  static Map<String, UpdateWorkItemCommentApiModel> mapFromJson(dynamic json) {
+    final map = <String, UpdateWorkItemCommentApiModel>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = WorkItemCommentPostModel.fromJson(entry.value);
+        final value = UpdateWorkItemCommentApiModel.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -95,14 +97,14 @@ class WorkItemCommentPostModel {
     return map;
   }
 
-  // maps a json object with a list of WorkItemCommentPostModel-objects as value to a dart map
-  static Map<String, List<WorkItemCommentPostModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<WorkItemCommentPostModel>>{};
+  // maps a json object with a list of UpdateWorkItemCommentApiModel-objects as value to a dart map
+  static Map<String, List<UpdateWorkItemCommentApiModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<UpdateWorkItemCommentApiModel>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = WorkItemCommentPostModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = UpdateWorkItemCommentApiModel.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -110,8 +112,8 @@ class WorkItemCommentPostModel {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'id',
     'text',
-    'workItemId',
   };
 }
 

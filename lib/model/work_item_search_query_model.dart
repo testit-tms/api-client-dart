@@ -14,7 +14,6 @@ class WorkItemSearchQueryModel {
   /// Returns a new [WorkItemSearchQueryModel] instance.
   WorkItemSearchQueryModel({
     this.projectIds = const {},
-    this.links,
     this.name,
     this.ids = const {},
     this.globalIds = const {},
@@ -36,13 +35,12 @@ class WorkItemSearchQueryModel {
     this.excludeTags = const {},
     this.autoTestIds = const {},
     this.workItemVersionIds = const [],
+    this.links,
+    this.externalMetadata,
   });
 
   /// Collection of project identifiers
   Set<String>? projectIds;
-
-  /// Specifies a work item filter by its links
-  WorkItemLinkFilterModel? links;
 
   /// Name of work item
   String? name;
@@ -107,10 +105,15 @@ class WorkItemSearchQueryModel {
   /// Collection of identifiers work items versions.
   List<String>? workItemVersionIds;
 
+  /// Specifies a work item filter by its links
+  WorkItemLinkFilterModel? links;
+
+  /// Specifies work item filter by its external metadata
+  WorkItemExternalMetadataFilterModel? externalMetadata;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is WorkItemSearchQueryModel &&
     _deepEquality.equals(other.projectIds, projectIds) &&
-    other.links == links &&
     other.name == name &&
     _deepEquality.equals(other.ids, ids) &&
     _deepEquality.equals(other.globalIds, globalIds) &&
@@ -131,13 +134,14 @@ class WorkItemSearchQueryModel {
     _deepEquality.equals(other.tags, tags) &&
     _deepEquality.equals(other.excludeTags, excludeTags) &&
     _deepEquality.equals(other.autoTestIds, autoTestIds) &&
-    _deepEquality.equals(other.workItemVersionIds, workItemVersionIds);
+    _deepEquality.equals(other.workItemVersionIds, workItemVersionIds) &&
+    other.links == links &&
+    other.externalMetadata == externalMetadata;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (projectIds == null ? 0 : projectIds!.hashCode) +
-    (links == null ? 0 : links!.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (ids == null ? 0 : ids!.hashCode) +
     (globalIds == null ? 0 : globalIds!.hashCode) +
@@ -158,10 +162,12 @@ class WorkItemSearchQueryModel {
     (tags == null ? 0 : tags!.hashCode) +
     (excludeTags == null ? 0 : excludeTags!.hashCode) +
     (autoTestIds == null ? 0 : autoTestIds!.hashCode) +
-    (workItemVersionIds == null ? 0 : workItemVersionIds!.hashCode);
+    (workItemVersionIds == null ? 0 : workItemVersionIds!.hashCode) +
+    (links == null ? 0 : links!.hashCode) +
+    (externalMetadata == null ? 0 : externalMetadata!.hashCode);
 
   @override
-  String toString() => 'WorkItemSearchQueryModel[projectIds=$projectIds, links=$links, name=$name, ids=$ids, globalIds=$globalIds, attributes=$attributes, isDeleted=$isDeleted, sectionIds=$sectionIds, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds, states=$states, priorities=$priorities, sourceTypes=$sourceTypes, types=$types, createdDate=$createdDate, modifiedDate=$modifiedDate, duration=$duration, medianDuration=$medianDuration, isAutomated=$isAutomated, tags=$tags, excludeTags=$excludeTags, autoTestIds=$autoTestIds, workItemVersionIds=$workItemVersionIds]';
+  String toString() => 'WorkItemSearchQueryModel[projectIds=$projectIds, name=$name, ids=$ids, globalIds=$globalIds, attributes=$attributes, isDeleted=$isDeleted, sectionIds=$sectionIds, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds, states=$states, priorities=$priorities, sourceTypes=$sourceTypes, types=$types, createdDate=$createdDate, modifiedDate=$modifiedDate, duration=$duration, medianDuration=$medianDuration, isAutomated=$isAutomated, tags=$tags, excludeTags=$excludeTags, autoTestIds=$autoTestIds, workItemVersionIds=$workItemVersionIds, links=$links, externalMetadata=$externalMetadata]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -169,11 +175,6 @@ class WorkItemSearchQueryModel {
       json[r'projectIds'] = this.projectIds!.toList(growable: false);
     } else {
       json[r'projectIds'] = null;
-    }
-    if (this.links != null) {
-      json[r'links'] = this.links;
-    } else {
-      json[r'links'] = null;
     }
     if (this.name != null) {
       json[r'name'] = this.name;
@@ -280,6 +281,16 @@ class WorkItemSearchQueryModel {
     } else {
       json[r'workItemVersionIds'] = null;
     }
+    if (this.links != null) {
+      json[r'links'] = this.links;
+    } else {
+      json[r'links'] = null;
+    }
+    if (this.externalMetadata != null) {
+      json[r'externalMetadata'] = this.externalMetadata;
+    } else {
+      json[r'externalMetadata'] = null;
+    }
     return json;
   }
 
@@ -305,7 +316,6 @@ class WorkItemSearchQueryModel {
         projectIds: json[r'projectIds'] is Iterable
             ? (json[r'projectIds'] as Iterable).cast<String>().toSet()
             : const {},
-        links: WorkItemLinkFilterModel.fromJson(json[r'links']),
         name: mapValueOfType<String>(json, r'name'),
         ids: json[r'ids'] is Iterable
             ? (json[r'ids'] as Iterable).cast<String>().toSet()
@@ -347,6 +357,8 @@ class WorkItemSearchQueryModel {
         workItemVersionIds: json[r'workItemVersionIds'] is Iterable
             ? (json[r'workItemVersionIds'] as Iterable).cast<String>().toList(growable: false)
             : const [],
+        links: WorkItemLinkFilterModel.fromJson(json[r'links']),
+        externalMetadata: WorkItemExternalMetadataFilterModel.fromJson(json[r'externalMetadata']),
       );
     }
     return null;

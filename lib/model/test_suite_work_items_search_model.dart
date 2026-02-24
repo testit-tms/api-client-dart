@@ -18,9 +18,7 @@ class TestSuiteWorkItemsSearchModel {
     this.nameOrId,
     this.includeIds = const {},
     this.excludeIds = const {},
-    this.externalMetadata,
     this.projectIds = const {},
-    this.links,
     this.name,
     this.ids = const {},
     this.globalIds = const {},
@@ -42,6 +40,8 @@ class TestSuiteWorkItemsSearchModel {
     this.excludeTags = const {},
     this.autoTestIds = const {},
     this.workItemVersionIds = const [],
+    this.links,
+    this.externalMetadata,
   });
 
   /// Collection of tags
@@ -59,14 +59,8 @@ class TestSuiteWorkItemsSearchModel {
   /// Collection of identifiers of work items which need to be excluded from result regardless of filtering
   Set<String>? excludeIds;
 
-  /// Specifies work item filter by its external metadata
-  WorkItemExternalMetadataFilterModel? externalMetadata;
-
   /// Collection of project identifiers
   Set<String>? projectIds;
-
-  /// Specifies a work item filter by its links
-  WorkItemLinkFilterModel? links;
 
   /// Name of work item
   String? name;
@@ -131,6 +125,12 @@ class TestSuiteWorkItemsSearchModel {
   /// Collection of identifiers work items versions.
   List<String>? workItemVersionIds;
 
+  /// Specifies a work item filter by its links
+  WorkItemLinkFilterModel? links;
+
+  /// Specifies work item filter by its external metadata
+  WorkItemExternalMetadataFilterModel? externalMetadata;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is TestSuiteWorkItemsSearchModel &&
     _deepEquality.equals(other.tagNames, tagNames) &&
@@ -138,9 +138,7 @@ class TestSuiteWorkItemsSearchModel {
     other.nameOrId == nameOrId &&
     _deepEquality.equals(other.includeIds, includeIds) &&
     _deepEquality.equals(other.excludeIds, excludeIds) &&
-    other.externalMetadata == externalMetadata &&
     _deepEquality.equals(other.projectIds, projectIds) &&
-    other.links == links &&
     other.name == name &&
     _deepEquality.equals(other.ids, ids) &&
     _deepEquality.equals(other.globalIds, globalIds) &&
@@ -161,7 +159,9 @@ class TestSuiteWorkItemsSearchModel {
     _deepEquality.equals(other.tags, tags) &&
     _deepEquality.equals(other.excludeTags, excludeTags) &&
     _deepEquality.equals(other.autoTestIds, autoTestIds) &&
-    _deepEquality.equals(other.workItemVersionIds, workItemVersionIds);
+    _deepEquality.equals(other.workItemVersionIds, workItemVersionIds) &&
+    other.links == links &&
+    other.externalMetadata == externalMetadata;
 
   @override
   int get hashCode =>
@@ -171,9 +171,7 @@ class TestSuiteWorkItemsSearchModel {
     (nameOrId == null ? 0 : nameOrId!.hashCode) +
     (includeIds == null ? 0 : includeIds!.hashCode) +
     (excludeIds == null ? 0 : excludeIds!.hashCode) +
-    (externalMetadata == null ? 0 : externalMetadata!.hashCode) +
     (projectIds == null ? 0 : projectIds!.hashCode) +
-    (links == null ? 0 : links!.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (ids == null ? 0 : ids!.hashCode) +
     (globalIds == null ? 0 : globalIds!.hashCode) +
@@ -194,10 +192,12 @@ class TestSuiteWorkItemsSearchModel {
     (tags == null ? 0 : tags!.hashCode) +
     (excludeTags == null ? 0 : excludeTags!.hashCode) +
     (autoTestIds == null ? 0 : autoTestIds!.hashCode) +
-    (workItemVersionIds == null ? 0 : workItemVersionIds!.hashCode);
+    (workItemVersionIds == null ? 0 : workItemVersionIds!.hashCode) +
+    (links == null ? 0 : links!.hashCode) +
+    (externalMetadata == null ? 0 : externalMetadata!.hashCode);
 
   @override
-  String toString() => 'TestSuiteWorkItemsSearchModel[tagNames=$tagNames, entityTypes=$entityTypes, nameOrId=$nameOrId, includeIds=$includeIds, excludeIds=$excludeIds, externalMetadata=$externalMetadata, projectIds=$projectIds, links=$links, name=$name, ids=$ids, globalIds=$globalIds, attributes=$attributes, isDeleted=$isDeleted, sectionIds=$sectionIds, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds, states=$states, priorities=$priorities, sourceTypes=$sourceTypes, types=$types, createdDate=$createdDate, modifiedDate=$modifiedDate, duration=$duration, medianDuration=$medianDuration, isAutomated=$isAutomated, tags=$tags, excludeTags=$excludeTags, autoTestIds=$autoTestIds, workItemVersionIds=$workItemVersionIds]';
+  String toString() => 'TestSuiteWorkItemsSearchModel[tagNames=$tagNames, entityTypes=$entityTypes, nameOrId=$nameOrId, includeIds=$includeIds, excludeIds=$excludeIds, projectIds=$projectIds, name=$name, ids=$ids, globalIds=$globalIds, attributes=$attributes, isDeleted=$isDeleted, sectionIds=$sectionIds, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds, states=$states, priorities=$priorities, sourceTypes=$sourceTypes, types=$types, createdDate=$createdDate, modifiedDate=$modifiedDate, duration=$duration, medianDuration=$medianDuration, isAutomated=$isAutomated, tags=$tags, excludeTags=$excludeTags, autoTestIds=$autoTestIds, workItemVersionIds=$workItemVersionIds, links=$links, externalMetadata=$externalMetadata]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -226,20 +226,10 @@ class TestSuiteWorkItemsSearchModel {
     } else {
       json[r'excludeIds'] = null;
     }
-    if (this.externalMetadata != null) {
-      json[r'externalMetadata'] = this.externalMetadata;
-    } else {
-      json[r'externalMetadata'] = null;
-    }
     if (this.projectIds != null) {
       json[r'projectIds'] = this.projectIds!.toList(growable: false);
     } else {
       json[r'projectIds'] = null;
-    }
-    if (this.links != null) {
-      json[r'links'] = this.links;
-    } else {
-      json[r'links'] = null;
     }
     if (this.name != null) {
       json[r'name'] = this.name;
@@ -346,6 +336,16 @@ class TestSuiteWorkItemsSearchModel {
     } else {
       json[r'workItemVersionIds'] = null;
     }
+    if (this.links != null) {
+      json[r'links'] = this.links;
+    } else {
+      json[r'links'] = null;
+    }
+    if (this.externalMetadata != null) {
+      json[r'externalMetadata'] = this.externalMetadata;
+    } else {
+      json[r'externalMetadata'] = null;
+    }
     return json;
   }
 
@@ -379,11 +379,9 @@ class TestSuiteWorkItemsSearchModel {
         excludeIds: json[r'excludeIds'] is Iterable
             ? (json[r'excludeIds'] as Iterable).cast<String>().toSet()
             : const {},
-        externalMetadata: WorkItemExternalMetadataFilterModel.fromJson(json[r'externalMetadata']),
         projectIds: json[r'projectIds'] is Iterable
             ? (json[r'projectIds'] as Iterable).cast<String>().toSet()
             : const {},
-        links: WorkItemLinkFilterModel.fromJson(json[r'links']),
         name: mapValueOfType<String>(json, r'name'),
         ids: json[r'ids'] is Iterable
             ? (json[r'ids'] as Iterable).cast<String>().toSet()
@@ -425,6 +423,8 @@ class TestSuiteWorkItemsSearchModel {
         workItemVersionIds: json[r'workItemVersionIds'] is Iterable
             ? (json[r'workItemVersionIds'] as Iterable).cast<String>().toList(growable: false)
             : const [],
+        links: WorkItemLinkFilterModel.fromJson(json[r'links']),
+        externalMetadata: WorkItemExternalMetadataFilterModel.fromJson(json[r'externalMetadata']),
       );
     }
     return null;

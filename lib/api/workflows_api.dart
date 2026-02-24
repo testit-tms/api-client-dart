@@ -125,7 +125,7 @@ class WorkflowsApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>['application/json', 'application/json-patch+json', 'text/json', 'application/*+json'];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
@@ -171,7 +171,7 @@ class WorkflowsApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>['application/json', 'application/json-patch+json', 'text/json', 'application/*+json'];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
@@ -223,7 +223,7 @@ class WorkflowsApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>['application/json', 'application/json-patch+json', 'text/json', 'application/*+json'];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
@@ -312,7 +312,7 @@ class WorkflowsApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>['application/json', 'application/json-patch+json', 'text/json', 'application/*+json'];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
@@ -359,7 +359,7 @@ class WorkflowsApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>['application/json', 'application/json-patch+json', 'text/json', 'application/*+json'];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(

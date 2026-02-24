@@ -20,6 +20,8 @@ class TestResultsFilterApiModel {
     this.namespace,
     this.className,
     this.autoTestGlobalIds = const [],
+    this.autoTestTags = const [],
+    this.excludeAutoTestTags = const [],
     this.name,
     this.createdDate,
     this.modifiedDate,
@@ -50,6 +52,12 @@ class TestResultsFilterApiModel {
 
   /// Specifies an autotest global IDs to search results for
   List<int>? autoTestGlobalIds;
+
+  /// Specifies autotest tags to include in the search.
+  List<String>? autoTestTags;
+
+  /// Specifies autotest tags to exclude from the search.
+  List<String>? excludeAutoTestTags;
 
   /// Specifies an autotest name to search results for
   String? name;
@@ -84,6 +92,8 @@ class TestResultsFilterApiModel {
     other.namespace == namespace &&
     other.className == className &&
     _deepEquality.equals(other.autoTestGlobalIds, autoTestGlobalIds) &&
+    _deepEquality.equals(other.autoTestTags, autoTestTags) &&
+    _deepEquality.equals(other.excludeAutoTestTags, excludeAutoTestTags) &&
     other.name == name &&
     other.createdDate == createdDate &&
     other.modifiedDate == modifiedDate &&
@@ -103,6 +113,8 @@ class TestResultsFilterApiModel {
     (namespace == null ? 0 : namespace!.hashCode) +
     (className == null ? 0 : className!.hashCode) +
     (autoTestGlobalIds == null ? 0 : autoTestGlobalIds!.hashCode) +
+    (autoTestTags == null ? 0 : autoTestTags!.hashCode) +
+    (excludeAutoTestTags == null ? 0 : excludeAutoTestTags!.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (createdDate == null ? 0 : createdDate!.hashCode) +
     (modifiedDate == null ? 0 : modifiedDate!.hashCode) +
@@ -113,7 +125,7 @@ class TestResultsFilterApiModel {
     (testRunIds == null ? 0 : testRunIds!.hashCode);
 
   @override
-  String toString() => 'TestResultsFilterApiModel[configurationIds=$configurationIds, outcomes=$outcomes, statusCodes=$statusCodes, failureCategories=$failureCategories, namespace=$namespace, className=$className, autoTestGlobalIds=$autoTestGlobalIds, name=$name, createdDate=$createdDate, modifiedDate=$modifiedDate, startedOn=$startedOn, completedOn=$completedOn, duration=$duration, resultReasons=$resultReasons, testRunIds=$testRunIds]';
+  String toString() => 'TestResultsFilterApiModel[configurationIds=$configurationIds, outcomes=$outcomes, statusCodes=$statusCodes, failureCategories=$failureCategories, namespace=$namespace, className=$className, autoTestGlobalIds=$autoTestGlobalIds, autoTestTags=$autoTestTags, excludeAutoTestTags=$excludeAutoTestTags, name=$name, createdDate=$createdDate, modifiedDate=$modifiedDate, startedOn=$startedOn, completedOn=$completedOn, duration=$duration, resultReasons=$resultReasons, testRunIds=$testRunIds]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -151,6 +163,16 @@ class TestResultsFilterApiModel {
       json[r'autoTestGlobalIds'] = this.autoTestGlobalIds;
     } else {
       json[r'autoTestGlobalIds'] = null;
+    }
+    if (this.autoTestTags != null) {
+      json[r'autoTestTags'] = this.autoTestTags;
+    } else {
+      json[r'autoTestTags'] = null;
+    }
+    if (this.excludeAutoTestTags != null) {
+      json[r'excludeAutoTestTags'] = this.excludeAutoTestTags;
+    } else {
+      json[r'excludeAutoTestTags'] = null;
     }
     if (this.name != null) {
       json[r'name'] = this.name;
@@ -226,6 +248,12 @@ class TestResultsFilterApiModel {
         className: mapValueOfType<String>(json, r'className'),
         autoTestGlobalIds: json[r'autoTestGlobalIds'] is Iterable
             ? (json[r'autoTestGlobalIds'] as Iterable).cast<int>().toList(growable: false)
+            : const [],
+        autoTestTags: json[r'autoTestTags'] is Iterable
+            ? (json[r'autoTestTags'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
+        excludeAutoTestTags: json[r'excludeAutoTestTags'] is Iterable
+            ? (json[r'excludeAutoTestTags'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         name: mapValueOfType<String>(json, r'name'),
         createdDate: DateTimeRangeSelectorModel.fromJson(json[r'createdDate']),

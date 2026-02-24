@@ -9,7 +9,6 @@ import 'package:testit_api_client_dart/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **projectIds** | **Set<String>** | Collection of project identifiers | [optional] [default to const {}]
-**links** | [**WorkItemLinkFilterModel**](WorkItemLinkFilterModel.md) | Specifies a work item filter by its links | [optional] 
 **name** | **String** | Name of work item | [optional] 
 **ids** | **Set<String>** | Specifies a work item unique IDs to search for | [optional] [default to const {}]
 **globalIds** | **Set<int>** | Collection of global (integer) identifiers | [optional] [default to const {}]
@@ -31,6 +30,8 @@ Name | Type | Description | Notes
 **excludeTags** | **Set<String>** | Collection of tags to exclude | [optional] [default to const {}]
 **autoTestIds** | **Set<String>** | Collection of identifiers of linked autotests | [optional] [default to const {}]
 **workItemVersionIds** | **List<String>** | Collection of identifiers work items versions. | [optional] [default to const []]
+**links** | [**WorkItemLinkFilterModel**](WorkItemLinkFilterModel.md) | Specifies a work item filter by its links | [optional] 
+**externalMetadata** | [**WorkItemExternalMetadataFilterModel**](WorkItemExternalMetadataFilterModel.md) | Specifies work item filter by its external metadata | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

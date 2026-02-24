@@ -75,13 +75,13 @@ class WorkItemsCommentsApi {
   ///
   /// Parameters:
   ///
-  /// * [WorkItemCommentPostModel] workItemCommentPostModel:
-  Future<Response> apiV2WorkItemsCommentsPostWithHttpInfo({ WorkItemCommentPostModel? workItemCommentPostModel, }) async {
+  /// * [CreateWorkItemCommentApiModel] createWorkItemCommentApiModel:
+  Future<Response> apiV2WorkItemsCommentsPostWithHttpInfo({ CreateWorkItemCommentApiModel? createWorkItemCommentApiModel, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/workItems/comments';
 
     // ignore: prefer_final_locals
-    Object? postBody = workItemCommentPostModel;
+    Object? postBody = createWorkItemCommentApiModel;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -107,9 +107,9 @@ class WorkItemsCommentsApi {
   ///
   /// Parameters:
   ///
-  /// * [WorkItemCommentPostModel] workItemCommentPostModel:
-  Future<WorkItemCommentModel?> apiV2WorkItemsCommentsPost({ WorkItemCommentPostModel? workItemCommentPostModel, }) async {
-    final response = await apiV2WorkItemsCommentsPostWithHttpInfo( workItemCommentPostModel: workItemCommentPostModel, );
+  /// * [CreateWorkItemCommentApiModel] createWorkItemCommentApiModel:
+  Future<WorkItemCommentApiResult?> apiV2WorkItemsCommentsPost({ CreateWorkItemCommentApiModel? createWorkItemCommentApiModel, }) async {
+    final response = await apiV2WorkItemsCommentsPostWithHttpInfo( createWorkItemCommentApiModel: createWorkItemCommentApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -117,7 +117,7 @@ class WorkItemsCommentsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'WorkItemCommentModel',) as WorkItemCommentModel;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'WorkItemCommentApiResult',) as WorkItemCommentApiResult;
     
     }
     return null;
@@ -129,13 +129,13 @@ class WorkItemsCommentsApi {
   ///
   /// Parameters:
   ///
-  /// * [WorkItemCommentPutModel] workItemCommentPutModel:
-  Future<Response> apiV2WorkItemsCommentsPutWithHttpInfo({ WorkItemCommentPutModel? workItemCommentPutModel, }) async {
+  /// * [UpdateWorkItemCommentApiModel] updateWorkItemCommentApiModel:
+  Future<Response> apiV2WorkItemsCommentsPutWithHttpInfo({ UpdateWorkItemCommentApiModel? updateWorkItemCommentApiModel, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/workItems/comments';
 
     // ignore: prefer_final_locals
-    Object? postBody = workItemCommentPutModel;
+    Object? postBody = updateWorkItemCommentApiModel;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -159,9 +159,9 @@ class WorkItemsCommentsApi {
   ///
   /// Parameters:
   ///
-  /// * [WorkItemCommentPutModel] workItemCommentPutModel:
-  Future<void> apiV2WorkItemsCommentsPut({ WorkItemCommentPutModel? workItemCommentPutModel, }) async {
-    final response = await apiV2WorkItemsCommentsPutWithHttpInfo( workItemCommentPutModel: workItemCommentPutModel, );
+  /// * [UpdateWorkItemCommentApiModel] updateWorkItemCommentApiModel:
+  Future<void> apiV2WorkItemsCommentsPut({ UpdateWorkItemCommentApiModel? updateWorkItemCommentApiModel, }) async {
+    final response = await apiV2WorkItemsCommentsPutWithHttpInfo( updateWorkItemCommentApiModel: updateWorkItemCommentApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -262,7 +262,7 @@ class WorkItemsCommentsApi {
   ///
   /// * [String] id (required):
   ///   Unique or global ID of the work item
-  Future<List<WorkItemCommentModel>?> apiV2WorkItemsIdCommentsGet(String id,) async {
+  Future<List<WorkItemCommentApiResult>?> apiV2WorkItemsIdCommentsGet(String id,) async {
     final response = await apiV2WorkItemsIdCommentsGetWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -272,8 +272,8 @@ class WorkItemsCommentsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<WorkItemCommentModel>') as List)
-        .cast<WorkItemCommentModel>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<WorkItemCommentApiResult>') as List)
+        .cast<WorkItemCommentApiResult>()
         .toList(growable: false);
 
     }

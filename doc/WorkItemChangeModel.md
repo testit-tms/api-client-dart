@@ -14,7 +14,9 @@ Name | Type | Description | Notes
 **newVersionId** | **String** |  | 
 **workItemChangedFields** | [**WorkItemChangedFieldsViewModel**](WorkItemChangedFieldsViewModel.md) |  | 
 **createdById** | **String** |  | 
-**createdDate** | [**DateTime**](DateTime.md) |  | [optional] 
+**createdDate** | [**DateTime**](DateTime.md) |  | 
+**modifiedById** | **String** |  | [optional] 
+**modifiedDate** | [**DateTime**](DateTime.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -433,7 +433,7 @@ class TestResultsApi {
   ///
   /// * [String] id (required):
   ///   Test result unique ID
-  Future<RerunsModel?> apiV2TestResultsIdRerunsGet(String id,) async {
+  Future<RerunsApiResult?> apiV2TestResultsIdRerunsGet(String id,) async {
     final response = await apiV2TestResultsIdRerunsGetWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -442,7 +442,7 @@ class TestResultsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'RerunsModel',) as RerunsModel;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'RerunsApiResult',) as RerunsApiResult;
     
     }
     return null;

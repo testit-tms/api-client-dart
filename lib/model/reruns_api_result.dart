@@ -10,19 +10,19 @@
 
 part of testit_api_client_dart;
 
-class RerunsModel {
-  /// Returns a new [RerunsModel] instance.
-  RerunsModel({
+class RerunsApiResult {
+  /// Returns a new [RerunsApiResult] instance.
+  RerunsApiResult({
     required this.rerunCount,
     this.rerunTestResults = const [],
   });
 
   int rerunCount;
 
-  List<RerunTestResultModel> rerunTestResults;
+  List<RerunTestResultApiResult> rerunTestResults;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is RerunsModel &&
+  bool operator ==(Object other) => identical(this, other) || other is RerunsApiResult &&
     other.rerunCount == rerunCount &&
     _deepEquality.equals(other.rerunTestResults, rerunTestResults);
 
@@ -33,7 +33,7 @@ class RerunsModel {
     (rerunTestResults.hashCode);
 
   @override
-  String toString() => 'RerunsModel[rerunCount=$rerunCount, rerunTestResults=$rerunTestResults]';
+  String toString() => 'RerunsApiResult[rerunCount=$rerunCount, rerunTestResults=$rerunTestResults]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -42,10 +42,10 @@ class RerunsModel {
     return json;
   }
 
-  /// Returns a new [RerunsModel] instance and imports its values from
+  /// Returns a new [RerunsApiResult] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static RerunsModel? fromJson(dynamic value) {
+  static RerunsApiResult? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -54,25 +54,25 @@ class RerunsModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "RerunsModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "RerunsModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "RerunsApiResult[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "RerunsApiResult[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return RerunsModel(
+      return RerunsApiResult(
         rerunCount: mapValueOfType<int>(json, r'rerunCount')!,
-        rerunTestResults: RerunTestResultModel.listFromJson(json[r'rerunTestResults']),
+        rerunTestResults: RerunTestResultApiResult.listFromJson(json[r'rerunTestResults']),
       );
     }
     return null;
   }
 
-  static List<RerunsModel> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <RerunsModel>[];
+  static List<RerunsApiResult> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <RerunsApiResult>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = RerunsModel.fromJson(row);
+        final value = RerunsApiResult.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -81,12 +81,12 @@ class RerunsModel {
     return result.toList(growable: growable);
   }
 
-  static Map<String, RerunsModel> mapFromJson(dynamic json) {
-    final map = <String, RerunsModel>{};
+  static Map<String, RerunsApiResult> mapFromJson(dynamic json) {
+    final map = <String, RerunsApiResult>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = RerunsModel.fromJson(entry.value);
+        final value = RerunsApiResult.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -95,14 +95,14 @@ class RerunsModel {
     return map;
   }
 
-  // maps a json object with a list of RerunsModel-objects as value to a dart map
-  static Map<String, List<RerunsModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<RerunsModel>>{};
+  // maps a json object with a list of RerunsApiResult-objects as value to a dart map
+  static Map<String, List<RerunsApiResult>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<RerunsApiResult>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = RerunsModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = RerunsApiResult.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

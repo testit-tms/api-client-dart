@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **externalKey** | **String** | Specifies an autotest external key to search for | [optional] 
 **lastTestResultConfigurationIds** | **Set<String>** | Specifies an autotest configuration IDs of the last test result to search for | [optional] [default to const {}]
 **tags** | **Set<String>** | Specifies an autotest tags to search for | [optional] [default to const {}]
+**excludeTags** | **Set<String>** | Specifies an autotest tags to exclude | [optional] [default to const {}]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

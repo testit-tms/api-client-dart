@@ -384,6 +384,8 @@ class ApiClient {
           return CreateTestStatusApiModel.fromJson(value);
         case 'CreateWorkItemApiModel':
           return CreateWorkItemApiModel.fromJson(value);
+        case 'CreateWorkItemCommentApiModel':
+          return CreateWorkItemCommentApiModel.fromJson(value);
         case 'CreateWorkItemPreviewsApiModel':
           return CreateWorkItemPreviewsApiModel.fromJson(value);
         case 'CreateWorkflowApiModel':
@@ -688,10 +690,8 @@ class ApiClient {
           return RequestTypeModelTypeTransformer().decode(value);
         case 'RerunTestResultApiResult':
           return RerunTestResultApiResult.fromJson(value);
-        case 'RerunTestResultModel':
-          return RerunTestResultModel.fromJson(value);
-        case 'RerunsModel':
-          return RerunsModel.fromJson(value);
+        case 'RerunsApiResult':
+          return RerunsApiResult.fromJson(value);
         case 'SearchCustomAttributeTemplateGetModel':
           return SearchCustomAttributeTemplateGetModel.fromJson(value);
         case 'SearchExternalIssuesApiModel':
@@ -1028,16 +1028,14 @@ class ApiClient {
           return UpdateTestStatusApiModel.fromJson(value);
         case 'UpdateWorkItemApiModel':
           return UpdateWorkItemApiModel.fromJson(value);
+        case 'UpdateWorkItemCommentApiModel':
+          return UpdateWorkItemCommentApiModel.fromJson(value);
         case 'UpdateWorkflowApiModel':
           return UpdateWorkflowApiModel.fromJson(value);
         case 'UserCustomNameValidationResponse':
           return UserCustomNameValidationResponse.fromJson(value);
         case 'UserNameApiResult':
           return UserNameApiResult.fromJson(value);
-        case 'UserRankModel':
-          return UserRankModel.fromJson(value);
-        case 'UserWithRankModel':
-          return UserWithRankModel.fromJson(value);
         case 'ValidationProblemDetails':
           return ValidationProblemDetails.fromJson(value);
         case 'WebHookEventType':
@@ -1080,12 +1078,8 @@ class ApiClient {
           return WorkItemChangedAttributeViewModel.fromJson(value);
         case 'WorkItemChangedFieldsViewModel':
           return WorkItemChangedFieldsViewModel.fromJson(value);
-        case 'WorkItemCommentModel':
-          return WorkItemCommentModel.fromJson(value);
-        case 'WorkItemCommentPostModel':
-          return WorkItemCommentPostModel.fromJson(value);
-        case 'WorkItemCommentPutModel':
-          return WorkItemCommentPutModel.fromJson(value);
+        case 'WorkItemCommentApiResult':
+          return WorkItemCommentApiResult.fromJson(value);
         case 'WorkItemEntityTypeApiModel':
           return WorkItemEntityTypeApiModelTypeTransformer().decode(value);
         case 'WorkItemEntityTypes':

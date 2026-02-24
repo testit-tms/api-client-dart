@@ -63,7 +63,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apiV2WorkItemsCommentsPost**
-> WorkItemCommentModel apiV2WorkItemsCommentsPost(workItemCommentPostModel)
+> WorkItemCommentApiResult apiV2WorkItemsCommentsPost(createWorkItemCommentApiModel)
 
 Create WorkItem comment
 
@@ -78,10 +78,10 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = WorkItemsCommentsApi();
-final workItemCommentPostModel = WorkItemCommentPostModel(); // WorkItemCommentPostModel | 
+final createWorkItemCommentApiModel = CreateWorkItemCommentApiModel(); // CreateWorkItemCommentApiModel | 
 
 try {
-    final result = api_instance.apiV2WorkItemsCommentsPost(workItemCommentPostModel);
+    final result = api_instance.apiV2WorkItemsCommentsPost(createWorkItemCommentApiModel);
     print(result);
 } catch (e) {
     print('Exception when calling WorkItemsCommentsApi->apiV2WorkItemsCommentsPost: $e\n');
@@ -92,11 +92,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workItemCommentPostModel** | [**WorkItemCommentPostModel**](WorkItemCommentPostModel.md)|  | [optional] 
+ **createWorkItemCommentApiModel** | [**CreateWorkItemCommentApiModel**](CreateWorkItemCommentApiModel.md)|  | [optional] 
 
 ### Return type
 
-[**WorkItemCommentModel**](WorkItemCommentModel.md)
+[**WorkItemCommentApiResult**](WorkItemCommentApiResult.md)
 
 ### Authorization
 
@@ -110,7 +110,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apiV2WorkItemsCommentsPut**
-> apiV2WorkItemsCommentsPut(workItemCommentPutModel)
+> apiV2WorkItemsCommentsPut(updateWorkItemCommentApiModel)
 
 Update work item comment
 
@@ -123,10 +123,10 @@ import 'package:testit_api_client_dart/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
 
 final api_instance = WorkItemsCommentsApi();
-final workItemCommentPutModel = WorkItemCommentPutModel(); // WorkItemCommentPutModel | 
+final updateWorkItemCommentApiModel = UpdateWorkItemCommentApiModel(); // UpdateWorkItemCommentApiModel | 
 
 try {
-    api_instance.apiV2WorkItemsCommentsPut(workItemCommentPutModel);
+    api_instance.apiV2WorkItemsCommentsPut(updateWorkItemCommentApiModel);
 } catch (e) {
     print('Exception when calling WorkItemsCommentsApi->apiV2WorkItemsCommentsPut: $e\n');
 }
@@ -136,7 +136,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workItemCommentPutModel** | [**WorkItemCommentPutModel**](WorkItemCommentPutModel.md)|  | [optional] 
+ **updateWorkItemCommentApiModel** | [**UpdateWorkItemCommentApiModel**](UpdateWorkItemCommentApiModel.md)|  | [optional] 
 
 ### Return type
 
@@ -199,7 +199,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apiV2WorkItemsIdCommentsGet**
-> List<WorkItemCommentModel> apiV2WorkItemsIdCommentsGet(id)
+> List<WorkItemCommentApiResult> apiV2WorkItemsIdCommentsGet(id)
 
 Get work item comments
 
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<WorkItemCommentModel>**](WorkItemCommentModel.md)
+[**List<WorkItemCommentApiResult>**](WorkItemCommentApiResult.md)
 
 ### Authorization
 

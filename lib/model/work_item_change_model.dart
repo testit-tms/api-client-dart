@@ -19,7 +19,9 @@ class WorkItemChangeModel {
     required this.newVersionId,
     required this.workItemChangedFields,
     required this.createdById,
-    this.createdDate,
+    required this.createdDate,
+    this.modifiedById,
+    this.modifiedDate,
   });
 
   String id;
@@ -34,7 +36,11 @@ class WorkItemChangeModel {
 
   String createdById;
 
-  DateTime? createdDate;
+  DateTime createdDate;
+
+  String? modifiedById;
+
+  DateTime? modifiedDate;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is WorkItemChangeModel &&
@@ -44,7 +50,9 @@ class WorkItemChangeModel {
     other.newVersionId == newVersionId &&
     other.workItemChangedFields == workItemChangedFields &&
     other.createdById == createdById &&
-    other.createdDate == createdDate;
+    other.createdDate == createdDate &&
+    other.modifiedById == modifiedById &&
+    other.modifiedDate == modifiedDate;
 
   @override
   int get hashCode =>
@@ -55,10 +63,12 @@ class WorkItemChangeModel {
     (newVersionId.hashCode) +
     (workItemChangedFields.hashCode) +
     (createdById.hashCode) +
-    (createdDate == null ? 0 : createdDate!.hashCode);
+    (createdDate.hashCode) +
+    (modifiedById == null ? 0 : modifiedById!.hashCode) +
+    (modifiedDate == null ? 0 : modifiedDate!.hashCode);
 
   @override
-  String toString() => 'WorkItemChangeModel[id=$id, workItemId=$workItemId, oldVersionId=$oldVersionId, newVersionId=$newVersionId, workItemChangedFields=$workItemChangedFields, createdById=$createdById, createdDate=$createdDate]';
+  String toString() => 'WorkItemChangeModel[id=$id, workItemId=$workItemId, oldVersionId=$oldVersionId, newVersionId=$newVersionId, workItemChangedFields=$workItemChangedFields, createdById=$createdById, createdDate=$createdDate, modifiedById=$modifiedById, modifiedDate=$modifiedDate]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -68,10 +78,16 @@ class WorkItemChangeModel {
       json[r'newVersionId'] = this.newVersionId;
       json[r'workItemChangedFields'] = this.workItemChangedFields;
       json[r'createdById'] = this.createdById;
-    if (this.createdDate != null) {
-      json[r'createdDate'] = this.createdDate!.toUtc().toIso8601String();
+      json[r'createdDate'] = this.createdDate.toUtc().toIso8601String();
+    if (this.modifiedById != null) {
+      json[r'modifiedById'] = this.modifiedById;
     } else {
-      json[r'createdDate'] = null;
+      json[r'modifiedById'] = null;
+    }
+    if (this.modifiedDate != null) {
+      json[r'modifiedDate'] = this.modifiedDate!.toUtc().toIso8601String();
+    } else {
+      json[r'modifiedDate'] = null;
     }
     return json;
   }
@@ -101,7 +117,9 @@ class WorkItemChangeModel {
         newVersionId: mapValueOfType<String>(json, r'newVersionId')!,
         workItemChangedFields: WorkItemChangedFieldsViewModel.fromJson(json[r'workItemChangedFields'])!,
         createdById: mapValueOfType<String>(json, r'createdById')!,
-        createdDate: mapDateTime(json, r'createdDate', r''),
+        createdDate: mapDateTime(json, r'createdDate', r'')!,
+        modifiedById: mapValueOfType<String>(json, r'modifiedById'),
+        modifiedDate: mapDateTime(json, r'modifiedDate', r''),
       );
     }
     return null;
@@ -155,6 +173,7 @@ class WorkItemChangeModel {
     'newVersionId',
     'workItemChangedFields',
     'createdById',
+    'createdDate',
   };
 }
 

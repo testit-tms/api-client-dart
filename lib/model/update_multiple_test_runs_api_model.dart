@@ -17,6 +17,7 @@ class UpdateMultipleTestRunsApiModel {
     this.description,
     this.attachmentUpdateScheme,
     this.linkUpdateScheme,
+    this.tagUpdateScheme,
   });
 
   /// Test run selection model
@@ -31,12 +32,16 @@ class UpdateMultipleTestRunsApiModel {
   /// Set of links
   UpdateMultipleLinksApiModel? linkUpdateScheme;
 
+  /// Set of tags
+  UpdateMultipleTagsApiModel? tagUpdateScheme;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UpdateMultipleTestRunsApiModel &&
     other.selectModel == selectModel &&
     other.description == description &&
     other.attachmentUpdateScheme == attachmentUpdateScheme &&
-    other.linkUpdateScheme == linkUpdateScheme;
+    other.linkUpdateScheme == linkUpdateScheme &&
+    other.tagUpdateScheme == tagUpdateScheme;
 
   @override
   int get hashCode =>
@@ -44,10 +49,11 @@ class UpdateMultipleTestRunsApiModel {
     (selectModel.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (attachmentUpdateScheme == null ? 0 : attachmentUpdateScheme!.hashCode) +
-    (linkUpdateScheme == null ? 0 : linkUpdateScheme!.hashCode);
+    (linkUpdateScheme == null ? 0 : linkUpdateScheme!.hashCode) +
+    (tagUpdateScheme == null ? 0 : tagUpdateScheme!.hashCode);
 
   @override
-  String toString() => 'UpdateMultipleTestRunsApiModel[selectModel=$selectModel, description=$description, attachmentUpdateScheme=$attachmentUpdateScheme, linkUpdateScheme=$linkUpdateScheme]';
+  String toString() => 'UpdateMultipleTestRunsApiModel[selectModel=$selectModel, description=$description, attachmentUpdateScheme=$attachmentUpdateScheme, linkUpdateScheme=$linkUpdateScheme, tagUpdateScheme=$tagUpdateScheme]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -66,6 +72,11 @@ class UpdateMultipleTestRunsApiModel {
       json[r'linkUpdateScheme'] = this.linkUpdateScheme;
     } else {
       json[r'linkUpdateScheme'] = null;
+    }
+    if (this.tagUpdateScheme != null) {
+      json[r'tagUpdateScheme'] = this.tagUpdateScheme;
+    } else {
+      json[r'tagUpdateScheme'] = null;
     }
     return json;
   }
@@ -93,6 +104,7 @@ class UpdateMultipleTestRunsApiModel {
         description: mapValueOfType<String>(json, r'description'),
         attachmentUpdateScheme: UpdateMultipleAttachmentsApiModel.fromJson(json[r'attachmentUpdateScheme']),
         linkUpdateScheme: UpdateMultipleLinksApiModel.fromJson(json[r'linkUpdateScheme']),
+        tagUpdateScheme: UpdateMultipleTagsApiModel.fromJson(json[r'tagUpdateScheme']),
       );
     }
     return null;

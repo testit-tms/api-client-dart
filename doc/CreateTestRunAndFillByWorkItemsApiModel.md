@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **launchSource** | **String** | Specifies the test run launch source. | [optional] 
 **attachments** | [**List<AssignAttachmentApiModel>**](AssignAttachmentApiModel.md) | Collection of attachment ids to relate to the test run | [optional] [default to const []]
 **links** | [**List<CreateLinkApiModel>**](CreateLinkApiModel.md) | Collection of links to relate to the test run | [optional] [default to const []]
+**tags** | **List<String>** | Collection of tags to assign to the test run | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -142,6 +142,7 @@ Class | Method | HTTP request | Description
 *NotificationsApi* | [**apiV2NotificationsIdReadPost**](doc//NotificationsApi.md#apiv2notificationsidreadpost) | **POST** /api/v2/notifications/{id}/read | Set Notification as read
 *NotificationsApi* | [**apiV2NotificationsReadPost**](doc//NotificationsApi.md#apiv2notificationsreadpost) | **POST** /api/v2/notifications/read | Set all Notifications as read
 *NotificationsApi* | [**apiV2NotificationsSearchPost**](doc//NotificationsApi.md#apiv2notificationssearchpost) | **POST** /api/v2/notifications/search | Search Notifications for current User
+*OpenIdConnectionsApi* | [**apiV2OpenidConnectionsGet**](doc//OpenIdConnectionsApi.md#apiv2openidconnectionsget) | **GET** /api/v2/openid-connections | 
 *ParametersApi* | [**apiV2ParametersBulkPost**](doc//ParametersApi.md#apiv2parametersbulkpost) | **POST** /api/v2/parameters/bulk | Create multiple parameters
 *ParametersApi* | [**apiV2ParametersBulkPut**](doc//ParametersApi.md#apiv2parametersbulkput) | **PUT** /api/v2/parameters/bulk | Update multiple parameters
 *ParametersApi* | [**apiV2ParametersGroupsGet**](doc//ParametersApi.md#apiv2parametersgroupsget) | **GET** /api/v2/parameters/groups | Get parameters as group
@@ -591,6 +592,8 @@ Class | Method | HTTP request | Description
  - [NotificationModel](doc//NotificationModel.md)
  - [NotificationQueryFilterModel](doc//NotificationQueryFilterModel.md)
  - [NotificationTypeModel](doc//NotificationTypeModel.md)
+ - [OpenIdConnectionClientShortModel](doc//OpenIdConnectionClientShortModel.md)
+ - [OpenIdConnectionSettingsShortClientModel](doc//OpenIdConnectionSettingsShortClientModel.md)
  - [Operation](doc//Operation.md)
  - [Order](doc//Order.md)
  - [Page](doc//Page.md)
@@ -795,6 +798,7 @@ Class | Method | HTTP request | Description
  - [UpdateLinkApiModel](doc//UpdateLinkApiModel.md)
  - [UpdateMultipleAttachmentsApiModel](doc//UpdateMultipleAttachmentsApiModel.md)
  - [UpdateMultipleLinksApiModel](doc//UpdateMultipleLinksApiModel.md)
+ - [UpdateMultipleTagsApiModel](doc//UpdateMultipleTagsApiModel.md)
  - [UpdateMultipleTestRunsApiModel](doc//UpdateMultipleTestRunsApiModel.md)
  - [UpdateParameterApiModel](doc//UpdateParameterApiModel.md)
  - [UpdateProjectApiModel](doc//UpdateProjectApiModel.md)

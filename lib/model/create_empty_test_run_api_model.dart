@@ -19,6 +19,7 @@ class CreateEmptyTestRunApiModel {
     this.launchSource,
     this.attachments = const [],
     this.links = const [],
+    this.tags = const [],
   });
 
   /// Project unique identifier              This property is to link test run with a project
@@ -39,6 +40,9 @@ class CreateEmptyTestRunApiModel {
   /// Collection of links to relate to the test run
   List<CreateLinkApiModel>? links;
 
+  /// Collection of tags to assign to the test run
+  List<String>? tags;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateEmptyTestRunApiModel &&
     other.projectId == projectId &&
@@ -46,7 +50,8 @@ class CreateEmptyTestRunApiModel {
     other.description == description &&
     other.launchSource == launchSource &&
     _deepEquality.equals(other.attachments, attachments) &&
-    _deepEquality.equals(other.links, links);
+    _deepEquality.equals(other.links, links) &&
+    _deepEquality.equals(other.tags, tags);
 
   @override
   int get hashCode =>
@@ -56,10 +61,11 @@ class CreateEmptyTestRunApiModel {
     (description == null ? 0 : description!.hashCode) +
     (launchSource == null ? 0 : launchSource!.hashCode) +
     (attachments == null ? 0 : attachments!.hashCode) +
-    (links == null ? 0 : links!.hashCode);
+    (links == null ? 0 : links!.hashCode) +
+    (tags == null ? 0 : tags!.hashCode);
 
   @override
-  String toString() => 'CreateEmptyTestRunApiModel[projectId=$projectId, name=$name, description=$description, launchSource=$launchSource, attachments=$attachments, links=$links]';
+  String toString() => 'CreateEmptyTestRunApiModel[projectId=$projectId, name=$name, description=$description, launchSource=$launchSource, attachments=$attachments, links=$links, tags=$tags]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -89,6 +95,11 @@ class CreateEmptyTestRunApiModel {
     } else {
       json[r'links'] = null;
     }
+    if (this.tags != null) {
+      json[r'tags'] = this.tags;
+    } else {
+      json[r'tags'] = null;
+    }
     return json;
   }
 
@@ -117,6 +128,9 @@ class CreateEmptyTestRunApiModel {
         launchSource: mapValueOfType<String>(json, r'launchSource'),
         attachments: AssignAttachmentApiModel.listFromJson(json[r'attachments']),
         links: CreateLinkApiModel.listFromJson(json[r'links']),
+        tags: json[r'tags'] is Iterable
+            ? (json[r'tags'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
       );
     }
     return null;

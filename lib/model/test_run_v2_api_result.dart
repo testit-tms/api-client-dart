@@ -24,6 +24,7 @@ class TestRunV2ApiResult {
     this.links = const [],
     this.webhooks = const [],
     required this.runCount,
+    this.tags = const [],
     this.description,
     this.launchSource,
     this.startedOn,
@@ -69,6 +70,9 @@ class TestRunV2ApiResult {
   /// Run count
   int runCount;
 
+  /// Collection of tags associated with the test run
+  List<String> tags;
+
   /// Test run description
   String? description;
 
@@ -112,6 +116,7 @@ class TestRunV2ApiResult {
     _deepEquality.equals(other.links, links) &&
     _deepEquality.equals(other.webhooks, webhooks) &&
     other.runCount == runCount &&
+    _deepEquality.equals(other.tags, tags) &&
     other.description == description &&
     other.launchSource == launchSource &&
     other.startedOn == startedOn &&
@@ -137,6 +142,7 @@ class TestRunV2ApiResult {
     (links.hashCode) +
     (webhooks.hashCode) +
     (runCount.hashCode) +
+    (tags.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (launchSource == null ? 0 : launchSource!.hashCode) +
     (startedOn == null ? 0 : startedOn!.hashCode) +
@@ -149,7 +155,7 @@ class TestRunV2ApiResult {
     (customParameters == null ? 0 : customParameters!.hashCode);
 
   @override
-  String toString() => 'TestRunV2ApiResult[id=$id, name=$name, stateName=$stateName, status=$status, projectId=$projectId, createdDate=$createdDate, createdById=$createdById, attachments=$attachments, links=$links, webhooks=$webhooks, runCount=$runCount, description=$description, launchSource=$launchSource, startedOn=$startedOn, completedOn=$completedOn, testPlanId=$testPlanId, testResults=$testResults, modifiedDate=$modifiedDate, modifiedById=$modifiedById, createdByUserName=$createdByUserName, customParameters=$customParameters]';
+  String toString() => 'TestRunV2ApiResult[id=$id, name=$name, stateName=$stateName, status=$status, projectId=$projectId, createdDate=$createdDate, createdById=$createdById, attachments=$attachments, links=$links, webhooks=$webhooks, runCount=$runCount, tags=$tags, description=$description, launchSource=$launchSource, startedOn=$startedOn, completedOn=$completedOn, testPlanId=$testPlanId, testResults=$testResults, modifiedDate=$modifiedDate, modifiedById=$modifiedById, createdByUserName=$createdByUserName, customParameters=$customParameters]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -164,6 +170,7 @@ class TestRunV2ApiResult {
       json[r'links'] = this.links;
       json[r'webhooks'] = this.webhooks;
       json[r'runCount'] = this.runCount;
+      json[r'tags'] = this.tags;
     if (this.description != null) {
       json[r'description'] = this.description;
     } else {
@@ -247,6 +254,9 @@ class TestRunV2ApiResult {
         links: LinkApiResult.listFromJson(json[r'links']),
         webhooks: NamedEntityApiModel.listFromJson(json[r'webhooks']),
         runCount: mapValueOfType<int>(json, r'runCount')!,
+        tags: json[r'tags'] is Iterable
+            ? (json[r'tags'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
         description: mapValueOfType<String>(json, r'description'),
         launchSource: mapValueOfType<String>(json, r'launchSource'),
         startedOn: mapDateTime(json, r'startedOn', r''),
@@ -315,6 +325,7 @@ class TestRunV2ApiResult {
     'links',
     'webhooks',
     'runCount',
+    'tags',
   };
 }
 

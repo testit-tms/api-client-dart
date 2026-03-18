@@ -604,6 +604,10 @@ class ApiClient {
           return NotificationQueryFilterModel.fromJson(value);
         case 'NotificationTypeModel':
           return NotificationTypeModelTypeTransformer().decode(value);
+        case 'OpenIdConnectionClientShortModel':
+          return OpenIdConnectionClientShortModel.fromJson(value);
+        case 'OpenIdConnectionSettingsShortClientModel':
+          return OpenIdConnectionSettingsShortClientModel.fromJson(value);
         case 'Operation':
           return Operation.fromJson(value);
         case 'Order':
@@ -1012,6 +1016,8 @@ class ApiClient {
           return UpdateMultipleAttachmentsApiModel.fromJson(value);
         case 'UpdateMultipleLinksApiModel':
           return UpdateMultipleLinksApiModel.fromJson(value);
+        case 'UpdateMultipleTagsApiModel':
+          return UpdateMultipleTagsApiModel.fromJson(value);
         case 'UpdateMultipleTestRunsApiModel':
           return UpdateMultipleTestRunsApiModel.fromJson(value);
         case 'UpdateParameterApiModel':

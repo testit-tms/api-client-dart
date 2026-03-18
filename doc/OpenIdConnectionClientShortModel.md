@@ -1,4 +1,4 @@
-# testit_api_client_dart.model.TagApiModel
+# testit_api_client_dart.model.OpenIdConnectionClientShortModel
 
 ## Load the model package
 ```dart
@@ -8,7 +8,10 @@ import 'package:testit_api_client_dart/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** | Name of the tag | 
+**id** | **String** |  | 
+**isEnabled** | **bool** |  | 
+**name** | **String** |  | [optional] 
+**settings** | [**OpenIdConnectionSettingsShortClientModel**](OpenIdConnectionSettingsShortClientModel.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

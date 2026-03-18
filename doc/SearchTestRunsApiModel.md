@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **completedDate** | [**DateTimeRangeSelectorModel**](DateTimeRangeSelectorModel.md) |  | [optional] 
 **createdByIds** | **Set<String>** |  | [optional] [default to const {}]
 **modifiedByIds** | **Set<String>** |  | [optional] [default to const {}]
+**tags** | **Set<String>** |  | [optional] [default to const {}]
+**excludeTags** | **Set<String>** |  | [optional] [default to const {}]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

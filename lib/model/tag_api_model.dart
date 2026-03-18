@@ -16,7 +16,7 @@ class TagApiModel {
     required this.name,
   });
 
-  /// Tag name
+  /// Name of the tag
   String name;
 
   @override

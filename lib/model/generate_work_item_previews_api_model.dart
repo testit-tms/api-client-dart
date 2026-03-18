@@ -14,53 +14,79 @@ class GenerateWorkItemPreviewsApiModel {
   /// Returns a new [GenerateWorkItemPreviewsApiModel] instance.
   GenerateWorkItemPreviewsApiModel({
     required this.externalServiceId,
-    required this.taskKey,
-    required this.sectionId,
     required this.temperature,
     required this.previewLimit,
+    this.taskKey,
+    this.issueKey,
+    this.userContext,
   });
 
+  /// The ID of the external AI service to be used for generation.
   String externalServiceId;
 
-  String taskKey;
-
-  String sectionId;
-
+  /// Controls randomness of the AI model output.
+  ///
   /// Minimum value: 0
   /// Maximum value: 1
   double temperature;
 
+  /// Number of work item previews to generate.
+  ///
   /// Minimum value: 1
   /// Maximum value: 30
   int previewLimit;
 
+  /// The key of the issue in an issue tracker (e.g., JIRA-123).
+  String? taskKey;
+
+  /// The key of the issue in an issue tracker (e.g., JIRA-123).
+  String? issueKey;
+
+  /// Additional user context or description of the issue if no issue key is provided.
+  String? userContext;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is GenerateWorkItemPreviewsApiModel &&
     other.externalServiceId == externalServiceId &&
-    other.taskKey == taskKey &&
-    other.sectionId == sectionId &&
     other.temperature == temperature &&
-    other.previewLimit == previewLimit;
+    other.previewLimit == previewLimit &&
+    other.taskKey == taskKey &&
+    other.issueKey == issueKey &&
+    other.userContext == userContext;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (externalServiceId.hashCode) +
-    (taskKey.hashCode) +
-    (sectionId.hashCode) +
     (temperature.hashCode) +
-    (previewLimit.hashCode);
+    (previewLimit.hashCode) +
+    (taskKey == null ? 0 : taskKey!.hashCode) +
+    (issueKey == null ? 0 : issueKey!.hashCode) +
+    (userContext == null ? 0 : userContext!.hashCode);
 
   @override
-  String toString() => 'GenerateWorkItemPreviewsApiModel[externalServiceId=$externalServiceId, taskKey=$taskKey, sectionId=$sectionId, temperature=$temperature, previewLimit=$previewLimit]';
+  String toString() => 'GenerateWorkItemPreviewsApiModel[externalServiceId=$externalServiceId, temperature=$temperature, previewLimit=$previewLimit, taskKey=$taskKey, issueKey=$issueKey, userContext=$userContext]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'externalServiceId'] = this.externalServiceId;
-      json[r'taskKey'] = this.taskKey;
-      json[r'sectionId'] = this.sectionId;
       json[r'temperature'] = this.temperature;
       json[r'previewLimit'] = this.previewLimit;
+    if (this.taskKey != null) {
+      json[r'taskKey'] = this.taskKey;
+    } else {
+      json[r'taskKey'] = null;
+    }
+    if (this.issueKey != null) {
+      json[r'issueKey'] = this.issueKey;
+    } else {
+      json[r'issueKey'] = null;
+    }
+    if (this.userContext != null) {
+      json[r'userContext'] = this.userContext;
+    } else {
+      json[r'userContext'] = null;
+    }
     return json;
   }
 
@@ -84,10 +110,11 @@ class GenerateWorkItemPreviewsApiModel {
 
       return GenerateWorkItemPreviewsApiModel(
         externalServiceId: mapValueOfType<String>(json, r'externalServiceId')!,
-        taskKey: mapValueOfType<String>(json, r'taskKey')!,
-        sectionId: mapValueOfType<String>(json, r'sectionId')!,
         temperature: mapValueOfType<double>(json, r'temperature')!,
         previewLimit: mapValueOfType<int>(json, r'previewLimit')!,
+        taskKey: mapValueOfType<String>(json, r'taskKey'),
+        issueKey: mapValueOfType<String>(json, r'issueKey'),
+        userContext: mapValueOfType<String>(json, r'userContext'),
       );
     }
     return null;
@@ -136,8 +163,6 @@ class GenerateWorkItemPreviewsApiModel {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'externalServiceId',
-    'taskKey',
-    'sectionId',
     'temperature',
     'previewLimit',
   };

@@ -69,7 +69,7 @@ class TestResultShortResponse {
   DateTime createdDate;
 
   /// Collection of links attached to the test result
-  List<LinkShort> links;
+  List<TestResultLinkApiResult> links;
 
   /// Collection of files attached to the test result
   List<AttachmentApiResult> attachments;
@@ -236,7 +236,7 @@ class TestResultShortResponse {
         resultReasons: AutoTestResultReasonShort.listFromJson(json[r'resultReasons']),
         date: mapDateTime(json, r'date', r'')!,
         createdDate: mapDateTime(json, r'createdDate', r'')!,
-        links: LinkShort.listFromJson(json[r'links']),
+        links: TestResultLinkApiResult.listFromJson(json[r'links']),
         attachments: AttachmentApiResult.listFromJson(json[r'attachments']),
         rerunCompletedCount: mapValueOfType<int>(json, r'rerunCompletedCount')!,
         autotestExternalId: mapValueOfType<String>(json, r'autotestExternalId'),

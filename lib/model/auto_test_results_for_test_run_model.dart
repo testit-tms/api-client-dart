@@ -19,6 +19,7 @@ class AutoTestResultsForTestRunModel {
     this.failureReasonNames = const [],
     this.outcome,
     this.statusCode,
+    this.statusType,
     this.message,
     this.traces,
     this.startedOn,
@@ -47,8 +48,11 @@ class AutoTestResultsForTestRunModel {
   /// Specifies the result of the autotest execution.
   AvailableTestResultOutcome? outcome;
 
-  /// Specifies the result of the autotest execution.
+  /// Specifies code of result status of the autotest execution.
   String? statusCode;
+
+  /// Specifies type of result status of the autotest execution.
+  TestStatusType? statusType;
 
   /// A comment for the result.
   String? message;
@@ -94,6 +98,7 @@ class AutoTestResultsForTestRunModel {
     _deepEquality.equals(other.failureReasonNames, failureReasonNames) &&
     other.outcome == outcome &&
     other.statusCode == statusCode &&
+    other.statusType == statusType &&
     other.message == message &&
     other.traces == traces &&
     other.startedOn == startedOn &&
@@ -115,6 +120,7 @@ class AutoTestResultsForTestRunModel {
     (failureReasonNames == null ? 0 : failureReasonNames!.hashCode) +
     (outcome == null ? 0 : outcome!.hashCode) +
     (statusCode == null ? 0 : statusCode!.hashCode) +
+    (statusType == null ? 0 : statusType!.hashCode) +
     (message == null ? 0 : message!.hashCode) +
     (traces == null ? 0 : traces!.hashCode) +
     (startedOn == null ? 0 : startedOn!.hashCode) +
@@ -128,7 +134,7 @@ class AutoTestResultsForTestRunModel {
     (teardownResults == null ? 0 : teardownResults!.hashCode);
 
   @override
-  String toString() => 'AutoTestResultsForTestRunModel[configurationId=$configurationId, autoTestExternalId=$autoTestExternalId, links=$links, failureReasonNames=$failureReasonNames, outcome=$outcome, statusCode=$statusCode, message=$message, traces=$traces, startedOn=$startedOn, completedOn=$completedOn, duration=$duration, attachments=$attachments, parameters=$parameters, properties=$properties, stepResults=$stepResults, setupResults=$setupResults, teardownResults=$teardownResults]';
+  String toString() => 'AutoTestResultsForTestRunModel[configurationId=$configurationId, autoTestExternalId=$autoTestExternalId, links=$links, failureReasonNames=$failureReasonNames, outcome=$outcome, statusCode=$statusCode, statusType=$statusType, message=$message, traces=$traces, startedOn=$startedOn, completedOn=$completedOn, duration=$duration, attachments=$attachments, parameters=$parameters, properties=$properties, stepResults=$stepResults, setupResults=$setupResults, teardownResults=$teardownResults]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -153,6 +159,11 @@ class AutoTestResultsForTestRunModel {
       json[r'statusCode'] = this.statusCode;
     } else {
       json[r'statusCode'] = null;
+    }
+    if (this.statusType != null) {
+      json[r'statusType'] = this.statusType;
+    } else {
+      json[r'statusType'] = null;
     }
     if (this.message != null) {
       json[r'message'] = this.message;
@@ -237,6 +248,7 @@ class AutoTestResultsForTestRunModel {
         failureReasonNames: FailureCategoryModel.listFromJson(json[r'failureReasonNames']),
         outcome: AvailableTestResultOutcome.fromJson(json[r'outcome']),
         statusCode: mapValueOfType<String>(json, r'statusCode'),
+        statusType: TestStatusType.fromJson(json[r'statusType']),
         message: mapValueOfType<String>(json, r'message'),
         traces: mapValueOfType<String>(json, r'traces'),
         startedOn: mapDateTime(json, r'startedOn', r''),

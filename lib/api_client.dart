@@ -260,10 +260,6 @@ class ApiClient {
           return AutoTestResultHistorySelectApiModel.fromJson(value);
         case 'AutoTestResultReasonShort':
           return AutoTestResultReasonShort.fromJson(value);
-        case 'AutoTestResultReasonsCountItemModel':
-          return AutoTestResultReasonsCountItemModel.fromJson(value);
-        case 'AutoTestResultReasonsCountModel':
-          return AutoTestResultReasonsCountModel.fromJson(value);
         case 'AutoTestResultsForTestRunModel':
           return AutoTestResultsForTestRunModel.fromJson(value);
         case 'AutoTestSearchApiModel':
@@ -576,8 +572,6 @@ class ApiClient {
           return LinkPostModel.fromJson(value);
         case 'LinkPutModel':
           return LinkPutModel.fromJson(value);
-        case 'LinkShort':
-          return LinkShort.fromJson(value);
         case 'LinkShortApiResult':
           return LinkShortApiResult.fromJson(value);
         case 'LinkShortModel':
@@ -904,6 +898,8 @@ class ApiClient {
           return TestResultFailureClassApiResult.fromJson(value);
         case 'TestResultHistoryReportApiResult':
           return TestResultHistoryReportApiResult.fromJson(value);
+        case 'TestResultLinkApiResult':
+          return TestResultLinkApiResult.fromJson(value);
         case 'TestResultOutcome':
           return TestResultOutcomeTypeTransformer().decode(value);
         case 'TestResultResponse':

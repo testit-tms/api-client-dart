@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **description** | **String** | Test run description | [optional] 
 **attachmentUpdateScheme** | [**UpdateMultipleAttachmentsApiModel**](UpdateMultipleAttachmentsApiModel.md) | Set of attachment ids | [optional] 
 **linkUpdateScheme** | [**UpdateMultipleLinksApiModel**](UpdateMultipleLinksApiModel.md) | Set of links | [optional] 
+**tagUpdateScheme** | [**UpdateMultipleTagsApiModel**](UpdateMultipleTagsApiModel.md) | Set of tags | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

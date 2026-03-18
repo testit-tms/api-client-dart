@@ -23,6 +23,8 @@ Name | Type | Description | Notes
 **failureCategory** | [**List<FailureCategory>**](FailureCategory.md) | Specifies failure categories | [optional] [default to const []]
 **completedDate** | [**DateTimeRangeSelectorModel**](DateTimeRangeSelectorModel.md) | Specifies a test run range of completed date to search for | [optional] 
 **testResultsConfigurationIds** | **List<String>** | Specifies a test result configuration IDs to search for | [optional] [default to const []]
+**tags** | **List<String>** | Specifies a test run tags to search for | [optional] [default to const []]
+**excludeTags** | **List<String>** | Specifies a test run excluded tags to search for | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

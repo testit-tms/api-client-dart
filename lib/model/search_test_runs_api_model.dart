@@ -20,6 +20,8 @@ class SearchTestRunsApiModel {
     this.completedDate,
     this.createdByIds = const {},
     this.modifiedByIds = const {},
+    this.tags = const {},
+    this.excludeTags = const {},
   });
 
   String? name;
@@ -36,6 +38,10 @@ class SearchTestRunsApiModel {
 
   Set<String>? modifiedByIds;
 
+  Set<String>? tags;
+
+  Set<String>? excludeTags;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is SearchTestRunsApiModel &&
     other.name == name &&
@@ -44,7 +50,9 @@ class SearchTestRunsApiModel {
     other.startedDate == startedDate &&
     other.completedDate == completedDate &&
     _deepEquality.equals(other.createdByIds, createdByIds) &&
-    _deepEquality.equals(other.modifiedByIds, modifiedByIds);
+    _deepEquality.equals(other.modifiedByIds, modifiedByIds) &&
+    _deepEquality.equals(other.tags, tags) &&
+    _deepEquality.equals(other.excludeTags, excludeTags);
 
   @override
   int get hashCode =>
@@ -55,10 +63,12 @@ class SearchTestRunsApiModel {
     (startedDate == null ? 0 : startedDate!.hashCode) +
     (completedDate == null ? 0 : completedDate!.hashCode) +
     (createdByIds == null ? 0 : createdByIds!.hashCode) +
-    (modifiedByIds == null ? 0 : modifiedByIds!.hashCode);
+    (modifiedByIds == null ? 0 : modifiedByIds!.hashCode) +
+    (tags == null ? 0 : tags!.hashCode) +
+    (excludeTags == null ? 0 : excludeTags!.hashCode);
 
   @override
-  String toString() => 'SearchTestRunsApiModel[name=$name, states=$states, statusCodes=$statusCodes, startedDate=$startedDate, completedDate=$completedDate, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds]';
+  String toString() => 'SearchTestRunsApiModel[name=$name, states=$states, statusCodes=$statusCodes, startedDate=$startedDate, completedDate=$completedDate, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds, tags=$tags, excludeTags=$excludeTags]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -97,6 +107,16 @@ class SearchTestRunsApiModel {
     } else {
       json[r'modifiedByIds'] = null;
     }
+    if (this.tags != null) {
+      json[r'tags'] = this.tags!.toList(growable: false);
+    } else {
+      json[r'tags'] = null;
+    }
+    if (this.excludeTags != null) {
+      json[r'excludeTags'] = this.excludeTags!.toList(growable: false);
+    } else {
+      json[r'excludeTags'] = null;
+    }
     return json;
   }
 
@@ -131,6 +151,12 @@ class SearchTestRunsApiModel {
             : const {},
         modifiedByIds: json[r'modifiedByIds'] is Iterable
             ? (json[r'modifiedByIds'] as Iterable).cast<String>().toSet()
+            : const {},
+        tags: json[r'tags'] is Iterable
+            ? (json[r'tags'] as Iterable).cast<String>().toSet()
+            : const {},
+        excludeTags: json[r'excludeTags'] is Iterable
+            ? (json[r'excludeTags'] as Iterable).cast<String>().toSet()
             : const {},
       );
     }

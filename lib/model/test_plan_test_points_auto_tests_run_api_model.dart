@@ -18,6 +18,7 @@ class TestPlanTestPointsAutoTestsRunApiModel {
     this.filter,
     this.extractionModel,
     this.build,
+    this.tags = const [],
   });
 
   /// Webhook ids to run.
@@ -35,13 +36,17 @@ class TestPlanTestPointsAutoTestsRunApiModel {
   /// Specifies the test run build.
   String? build;
 
+  /// Tags of the test run.
+  List<String>? tags;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is TestPlanTestPointsAutoTestsRunApiModel &&
     _deepEquality.equals(other.webhookIds, webhookIds) &&
     other.resetNotActualAutomatedTestPoints == resetNotActualAutomatedTestPoints &&
     other.filter == filter &&
     other.extractionModel == extractionModel &&
-    other.build == build;
+    other.build == build &&
+    _deepEquality.equals(other.tags, tags);
 
   @override
   int get hashCode =>
@@ -50,10 +55,11 @@ class TestPlanTestPointsAutoTestsRunApiModel {
     (resetNotActualAutomatedTestPoints.hashCode) +
     (filter == null ? 0 : filter!.hashCode) +
     (extractionModel == null ? 0 : extractionModel!.hashCode) +
-    (build == null ? 0 : build!.hashCode);
+    (build == null ? 0 : build!.hashCode) +
+    (tags == null ? 0 : tags!.hashCode);
 
   @override
-  String toString() => 'TestPlanTestPointsAutoTestsRunApiModel[webhookIds=$webhookIds, resetNotActualAutomatedTestPoints=$resetNotActualAutomatedTestPoints, filter=$filter, extractionModel=$extractionModel, build=$build]';
+  String toString() => 'TestPlanTestPointsAutoTestsRunApiModel[webhookIds=$webhookIds, resetNotActualAutomatedTestPoints=$resetNotActualAutomatedTestPoints, filter=$filter, extractionModel=$extractionModel, build=$build, tags=$tags]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -73,6 +79,11 @@ class TestPlanTestPointsAutoTestsRunApiModel {
       json[r'build'] = this.build;
     } else {
       json[r'build'] = null;
+    }
+    if (this.tags != null) {
+      json[r'tags'] = this.tags;
+    } else {
+      json[r'tags'] = null;
     }
     return json;
   }
@@ -103,6 +114,9 @@ class TestPlanTestPointsAutoTestsRunApiModel {
         filter: TestPlanTestPointsSearchApiModel.fromJson(json[r'filter']),
         extractionModel: TestPlanTestPointsExtractionApiModel.fromJson(json[r'extractionModel']),
         build: mapValueOfType<String>(json, r'build'),
+        tags: json[r'tags'] is Iterable
+            ? (json[r'tags'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
       );
     }
     return null;

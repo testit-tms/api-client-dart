@@ -23,6 +23,7 @@ class TestRunShortApiResult {
     required this.autoTestsCount,
     required this.statistics,
     this.testResultsConfigurations = const [],
+    this.tags = const [],
     this.startedDate,
     this.completedDate,
     this.modifiedById,
@@ -58,6 +59,9 @@ class TestRunShortApiResult {
   /// Test results configurations
   List<ConfigurationShortApiResult> testResultsConfigurations;
 
+  /// Collection of tags associated with the test run
+  List<String> tags;
+
   /// Date when the test run was started
   DateTime? startedDate;
 
@@ -79,6 +83,7 @@ class TestRunShortApiResult {
     other.autoTestsCount == autoTestsCount &&
     other.statistics == statistics &&
     _deepEquality.equals(other.testResultsConfigurations, testResultsConfigurations) &&
+    _deepEquality.equals(other.tags, tags) &&
     other.startedDate == startedDate &&
     other.completedDate == completedDate &&
     other.modifiedById == modifiedById;
@@ -96,12 +101,13 @@ class TestRunShortApiResult {
     (autoTestsCount.hashCode) +
     (statistics.hashCode) +
     (testResultsConfigurations.hashCode) +
+    (tags.hashCode) +
     (startedDate == null ? 0 : startedDate!.hashCode) +
     (completedDate == null ? 0 : completedDate!.hashCode) +
     (modifiedById == null ? 0 : modifiedById!.hashCode);
 
   @override
-  String toString() => 'TestRunShortApiResult[id=$id, name=$name, state=$state, status=$status, createdDate=$createdDate, createdById=$createdById, isDeleted=$isDeleted, autoTestsCount=$autoTestsCount, statistics=$statistics, testResultsConfigurations=$testResultsConfigurations, startedDate=$startedDate, completedDate=$completedDate, modifiedById=$modifiedById]';
+  String toString() => 'TestRunShortApiResult[id=$id, name=$name, state=$state, status=$status, createdDate=$createdDate, createdById=$createdById, isDeleted=$isDeleted, autoTestsCount=$autoTestsCount, statistics=$statistics, testResultsConfigurations=$testResultsConfigurations, tags=$tags, startedDate=$startedDate, completedDate=$completedDate, modifiedById=$modifiedById]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -115,6 +121,7 @@ class TestRunShortApiResult {
       json[r'autoTestsCount'] = this.autoTestsCount;
       json[r'statistics'] = this.statistics;
       json[r'testResultsConfigurations'] = this.testResultsConfigurations;
+      json[r'tags'] = this.tags;
     if (this.startedDate != null) {
       json[r'startedDate'] = this.startedDate!.toUtc().toIso8601String();
     } else {
@@ -162,6 +169,9 @@ class TestRunShortApiResult {
         autoTestsCount: mapValueOfType<int>(json, r'autoTestsCount')!,
         statistics: TestResultsStatisticsApiResult.fromJson(json[r'statistics'])!,
         testResultsConfigurations: ConfigurationShortApiResult.listFromJson(json[r'testResultsConfigurations']),
+        tags: json[r'tags'] is Iterable
+            ? (json[r'tags'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
         startedDate: mapDateTime(json, r'startedDate', r''),
         completedDate: mapDateTime(json, r'completedDate', r''),
         modifiedById: mapValueOfType<String>(json, r'modifiedById'),
@@ -222,6 +232,7 @@ class TestRunShortApiResult {
     'autoTestsCount',
     'statistics',
     'testResultsConfigurations',
+    'tags',
   };
 }
 

@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **autoTestsCount** | **int** | Number of AutoTests run in the test run | 
 **statistics** | [**TestResultsStatisticsApiResult**](TestResultsStatisticsApiResult.md) | Statistics of the test run | 
 **testResultsConfigurations** | [**List<ConfigurationShortApiResult>**](ConfigurationShortApiResult.md) | Test results configurations | [default to const []]
+**tags** | **List<String>** | Collection of tags associated with the test run | [default to const []]
 **startedDate** | [**DateTime**](DateTime.md) | Date when the test run was started | [optional] 
 **completedDate** | [**DateTime**](DateTime.md) | Completion date of the test run | [optional] 
 **modifiedById** | **String** | Unique ID of user who modified the test run last time | [optional] 

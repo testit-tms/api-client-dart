@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **testResults** | [**List<TestResultApiResult>**](TestResultApiResult.md) |  | [default to const []]
 **createdDate** | [**DateTime**](DateTime.md) |  | 
 **createdById** | **String** |  | 
+**tags** | **List<String>** |  | [default to const []]
 **startedDate** | [**DateTime**](DateTime.md) |  | [optional] 
 **completedDate** | [**DateTime**](DateTime.md) |  | [optional] 
 **description** | **String** |  | [optional] 

@@ -28,6 +28,8 @@ class TestRunFilterApiModel {
     this.failureCategory = const [],
     this.completedDate,
     this.testResultsConfigurationIds = const [],
+    this.tags = const [],
+    this.excludeTags = const [],
   });
 
   /// Specifies a test run project IDs to search for
@@ -75,6 +77,12 @@ class TestRunFilterApiModel {
   /// Specifies a test result configuration IDs to search for
   List<String>? testResultsConfigurationIds;
 
+  /// Specifies a test run tags to search for
+  List<String>? tags;
+
+  /// Specifies a test run excluded tags to search for
+  List<String>? excludeTags;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is TestRunFilterApiModel &&
     _deepEquality.equals(other.projectIds, projectIds) &&
@@ -91,7 +99,9 @@ class TestRunFilterApiModel {
     _deepEquality.equals(other.testResultsStatusCodes, testResultsStatusCodes) &&
     _deepEquality.equals(other.failureCategory, failureCategory) &&
     other.completedDate == completedDate &&
-    _deepEquality.equals(other.testResultsConfigurationIds, testResultsConfigurationIds);
+    _deepEquality.equals(other.testResultsConfigurationIds, testResultsConfigurationIds) &&
+    _deepEquality.equals(other.tags, tags) &&
+    _deepEquality.equals(other.excludeTags, excludeTags);
 
   @override
   int get hashCode =>
@@ -110,10 +120,12 @@ class TestRunFilterApiModel {
     (testResultsStatusCodes == null ? 0 : testResultsStatusCodes!.hashCode) +
     (failureCategory == null ? 0 : failureCategory!.hashCode) +
     (completedDate == null ? 0 : completedDate!.hashCode) +
-    (testResultsConfigurationIds == null ? 0 : testResultsConfigurationIds!.hashCode);
+    (testResultsConfigurationIds == null ? 0 : testResultsConfigurationIds!.hashCode) +
+    (tags == null ? 0 : tags!.hashCode) +
+    (excludeTags == null ? 0 : excludeTags!.hashCode);
 
   @override
-  String toString() => 'TestRunFilterApiModel[projectIds=$projectIds, name=$name, states=$states, statusCodes=$statusCodes, createdDate=$createdDate, startedDate=$startedDate, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds, isDeleted=$isDeleted, autoTestsCount=$autoTestsCount, testResultsOutcome=$testResultsOutcome, testResultsStatusCodes=$testResultsStatusCodes, failureCategory=$failureCategory, completedDate=$completedDate, testResultsConfigurationIds=$testResultsConfigurationIds]';
+  String toString() => 'TestRunFilterApiModel[projectIds=$projectIds, name=$name, states=$states, statusCodes=$statusCodes, createdDate=$createdDate, startedDate=$startedDate, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds, isDeleted=$isDeleted, autoTestsCount=$autoTestsCount, testResultsOutcome=$testResultsOutcome, testResultsStatusCodes=$testResultsStatusCodes, failureCategory=$failureCategory, completedDate=$completedDate, testResultsConfigurationIds=$testResultsConfigurationIds, tags=$tags, excludeTags=$excludeTags]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -192,6 +204,16 @@ class TestRunFilterApiModel {
     } else {
       json[r'testResultsConfigurationIds'] = null;
     }
+    if (this.tags != null) {
+      json[r'tags'] = this.tags;
+    } else {
+      json[r'tags'] = null;
+    }
+    if (this.excludeTags != null) {
+      json[r'excludeTags'] = this.excludeTags;
+    } else {
+      json[r'excludeTags'] = null;
+    }
     return json;
   }
 
@@ -240,6 +262,12 @@ class TestRunFilterApiModel {
         completedDate: DateTimeRangeSelectorModel.fromJson(json[r'completedDate']),
         testResultsConfigurationIds: json[r'testResultsConfigurationIds'] is Iterable
             ? (json[r'testResultsConfigurationIds'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
+        tags: json[r'tags'] is Iterable
+            ? (json[r'tags'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
+        excludeTags: json[r'excludeTags'] is Iterable
+            ? (json[r'excludeTags'] as Iterable).cast<String>().toList(growable: false)
             : const [],
       );
     }

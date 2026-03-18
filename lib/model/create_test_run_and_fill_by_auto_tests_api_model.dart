@@ -21,6 +21,7 @@ class CreateTestRunAndFillByAutoTestsApiModel {
     this.launchSource,
     this.attachments = const [],
     this.links = const [],
+    this.tags = const [],
   });
 
   /// Specifies the GUID of the project, in which a test run will be created.
@@ -47,6 +48,9 @@ class CreateTestRunAndFillByAutoTestsApiModel {
   /// Collection of links to relate to the test run
   List<CreateLinkApiModel>? links;
 
+  /// Collection of tags to assign to the test run
+  List<String>? tags;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateTestRunAndFillByAutoTestsApiModel &&
     other.projectId == projectId &&
@@ -56,7 +60,8 @@ class CreateTestRunAndFillByAutoTestsApiModel {
     other.description == description &&
     other.launchSource == launchSource &&
     _deepEquality.equals(other.attachments, attachments) &&
-    _deepEquality.equals(other.links, links);
+    _deepEquality.equals(other.links, links) &&
+    _deepEquality.equals(other.tags, tags);
 
   @override
   int get hashCode =>
@@ -68,10 +73,11 @@ class CreateTestRunAndFillByAutoTestsApiModel {
     (description == null ? 0 : description!.hashCode) +
     (launchSource == null ? 0 : launchSource!.hashCode) +
     (attachments == null ? 0 : attachments!.hashCode) +
-    (links == null ? 0 : links!.hashCode);
+    (links == null ? 0 : links!.hashCode) +
+    (tags == null ? 0 : tags!.hashCode);
 
   @override
-  String toString() => 'CreateTestRunAndFillByAutoTestsApiModel[projectId=$projectId, configurationIds=$configurationIds, autoTestExternalIds=$autoTestExternalIds, name=$name, description=$description, launchSource=$launchSource, attachments=$attachments, links=$links]';
+  String toString() => 'CreateTestRunAndFillByAutoTestsApiModel[projectId=$projectId, configurationIds=$configurationIds, autoTestExternalIds=$autoTestExternalIds, name=$name, description=$description, launchSource=$launchSource, attachments=$attachments, links=$links, tags=$tags]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -102,6 +108,11 @@ class CreateTestRunAndFillByAutoTestsApiModel {
       json[r'links'] = this.links;
     } else {
       json[r'links'] = null;
+    }
+    if (this.tags != null) {
+      json[r'tags'] = this.tags;
+    } else {
+      json[r'tags'] = null;
     }
     return json;
   }
@@ -137,6 +148,9 @@ class CreateTestRunAndFillByAutoTestsApiModel {
         launchSource: mapValueOfType<String>(json, r'launchSource'),
         attachments: AssignAttachmentApiModel.listFromJson(json[r'attachments']),
         links: CreateLinkApiModel.listFromJson(json[r'links']),
+        tags: json[r'tags'] is Iterable
+            ? (json[r'tags'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
       );
     }
     return null;

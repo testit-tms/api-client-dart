@@ -19,12 +19,16 @@ class RerunTestResultApiResult {
     required this.runNumber,
   });
 
+  /// Identifier of the rerun result.
   String id;
 
+  /// Status of the autotest run.
   String outcome;
 
-  TestStatusApiResult status;
+  /// Status of the autotest run.
+  TestStatusShortApiResult status;
 
+  /// Number of the run (e.g., 1 for the first attempt).
   int runNumber;
 
   @override
@@ -75,7 +79,7 @@ class RerunTestResultApiResult {
       return RerunTestResultApiResult(
         id: mapValueOfType<String>(json, r'id')!,
         outcome: mapValueOfType<String>(json, r'outcome')!,
-        status: TestStatusApiResult.fromJson(json[r'status'])!,
+        status: TestStatusShortApiResult.fromJson(json[r'status'])!,
         runNumber: mapValueOfType<int>(json, r'runNumber')!,
       );
     }

@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **resultReasons** | [**List<AutoTestResultReasonShort>**](AutoTestResultReasonShort.md) | Collection of result reasons which the test result have | [default to const []]
 **date** | [**DateTime**](DateTime.md) | Date when the test result was completed or started or created | 
 **createdDate** | [**DateTime**](DateTime.md) | Date when the test result has been created | 
-**links** | [**List<LinkShort>**](LinkShort.md) | Collection of links attached to the test result | [default to const []]
+**links** | [**List<TestResultLinkApiResult>**](TestResultLinkApiResult.md) | Collection of links attached to the test result | [default to const []]
 **attachments** | [**List<AttachmentApiResult>**](AttachmentApiResult.md) | Collection of files attached to the test result | [default to const []]
 **rerunCompletedCount** | **int** | Run count | 
 **autotestExternalId** | **String** | External ID of autotest represented by the test result | [optional] 

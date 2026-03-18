@@ -105,7 +105,7 @@ class TestSuiteWorkItemsSearchModel {
   DateTimeRangeSelectorModel? modifiedDate;
 
   /// Specifies a work item duration range to search for
-  Int32RangeSelectorModel? duration;
+  Int64RangeSelectorModel? duration;
 
   /// Specifies a work item median duration range to search for
   Int64RangeSelectorModel? medianDuration;
@@ -408,7 +408,7 @@ class TestSuiteWorkItemsSearchModel {
         types: WorkItemEntityTypes.listFromJson(json[r'types']).toSet(),
         createdDate: DateTimeRangeSelectorModel.fromJson(json[r'createdDate']),
         modifiedDate: DateTimeRangeSelectorModel.fromJson(json[r'modifiedDate']),
-        duration: Int32RangeSelectorModel.fromJson(json[r'duration']),
+        duration: Int64RangeSelectorModel.fromJson(json[r'duration']),
         medianDuration: Int64RangeSelectorModel.fromJson(json[r'medianDuration']),
         isAutomated: mapValueOfType<bool>(json, r'isAutomated'),
         tags: json[r'tags'] is Iterable

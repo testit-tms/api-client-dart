@@ -17,8 +17,10 @@ class ConfigurationShortApiResult {
     required this.name,
   });
 
+  /// Identifier of the configuration.
   String id;
 
+  /// Name of the configuration.
   String name;
 
   @override

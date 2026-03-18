@@ -16,6 +16,7 @@ class TestResultUpdateV2Request {
     this.failureClassIds = const [],
     this.outcome,
     this.statusCode,
+    this.statusType,
     this.comment,
     this.links = const [],
     this.stepResults = const [],
@@ -34,6 +35,8 @@ class TestResultUpdateV2Request {
   TestResultOutcome? outcome;
 
   String? statusCode;
+
+  TestStatusType? statusType;
 
   String? comment;
 
@@ -66,6 +69,7 @@ class TestResultUpdateV2Request {
     _deepEquality.equals(other.failureClassIds, failureClassIds) &&
     other.outcome == outcome &&
     other.statusCode == statusCode &&
+    other.statusType == statusType &&
     other.comment == comment &&
     _deepEquality.equals(other.links, links) &&
     _deepEquality.equals(other.stepResults, stepResults) &&
@@ -84,6 +88,7 @@ class TestResultUpdateV2Request {
     (failureClassIds == null ? 0 : failureClassIds!.hashCode) +
     (outcome == null ? 0 : outcome!.hashCode) +
     (statusCode == null ? 0 : statusCode!.hashCode) +
+    (statusType == null ? 0 : statusType!.hashCode) +
     (comment == null ? 0 : comment!.hashCode) +
     (links == null ? 0 : links!.hashCode) +
     (stepResults == null ? 0 : stepResults!.hashCode) +
@@ -97,7 +102,7 @@ class TestResultUpdateV2Request {
     (trace == null ? 0 : trace!.hashCode);
 
   @override
-  String toString() => 'TestResultUpdateV2Request[failureClassIds=$failureClassIds, outcome=$outcome, statusCode=$statusCode, comment=$comment, links=$links, stepResults=$stepResults, attachments=$attachments, durationInMs=$durationInMs, duration=$duration, stepComments=$stepComments, setupResults=$setupResults, teardownResults=$teardownResults, message=$message, trace=$trace]';
+  String toString() => 'TestResultUpdateV2Request[failureClassIds=$failureClassIds, outcome=$outcome, statusCode=$statusCode, statusType=$statusType, comment=$comment, links=$links, stepResults=$stepResults, attachments=$attachments, durationInMs=$durationInMs, duration=$duration, stepComments=$stepComments, setupResults=$setupResults, teardownResults=$teardownResults, message=$message, trace=$trace]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -115,6 +120,11 @@ class TestResultUpdateV2Request {
       json[r'statusCode'] = this.statusCode;
     } else {
       json[r'statusCode'] = null;
+    }
+    if (this.statusType != null) {
+      json[r'statusType'] = this.statusType;
+    } else {
+      json[r'statusType'] = null;
     }
     if (this.comment != null) {
       json[r'comment'] = this.comment;
@@ -198,6 +208,7 @@ class TestResultUpdateV2Request {
             : const [],
         outcome: TestResultOutcome.fromJson(json[r'outcome']),
         statusCode: mapValueOfType<String>(json, r'statusCode'),
+        statusType: TestStatusType.fromJson(json[r'statusType']),
         comment: mapValueOfType<String>(json, r'comment'),
         links: Link.listFromJson(json[r'links']),
         stepResults: StepResultApiModel.listFromJson(json[r'stepResults']),

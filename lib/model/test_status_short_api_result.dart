@@ -14,43 +14,46 @@ class TestStatusShortApiResult {
   /// Returns a new [TestStatusShortApiResult] instance.
   TestStatusShortApiResult({
     required this.id,
-    required this.name,
     required this.code,
+    required this.name,
     required this.type,
   });
 
+  /// Identifier of the test status.
   String id;
 
-  String name;
-
+  /// Code representing the test status.
   String code;
 
-  /// Collection of possible status types
+  /// Name of the test status.
+  String name;
+
+  /// Type of the test status (e.g., Passed, Failed).
   TestStatusApiType type;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is TestStatusShortApiResult &&
     other.id == id &&
-    other.name == name &&
     other.code == code &&
+    other.name == name &&
     other.type == type;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id.hashCode) +
-    (name.hashCode) +
     (code.hashCode) +
+    (name.hashCode) +
     (type.hashCode);
 
   @override
-  String toString() => 'TestStatusShortApiResult[id=$id, name=$name, code=$code, type=$type]';
+  String toString() => 'TestStatusShortApiResult[id=$id, code=$code, name=$name, type=$type]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
-      json[r'name'] = this.name;
       json[r'code'] = this.code;
+      json[r'name'] = this.name;
       json[r'type'] = this.type;
     return json;
   }
@@ -75,8 +78,8 @@ class TestStatusShortApiResult {
 
       return TestStatusShortApiResult(
         id: mapValueOfType<String>(json, r'id')!,
-        name: mapValueOfType<String>(json, r'name')!,
         code: mapValueOfType<String>(json, r'code')!,
+        name: mapValueOfType<String>(json, r'name')!,
         type: TestStatusApiType.fromJson(json[r'type'])!,
       );
     }
@@ -126,8 +129,8 @@ class TestStatusShortApiResult {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'id',
-    'name',
     'code',
+    'name',
     'type',
   };
 }

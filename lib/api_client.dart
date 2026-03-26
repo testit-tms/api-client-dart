@@ -1138,6 +1138,12 @@ class ApiClient {
           return WorkItemModel.fromJson(value);
         case 'WorkItemMovePostModel':
           return WorkItemMovePostModel.fromJson(value);
+        case 'WorkItemParameterKeyApiModel':
+          return WorkItemParameterKeyApiModel.fromJson(value);
+        case 'WorkItemParameterKeyApiResult':
+          return WorkItemParameterKeyApiResult.fromJson(value);
+        case 'WorkItemParameterKeyModel':
+          return WorkItemParameterKeyModel.fromJson(value);
         case 'WorkItemPreviewApiModel':
           return WorkItemPreviewApiModel.fromJson(value);
         case 'WorkItemPreviewStepApiModel':

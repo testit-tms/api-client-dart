@@ -39,6 +39,7 @@ class WorkItemApiResult {
     this.attachments = const [],
     this.links = const [],
     this.externalIssues = const [],
+    this.parameters = const [],
     required this.createdDate,
     required this.createdById,
     required this.isDeleted,
@@ -124,6 +125,9 @@ class WorkItemApiResult {
   /// Set of external issues related to the work item
   List<ExternalIssueApiResult> externalIssues;
 
+  /// Set of parameters related to the work item
+  List<WorkItemParameterKeyApiResult> parameters;
+
   /// Creation date of the work item
   DateTime createdDate;
 
@@ -170,6 +174,7 @@ class WorkItemApiResult {
     _deepEquality.equals(other.attachments, attachments) &&
     _deepEquality.equals(other.links, links) &&
     _deepEquality.equals(other.externalIssues, externalIssues) &&
+    _deepEquality.equals(other.parameters, parameters) &&
     other.createdDate == createdDate &&
     other.createdById == createdById &&
     other.isDeleted == isDeleted &&
@@ -206,6 +211,7 @@ class WorkItemApiResult {
     (attachments.hashCode) +
     (links.hashCode) +
     (externalIssues.hashCode) +
+    (parameters.hashCode) +
     (createdDate.hashCode) +
     (createdById.hashCode) +
     (isDeleted.hashCode) +
@@ -214,7 +220,7 @@ class WorkItemApiResult {
     (modifiedById == null ? 0 : modifiedById!.hashCode);
 
   @override
-  String toString() => 'WorkItemApiResult[id=$id, globalId=$globalId, versionId=$versionId, versionNumber=$versionNumber, projectId=$projectId, sectionId=$sectionId, name=$name, sourceType=$sourceType, entityTypeName=$entityTypeName, duration=$duration, medianDuration=$medianDuration, state=$state, priority=$priority, isAutomated=$isAutomated, attributes=$attributes, tags=$tags, sectionPreconditionSteps=$sectionPreconditionSteps, sectionPostconditionSteps=$sectionPostconditionSteps, preconditionSteps=$preconditionSteps, steps=$steps, postconditionSteps=$postconditionSteps, iterations=$iterations, autoTests=$autoTests, attachments=$attachments, links=$links, externalIssues=$externalIssues, createdDate=$createdDate, createdById=$createdById, isDeleted=$isDeleted, description=$description, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
+  String toString() => 'WorkItemApiResult[id=$id, globalId=$globalId, versionId=$versionId, versionNumber=$versionNumber, projectId=$projectId, sectionId=$sectionId, name=$name, sourceType=$sourceType, entityTypeName=$entityTypeName, duration=$duration, medianDuration=$medianDuration, state=$state, priority=$priority, isAutomated=$isAutomated, attributes=$attributes, tags=$tags, sectionPreconditionSteps=$sectionPreconditionSteps, sectionPostconditionSteps=$sectionPostconditionSteps, preconditionSteps=$preconditionSteps, steps=$steps, postconditionSteps=$postconditionSteps, iterations=$iterations, autoTests=$autoTests, attachments=$attachments, links=$links, externalIssues=$externalIssues, parameters=$parameters, createdDate=$createdDate, createdById=$createdById, isDeleted=$isDeleted, description=$description, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -244,6 +250,7 @@ class WorkItemApiResult {
       json[r'attachments'] = this.attachments;
       json[r'links'] = this.links;
       json[r'externalIssues'] = this.externalIssues;
+      json[r'parameters'] = this.parameters;
       json[r'createdDate'] = this.createdDate.toUtc().toIso8601String();
       json[r'createdById'] = this.createdById;
       json[r'isDeleted'] = this.isDeleted;
@@ -310,6 +317,7 @@ class WorkItemApiResult {
         attachments: AttachmentModel.listFromJson(json[r'attachments']),
         links: LinkModel.listFromJson(json[r'links']),
         externalIssues: ExternalIssueApiResult.listFromJson(json[r'externalIssues']),
+        parameters: WorkItemParameterKeyApiResult.listFromJson(json[r'parameters']),
         createdDate: mapDateTime(json, r'createdDate', r'')!,
         createdById: mapValueOfType<String>(json, r'createdById')!,
         isDeleted: mapValueOfType<bool>(json, r'isDeleted')!,
@@ -389,6 +397,7 @@ class WorkItemApiResult {
     'attachments',
     'links',
     'externalIssues',
+    'parameters',
     'createdDate',
     'createdById',
     'isDeleted',

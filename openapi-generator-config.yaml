@@ -8,7 +8,7 @@ templateDir: null
 additionalProperties:
   # Package information
   pubName: "testit_api_client_dart"
-  pubVersion: 1.5.3
+  pubVersion: 1.5.4
   pubDescription: "Auto-generated Dart API client for Test IT"
 
   

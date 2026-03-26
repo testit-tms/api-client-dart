@@ -24,6 +24,7 @@ class WorkItemModel {
     required this.createdById,
     required this.globalId,
     this.externalIssues = const [],
+    this.parameters = const [],
     required this.id,
     required this.sectionId,
     required this.state,
@@ -71,6 +72,8 @@ class WorkItemModel {
   int globalId;
 
   List<ExternalIssueModel> externalIssues;
+
+  List<WorkItemParameterKeyModel> parameters;
 
   String id;
 
@@ -129,6 +132,7 @@ class WorkItemModel {
     other.createdById == createdById &&
     other.globalId == globalId &&
     _deepEquality.equals(other.externalIssues, externalIssues) &&
+    _deepEquality.equals(other.parameters, parameters) &&
     other.id == id &&
     other.sectionId == sectionId &&
     other.state == state &&
@@ -165,6 +169,7 @@ class WorkItemModel {
     (createdById.hashCode) +
     (globalId.hashCode) +
     (externalIssues.hashCode) +
+    (parameters.hashCode) +
     (id.hashCode) +
     (sectionId.hashCode) +
     (state.hashCode) +
@@ -188,7 +193,7 @@ class WorkItemModel {
     (description == null ? 0 : description!.hashCode);
 
   @override
-  String toString() => 'WorkItemModel[versionId=$versionId, medianDuration=$medianDuration, isDeleted=$isDeleted, projectId=$projectId, entityTypeName=$entityTypeName, isAutomated=$isAutomated, versionNumber=$versionNumber, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, externalIssues=$externalIssues, id=$id, sectionId=$sectionId, state=$state, priority=$priority, sourceType=$sourceType, steps=$steps, preconditionSteps=$preconditionSteps, postconditionSteps=$postconditionSteps, duration=$duration, attributes=$attributes, tags=$tags, links=$links, name=$name, autoTests=$autoTests, attachments=$attachments, sectionPreconditionSteps=$sectionPreconditionSteps, sectionPostconditionSteps=$sectionPostconditionSteps, iterations=$iterations, modifiedDate=$modifiedDate, modifiedById=$modifiedById, description=$description]';
+  String toString() => 'WorkItemModel[versionId=$versionId, medianDuration=$medianDuration, isDeleted=$isDeleted, projectId=$projectId, entityTypeName=$entityTypeName, isAutomated=$isAutomated, versionNumber=$versionNumber, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, externalIssues=$externalIssues, parameters=$parameters, id=$id, sectionId=$sectionId, state=$state, priority=$priority, sourceType=$sourceType, steps=$steps, preconditionSteps=$preconditionSteps, postconditionSteps=$postconditionSteps, duration=$duration, attributes=$attributes, tags=$tags, links=$links, name=$name, autoTests=$autoTests, attachments=$attachments, sectionPreconditionSteps=$sectionPreconditionSteps, sectionPostconditionSteps=$sectionPostconditionSteps, iterations=$iterations, modifiedDate=$modifiedDate, modifiedById=$modifiedById, description=$description]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -203,6 +208,7 @@ class WorkItemModel {
       json[r'createdById'] = this.createdById;
       json[r'globalId'] = this.globalId;
       json[r'externalIssues'] = this.externalIssues;
+      json[r'parameters'] = this.parameters;
       json[r'id'] = this.id;
       json[r'sectionId'] = this.sectionId;
       json[r'state'] = this.state;
@@ -289,6 +295,7 @@ class WorkItemModel {
         createdById: mapValueOfType<String>(json, r'createdById')!,
         globalId: mapValueOfType<int>(json, r'globalId')!,
         externalIssues: ExternalIssueModel.listFromJson(json[r'externalIssues']),
+        parameters: WorkItemParameterKeyModel.listFromJson(json[r'parameters']),
         id: mapValueOfType<String>(json, r'id')!,
         sectionId: mapValueOfType<String>(json, r'sectionId')!,
         state: WorkItemStates.fromJson(json[r'state'])!,
@@ -368,6 +375,7 @@ class WorkItemModel {
     'createdById',
     'globalId',
     'externalIssues',
+    'parameters',
     'id',
     'sectionId',
     'state',

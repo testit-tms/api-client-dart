@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **createdById** | **String** | Unique ID of the project creator | 
 **globalId** | **int** | Global ID of the project | 
 **type** | [**ProjectTypeModel**](ProjectTypeModel.md) | Type of the project | 
-**workflowId** | **String** |  | 
+**workflowId** | **String** | Identifier of current workflow | 
 **description** | **String** | Description of the project | [optional] 
 **attributesScheme** | [**List<CustomAttributeModel>**](CustomAttributeModel.md) | Collection of the project attributes | [optional] [default to const []]
 **testPlansAttributesScheme** | [**List<CustomAttributeModel>**](CustomAttributeModel.md) | Collection of the project test plans attributes | [optional] [default to const []]

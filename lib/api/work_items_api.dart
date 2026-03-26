@@ -1605,7 +1605,7 @@ class WorkItemsApi {
   ///
   /// * [int] versionNumber:
   ///   WorkItem version number (0 is the last version)\"
-  Future<WorkItemModel?> getWorkItemById(String id, { String? versionId, int? versionNumber, }) async {
+  Future<WorkItemApiResult?> getWorkItemById(String id, { String? versionId, int? versionNumber, }) async {
     final response = await getWorkItemByIdWithHttpInfo(id,  versionId: versionId, versionNumber: versionNumber, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -1614,7 +1614,7 @@ class WorkItemsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'WorkItemModel',) as WorkItemModel;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'WorkItemApiResult',) as WorkItemApiResult;
     
     }
     return null;

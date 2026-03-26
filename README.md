@@ -9,7 +9,7 @@
 | 5.4.1   | 1.2.3-TMS-5.4.1         |
 | 5.5     | 1.2.5-TMS-5.5           |
 | 5.6     | 1.4.0-TMS-5.6           |
-| Cloud   | 1.5.0 +                 | 
+| Cloud   | 1.5.4 +                 | 
 
 1. For current versions, see the releases tab. 
 2. Starting with 5.2, we have added a TMS postscript, which means that the utility is compatible with a specific enterprise version. 
@@ -859,6 +859,9 @@ Class | Method | HTTP request | Description
  - [WorkItemLocalSelectModel](doc//WorkItemLocalSelectModel.md)
  - [WorkItemModel](doc//WorkItemModel.md)
  - [WorkItemMovePostModel](doc//WorkItemMovePostModel.md)
+ - [WorkItemParameterKeyApiModel](doc//WorkItemParameterKeyApiModel.md)
+ - [WorkItemParameterKeyApiResult](doc//WorkItemParameterKeyApiResult.md)
+ - [WorkItemParameterKeyModel](doc//WorkItemParameterKeyModel.md)
  - [WorkItemPreviewApiModel](doc//WorkItemPreviewApiModel.md)
  - [WorkItemPreviewStepApiModel](doc//WorkItemPreviewStepApiModel.md)
  - [WorkItemPriority](doc//WorkItemPriority.md)

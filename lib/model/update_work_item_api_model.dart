@@ -30,6 +30,7 @@ class UpdateWorkItemApiModel {
     this.sourceType,
     this.iterations = const [],
     this.autoTests = const [],
+    this.parameters = const [],
   });
 
   /// Workitem internal identifier
@@ -82,6 +83,9 @@ class UpdateWorkItemApiModel {
   /// Collection of autotest internal ids
   List<AutoTestIdModel>? autoTests;
 
+  /// Set of parameter keys related to the work item
+  List<WorkItemParameterKeyApiModel>? parameters;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UpdateWorkItemApiModel &&
     other.id == id &&
@@ -100,7 +104,8 @@ class UpdateWorkItemApiModel {
     other.description == description &&
     other.sourceType == sourceType &&
     _deepEquality.equals(other.iterations, iterations) &&
-    _deepEquality.equals(other.autoTests, autoTests);
+    _deepEquality.equals(other.autoTests, autoTests) &&
+    _deepEquality.equals(other.parameters, parameters);
 
   @override
   int get hashCode =>
@@ -121,10 +126,11 @@ class UpdateWorkItemApiModel {
     (description == null ? 0 : description!.hashCode) +
     (sourceType == null ? 0 : sourceType!.hashCode) +
     (iterations == null ? 0 : iterations!.hashCode) +
-    (autoTests == null ? 0 : autoTests!.hashCode);
+    (autoTests == null ? 0 : autoTests!.hashCode) +
+    (parameters == null ? 0 : parameters!.hashCode);
 
   @override
-  String toString() => 'UpdateWorkItemApiModel[id=$id, sectionId=$sectionId, state=$state, priority=$priority, steps=$steps, preconditionSteps=$preconditionSteps, postconditionSteps=$postconditionSteps, duration=$duration, attributes=$attributes, tags=$tags, links=$links, name=$name, attachments=$attachments, description=$description, sourceType=$sourceType, iterations=$iterations, autoTests=$autoTests]';
+  String toString() => 'UpdateWorkItemApiModel[id=$id, sectionId=$sectionId, state=$state, priority=$priority, steps=$steps, preconditionSteps=$preconditionSteps, postconditionSteps=$postconditionSteps, duration=$duration, attributes=$attributes, tags=$tags, links=$links, name=$name, attachments=$attachments, description=$description, sourceType=$sourceType, iterations=$iterations, autoTests=$autoTests, parameters=$parameters]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -160,6 +166,11 @@ class UpdateWorkItemApiModel {
       json[r'autoTests'] = this.autoTests;
     } else {
       json[r'autoTests'] = null;
+    }
+    if (this.parameters != null) {
+      json[r'parameters'] = this.parameters;
+    } else {
+      json[r'parameters'] = null;
     }
     return json;
   }
@@ -200,6 +211,7 @@ class UpdateWorkItemApiModel {
         sourceType: WorkItemSourceTypeModel.fromJson(json[r'sourceType']),
         iterations: AssignIterationApiModel.listFromJson(json[r'iterations']),
         autoTests: AutoTestIdModel.listFromJson(json[r'autoTests']),
+        parameters: WorkItemParameterKeyApiModel.listFromJson(json[r'parameters']),
       );
     }
     return null;

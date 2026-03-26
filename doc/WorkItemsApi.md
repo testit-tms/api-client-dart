@@ -1057,7 +1057,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWorkItemById**
-> WorkItemModel getWorkItemById(id, versionId, versionNumber)
+> WorkItemApiResult getWorkItemById(id, versionId, versionNumber)
 
 Get Test Case, Checklist or Shared Step by Id or GlobalId
 
@@ -1094,7 +1094,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**WorkItemModel**](WorkItemModel.md)
+[**WorkItemApiResult**](WorkItemApiResult.md)
 
 ### Authorization
 

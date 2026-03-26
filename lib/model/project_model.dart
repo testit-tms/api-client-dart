@@ -57,6 +57,7 @@ class ProjectModel {
   /// Type of the project
   ProjectTypeModel type;
 
+  /// Identifier of current workflow
   String workflowId;
 
   /// Description of the project

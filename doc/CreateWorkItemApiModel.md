@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **iterations** | [**List<AssignIterationApiModel>**](AssignIterationApiModel.md) | Associated iterations linked to the work item | [optional] [default to const []]
 **autoTests** | [**List<AutoTestIdModel>**](AutoTestIdModel.md) | Automated tests associated with the work item | [optional] [default to const []]
 **attachments** | [**List<AssignAttachmentApiModel>**](AssignAttachmentApiModel.md) | Files attached to the work item | [optional] [default to const []]
+**parameters** | [**List<WorkItemParameterKeyApiModel>**](WorkItemParameterKeyApiModel.md) | Set of parameter keys related to the work item | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

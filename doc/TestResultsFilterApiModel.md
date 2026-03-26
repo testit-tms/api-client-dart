@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **configurationIds** | **List<String>** | Specifies a test result configuration IDs to search for | [optional] [default to const []]
 **outcomes** | [**List<TestResultOutcome>**](TestResultOutcome.md) | Specifies a test result outcomes to search for | [optional] [default to const []]
 **statusCodes** | **List<String>** | Specifies a test result status codes to search for | [optional] [default to const []]
+**statusTypes** | [**List<TestStatusApiType>**](TestStatusApiType.md) | Specifies a test result status types to search for | [optional] [default to const []]
 **failureCategories** | [**List<FailureCategoryModel>**](FailureCategoryModel.md) | Specifies a test result failure categories to search for | [optional] [default to const []]
 **namespace** | **String** | Specifies a test result namespace to search for | [optional] 
 **className** | **String** | Specifies a test result class name to search for | [optional] 

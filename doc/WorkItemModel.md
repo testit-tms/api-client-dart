@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **createdById** | **String** |  | 
 **globalId** | **int** |  | 
 **externalIssues** | [**List<ExternalIssueModel>**](ExternalIssueModel.md) |  | [default to const []]
+**parameters** | [**List<WorkItemParameterKeyModel>**](WorkItemParameterKeyModel.md) |  | [default to const []]
 **id** | **String** |  | 
 **sectionId** | **String** |  | 
 **state** | [**WorkItemStates**](WorkItemStates.md) |  | 

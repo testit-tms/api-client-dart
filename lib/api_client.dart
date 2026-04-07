@@ -378,6 +378,8 @@ class ApiClient {
           return CreateTestRunAndFillByWorkItemsApiModel.fromJson(value);
         case 'CreateTestStatusApiModel':
           return CreateTestStatusApiModel.fromJson(value);
+        case 'CreateUserApiModel':
+          return CreateUserApiModel.fromJson(value);
         case 'CreateWorkItemApiModel':
           return CreateWorkItemApiModel.fromJson(value);
         case 'CreateWorkItemCommentApiModel':
@@ -432,8 +434,6 @@ class ApiClient {
           return DefectApiModel.fromJson(value);
         case 'DeletionState':
           return DeletionStateTypeTransformer().decode(value);
-        case 'DemoProjectApiResult':
-          return DemoProjectApiResult.fromJson(value);
         case 'EnableProjectExternalServiceApiModel':
           return EnableProjectExternalServiceApiModel.fromJson(value);
         case 'ExternalFormAllowedValueModel':
@@ -690,6 +690,10 @@ class ApiClient {
           return RerunTestResultApiResult.fromJson(value);
         case 'RerunsApiResult':
           return RerunsApiResult.fromJson(value);
+        case 'RoleApiModel':
+          return RoleApiModel.fromJson(value);
+        case 'RoleApiModelApiCollection':
+          return RoleApiModelApiCollection.fromJson(value);
         case 'SearchCustomAttributeTemplateGetModel':
           return SearchCustomAttributeTemplateGetModel.fromJson(value);
         case 'SearchExternalIssuesApiModel':
@@ -1034,6 +1038,8 @@ class ApiClient {
           return UpdateWorkItemCommentApiModel.fromJson(value);
         case 'UpdateWorkflowApiModel':
           return UpdateWorkflowApiModel.fromJson(value);
+        case 'UserApiModel':
+          return UserApiModel.fromJson(value);
         case 'UserCustomNameValidationResponse':
           return UserCustomNameValidationResponse.fromJson(value);
         case 'UserNameApiResult':

@@ -14,43 +14,51 @@ class LinkShortApiResult {
   /// Returns a new [LinkShortApiResult] instance.
   LinkShortApiResult({
     required this.id,
-    required this.title,
     required this.url,
-    required this.type,
+    this.title,
+    this.type,
   });
 
   String id;
 
-  String title;
-
   String url;
 
-  String type;
+  String? title;
+
+  String? type;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is LinkShortApiResult &&
     other.id == id &&
-    other.title == title &&
     other.url == url &&
+    other.title == title &&
     other.type == type;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id.hashCode) +
-    (title.hashCode) +
     (url.hashCode) +
-    (type.hashCode);
+    (title == null ? 0 : title!.hashCode) +
+    (type == null ? 0 : type!.hashCode);
 
   @override
-  String toString() => 'LinkShortApiResult[id=$id, title=$title, url=$url, type=$type]';
+  String toString() => 'LinkShortApiResult[id=$id, url=$url, title=$title, type=$type]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
-      json[r'title'] = this.title;
       json[r'url'] = this.url;
+    if (this.title != null) {
+      json[r'title'] = this.title;
+    } else {
+      json[r'title'] = null;
+    }
+    if (this.type != null) {
       json[r'type'] = this.type;
+    } else {
+      json[r'type'] = null;
+    }
     return json;
   }
 
@@ -74,9 +82,9 @@ class LinkShortApiResult {
 
       return LinkShortApiResult(
         id: mapValueOfType<String>(json, r'id')!,
-        title: mapValueOfType<String>(json, r'title')!,
         url: mapValueOfType<String>(json, r'url')!,
-        type: mapValueOfType<String>(json, r'type')!,
+        title: mapValueOfType<String>(json, r'title'),
+        type: mapValueOfType<String>(json, r'type'),
       );
     }
     return null;
@@ -125,9 +133,7 @@ class LinkShortApiResult {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'id',
-    'title',
     'url',
-    'type',
   };
 }
 

@@ -18,6 +18,7 @@ class ParameterShortModel {
     required this.value,
     required this.name,
     this.projectIds = const [],
+    this.sharedStepId,
   });
 
   String id;
@@ -32,13 +33,16 @@ class ParameterShortModel {
 
   List<String> projectIds;
 
+  String? sharedStepId;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ParameterShortModel &&
     other.id == id &&
     other.parameterKeyId == parameterKeyId &&
     other.value == value &&
     other.name == name &&
-    _deepEquality.equals(other.projectIds, projectIds);
+    _deepEquality.equals(other.projectIds, projectIds) &&
+    other.sharedStepId == sharedStepId;
 
   @override
   int get hashCode =>
@@ -47,10 +51,11 @@ class ParameterShortModel {
     (parameterKeyId.hashCode) +
     (value.hashCode) +
     (name.hashCode) +
-    (projectIds.hashCode);
+    (projectIds.hashCode) +
+    (sharedStepId == null ? 0 : sharedStepId!.hashCode);
 
   @override
-  String toString() => 'ParameterShortModel[id=$id, parameterKeyId=$parameterKeyId, value=$value, name=$name, projectIds=$projectIds]';
+  String toString() => 'ParameterShortModel[id=$id, parameterKeyId=$parameterKeyId, value=$value, name=$name, projectIds=$projectIds, sharedStepId=$sharedStepId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -59,6 +64,11 @@ class ParameterShortModel {
       json[r'value'] = this.value;
       json[r'name'] = this.name;
       json[r'projectIds'] = this.projectIds;
+    if (this.sharedStepId != null) {
+      json[r'sharedStepId'] = this.sharedStepId;
+    } else {
+      json[r'sharedStepId'] = null;
+    }
     return json;
   }
 
@@ -88,6 +98,7 @@ class ParameterShortModel {
         projectIds: json[r'projectIds'] is Iterable
             ? (json[r'projectIds'] as Iterable).cast<String>().toList(growable: false)
             : const [],
+        sharedStepId: mapValueOfType<String>(json, r'sharedStepId'),
       );
     }
     return null;

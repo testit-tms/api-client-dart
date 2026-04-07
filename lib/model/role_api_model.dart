@@ -10,46 +10,48 @@
 
 part of testit_api_client_dart;
 
-class ParameterIterationModel {
-  /// Returns a new [ParameterIterationModel] instance.
-  ParameterIterationModel({
+class RoleApiModel {
+  /// Returns a new [RoleApiModel] instance.
+  RoleApiModel({
     required this.id,
-    this.sharedStepId,
+    required this.name,
+    required this.isSystem,
   });
 
   String id;
 
-  String? sharedStepId;
+  String name;
+
+  bool isSystem;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ParameterIterationModel &&
+  bool operator ==(Object other) => identical(this, other) || other is RoleApiModel &&
     other.id == id &&
-    other.sharedStepId == sharedStepId;
+    other.name == name &&
+    other.isSystem == isSystem;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id.hashCode) +
-    (sharedStepId == null ? 0 : sharedStepId!.hashCode);
+    (name.hashCode) +
+    (isSystem.hashCode);
 
   @override
-  String toString() => 'ParameterIterationModel[id=$id, sharedStepId=$sharedStepId]';
+  String toString() => 'RoleApiModel[id=$id, name=$name, isSystem=$isSystem]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
-    if (this.sharedStepId != null) {
-      json[r'sharedStepId'] = this.sharedStepId;
-    } else {
-      json[r'sharedStepId'] = null;
-    }
+      json[r'name'] = this.name;
+      json[r'isSystem'] = this.isSystem;
     return json;
   }
 
-  /// Returns a new [ParameterIterationModel] instance and imports its values from
+  /// Returns a new [RoleApiModel] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ParameterIterationModel? fromJson(dynamic value) {
+  static RoleApiModel? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -58,25 +60,26 @@ class ParameterIterationModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ParameterIterationModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ParameterIterationModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "RoleApiModel[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "RoleApiModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ParameterIterationModel(
+      return RoleApiModel(
         id: mapValueOfType<String>(json, r'id')!,
-        sharedStepId: mapValueOfType<String>(json, r'sharedStepId'),
+        name: mapValueOfType<String>(json, r'name')!,
+        isSystem: mapValueOfType<bool>(json, r'isSystem')!,
       );
     }
     return null;
   }
 
-  static List<ParameterIterationModel> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ParameterIterationModel>[];
+  static List<RoleApiModel> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <RoleApiModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ParameterIterationModel.fromJson(row);
+        final value = RoleApiModel.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -85,12 +88,12 @@ class ParameterIterationModel {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ParameterIterationModel> mapFromJson(dynamic json) {
-    final map = <String, ParameterIterationModel>{};
+  static Map<String, RoleApiModel> mapFromJson(dynamic json) {
+    final map = <String, RoleApiModel>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ParameterIterationModel.fromJson(entry.value);
+        final value = RoleApiModel.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -99,14 +102,14 @@ class ParameterIterationModel {
     return map;
   }
 
-  // maps a json object with a list of ParameterIterationModel-objects as value to a dart map
-  static Map<String, List<ParameterIterationModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ParameterIterationModel>>{};
+  // maps a json object with a list of RoleApiModel-objects as value to a dart map
+  static Map<String, List<RoleApiModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<RoleApiModel>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ParameterIterationModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = RoleApiModel.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -115,6 +118,8 @@ class ParameterIterationModel {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'id',
+    'name',
+    'isSystem',
   };
 }
 

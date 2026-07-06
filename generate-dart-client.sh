@@ -7,10 +7,10 @@
 
 
 # Configuration
-SWAGGER_FILE=".swagger/cloud-swagger.json"
+SWAGGER_FILE=".swagger/swagger-v2-5.8.json"
 CONFIG_FILE="openapi-generator-config.yaml"
 OUTPUT_DIR="./new"
-VERSION="1.5.4"
+VERSION="1.6.0-TMS-5.8"
 GENERATOR="openapi-generator-cli-7.18.0.jar"
 
 # Colors for output

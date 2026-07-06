@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **statusCode** | **String** |  | [optional] 
 **statusType** | [**TestStatusType**](TestStatusType.md) |  | [optional] 
 **comment** | **String** |  | [optional] 
-**links** | [**List<Link>**](Link.md) |  | [optional] [default to const []]
+**links** | [**List<CreateLinkApiModel>**](CreateLinkApiModel.md) |  | [optional] [default to const []]
 **stepResults** | [**List<StepResultApiModel>**](StepResultApiModel.md) |  | [optional] [default to const []]
 **attachments** | [**List<AttachmentUpdateRequest>**](AttachmentUpdateRequest.md) |  | [optional] [default to const []]
 **durationInMs** | **int** |  | [optional] 

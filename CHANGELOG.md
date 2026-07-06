@@ -1,3 +1,11 @@
+## 1.6.0-TMS-5.8
+
+* 5.8 TMS support
+
+## 1.5.4-TMS-5.7
+
+* 5.7 TMS support
+
 ## 1.5.4
 
 * TMS Cloud support

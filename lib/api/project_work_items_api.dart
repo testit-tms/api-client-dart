@@ -16,6 +16,106 @@ class ProjectWorkItemsApi {
 
   final ApiClient apiClient;
 
+  /// Performs an HTTP 'POST /api/v2/projects/{projectId}/work-items/previews/bulk' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] projectId (required):
+  ///   Internal (UUID) or global (integer) identifier
+  ///
+  /// * [CreateWorkItemPreviewsApiModel] createWorkItemPreviewsApiModel:
+  Future<Response> apiV2ProjectsProjectIdWorkItemsPreviewsBulkPostWithHttpInfo(String projectId, { CreateWorkItemPreviewsApiModel? createWorkItemPreviewsApiModel, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/v2/projects/{projectId}/work-items/previews/bulk'
+      .replaceAll('{projectId}', projectId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = createWorkItemPreviewsApiModel;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] projectId (required):
+  ///   Internal (UUID) or global (integer) identifier
+  ///
+  /// * [CreateWorkItemPreviewsApiModel] createWorkItemPreviewsApiModel:
+  Future<void> apiV2ProjectsProjectIdWorkItemsPreviewsBulkPost(String projectId, { CreateWorkItemPreviewsApiModel? createWorkItemPreviewsApiModel, }) async {
+    final response = await apiV2ProjectsProjectIdWorkItemsPreviewsBulkPostWithHttpInfo(projectId,  createWorkItemPreviewsApiModel: createWorkItemPreviewsApiModel, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
+  /// Performs an HTTP 'POST /api/v2/projects/{projectId}/work-items/previews' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] projectId (required):
+  ///   Internal (UUID) or global (integer) identifier
+  ///
+  /// * [GenerateWorkItemPreviewsApiModel] generateWorkItemPreviewsApiModel:
+  Future<Response> apiV2ProjectsProjectIdWorkItemsPreviewsPostWithHttpInfo(String projectId, { GenerateWorkItemPreviewsApiModel? generateWorkItemPreviewsApiModel, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/v2/projects/{projectId}/work-items/previews'
+      .replaceAll('{projectId}', projectId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = generateWorkItemPreviewsApiModel;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] projectId (required):
+  ///   Internal (UUID) or global (integer) identifier
+  ///
+  /// * [GenerateWorkItemPreviewsApiModel] generateWorkItemPreviewsApiModel:
+  Future<GenerateWorkItemPreviewsApiResult?> apiV2ProjectsProjectIdWorkItemsPreviewsPost(String projectId, { GenerateWorkItemPreviewsApiModel? generateWorkItemPreviewsApiModel, }) async {
+    final response = await apiV2ProjectsProjectIdWorkItemsPreviewsPostWithHttpInfo(projectId,  generateWorkItemPreviewsApiModel: generateWorkItemPreviewsApiModel, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GenerateWorkItemPreviewsApiResult',) as GenerateWorkItemPreviewsApiResult;
+    
+    }
+    return null;
+  }
+
   /// Search for work items and group results by attribute
   ///
   /// Note: This method returns the HTTP [Response].
@@ -452,7 +552,7 @@ class ProjectWorkItemsApi {
 
   /// Get WorkItems Tags
   ///
-  ///  Use case  User sets project internal identifier  User runs method execution  System returns work items tags
+  ///   Use case    User sets project internal identifier    User runs method execution    System returns work items tags
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -494,7 +594,7 @@ class ProjectWorkItemsApi {
 
   /// Get WorkItems Tags
   ///
-  ///  Use case  User sets project internal identifier  User runs method execution  System returns work items tags
+  ///   Use case    User sets project internal identifier    User runs method execution    System returns work items tags
   ///
   /// Parameters:
   ///
@@ -522,7 +622,7 @@ class ProjectWorkItemsApi {
 
   /// Get project work items
   ///
-  ///  Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted workitems related to project  [Optional] If User sets isDeleted field value as false, System search all workitems related to project which are not deleted  If User did not set isDeleted field value, System search all  workitems related to project  System returns array of found workitems (listed in response model)
+  ///   Use case    User sets project internal or global identifier    [Optional] User sets isDeleted field value    User runs method execution    System search project    [Optional] If User sets isDeleted field value as true, System search all deleted workitems related to project    [Optional] If User sets isDeleted field value as false, System search all workitems related to project which are not deleted    If User did not set isDeleted field value, System search all  workitems related to project    System returns array of found workitems (listed in response model)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -606,7 +706,7 @@ class ProjectWorkItemsApi {
 
   /// Get project work items
   ///
-  ///  Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted workitems related to project  [Optional] If User sets isDeleted field value as false, System search all workitems related to project which are not deleted  If User did not set isDeleted field value, System search all  workitems related to project  System returns array of found workitems (listed in response model)
+  ///   Use case    User sets project internal or global identifier    [Optional] User sets isDeleted field value    User runs method execution    System search project    [Optional] If User sets isDeleted field value as true, System search all deleted workitems related to project    [Optional] If User sets isDeleted field value as false, System search all workitems related to project which are not deleted    If User did not set isDeleted field value, System search all  workitems related to project    System returns array of found workitems (listed in response model)
   ///
   /// Parameters:
   ///

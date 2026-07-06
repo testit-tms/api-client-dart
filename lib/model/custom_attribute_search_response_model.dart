@@ -16,9 +16,11 @@ class CustomAttributeSearchResponseModel {
     this.workItemUsage = const [],
     this.testPlanUsage = const [],
     required this.id,
+    this.targets = const [],
     this.options = const [],
     required this.type,
     required this.isDeleted,
+    required this.isSystem,
     required this.name,
     required this.isEnabled,
     required this.isRequired,
@@ -32,7 +34,10 @@ class CustomAttributeSearchResponseModel {
   /// Unique ID of the attribute
   String id;
 
-  /// Collection of the attribute options   Available for attributes of type `options` and `multiple options` only
+  /// Collection of the attribute targets      Defines where the attribute can be used (e.g., TestCases, AutoTestCases, TestPlans)
+  List<String> targets;
+
+  /// Collection of the attribute options      Available for attributes of type `options` and `multiple options` only
   List<CustomAttributeOptionModel> options;
 
   /// Type of the attribute
@@ -40,6 +45,9 @@ class CustomAttributeSearchResponseModel {
 
   /// Indicates if the attribute is deleted
   bool isDeleted;
+
+  /// Indicates if the attribute is system
+  bool isSystem;
 
   /// Name of the attribute
   String name;
@@ -58,9 +66,11 @@ class CustomAttributeSearchResponseModel {
     _deepEquality.equals(other.workItemUsage, workItemUsage) &&
     _deepEquality.equals(other.testPlanUsage, testPlanUsage) &&
     other.id == id &&
+    _deepEquality.equals(other.targets, targets) &&
     _deepEquality.equals(other.options, options) &&
     other.type == type &&
     other.isDeleted == isDeleted &&
+    other.isSystem == isSystem &&
     other.name == name &&
     other.isEnabled == isEnabled &&
     other.isRequired == isRequired &&
@@ -72,25 +82,29 @@ class CustomAttributeSearchResponseModel {
     (workItemUsage.hashCode) +
     (testPlanUsage.hashCode) +
     (id.hashCode) +
+    (targets.hashCode) +
     (options.hashCode) +
     (type.hashCode) +
     (isDeleted.hashCode) +
+    (isSystem.hashCode) +
     (name.hashCode) +
     (isEnabled.hashCode) +
     (isRequired.hashCode) +
     (isGlobal.hashCode);
 
   @override
-  String toString() => 'CustomAttributeSearchResponseModel[workItemUsage=$workItemUsage, testPlanUsage=$testPlanUsage, id=$id, options=$options, type=$type, isDeleted=$isDeleted, name=$name, isEnabled=$isEnabled, isRequired=$isRequired, isGlobal=$isGlobal]';
+  String toString() => 'CustomAttributeSearchResponseModel[workItemUsage=$workItemUsage, testPlanUsage=$testPlanUsage, id=$id, targets=$targets, options=$options, type=$type, isDeleted=$isDeleted, isSystem=$isSystem, name=$name, isEnabled=$isEnabled, isRequired=$isRequired, isGlobal=$isGlobal]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'workItemUsage'] = this.workItemUsage;
       json[r'testPlanUsage'] = this.testPlanUsage;
       json[r'id'] = this.id;
+      json[r'targets'] = this.targets;
       json[r'options'] = this.options;
       json[r'type'] = this.type;
       json[r'isDeleted'] = this.isDeleted;
+      json[r'isSystem'] = this.isSystem;
       json[r'name'] = this.name;
       json[r'isEnabled'] = this.isEnabled;
       json[r'isRequired'] = this.isRequired;
@@ -120,9 +134,13 @@ class CustomAttributeSearchResponseModel {
         workItemUsage: ProjectShortestModel.listFromJson(json[r'workItemUsage']),
         testPlanUsage: ProjectShortestModel.listFromJson(json[r'testPlanUsage']),
         id: mapValueOfType<String>(json, r'id')!,
+        targets: json[r'targets'] is Iterable
+            ? (json[r'targets'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
         options: CustomAttributeOptionModel.listFromJson(json[r'options']),
         type: CustomAttributeTypesEnum.fromJson(json[r'type'])!,
         isDeleted: mapValueOfType<bool>(json, r'isDeleted')!,
+        isSystem: mapValueOfType<bool>(json, r'isSystem')!,
         name: mapValueOfType<String>(json, r'name')!,
         isEnabled: mapValueOfType<bool>(json, r'isEnabled')!,
         isRequired: mapValueOfType<bool>(json, r'isRequired')!,
@@ -177,9 +195,11 @@ class CustomAttributeSearchResponseModel {
     'workItemUsage',
     'testPlanUsage',
     'id',
+    'targets',
     'options',
     'type',
     'isDeleted',
+    'isSystem',
     'name',
     'isEnabled',
     'isRequired',

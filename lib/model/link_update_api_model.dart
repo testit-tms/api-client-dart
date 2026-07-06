@@ -14,15 +14,18 @@ class LinkUpdateApiModel {
   /// Returns a new [LinkUpdateApiModel] instance.
   LinkUpdateApiModel({
     required this.url,
+    required this.type,
     required this.hasInfo,
     this.id,
     this.title,
     this.description,
-    this.type,
   });
 
   /// Address can be specified without protocol, but necessarily with the domain.
   String url;
+
+  /// Specifies the type of the link.
+  LinkType type;
 
   /// Flag defines if link relates to integrated external service
   bool hasInfo;
@@ -36,34 +39,32 @@ class LinkUpdateApiModel {
   /// Link description.
   String? description;
 
-  /// Specifies the type of the link.
-  LinkType? type;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is LinkUpdateApiModel &&
     other.url == url &&
+    other.type == type &&
     other.hasInfo == hasInfo &&
     other.id == id &&
     other.title == title &&
-    other.description == description &&
-    other.type == type;
+    other.description == description;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (url.hashCode) +
+    (type.hashCode) +
     (hasInfo.hashCode) +
     (id == null ? 0 : id!.hashCode) +
     (title == null ? 0 : title!.hashCode) +
-    (description == null ? 0 : description!.hashCode) +
-    (type == null ? 0 : type!.hashCode);
+    (description == null ? 0 : description!.hashCode);
 
   @override
-  String toString() => 'LinkUpdateApiModel[url=$url, hasInfo=$hasInfo, id=$id, title=$title, description=$description, type=$type]';
+  String toString() => 'LinkUpdateApiModel[url=$url, type=$type, hasInfo=$hasInfo, id=$id, title=$title, description=$description]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'url'] = this.url;
+      json[r'type'] = this.type;
       json[r'hasInfo'] = this.hasInfo;
     if (this.id != null) {
       json[r'id'] = this.id;
@@ -79,11 +80,6 @@ class LinkUpdateApiModel {
       json[r'description'] = this.description;
     } else {
       json[r'description'] = null;
-    }
-    if (this.type != null) {
-      json[r'type'] = this.type;
-    } else {
-      json[r'type'] = null;
     }
     return json;
   }
@@ -108,11 +104,11 @@ class LinkUpdateApiModel {
 
       return LinkUpdateApiModel(
         url: mapValueOfType<String>(json, r'url')!,
+        type: LinkType.fromJson(json[r'type'])!,
         hasInfo: mapValueOfType<bool>(json, r'hasInfo')!,
         id: mapValueOfType<String>(json, r'id'),
         title: mapValueOfType<String>(json, r'title'),
         description: mapValueOfType<String>(json, r'description'),
-        type: LinkType.fromJson(json[r'type']),
       );
     }
     return null;
@@ -161,6 +157,7 @@ class LinkUpdateApiModel {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'url',
+    'type',
     'hasInfo',
   };
 }

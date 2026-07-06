@@ -14,9 +14,11 @@ class CustomAttributeModel {
   /// Returns a new [CustomAttributeModel] instance.
   CustomAttributeModel({
     required this.id,
+    this.targets = const [],
     this.options = const [],
     required this.type,
     required this.isDeleted,
+    required this.isSystem,
     required this.name,
     required this.isEnabled,
     required this.isRequired,
@@ -26,7 +28,10 @@ class CustomAttributeModel {
   /// Unique ID of the attribute
   String id;
 
-  /// Collection of the attribute options   Available for attributes of type `options` and `multiple options` only
+  /// Collection of the attribute targets      Defines where the attribute can be used (e.g., TestCases, AutoTestCases, TestPlans)
+  List<String> targets;
+
+  /// Collection of the attribute options      Available for attributes of type `options` and `multiple options` only
   List<CustomAttributeOptionModel> options;
 
   /// Type of the attribute
@@ -34,6 +39,9 @@ class CustomAttributeModel {
 
   /// Indicates if the attribute is deleted
   bool isDeleted;
+
+  /// Indicates if the attribute is system
+  bool isSystem;
 
   /// Name of the attribute
   String name;
@@ -50,9 +58,11 @@ class CustomAttributeModel {
   @override
   bool operator ==(Object other) => identical(this, other) || other is CustomAttributeModel &&
     other.id == id &&
+    _deepEquality.equals(other.targets, targets) &&
     _deepEquality.equals(other.options, options) &&
     other.type == type &&
     other.isDeleted == isDeleted &&
+    other.isSystem == isSystem &&
     other.name == name &&
     other.isEnabled == isEnabled &&
     other.isRequired == isRequired &&
@@ -62,23 +72,27 @@ class CustomAttributeModel {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id.hashCode) +
+    (targets.hashCode) +
     (options.hashCode) +
     (type.hashCode) +
     (isDeleted.hashCode) +
+    (isSystem.hashCode) +
     (name.hashCode) +
     (isEnabled.hashCode) +
     (isRequired.hashCode) +
     (isGlobal.hashCode);
 
   @override
-  String toString() => 'CustomAttributeModel[id=$id, options=$options, type=$type, isDeleted=$isDeleted, name=$name, isEnabled=$isEnabled, isRequired=$isRequired, isGlobal=$isGlobal]';
+  String toString() => 'CustomAttributeModel[id=$id, targets=$targets, options=$options, type=$type, isDeleted=$isDeleted, isSystem=$isSystem, name=$name, isEnabled=$isEnabled, isRequired=$isRequired, isGlobal=$isGlobal]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
+      json[r'targets'] = this.targets;
       json[r'options'] = this.options;
       json[r'type'] = this.type;
       json[r'isDeleted'] = this.isDeleted;
+      json[r'isSystem'] = this.isSystem;
       json[r'name'] = this.name;
       json[r'isEnabled'] = this.isEnabled;
       json[r'isRequired'] = this.isRequired;
@@ -106,9 +120,13 @@ class CustomAttributeModel {
 
       return CustomAttributeModel(
         id: mapValueOfType<String>(json, r'id')!,
+        targets: json[r'targets'] is Iterable
+            ? (json[r'targets'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
         options: CustomAttributeOptionModel.listFromJson(json[r'options']),
         type: CustomAttributeTypesEnum.fromJson(json[r'type'])!,
         isDeleted: mapValueOfType<bool>(json, r'isDeleted')!,
+        isSystem: mapValueOfType<bool>(json, r'isSystem')!,
         name: mapValueOfType<String>(json, r'name')!,
         isEnabled: mapValueOfType<bool>(json, r'isEnabled')!,
         isRequired: mapValueOfType<bool>(json, r'isRequired')!,
@@ -161,9 +179,11 @@ class CustomAttributeModel {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'id',
+    'targets',
     'options',
     'type',
     'isDeleted',
+    'isSystem',
     'name',
     'isEnabled',
     'isRequired',

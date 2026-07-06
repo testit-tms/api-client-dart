@@ -16,6 +16,70 @@ class ProjectTestPlanTestPointsApi {
 
   final ApiClient apiClient;
 
+  /// Get test points analytics.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] projectId (required):
+  ///   Internal (UUID) or global (integer) identifier
+  ///
+  /// * [String] testPlanId (required):
+  ///
+  /// * [TestPlanTestPointsAnalyticsApiModel] testPlanTestPointsAnalyticsApiModel:
+  Future<Response> apiV2ProjectsProjectIdTestPlansTestPlanIdTestPointsAnalyticsPostWithHttpInfo(String projectId, String testPlanId, { TestPlanTestPointsAnalyticsApiModel? testPlanTestPointsAnalyticsApiModel, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/v2/projects/{projectId}/test-plans/{testPlanId}/test-points/analytics'
+      .replaceAll('{projectId}', projectId)
+      .replaceAll('{testPlanId}', testPlanId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = testPlanTestPointsAnalyticsApiModel;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Get test points analytics.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] projectId (required):
+  ///   Internal (UUID) or global (integer) identifier
+  ///
+  /// * [String] testPlanId (required):
+  ///
+  /// * [TestPlanTestPointsAnalyticsApiModel] testPlanTestPointsAnalyticsApiModel:
+  Future<TestPlanTestPointsAnalyticsApiResult?> apiV2ProjectsProjectIdTestPlansTestPlanIdTestPointsAnalyticsPost(String projectId, String testPlanId, { TestPlanTestPointsAnalyticsApiModel? testPlanTestPointsAnalyticsApiModel, }) async {
+    final response = await apiV2ProjectsProjectIdTestPlansTestPlanIdTestPointsAnalyticsPostWithHttpInfo(projectId, testPlanId,  testPlanTestPointsAnalyticsApiModel: testPlanTestPointsAnalyticsApiModel, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TestPlanTestPointsAnalyticsApiResult',) as TestPlanTestPointsAnalyticsApiResult;
+    
+    }
+    return null;
+  }
+
   /// Rerun autotests.
   ///
   /// Note: This method returns the HTTP [Response].
@@ -134,5 +198,125 @@ class ProjectTestPlanTestPointsApi {
     
     }
     return null;
+  }
+
+  /// Search test points in test plan.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] projectId (required):
+  ///   Internal (UUID) or global (integer) identifier
+  ///
+  /// * [String] testPlanId (required):
+  ///
+  /// * [TestPlanTestPointsApiModel] testPlanTestPointsApiModel:
+  Future<Response> apiV2ProjectsProjectIdTestPlansTestPlanIdTestPointsGroupingSearchPostWithHttpInfo(String projectId, String testPlanId, { TestPlanTestPointsApiModel? testPlanTestPointsApiModel, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/v2/projects/{projectId}/test-plans/{testPlanId}/test-points/grouping-search'
+      .replaceAll('{projectId}', projectId)
+      .replaceAll('{testPlanId}', testPlanId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = testPlanTestPointsApiModel;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Search test points in test plan.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] projectId (required):
+  ///   Internal (UUID) or global (integer) identifier
+  ///
+  /// * [String] testPlanId (required):
+  ///
+  /// * [TestPlanTestPointsApiModel] testPlanTestPointsApiModel:
+  Future<TestPlanTestPointsGroupSearchApiResult?> apiV2ProjectsProjectIdTestPlansTestPlanIdTestPointsGroupingSearchPost(String projectId, String testPlanId, { TestPlanTestPointsApiModel? testPlanTestPointsApiModel, }) async {
+    final response = await apiV2ProjectsProjectIdTestPlansTestPlanIdTestPointsGroupingSearchPostWithHttpInfo(projectId, testPlanId,  testPlanTestPointsApiModel: testPlanTestPointsApiModel, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TestPlanTestPointsGroupSearchApiResult',) as TestPlanTestPointsGroupSearchApiResult;
+    
+    }
+    return null;
+  }
+
+  /// Distribute test points between the users.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] projectId (required):
+  ///   Internal (UUID) or global (integer) identifier
+  ///
+  /// * [String] testPlanId (required):
+  ///
+  /// * [TestPlanTestPointsSetTestersApiModel] testPlanTestPointsSetTestersApiModel:
+  Future<Response> apiV2ProjectsProjectIdTestPlansTestPlanIdTestPointsTestersPostWithHttpInfo(String projectId, String testPlanId, { TestPlanTestPointsSetTestersApiModel? testPlanTestPointsSetTestersApiModel, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/v2/projects/{projectId}/test-plans/{testPlanId}/test-points/testers'
+      .replaceAll('{projectId}', projectId)
+      .replaceAll('{testPlanId}', testPlanId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = testPlanTestPointsSetTestersApiModel;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Distribute test points between the users.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] projectId (required):
+  ///   Internal (UUID) or global (integer) identifier
+  ///
+  /// * [String] testPlanId (required):
+  ///
+  /// * [TestPlanTestPointsSetTestersApiModel] testPlanTestPointsSetTestersApiModel:
+  Future<void> apiV2ProjectsProjectIdTestPlansTestPlanIdTestPointsTestersPost(String projectId, String testPlanId, { TestPlanTestPointsSetTestersApiModel? testPlanTestPointsSetTestersApiModel, }) async {
+    final response = await apiV2ProjectsProjectIdTestPlansTestPlanIdTestPointsTestersPostWithHttpInfo(projectId, testPlanId,  testPlanTestPointsSetTestersApiModel: testPlanTestPointsSetTestersApiModel, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
   }
 }

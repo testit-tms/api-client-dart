@@ -48,8 +48,8 @@ class SharedStepReferencesQueryFilterModel {
   /// Collection of priorities of work item
   Set<WorkItemPriorityModel>? priorities;
 
-  /// Collection of types of work item  Allowed values: `TestCases`, `CheckLists`, `SharedSteps`
-  Set<String>? entityTypes;
+  /// Collection of types of work item    Allowed values: `TestCases`, `CheckLists`, `SharedSteps`
+  Set<WorkItemTypeModel>? entityTypes;
 
   /// Date and time of work item creation
   DateTimeRangeSelectorModel? createdDate;
@@ -196,9 +196,7 @@ class SharedStepReferencesQueryFilterModel {
             : const {},
         states: WorkItemStates.listFromJson(json[r'states']).toSet(),
         priorities: WorkItemPriorityModel.listFromJson(json[r'priorities']).toSet(),
-        entityTypes: json[r'entityTypes'] is Iterable
-            ? (json[r'entityTypes'] as Iterable).cast<String>().toSet()
-            : const {},
+        entityTypes: WorkItemTypeModel.listFromJson(json[r'entityTypes']).toSet(),
         createdDate: DateTimeRangeSelectorModel.fromJson(json[r'createdDate']),
         modifiedDate: DateTimeRangeSelectorModel.fromJson(json[r'modifiedDate']),
         isAutomated: mapValueOfType<bool>(json, r'isAutomated'),

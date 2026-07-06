@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **outcome** | [**TestResultOutcome**](TestResultOutcome.md) |  | [optional] 
 **status** | [**TestStatusApiResult**](TestStatusApiResult.md) |  | [optional] 
 **comment** | **String** |  | [optional] 
-**links** | [**List<Link>**](Link.md) |  | [optional] [default to const []]
+**links** | [**List<LinkApiResult>**](LinkApiResult.md) |  | [optional] [default to const []]
 **stepResults** | [**List<StepResultApiModel>**](StepResultApiModel.md) |  | [optional] [default to const []]
 **attachments** | [**List<AttachmentApiResult>**](AttachmentApiResult.md) |  | [optional] [default to const []]
 **autoTestId** | **String** |  | [optional] 

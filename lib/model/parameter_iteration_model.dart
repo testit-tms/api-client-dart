@@ -14,25 +14,35 @@ class ParameterIterationModel {
   /// Returns a new [ParameterIterationModel] instance.
   ParameterIterationModel({
     required this.id,
+    this.sharedStepId,
   });
 
   String id;
 
+  String? sharedStepId;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ParameterIterationModel &&
-    other.id == id;
+    other.id == id &&
+    other.sharedStepId == sharedStepId;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id.hashCode);
+    (id.hashCode) +
+    (sharedStepId == null ? 0 : sharedStepId!.hashCode);
 
   @override
-  String toString() => 'ParameterIterationModel[id=$id]';
+  String toString() => 'ParameterIterationModel[id=$id, sharedStepId=$sharedStepId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
+    if (this.sharedStepId != null) {
+      json[r'sharedStepId'] = this.sharedStepId;
+    } else {
+      json[r'sharedStepId'] = null;
+    }
     return json;
   }
 
@@ -56,6 +66,7 @@ class ParameterIterationModel {
 
       return ParameterIterationModel(
         id: mapValueOfType<String>(json, r'id')!,
+        sharedStepId: mapValueOfType<String>(json, r'sharedStepId'),
       );
     }
     return null;

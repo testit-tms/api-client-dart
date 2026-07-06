@@ -175,9 +175,6 @@ String parameterToString(dynamic value) {
   if (value is WorkItemEntityTypeApiModel) {
     return WorkItemEntityTypeApiModelTypeTransformer().encode(value).toString();
   }
-  if (value is WorkItemEntityTypes) {
-    return WorkItemEntityTypesTypeTransformer().encode(value).toString();
-  }
   if (value is WorkItemGroupType) {
     return WorkItemGroupTypeTypeTransformer().encode(value).toString();
   }
@@ -204,6 +201,9 @@ String parameterToString(dynamic value) {
   }
   if (value is WorkItemStates) {
     return WorkItemStatesTypeTransformer().encode(value).toString();
+  }
+  if (value is WorkItemTypeModel) {
+    return WorkItemTypeModelTypeTransformer().encode(value).toString();
   }
   return value.toString();
 }

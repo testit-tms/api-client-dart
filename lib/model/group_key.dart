@@ -1,0 +1,124 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+part of testit_api_client_dart;
+
+class GroupKey {
+  /// Returns a new [GroupKey] instance.
+  GroupKey({
+    required this.value,
+    this.displayValue,
+  });
+
+  String? value;
+
+  String? displayValue;
+
+  @override
+  bool operator ==(Object other) => identical(this, other) || other is GroupKey &&
+    other.value == value &&
+    other.displayValue == displayValue;
+
+  @override
+  int get hashCode =>
+    // ignore: unnecessary_parenthesis
+    (value == null ? 0 : value!.hashCode) +
+    (displayValue == null ? 0 : displayValue!.hashCode);
+
+  @override
+  String toString() => 'GroupKey[value=$value, displayValue=$displayValue]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    if (this.value != null) {
+      json[r'value'] = this.value;
+    } else {
+      json[r'value'] = null;
+    }
+    if (this.displayValue != null) {
+      json[r'displayValue'] = this.displayValue;
+    } else {
+      json[r'displayValue'] = null;
+    }
+    return json;
+  }
+
+  /// Returns a new [GroupKey] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static GroupKey? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key), 'Required key "GroupKey[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "GroupKey[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
+      return GroupKey(
+        value: mapValueOfType<String>(json, r'value'),
+        displayValue: mapValueOfType<String>(json, r'displayValue'),
+      );
+    }
+    return null;
+  }
+
+  static List<GroupKey> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <GroupKey>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = GroupKey.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+
+  static Map<String, GroupKey> mapFromJson(dynamic json) {
+    final map = <String, GroupKey>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = GroupKey.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
+  }
+
+  // maps a json object with a list of GroupKey-objects as value to a dart map
+  static Map<String, List<GroupKey>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<GroupKey>>{};
+    if (json is Map && json.isNotEmpty) {
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = GroupKey.listFromJson(entry.value, growable: growable,);
+      }
+    }
+    return map;
+  }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'value',
+  };
+}
+

@@ -12,14 +12,14 @@ Name | Type | Description | Notes
 **medianDuration** | **int** | used for getting a median duration of all autotests related to this workitem | 
 **isDeleted** | **bool** |  | 
 **projectId** | **String** |  | 
-**entityTypeName** | [**WorkItemEntityTypes**](WorkItemEntityTypes.md) |  | 
+**entityTypeName** | [**WorkItemTypeModel**](WorkItemTypeModel.md) |  | 
 **isAutomated** | **bool** |  | 
 **versionNumber** | **int** | used for define chronology of workitem state in each version | 
+**externalIssues** | [**List<ExternalIssueModel>**](ExternalIssueModel.md) |  | [default to const []]
+**parameters** | [**List<WorkItemParameterKeyModel>**](WorkItemParameterKeyModel.md) |  | [default to const []]
 **createdDate** | [**DateTime**](DateTime.md) |  | 
 **createdById** | **String** |  | 
 **globalId** | **int** |  | 
-**externalIssues** | [**List<ExternalIssueModel>**](ExternalIssueModel.md) |  | [default to const []]
-**parameters** | [**List<WorkItemParameterKeyModel>**](WorkItemParameterKeyModel.md) |  | [default to const []]
 **id** | **String** |  | 
 **sectionId** | **String** |  | 
 **state** | [**WorkItemStates**](WorkItemStates.md) |  | 

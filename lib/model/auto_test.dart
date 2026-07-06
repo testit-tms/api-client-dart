@@ -71,7 +71,7 @@ class AutoTest {
   String createdById;
 
   /// Collection of the autotest links
-  List<Link>? links;
+  List<LinkApiResult>? links;
 
   /// Name of the autotest namespace
   String? namespace;
@@ -330,7 +330,7 @@ class AutoTest {
         id: mapValueOfType<String>(json, r'id')!,
         createdDate: mapDateTime(json, r'createdDate', r'')!,
         createdById: mapValueOfType<String>(json, r'createdById')!,
-        links: Link.listFromJson(json[r'links']),
+        links: LinkApiResult.listFromJson(json[r'links']),
         namespace: mapValueOfType<String>(json, r'namespace'),
         classname: mapValueOfType<String>(json, r'classname'),
         steps: AutoTestStep.listFromJson(json[r'steps']),

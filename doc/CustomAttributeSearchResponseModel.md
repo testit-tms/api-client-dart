@@ -11,9 +11,11 @@ Name | Type | Description | Notes
 **workItemUsage** | [**List<ProjectShortestModel>**](ProjectShortestModel.md) |  | [default to const []]
 **testPlanUsage** | [**List<ProjectShortestModel>**](ProjectShortestModel.md) |  | [default to const []]
 **id** | **String** | Unique ID of the attribute | 
-**options** | [**List<CustomAttributeOptionModel>**](CustomAttributeOptionModel.md) | Collection of the attribute options   Available for attributes of type `options` and `multiple options` only | [default to const []]
+**targets** | **List<String>** | Collection of the attribute targets      Defines where the attribute can be used (e.g., TestCases, AutoTestCases, TestPlans) | [default to const []]
+**options** | [**List<CustomAttributeOptionModel>**](CustomAttributeOptionModel.md) | Collection of the attribute options      Available for attributes of type `options` and `multiple options` only | [default to const []]
 **type** | [**CustomAttributeTypesEnum**](CustomAttributeTypesEnum.md) | Type of the attribute | 
 **isDeleted** | **bool** | Indicates if the attribute is deleted | 
+**isSystem** | **bool** | Indicates if the attribute is system | 
 **name** | **String** | Name of the attribute | 
 **isEnabled** | **bool** | Indicates if the attribute is enabled | 
 **isRequired** | **bool** | Indicates if the attribute value is mandatory to specify | 

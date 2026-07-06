@@ -16,6 +16,7 @@ class ProjectApiResult {
     required this.id,
     required this.name,
     required this.isFavorite,
+    required this.workItemsCount,
     required this.isDeleted,
     required this.createdDate,
     required this.createdById,
@@ -23,15 +24,12 @@ class ProjectApiResult {
     required this.type,
     required this.workflowId,
     this.description,
-    this.attributesScheme = const [],
-    this.testPlansAttributesScheme = const [],
     this.testCasesCount,
     this.sharedStepsCount,
     this.checkListsCount,
     this.autoTestsCount,
     this.modifiedDate,
     this.modifiedById,
-    this.isFlakyAuto,
   });
 
   /// Unique ID of the project
@@ -42,6 +40,9 @@ class ProjectApiResult {
 
   /// Indicates if the project is marked as favorite
   bool isFavorite;
+
+  /// Number of work items in the project
+  int workItemsCount;
 
   /// Indicates if the project is deleted
   bool isDeleted;
@@ -64,12 +65,6 @@ class ProjectApiResult {
   /// Description of the project
   String? description;
 
-  /// Collection of the project attributes
-  List<CustomAttributeApiResult>? attributesScheme;
-
-  /// Collection of the project test plans attributes
-  List<CustomAttributeApiResult>? testPlansAttributesScheme;
-
   /// Number of test cases in the project
   int? testCasesCount;
 
@@ -88,14 +83,12 @@ class ProjectApiResult {
   /// Unique ID of the project last editor
   String? modifiedById;
 
-  /// Indicates if the status \"Flaky/Stable\" inits automatically
-  bool? isFlakyAuto;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProjectApiResult &&
     other.id == id &&
     other.name == name &&
     other.isFavorite == isFavorite &&
+    other.workItemsCount == workItemsCount &&
     other.isDeleted == isDeleted &&
     other.createdDate == createdDate &&
     other.createdById == createdById &&
@@ -103,15 +96,12 @@ class ProjectApiResult {
     other.type == type &&
     other.workflowId == workflowId &&
     other.description == description &&
-    _deepEquality.equals(other.attributesScheme, attributesScheme) &&
-    _deepEquality.equals(other.testPlansAttributesScheme, testPlansAttributesScheme) &&
     other.testCasesCount == testCasesCount &&
     other.sharedStepsCount == sharedStepsCount &&
     other.checkListsCount == checkListsCount &&
     other.autoTestsCount == autoTestsCount &&
     other.modifiedDate == modifiedDate &&
-    other.modifiedById == modifiedById &&
-    other.isFlakyAuto == isFlakyAuto;
+    other.modifiedById == modifiedById;
 
   @override
   int get hashCode =>
@@ -119,6 +109,7 @@ class ProjectApiResult {
     (id.hashCode) +
     (name.hashCode) +
     (isFavorite.hashCode) +
+    (workItemsCount.hashCode) +
     (isDeleted.hashCode) +
     (createdDate.hashCode) +
     (createdById.hashCode) +
@@ -126,24 +117,22 @@ class ProjectApiResult {
     (type.hashCode) +
     (workflowId.hashCode) +
     (description == null ? 0 : description!.hashCode) +
-    (attributesScheme == null ? 0 : attributesScheme!.hashCode) +
-    (testPlansAttributesScheme == null ? 0 : testPlansAttributesScheme!.hashCode) +
     (testCasesCount == null ? 0 : testCasesCount!.hashCode) +
     (sharedStepsCount == null ? 0 : sharedStepsCount!.hashCode) +
     (checkListsCount == null ? 0 : checkListsCount!.hashCode) +
     (autoTestsCount == null ? 0 : autoTestsCount!.hashCode) +
     (modifiedDate == null ? 0 : modifiedDate!.hashCode) +
-    (modifiedById == null ? 0 : modifiedById!.hashCode) +
-    (isFlakyAuto == null ? 0 : isFlakyAuto!.hashCode);
+    (modifiedById == null ? 0 : modifiedById!.hashCode);
 
   @override
-  String toString() => 'ProjectApiResult[id=$id, name=$name, isFavorite=$isFavorite, isDeleted=$isDeleted, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, type=$type, workflowId=$workflowId, description=$description, attributesScheme=$attributesScheme, testPlansAttributesScheme=$testPlansAttributesScheme, testCasesCount=$testCasesCount, sharedStepsCount=$sharedStepsCount, checkListsCount=$checkListsCount, autoTestsCount=$autoTestsCount, modifiedDate=$modifiedDate, modifiedById=$modifiedById, isFlakyAuto=$isFlakyAuto]';
+  String toString() => 'ProjectApiResult[id=$id, name=$name, isFavorite=$isFavorite, workItemsCount=$workItemsCount, isDeleted=$isDeleted, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, type=$type, workflowId=$workflowId, description=$description, testCasesCount=$testCasesCount, sharedStepsCount=$sharedStepsCount, checkListsCount=$checkListsCount, autoTestsCount=$autoTestsCount, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
       json[r'name'] = this.name;
       json[r'isFavorite'] = this.isFavorite;
+      json[r'workItemsCount'] = this.workItemsCount;
       json[r'isDeleted'] = this.isDeleted;
       json[r'createdDate'] = this.createdDate.toUtc().toIso8601String();
       json[r'createdById'] = this.createdById;
@@ -154,16 +143,6 @@ class ProjectApiResult {
       json[r'description'] = this.description;
     } else {
       json[r'description'] = null;
-    }
-    if (this.attributesScheme != null) {
-      json[r'attributesScheme'] = this.attributesScheme;
-    } else {
-      json[r'attributesScheme'] = null;
-    }
-    if (this.testPlansAttributesScheme != null) {
-      json[r'testPlansAttributesScheme'] = this.testPlansAttributesScheme;
-    } else {
-      json[r'testPlansAttributesScheme'] = null;
     }
     if (this.testCasesCount != null) {
       json[r'testCasesCount'] = this.testCasesCount;
@@ -195,11 +174,6 @@ class ProjectApiResult {
     } else {
       json[r'modifiedById'] = null;
     }
-    if (this.isFlakyAuto != null) {
-      json[r'isFlakyAuto'] = this.isFlakyAuto;
-    } else {
-      json[r'isFlakyAuto'] = null;
-    }
     return json;
   }
 
@@ -225,6 +199,7 @@ class ProjectApiResult {
         id: mapValueOfType<String>(json, r'id')!,
         name: mapValueOfType<String>(json, r'name')!,
         isFavorite: mapValueOfType<bool>(json, r'isFavorite')!,
+        workItemsCount: mapValueOfType<int>(json, r'workItemsCount')!,
         isDeleted: mapValueOfType<bool>(json, r'isDeleted')!,
         createdDate: mapDateTime(json, r'createdDate', r'')!,
         createdById: mapValueOfType<String>(json, r'createdById')!,
@@ -232,15 +207,12 @@ class ProjectApiResult {
         type: ProjectType.fromJson(json[r'type'])!,
         workflowId: mapValueOfType<String>(json, r'workflowId')!,
         description: mapValueOfType<String>(json, r'description'),
-        attributesScheme: CustomAttributeApiResult.listFromJson(json[r'attributesScheme']),
-        testPlansAttributesScheme: CustomAttributeApiResult.listFromJson(json[r'testPlansAttributesScheme']),
         testCasesCount: mapValueOfType<int>(json, r'testCasesCount'),
         sharedStepsCount: mapValueOfType<int>(json, r'sharedStepsCount'),
         checkListsCount: mapValueOfType<int>(json, r'checkListsCount'),
         autoTestsCount: mapValueOfType<int>(json, r'autoTestsCount'),
         modifiedDate: mapDateTime(json, r'modifiedDate', r''),
         modifiedById: mapValueOfType<String>(json, r'modifiedById'),
-        isFlakyAuto: mapValueOfType<bool>(json, r'isFlakyAuto'),
       );
     }
     return null;
@@ -291,6 +263,7 @@ class ProjectApiResult {
     'id',
     'name',
     'isFavorite',
+    'workItemsCount',
     'isDeleted',
     'createdDate',
     'createdById',

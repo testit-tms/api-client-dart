@@ -77,7 +77,7 @@ class TestResultResponse {
 
   String? comment;
 
-  List<Link>? links;
+  List<LinkApiResult>? links;
 
   List<StepResultApiModel>? stepResults;
 
@@ -373,7 +373,7 @@ class TestResultResponse {
         outcome: TestResultOutcome.fromJson(json[r'outcome']),
         status: TestStatusApiResult.fromJson(json[r'status']),
         comment: mapValueOfType<String>(json, r'comment'),
-        links: Link.listFromJson(json[r'links']),
+        links: LinkApiResult.listFromJson(json[r'links']),
         stepResults: StepResultApiModel.listFromJson(json[r'stepResults']),
         attachments: AttachmentApiResult.listFromJson(json[r'attachments']),
         autoTestId: mapValueOfType<String>(json, r'autoTestId'),

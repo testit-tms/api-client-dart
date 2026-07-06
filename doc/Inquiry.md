@@ -9,6 +9,7 @@ import 'package:testit_api_client_dart/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **order** | [**List<Order>**](Order.md) |  | [default to const []]
+**group** | [**Group**](Group.md) |  | [optional] 
 **filter** | [**CompositeFilter**](CompositeFilter.md) |  | [optional] 
 **page** | [**Page**](Page.md) |  | [optional] 
 

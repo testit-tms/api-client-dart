@@ -31,6 +31,7 @@ class WorkItemChangedFieldsViewModel {
     required this.globalId,
     required this.versionNumber,
     required this.entityTypeName,
+    required this.parentId,
     this.name,
     this.description,
   });
@@ -71,6 +72,8 @@ class WorkItemChangedFieldsViewModel {
 
   StringChangedFieldViewModel entityTypeName;
 
+  GuidNullableChangedFieldViewModel parentId;
+
   StringChangedFieldWithDiffsViewModel? name;
 
   StringChangedFieldWithDiffsViewModel? description;
@@ -95,6 +98,7 @@ class WorkItemChangedFieldsViewModel {
     other.globalId == globalId &&
     other.versionNumber == versionNumber &&
     other.entityTypeName == entityTypeName &&
+    other.parentId == parentId &&
     other.name == name &&
     other.description == description;
 
@@ -119,11 +123,12 @@ class WorkItemChangedFieldsViewModel {
     (globalId.hashCode) +
     (versionNumber.hashCode) +
     (entityTypeName.hashCode) +
+    (parentId.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (description == null ? 0 : description!.hashCode);
 
   @override
-  String toString() => 'WorkItemChangedFieldsViewModel[isDeleted=$isDeleted, projectId=$projectId, isAutomated=$isAutomated, sectionId=$sectionId, state=$state, priority=$priority, duration=$duration, attributes=$attributes, steps=$steps, preconditionSteps=$preconditionSteps, postconditionSteps=$postconditionSteps, autoTests=$autoTests, attachments=$attachments, tags=$tags, links=$links, globalId=$globalId, versionNumber=$versionNumber, entityTypeName=$entityTypeName, name=$name, description=$description]';
+  String toString() => 'WorkItemChangedFieldsViewModel[isDeleted=$isDeleted, projectId=$projectId, isAutomated=$isAutomated, sectionId=$sectionId, state=$state, priority=$priority, duration=$duration, attributes=$attributes, steps=$steps, preconditionSteps=$preconditionSteps, postconditionSteps=$postconditionSteps, autoTests=$autoTests, attachments=$attachments, tags=$tags, links=$links, globalId=$globalId, versionNumber=$versionNumber, entityTypeName=$entityTypeName, parentId=$parentId, name=$name, description=$description]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -145,6 +150,7 @@ class WorkItemChangedFieldsViewModel {
       json[r'globalId'] = this.globalId;
       json[r'versionNumber'] = this.versionNumber;
       json[r'entityTypeName'] = this.entityTypeName;
+      json[r'parentId'] = this.parentId;
     if (this.name != null) {
       json[r'name'] = this.name;
     } else {
@@ -195,6 +201,7 @@ class WorkItemChangedFieldsViewModel {
         globalId: Int64ChangedFieldViewModel.fromJson(json[r'globalId'])!,
         versionNumber: Int32ChangedFieldViewModel.fromJson(json[r'versionNumber'])!,
         entityTypeName: StringChangedFieldViewModel.fromJson(json[r'entityTypeName'])!,
+        parentId: GuidNullableChangedFieldViewModel.fromJson(json[r'parentId'])!,
         name: StringChangedFieldWithDiffsViewModel.fromJson(json[r'name']),
         description: StringChangedFieldWithDiffsViewModel.fromJson(json[r'description']),
       );
@@ -262,6 +269,7 @@ class WorkItemChangedFieldsViewModel {
     'globalId',
     'versionNumber',
     'entityTypeName',
+    'parentId',
   };
 }
 

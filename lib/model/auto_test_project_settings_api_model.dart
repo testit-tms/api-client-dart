@@ -16,10 +16,14 @@ class AutoTestProjectSettingsApiModel {
     required this.rerunEnabled,
     required this.rerunAttemptsCount,
     required this.workItemUpdatingFields,
+    required this.archiveOutdatedTestRunsEnabled,
+    required this.testRunsArchiveLimitEnabled,
     this.isFlakyAuto = false,
     this.flakyStabilityPercentage = 100,
     this.flakyTestRunCount = 100,
     this.workItemUpdatingEnabled = false,
+    this.testRunsRetentionPeriodDays = 180,
+    this.maxActiveTestRunsCount = 500,
   });
 
   /// Auto rerun enabled
@@ -33,6 +37,12 @@ class AutoTestProjectSettingsApiModel {
 
   /// Autotest to work item updating fields
   WorkItemUpdatingFieldsApiModel workItemUpdatingFields;
+
+  /// Indicates whether archiving of outdated test runs is enabled for the project.
+  bool archiveOutdatedTestRunsEnabled;
+
+  /// Indicates whether a limit is enforced on the number of archived test runs.
+  bool testRunsArchiveLimitEnabled;
 
   /// Indicates if the status \"Flaky/Stable\" sets automatically
   bool isFlakyAuto;
@@ -52,15 +62,31 @@ class AutoTestProjectSettingsApiModel {
   /// Autotest to work item updating enabled
   bool workItemUpdatingEnabled;
 
+  ///  The retention period in days for test runs. After this period,  outdated test runs may be archived based on project settings
+  ///
+  /// Minimum value: 0
+  /// Maximum value: 1000
+  int testRunsRetentionPeriodDays;
+
+  /// Maximum number of active test runs to keep. When this limit is exceeded,  older test runs are automatically archived
+  ///
+  /// Minimum value: 0
+  /// Maximum value: 10000
+  int maxActiveTestRunsCount;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is AutoTestProjectSettingsApiModel &&
     other.rerunEnabled == rerunEnabled &&
     other.rerunAttemptsCount == rerunAttemptsCount &&
     other.workItemUpdatingFields == workItemUpdatingFields &&
+    other.archiveOutdatedTestRunsEnabled == archiveOutdatedTestRunsEnabled &&
+    other.testRunsArchiveLimitEnabled == testRunsArchiveLimitEnabled &&
     other.isFlakyAuto == isFlakyAuto &&
     other.flakyStabilityPercentage == flakyStabilityPercentage &&
     other.flakyTestRunCount == flakyTestRunCount &&
-    other.workItemUpdatingEnabled == workItemUpdatingEnabled;
+    other.workItemUpdatingEnabled == workItemUpdatingEnabled &&
+    other.testRunsRetentionPeriodDays == testRunsRetentionPeriodDays &&
+    other.maxActiveTestRunsCount == maxActiveTestRunsCount;
 
   @override
   int get hashCode =>
@@ -68,23 +94,31 @@ class AutoTestProjectSettingsApiModel {
     (rerunEnabled.hashCode) +
     (rerunAttemptsCount.hashCode) +
     (workItemUpdatingFields.hashCode) +
+    (archiveOutdatedTestRunsEnabled.hashCode) +
+    (testRunsArchiveLimitEnabled.hashCode) +
     (isFlakyAuto.hashCode) +
     (flakyStabilityPercentage.hashCode) +
     (flakyTestRunCount.hashCode) +
-    (workItemUpdatingEnabled.hashCode);
+    (workItemUpdatingEnabled.hashCode) +
+    (testRunsRetentionPeriodDays.hashCode) +
+    (maxActiveTestRunsCount.hashCode);
 
   @override
-  String toString() => 'AutoTestProjectSettingsApiModel[rerunEnabled=$rerunEnabled, rerunAttemptsCount=$rerunAttemptsCount, workItemUpdatingFields=$workItemUpdatingFields, isFlakyAuto=$isFlakyAuto, flakyStabilityPercentage=$flakyStabilityPercentage, flakyTestRunCount=$flakyTestRunCount, workItemUpdatingEnabled=$workItemUpdatingEnabled]';
+  String toString() => 'AutoTestProjectSettingsApiModel[rerunEnabled=$rerunEnabled, rerunAttemptsCount=$rerunAttemptsCount, workItemUpdatingFields=$workItemUpdatingFields, archiveOutdatedTestRunsEnabled=$archiveOutdatedTestRunsEnabled, testRunsArchiveLimitEnabled=$testRunsArchiveLimitEnabled, isFlakyAuto=$isFlakyAuto, flakyStabilityPercentage=$flakyStabilityPercentage, flakyTestRunCount=$flakyTestRunCount, workItemUpdatingEnabled=$workItemUpdatingEnabled, testRunsRetentionPeriodDays=$testRunsRetentionPeriodDays, maxActiveTestRunsCount=$maxActiveTestRunsCount]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'rerunEnabled'] = this.rerunEnabled;
       json[r'rerunAttemptsCount'] = this.rerunAttemptsCount;
       json[r'workItemUpdatingFields'] = this.workItemUpdatingFields;
+      json[r'archiveOutdatedTestRunsEnabled'] = this.archiveOutdatedTestRunsEnabled;
+      json[r'testRunsArchiveLimitEnabled'] = this.testRunsArchiveLimitEnabled;
       json[r'isFlakyAuto'] = this.isFlakyAuto;
       json[r'flakyStabilityPercentage'] = this.flakyStabilityPercentage;
       json[r'flakyTestRunCount'] = this.flakyTestRunCount;
       json[r'workItemUpdatingEnabled'] = this.workItemUpdatingEnabled;
+      json[r'testRunsRetentionPeriodDays'] = this.testRunsRetentionPeriodDays;
+      json[r'maxActiveTestRunsCount'] = this.maxActiveTestRunsCount;
     return json;
   }
 
@@ -110,10 +144,14 @@ class AutoTestProjectSettingsApiModel {
         rerunEnabled: mapValueOfType<bool>(json, r'rerunEnabled')!,
         rerunAttemptsCount: mapValueOfType<int>(json, r'rerunAttemptsCount')!,
         workItemUpdatingFields: WorkItemUpdatingFieldsApiModel.fromJson(json[r'workItemUpdatingFields'])!,
+        archiveOutdatedTestRunsEnabled: mapValueOfType<bool>(json, r'archiveOutdatedTestRunsEnabled')!,
+        testRunsArchiveLimitEnabled: mapValueOfType<bool>(json, r'testRunsArchiveLimitEnabled')!,
         isFlakyAuto: mapValueOfType<bool>(json, r'isFlakyAuto') ?? false,
         flakyStabilityPercentage: mapValueOfType<int>(json, r'flakyStabilityPercentage') ?? 100,
         flakyTestRunCount: mapValueOfType<int>(json, r'flakyTestRunCount') ?? 100,
         workItemUpdatingEnabled: mapValueOfType<bool>(json, r'workItemUpdatingEnabled') ?? false,
+        testRunsRetentionPeriodDays: mapValueOfType<int>(json, r'testRunsRetentionPeriodDays') ?? 180,
+        maxActiveTestRunsCount: mapValueOfType<int>(json, r'maxActiveTestRunsCount') ?? 500,
       );
     }
     return null;
@@ -164,6 +202,8 @@ class AutoTestProjectSettingsApiModel {
     'rerunEnabled',
     'rerunAttemptsCount',
     'workItemUpdatingFields',
+    'archiveOutdatedTestRunsEnabled',
+    'testRunsArchiveLimitEnabled',
   };
 }
 

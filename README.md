@@ -9,6 +9,8 @@
 | 5.4.1   | 1.2.3-TMS-5.4.1         |
 | 5.5     | 1.2.5-TMS-5.5           |
 | 5.6     | 1.4.0-TMS-5.6           |
+| 5.7     | 1.5.4-TMS-5.7           |
+| 5.8     | 1.6.0-TMS-5.8           |
 | Cloud   | 1.5.4 +                 | 
 
 1. For current versions, see the releases tab. 

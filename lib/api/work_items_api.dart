@@ -461,6 +461,61 @@ class WorkItemsApi {
     return null;
   }
 
+  /// Patch Test Case, Checklist or Shared Step
+  ///
+  /// See <a href=\"https://www.rfc-editor.org/rfc/rfc6902\" target=\"_blank\">RFC 6902: JavaScript Object Notation (JSON) Patch</a> for details
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   WorkItem internal (guid format) or global(integer format) identifier\"
+  ///
+  /// * [List<Operation>] operation:
+  Future<Response> apiV2WorkItemsIdPatchWithHttpInfo(String id, { List<Operation>? operation, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/v2/workItems/{id}'
+      .replaceAll('{id}', id);
+
+    // ignore: prefer_final_locals
+    Object? postBody = operation;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'PATCH',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Patch Test Case, Checklist or Shared Step
+  ///
+  /// See <a href=\"https://www.rfc-editor.org/rfc/rfc6902\" target=\"_blank\">RFC 6902: JavaScript Object Notation (JSON) Patch</a> for details
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   WorkItem internal (guid format) or global(integer format) identifier\"
+  ///
+  /// * [List<Operation>] operation:
+  Future<void> apiV2WorkItemsIdPatch(String id, { List<Operation>? operation, }) async {
+    final response = await apiV2WorkItemsIdPatchWithHttpInfo(id,  operation: operation, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
   /// Get test results history of WorkItem
   ///
   ///  Use case  User sets WorkItem identifier  User runs method execution  System return test results history of WorkItem
@@ -918,6 +973,54 @@ class WorkItemsApi {
     
     }
     return null;
+  }
+
+  /// Update Test Case, Checklist or Shared Step
+  ///
+  ///  Use case  User sets work item properties (listed in request parameters)  User runs method execution  System updates work item by identifier  System returns updated work item model (listed in response parameters)
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [UpdateWorkItemApiModel] updateWorkItemApiModel:
+  Future<Response> apiV2WorkItemsPutWithHttpInfo({ UpdateWorkItemApiModel? updateWorkItemApiModel, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/v2/workItems';
+
+    // ignore: prefer_final_locals
+    Object? postBody = updateWorkItemApiModel;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Update Test Case, Checklist or Shared Step
+  ///
+  ///  Use case  User sets work item properties (listed in request parameters)  User runs method execution  System updates work item by identifier  System returns updated work item model (listed in response parameters)
+  ///
+  /// Parameters:
+  ///
+  /// * [UpdateWorkItemApiModel] updateWorkItemApiModel:
+  Future<void> apiV2WorkItemsPut({ UpdateWorkItemApiModel? updateWorkItemApiModel, }) async {
+    final response = await apiV2WorkItemsPutWithHttpInfo( updateWorkItemApiModel: updateWorkItemApiModel, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
   }
 
   /// Search for work items
@@ -1852,54 +1955,6 @@ class WorkItemsApi {
   ///   Unique or global ID of the work item
   Future<void> restoreWorkItem(String id,) async {
     final response = await restoreWorkItemWithHttpInfo(id,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-  }
-
-  /// Update Test Case, Checklist or Shared Step
-  ///
-  ///  Use case  User sets work item properties (listed in request parameters)  User runs method execution  System updates work item by identifier  System returns updated work item model (listed in response parameters)
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [UpdateWorkItemApiModel] updateWorkItemApiModel:
-  Future<Response> updateWorkItemWithHttpInfo({ UpdateWorkItemApiModel? updateWorkItemApiModel, }) async {
-    // ignore: prefer_const_declarations
-    final path = r'/api/v2/workItems';
-
-    // ignore: prefer_final_locals
-    Object? postBody = updateWorkItemApiModel;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'PUT',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Update Test Case, Checklist or Shared Step
-  ///
-  ///  Use case  User sets work item properties (listed in request parameters)  User runs method execution  System updates work item by identifier  System returns updated work item model (listed in response parameters)
-  ///
-  /// Parameters:
-  ///
-  /// * [UpdateWorkItemApiModel] updateWorkItemApiModel:
-  Future<void> updateWorkItem({ UpdateWorkItemApiModel? updateWorkItemApiModel, }) async {
-    final response = await updateWorkItemWithHttpInfo( updateWorkItemApiModel: updateWorkItemApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

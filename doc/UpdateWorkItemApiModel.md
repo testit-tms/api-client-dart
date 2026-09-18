@@ -8,24 +8,23 @@ import 'package:testit_api_client_dart/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | Workitem internal identifier | 
-**sectionId** | **String** | Internal identifier of section where workitem is located | 
-**state** | [**WorkItemStates**](WorkItemStates.md) |  | 
-**priority** | [**WorkItemPriorityModel**](WorkItemPriorityModel.md) |  | 
-**steps** | [**List<UpdateStepApiModel>**](UpdateStepApiModel.md) | Collection of workitem steps | [default to const []]
-**preconditionSteps** | [**List<UpdateStepApiModel>**](UpdateStepApiModel.md) | Collection of workitem precondtion steps | [default to const []]
-**postconditionSteps** | [**List<UpdateStepApiModel>**](UpdateStepApiModel.md) | Collection of workitem postcondition steps | [default to const []]
-**duration** | **int** | Workitem duration in milliseconds | 
-**attributes** | [**Map<String, Object>**](Object.md) | Key value pair of custom workitem attributes | [default to const {}]
-**tags** | [**List<TagModel>**](TagModel.md) | Collection of workitem tags | [default to const []]
-**links** | [**List<UpdateLinkApiModel>**](UpdateLinkApiModel.md) | Collection of workitem links | [default to const []]
-**name** | **String** | Workitem name | 
-**attachments** | [**List<AssignAttachmentApiModel>**](AssignAttachmentApiModel.md) |  | [default to const []]
-**description** | **String** | Workitem description | [optional] 
-**sourceType** | [**WorkItemSourceTypeModel**](WorkItemSourceTypeModel.md) |  | [optional] 
-**iterations** | [**List<AssignIterationApiModel>**](AssignIterationApiModel.md) | Collection of parameter id sets | [optional] [default to const []]
-**autoTests** | [**List<AutoTestIdModel>**](AutoTestIdModel.md) | Collection of autotest internal ids | [optional] [default to const []]
-**parameters** | [**List<WorkItemParameterKeyApiModel>**](WorkItemParameterKeyApiModel.md) | Set of parameter keys related to the work item | [optional] [default to const []]
+**id** | **String** | Unique identifier of the work item | 
+**sectionId** | **String** | Unique identifier of the section within a project | 
+**name** | **String** | Name of the work item | 
+**duration** | **int** | Duration of the work item in milliseconds | 
+**state** | [**WorkItemStateApiModel**](WorkItemStateApiModel.md) | Current state of the work item | 
+**priority** | [**WorkItemPriorityApiModel**](WorkItemPriorityApiModel.md) | Priority level assigned to the work item | 
+**description** | **String** | Description of the work item | [optional] 
+**attributes** | [**Map<String, Object>**](Object.md) | Set of custom attributes associated with the work item | [optional] [default to const {}]
+**tags** | [**List<TagModel>**](TagModel.md) | Set of tags applied to the work item | [optional] [default to const []]
+**preconditionSteps** | [**List<UpdateStepApiModel>**](UpdateStepApiModel.md) | Set of precondition steps that must be executed before the main steps | [optional] [default to const []]
+**steps** | [**List<UpdateStepApiModel>**](UpdateStepApiModel.md) | Set of main steps or actions defined for the work item | [optional] [default to const []]
+**postconditionSteps** | [**List<UpdateStepApiModel>**](UpdateStepApiModel.md) | Set of postcondition steps that are executed after completing the main steps | [optional] [default to const []]
+**iterations** | [**List<AssignIterationApiModel>**](AssignIterationApiModel.md) | Set of iterations associated with the work item | [optional] [default to const []]
+**autoTests** | [**List<AutoTestIdModel>**](AutoTestIdModel.md) | Set of automated tests linked to the work item | [optional] [default to const []]
+**attachments** | [**List<AssignAttachmentApiModel>**](AssignAttachmentApiModel.md) | Set of files attached to the work item | [optional] [default to const []]
+**links** | [**List<UpdateLinkApiModel>**](UpdateLinkApiModel.md) | Set of links related to the work item | [optional] [default to const []]
+**parameters** | [**List<WorkItemParameterKeyApiModel>**](WorkItemParameterKeyApiModel.md) | Set of parameter keys associated with the work item | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -14,41 +14,37 @@ class Filter {
   /// Returns a new [Filter] instance.
   Filter({
     required this.operator_,
+    required this.value,
     required this.field,
-    this.value,
   });
 
   FilterOperator operator_;
 
-  String field;
+  JsonElement value;
 
-  String? value;
+  String field;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Filter &&
     other.operator_ == operator_ &&
-    other.field == field &&
-    other.value == value;
+    other.value == value &&
+    other.field == field;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (operator_.hashCode) +
-    (field.hashCode) +
-    (value == null ? 0 : value!.hashCode);
+    (value.hashCode) +
+    (field.hashCode);
 
   @override
-  String toString() => 'Filter[operator_=$operator_, field=$field, value=$value]';
+  String toString() => 'Filter[operator_=$operator_, value=$value, field=$field]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'operator'] = this.operator_;
-      json[r'field'] = this.field;
-    if (this.value != null) {
       json[r'value'] = this.value;
-    } else {
-      json[r'value'] = null;
-    }
+      json[r'field'] = this.field;
     return json;
   }
 
@@ -72,8 +68,8 @@ class Filter {
 
       return Filter(
         operator_: FilterOperator.fromJson(json[r'operator'])!,
+        value: JsonElement.fromJson(json[r'value'])!,
         field: mapValueOfType<String>(json, r'field')!,
-        value: mapValueOfType<String>(json, r'value'),
       );
     }
     return null;
@@ -122,6 +118,7 @@ class Filter {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'operator',
+    'value',
     'field',
   };
 }

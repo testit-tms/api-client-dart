@@ -53,7 +53,7 @@ class ExternalIssuesApi {
   /// Parameters:
   ///
   /// * [GetExternalIssueSuggestionsApiModel] getExternalIssueSuggestionsApiModel:
-  Future<ExternalIssueApiFieldSuggestionReply?> apiV2ExternalIssuesSuggestionsPost({ GetExternalIssueSuggestionsApiModel? getExternalIssueSuggestionsApiModel, }) async {
+  Future<ExternalIssueApiFieldSuggestionIReply?> apiV2ExternalIssuesSuggestionsPost({ GetExternalIssueSuggestionsApiModel? getExternalIssueSuggestionsApiModel, }) async {
     final response = await apiV2ExternalIssuesSuggestionsPostWithHttpInfo( getExternalIssueSuggestionsApiModel: getExternalIssueSuggestionsApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -62,7 +62,7 @@ class ExternalIssuesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ExternalIssueApiFieldSuggestionReply',) as ExternalIssueApiFieldSuggestionReply;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ExternalIssueApiFieldSuggestionIReply',) as ExternalIssueApiFieldSuggestionIReply;
     
     }
     return null;

@@ -323,14 +323,14 @@ class TestPlansApi {
   ///
   /// * [int] timeZoneOffsetInMinutes:
   ///
-  /// * [GetXlsxTestPointsByTestPlanModel] getXlsxTestPointsByTestPlanModel:
-  Future<Response> apiV2TestPlansIdExportTestPointsXlsxPostWithHttpInfo(String id, { int? timeZoneOffsetInMinutes, GetXlsxTestPointsByTestPlanModel? getXlsxTestPointsByTestPlanModel, }) async {
+  /// * [GetXlsxTestPointsByTestPlanApiModel] getXlsxTestPointsByTestPlanApiModel:
+  Future<Response> apiV2TestPlansIdExportTestPointsXlsxPostWithHttpInfo(String id, { int? timeZoneOffsetInMinutes, GetXlsxTestPointsByTestPlanApiModel? getXlsxTestPointsByTestPlanApiModel, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v2/testPlans/{id}/export/testPoints/xlsx'
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
-    Object? postBody = getXlsxTestPointsByTestPlanModel;
+    Object? postBody = getXlsxTestPointsByTestPlanApiModel;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -365,9 +365,9 @@ class TestPlansApi {
   ///
   /// * [int] timeZoneOffsetInMinutes:
   ///
-  /// * [GetXlsxTestPointsByTestPlanModel] getXlsxTestPointsByTestPlanModel:
-  Future<void> apiV2TestPlansIdExportTestPointsXlsxPost(String id, { int? timeZoneOffsetInMinutes, GetXlsxTestPointsByTestPlanModel? getXlsxTestPointsByTestPlanModel, }) async {
-    final response = await apiV2TestPlansIdExportTestPointsXlsxPostWithHttpInfo(id,  timeZoneOffsetInMinutes: timeZoneOffsetInMinutes, getXlsxTestPointsByTestPlanModel: getXlsxTestPointsByTestPlanModel, );
+  /// * [GetXlsxTestPointsByTestPlanApiModel] getXlsxTestPointsByTestPlanApiModel:
+  Future<void> apiV2TestPlansIdExportTestPointsXlsxPost(String id, { int? timeZoneOffsetInMinutes, GetXlsxTestPointsByTestPlanApiModel? getXlsxTestPointsByTestPlanApiModel, }) async {
+    final response = await apiV2TestPlansIdExportTestPointsXlsxPostWithHttpInfo(id,  timeZoneOffsetInMinutes: timeZoneOffsetInMinutes, getXlsxTestPointsByTestPlanApiModel: getXlsxTestPointsByTestPlanApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -14,46 +14,46 @@ class LinkShortModel {
   /// Returns a new [LinkShortModel] instance.
   LinkShortModel({
     required this.id,
-    required this.title,
+    required this.type,
     required this.url,
-    this.type,
+    this.title,
   });
 
   String id;
 
-  String title;
+  LinkType type;
 
   String url;
 
-  String? type;
+  String? title;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is LinkShortModel &&
     other.id == id &&
-    other.title == title &&
+    other.type == type &&
     other.url == url &&
-    other.type == type;
+    other.title == title;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id.hashCode) +
-    (title.hashCode) +
+    (type.hashCode) +
     (url.hashCode) +
-    (type == null ? 0 : type!.hashCode);
+    (title == null ? 0 : title!.hashCode);
 
   @override
-  String toString() => 'LinkShortModel[id=$id, title=$title, url=$url, type=$type]';
+  String toString() => 'LinkShortModel[id=$id, type=$type, url=$url, title=$title]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
-      json[r'title'] = this.title;
-      json[r'url'] = this.url;
-    if (this.type != null) {
       json[r'type'] = this.type;
+      json[r'url'] = this.url;
+    if (this.title != null) {
+      json[r'title'] = this.title;
     } else {
-      json[r'type'] = null;
+      json[r'title'] = null;
     }
     return json;
   }
@@ -78,9 +78,9 @@ class LinkShortModel {
 
       return LinkShortModel(
         id: mapValueOfType<String>(json, r'id')!,
-        title: mapValueOfType<String>(json, r'title')!,
+        type: LinkType.fromJson(json[r'type'])!,
         url: mapValueOfType<String>(json, r'url')!,
-        type: mapValueOfType<String>(json, r'type'),
+        title: mapValueOfType<String>(json, r'title'),
       );
     }
     return null;
@@ -129,7 +129,7 @@ class LinkShortModel {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'id',
-    'title',
+    'type',
     'url',
   };
 }

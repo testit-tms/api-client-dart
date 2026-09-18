@@ -88,7 +88,7 @@ class WorkItemFilterModel {
   Set<WorkItemSourceTypeModel>? sourceTypes;
 
   /// Collection of types of work item
-  Set<WorkItemEntityTypes>? types;
+  Set<WorkItemTypeModel>? types;
 
   /// Specifies a work item range of creation date to search for
   DateTimeRangeSelectorModel? createdDate;
@@ -379,7 +379,7 @@ class WorkItemFilterModel {
         states: WorkItemStates.listFromJson(json[r'states']).toSet(),
         priorities: WorkItemPriorityModel.listFromJson(json[r'priorities']).toSet(),
         sourceTypes: WorkItemSourceTypeModel.listFromJson(json[r'sourceTypes']).toSet(),
-        types: WorkItemEntityTypes.listFromJson(json[r'types']).toSet(),
+        types: WorkItemTypeModel.listFromJson(json[r'types']).toSet(),
         createdDate: DateTimeRangeSelectorModel.fromJson(json[r'createdDate']),
         modifiedDate: DateTimeRangeSelectorModel.fromJson(json[r'modifiedDate']),
         duration: Int64RangeSelectorModel.fromJson(json[r'duration']),

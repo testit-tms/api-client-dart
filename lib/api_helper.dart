@@ -106,6 +106,12 @@ String parameterToString(dynamic value) {
   if (value is ImageResizeType) {
     return ImageResizeTypeTypeTransformer().encode(value).toString();
   }
+  if (value is JsonValueKind) {
+    return JsonValueKindTypeTransformer().encode(value).toString();
+  }
+  if (value is LayerSource) {
+    return LayerSourceTypeTransformer().encode(value).toString();
+  }
   if (value is LinkType) {
     return LinkTypeTypeTransformer().encode(value).toString();
   }
@@ -114,6 +120,9 @@ String parameterToString(dynamic value) {
   }
   if (value is LogicalOperator) {
     return LogicalOperatorTypeTransformer().encode(value).toString();
+  }
+  if (value is Mode) {
+    return ModeTypeTransformer().encode(value).toString();
   }
   if (value is NotificationTypeModel) {
     return NotificationTypeModelTypeTransformer().encode(value).toString();
@@ -175,9 +184,6 @@ String parameterToString(dynamic value) {
   if (value is WorkItemEntityTypeApiModel) {
     return WorkItemEntityTypeApiModelTypeTransformer().encode(value).toString();
   }
-  if (value is WorkItemEntityTypes) {
-    return WorkItemEntityTypesTypeTransformer().encode(value).toString();
-  }
   if (value is WorkItemGroupType) {
     return WorkItemGroupTypeTypeTransformer().encode(value).toString();
   }
@@ -204,6 +210,9 @@ String parameterToString(dynamic value) {
   }
   if (value is WorkItemStates) {
     return WorkItemStatesTypeTransformer().encode(value).toString();
+  }
+  if (value is WorkItemTypeModel) {
+    return WorkItemTypeModelTypeTransformer().encode(value).toString();
   }
   return value.toString();
 }

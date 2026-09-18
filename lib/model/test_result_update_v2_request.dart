@@ -40,7 +40,7 @@ class TestResultUpdateV2Request {
 
   String? comment;
 
-  List<Link>? links;
+  List<CreateLinkApiModel>? links;
 
   List<StepResultApiModel>? stepResults;
 
@@ -210,7 +210,7 @@ class TestResultUpdateV2Request {
         statusCode: mapValueOfType<String>(json, r'statusCode'),
         statusType: TestStatusType.fromJson(json[r'statusType']),
         comment: mapValueOfType<String>(json, r'comment'),
-        links: Link.listFromJson(json[r'links']),
+        links: CreateLinkApiModel.listFromJson(json[r'links']),
         stepResults: StepResultApiModel.listFromJson(json[r'stepResults']),
         attachments: AttachmentUpdateRequest.listFromJson(json[r'attachments']),
         durationInMs: mapValueOfType<int>(json, r'durationInMs'),

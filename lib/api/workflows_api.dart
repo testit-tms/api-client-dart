@@ -190,7 +190,7 @@ class WorkflowsApi {
   /// * [String] id (required):
   ///
   /// * [SearchWorkflowProjectsApiModel] searchWorkflowProjectsApiModel:
-  Future<WorkflowProjectApiResultReply?> apiV2WorkflowsIdProjectsSearchPost(String id, { SearchWorkflowProjectsApiModel? searchWorkflowProjectsApiModel, }) async {
+  Future<WorkflowProjectApiResultIReply?> apiV2WorkflowsIdProjectsSearchPost(String id, { SearchWorkflowProjectsApiModel? searchWorkflowProjectsApiModel, }) async {
     final response = await apiV2WorkflowsIdProjectsSearchPostWithHttpInfo(id,  searchWorkflowProjectsApiModel: searchWorkflowProjectsApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -199,7 +199,7 @@ class WorkflowsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'WorkflowProjectApiResultReply',) as WorkflowProjectApiResultReply;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'WorkflowProjectApiResultIReply',) as WorkflowProjectApiResultIReply;
     
     }
     return null;
@@ -376,7 +376,7 @@ class WorkflowsApi {
   /// Parameters:
   ///
   /// * [SearchWorkflowsApiModel] searchWorkflowsApiModel:
-  Future<WorkflowShortApiResultReply?> apiV2WorkflowsSearchPost({ SearchWorkflowsApiModel? searchWorkflowsApiModel, }) async {
+  Future<WorkflowShortApiResultIReply?> apiV2WorkflowsSearchPost({ SearchWorkflowsApiModel? searchWorkflowsApiModel, }) async {
     final response = await apiV2WorkflowsSearchPostWithHttpInfo( searchWorkflowsApiModel: searchWorkflowsApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -385,7 +385,7 @@ class WorkflowsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'WorkflowShortApiResultReply',) as WorkflowShortApiResultReply;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'WorkflowShortApiResultIReply',) as WorkflowShortApiResultIReply;
     
     }
     return null;

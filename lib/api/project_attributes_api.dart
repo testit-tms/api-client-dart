@@ -363,7 +363,7 @@ class ProjectAttributesApi {
   ///   Value for searching
   ///
   /// * [ProjectAttributesFilterModel] projectAttributesFilterModel:
-  Future<List<CustomAttributeGetModel>?> searchAttributesInProject(String projectId, { int? skip, int? take, String? orderBy, String? searchField, String? searchValue, ProjectAttributesFilterModel? projectAttributesFilterModel, }) async {
+  Future<List<CustomAttributeModel>?> searchAttributesInProject(String projectId, { int? skip, int? take, String? orderBy, String? searchField, String? searchValue, ProjectAttributesFilterModel? projectAttributesFilterModel, }) async {
     final response = await searchAttributesInProjectWithHttpInfo(projectId,  skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, projectAttributesFilterModel: projectAttributesFilterModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -373,8 +373,8 @@ class ProjectAttributesApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<CustomAttributeGetModel>') as List)
-        .cast<CustomAttributeGetModel>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<CustomAttributeModel>') as List)
+        .cast<CustomAttributeModel>()
         .toList(growable: false);
 
     }

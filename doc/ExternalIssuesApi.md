@@ -13,17 +13,21 @@ Method | HTTP request | Description
 
 
 # **apiV2ExternalIssuesSuggestionsPost**
-> ExternalIssueApiFieldSuggestionReply apiV2ExternalIssuesSuggestionsPost(getExternalIssueSuggestionsApiModel)
+> ExternalIssueApiFieldSuggestionIReply apiV2ExternalIssuesSuggestionsPost(getExternalIssueSuggestionsApiModel)
 
 Returns list of suggestions from available external issues
 
 ### Example
 ```dart
 import 'package:testit_api_client_dart/api.dart';
-// TODO Configure API key authorization: Bearer or PrivateToken
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKey = 'YOUR_API_KEY';
+// TODO Configure API key authorization: PrivateToken
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKeyPrefix = 'Bearer';
+// TODO Configure API key authorization: Identity.Application
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKeyPrefix = 'Bearer';
 
 final api_instance = ExternalIssuesApi();
 final getExternalIssueSuggestionsApiModel = GetExternalIssueSuggestionsApiModel(); // GetExternalIssueSuggestionsApiModel | 
@@ -44,11 +48,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ExternalIssueApiFieldSuggestionReply**](ExternalIssueApiFieldSuggestionReply.md)
+[**ExternalIssueApiFieldSuggestionIReply**](ExternalIssueApiFieldSuggestionIReply.md)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 

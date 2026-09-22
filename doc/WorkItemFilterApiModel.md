@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **states** | [**Set<WorkItemStates>**](WorkItemStates.md) | Collection of states of work item | [optional] [default to const {}]
 **priorities** | [**Set<WorkItemPriorityModel>**](WorkItemPriorityModel.md) | Collection of priorities of work item | [optional] [default to const {}]
 **sourceTypes** | [**Set<WorkItemSourceTypeModel>**](WorkItemSourceTypeModel.md) | Source type of work item (manual creation or AI generated) | [optional] [default to const {}]
-**types** | [**Set<WorkItemEntityTypes>**](WorkItemEntityTypes.md) | Collection of types of work item | [optional] [default to const {}]
+**types** | [**Set<WorkItemTypeModel>**](WorkItemTypeModel.md) | Collection of types of work item | [optional] [default to const {}]
 **createdDate** | [**DateTimeRangeSelectorModel**](DateTimeRangeSelectorModel.md) | Specifies a work item range of creation date to search for | [optional] 
 **modifiedDate** | [**DateTimeRangeSelectorModel**](DateTimeRangeSelectorModel.md) | Specifies a work item range of last modification date to search for | [optional] 
 **duration** | [**Int32RangeSelectorModel**](Int32RangeSelectorModel.md) | Specifies a work item duration range to search for | [optional] 
@@ -35,6 +35,7 @@ Name | Type | Description | Notes
 **workItemVersionIds** | **List<String>** | Collection of identifiers work items versions. | [optional] [default to const []]
 **links** | [**WorkItemLinkFilterApiModel**](WorkItemLinkFilterApiModel.md) | Specifies a work item filter by its links | [optional] 
 **externalMetadata** | [**WorkItemExternalMetadataFilterApiModel**](WorkItemExternalMetadataFilterApiModel.md) | Specifies work item filter by its external metadata | [optional] 
+**layers** | **Set<String>** | Specifies auto test case layers to search for | [optional] [default to const {}]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

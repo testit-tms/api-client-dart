@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **id** | **String** | Unique ID of the autotest | 
 **createdDate** | [**DateTime**](DateTime.md) | Creation date of the autotest | 
 **createdById** | **String** | Unique ID of the project creator | 
-**links** | [**List<Link>**](Link.md) | Collection of the autotest links | [optional] [default to const []]
+**links** | [**List<LinkApiResult>**](LinkApiResult.md) | Collection of the autotest links | [optional] [default to const []]
 **namespace** | **String** | Name of the autotest namespace | [optional] 
 **classname** | **String** | Name of the autotest class | [optional] 
 **steps** | [**List<AutoTestStep>**](AutoTestStep.md) | Collection of the autotest steps | [optional] [default to const []]

@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**apiV2TestResultsIdAttachmentsAttachmentIdPut**](TestResultsApi.md#apiv2testresultsidattachmentsattachmentidput) | **PUT** /api/v2/testResults/{id}/attachments/{attachmentId} | Attach file to the test result
 [**apiV2TestResultsIdAttachmentsInfoGet**](TestResultsApi.md#apiv2testresultsidattachmentsinfoget) | **GET** /api/v2/testResults/{id}/attachments/info | Get test result attachments meta-information
 [**apiV2TestResultsIdGet**](TestResultsApi.md#apiv2testresultsidget) | **GET** /api/v2/testResults/{id} | Get test result by ID
+[**apiV2TestResultsIdPatch**](TestResultsApi.md#apiv2testresultsidpatch) | **PATCH** /api/v2/testResults/{id} | Patch test result by ID
 [**apiV2TestResultsIdPut**](TestResultsApi.md#apiv2testresultsidput) | **PUT** /api/v2/testResults/{id} | Edit test result by ID
 [**apiV2TestResultsIdRerunsGet**](TestResultsApi.md#apiv2testresultsidrerunsget) | **GET** /api/v2/testResults/{id}/reruns | Get reruns
 [**apiV2TestResultsSearchPost**](TestResultsApi.md#apiv2testresultssearchpost) | **POST** /api/v2/testResults/search | Search for test results
@@ -34,10 +35,14 @@ Method | HTTP request | Description
 ### Example
 ```dart
 import 'package:testit_api_client_dart/api.dart';
-// TODO Configure API key authorization: Bearer or PrivateToken
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKey = 'YOUR_API_KEY';
+// TODO Configure API key authorization: PrivateToken
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKeyPrefix = 'Bearer';
+// TODO Configure API key authorization: Identity.Application
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKeyPrefix = 'Bearer';
 
 final api_instance = TestResultsApi();
 final externalProjectId = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
@@ -64,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -81,10 +86,14 @@ Name | Type | Description  | Notes
 ### Example
 ```dart
 import 'package:testit_api_client_dart/api.dart';
-// TODO Configure API key authorization: Bearer or PrivateToken
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKey = 'YOUR_API_KEY';
+// TODO Configure API key authorization: PrivateToken
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKeyPrefix = 'Bearer';
+// TODO Configure API key authorization: Identity.Application
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKeyPrefix = 'Bearer';
 
 final api_instance = TestResultsApi();
 final externalProjectId = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
@@ -111,7 +120,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -128,10 +137,14 @@ Get test result by ID aggregated with previous results
 ### Example
 ```dart
 import 'package:testit_api_client_dart/api.dart';
-// TODO Configure API key authorization: Bearer or PrivateToken
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKey = 'YOUR_API_KEY';
+// TODO Configure API key authorization: PrivateToken
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKeyPrefix = 'Bearer';
+// TODO Configure API key authorization: Identity.Application
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKeyPrefix = 'Bearer';
 
 final api_instance = TestResultsApi();
 final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | Test result unique ID
@@ -156,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -173,10 +186,14 @@ Attach file to the test result
 ### Example
 ```dart
 import 'package:testit_api_client_dart/api.dart';
-// TODO Configure API key authorization: Bearer or PrivateToken
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKey = 'YOUR_API_KEY';
+// TODO Configure API key authorization: PrivateToken
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKeyPrefix = 'Bearer';
+// TODO Configure API key authorization: Identity.Application
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKeyPrefix = 'Bearer';
 
 final api_instance = TestResultsApi();
 final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | Test result unique ID
@@ -202,7 +219,7 @@ void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -219,10 +236,14 @@ Get test result attachments meta-information
 ### Example
 ```dart
 import 'package:testit_api_client_dart/api.dart';
-// TODO Configure API key authorization: Bearer or PrivateToken
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKey = 'YOUR_API_KEY';
+// TODO Configure API key authorization: PrivateToken
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKeyPrefix = 'Bearer';
+// TODO Configure API key authorization: Identity.Application
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKeyPrefix = 'Bearer';
 
 final api_instance = TestResultsApi();
 final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | Test result unique ID
@@ -247,7 +268,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -264,10 +285,14 @@ Get test result by ID
 ### Example
 ```dart
 import 'package:testit_api_client_dart/api.dart';
-// TODO Configure API key authorization: Bearer or PrivateToken
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKey = 'YOUR_API_KEY';
+// TODO Configure API key authorization: PrivateToken
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKeyPrefix = 'Bearer';
+// TODO Configure API key authorization: Identity.Application
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKeyPrefix = 'Bearer';
 
 final api_instance = TestResultsApi();
 final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | Test result unique ID
@@ -292,11 +317,63 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **apiV2TestResultsIdPatch**
+> apiV2TestResultsIdPatch(id, operation)
+
+Patch test result by ID
+
+See <a href=\"https://www.rfc-editor.org/rfc/rfc6902\" target=\"_blank\">RFC 6902: JavaScript Object Notation (JSON) Patch</a> for details
+
+### Example
+```dart
+import 'package:testit_api_client_dart/api.dart';
+// TODO Configure API key authorization: PrivateToken
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKeyPrefix = 'Bearer';
+// TODO Configure API key authorization: Identity.Application
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKeyPrefix = 'Bearer';
+
+final api_instance = TestResultsApi();
+final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | Test result unique ID
+final operation = [List<Operation>()]; // List<Operation> | 
+
+try {
+    api_instance.apiV2TestResultsIdPatch(id, operation);
+} catch (e) {
+    print('Exception when calling TestResultsApi->apiV2TestResultsIdPatch: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Test result unique ID | 
+ **operation** | [**List<Operation>**](Operation.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -309,10 +386,14 @@ Edit test result by ID
 ### Example
 ```dart
 import 'package:testit_api_client_dart/api.dart';
-// TODO Configure API key authorization: Bearer or PrivateToken
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKey = 'YOUR_API_KEY';
+// TODO Configure API key authorization: PrivateToken
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKeyPrefix = 'Bearer';
+// TODO Configure API key authorization: Identity.Application
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKeyPrefix = 'Bearer';
 
 final api_instance = TestResultsApi();
 final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | Test result unique ID
@@ -338,7 +419,7 @@ void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -355,10 +436,14 @@ Get reruns
 ### Example
 ```dart
 import 'package:testit_api_client_dart/api.dart';
-// TODO Configure API key authorization: Bearer or PrivateToken
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKey = 'YOUR_API_KEY';
+// TODO Configure API key authorization: PrivateToken
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKeyPrefix = 'Bearer';
+// TODO Configure API key authorization: Identity.Application
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKeyPrefix = 'Bearer';
 
 final api_instance = TestResultsApi();
 final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | Test result unique ID
@@ -383,7 +468,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -400,10 +485,14 @@ Search for test results
 ### Example
 ```dart
 import 'package:testit_api_client_dart/api.dart';
-// TODO Configure API key authorization: Bearer or PrivateToken
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKey = 'YOUR_API_KEY';
+// TODO Configure API key authorization: PrivateToken
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKeyPrefix = 'Bearer';
+// TODO Configure API key authorization: Identity.Application
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKeyPrefix = 'Bearer';
 
 final api_instance = TestResultsApi();
 final skip = 56; // int | Amount of items to be skipped (offset)
@@ -438,7 +527,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -455,10 +544,14 @@ Search for test results and extract statistics
 ### Example
 ```dart
 import 'package:testit_api_client_dart/api.dart';
-// TODO Configure API key authorization: Bearer or PrivateToken
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKey = 'YOUR_API_KEY';
+// TODO Configure API key authorization: PrivateToken
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKeyPrefix = 'Bearer';
+// TODO Configure API key authorization: Identity.Application
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKeyPrefix = 'Bearer';
 
 final api_instance = TestResultsApi();
 final testResultsFilterApiModel = TestResultsFilterApiModel(); // TestResultsFilterApiModel | 
@@ -483,7 +576,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -502,10 +595,14 @@ Upload and link attachment to TestResult
 ### Example
 ```dart
 import 'package:testit_api_client_dart/api.dart';
-// TODO Configure API key authorization: Bearer or PrivateToken
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKey = 'YOUR_API_KEY';
+// TODO Configure API key authorization: PrivateToken
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKeyPrefix = 'Bearer';
+// TODO Configure API key authorization: Identity.Application
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKeyPrefix = 'Bearer';
 
 final api_instance = TestResultsApi();
 final id = 3fa85f64-5717-4562-b3fc-2c963f66afa6; // String | Test result internal identifier (guid format)
@@ -531,7 +628,7 @@ void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -550,10 +647,14 @@ Remove attachment and unlink from TestResult
 ### Example
 ```dart
 import 'package:testit_api_client_dart/api.dart';
-// TODO Configure API key authorization: Bearer or PrivateToken
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKey = 'YOUR_API_KEY';
+// TODO Configure API key authorization: PrivateToken
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKeyPrefix = 'Bearer';
+// TODO Configure API key authorization: Identity.Application
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKeyPrefix = 'Bearer';
 
 final api_instance = TestResultsApi();
 final id = 3fa85f64-5717-4562-b3fc-2c963f66afa6; // String | Test result internal identifier (guid format)
@@ -579,7 +680,7 @@ void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -598,10 +699,14 @@ Get attachment of TestResult
 ### Example
 ```dart
 import 'package:testit_api_client_dart/api.dart';
-// TODO Configure API key authorization: Bearer or PrivateToken
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKey = 'YOUR_API_KEY';
+// TODO Configure API key authorization: PrivateToken
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKeyPrefix = 'Bearer';
+// TODO Configure API key authorization: Identity.Application
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKeyPrefix = 'Bearer';
 
 final api_instance = TestResultsApi();
 final attachmentId = 3fa85f64-5717-4562-b3fc-2c963f66afa6; // String | Attachment internal identifier (guid format)
@@ -637,7 +742,7 @@ void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -656,10 +761,14 @@ Get Metadata of TestResult's attachment
 ### Example
 ```dart
 import 'package:testit_api_client_dart/api.dart';
-// TODO Configure API key authorization: Bearer or PrivateToken
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKey = 'YOUR_API_KEY';
+// TODO Configure API key authorization: PrivateToken
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKeyPrefix = 'Bearer';
+// TODO Configure API key authorization: Identity.Application
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKeyPrefix = 'Bearer';
 
 final api_instance = TestResultsApi();
 final id = 3fa85f64-5717-4562-b3fc-2c963f66afa6; // String | Test result internal identifier (guid format)
@@ -686,7 +795,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -705,10 +814,14 @@ Get all attachments of TestResult
 ### Example
 ```dart
 import 'package:testit_api_client_dart/api.dart';
-// TODO Configure API key authorization: Bearer or PrivateToken
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKey = 'YOUR_API_KEY';
+// TODO Configure API key authorization: PrivateToken
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer or PrivateToken').apiKeyPrefix = 'Bearer';
+//defaultApiClient.getAuthentication<ApiKeyAuth>('PrivateToken').apiKeyPrefix = 'Bearer';
+// TODO Configure API key authorization: Identity.Application
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Identity.Application').apiKeyPrefix = 'Bearer';
 
 final api_instance = TestResultsApi();
 final id = 3fa85f64-5717-4562-b3fc-2c963f66afa6; // String | Test result internal identifier (guid format)
@@ -733,7 +846,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 

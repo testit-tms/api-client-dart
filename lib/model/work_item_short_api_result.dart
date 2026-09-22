@@ -37,6 +37,7 @@ class WorkItemShortApiResult {
     this.createdDate,
     this.modifiedDate,
     this.tagNames = const [],
+    this.layer,
   });
 
   /// Work Item internal unique identifier
@@ -111,6 +112,9 @@ class WorkItemShortApiResult {
   /// Array of tag names of Work Item
   List<String>? tagNames;
 
+  /// Test pyramid layer of Work Item
+  WorkItemLayerApiResult? layer;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is WorkItemShortApiResult &&
     other.id == id &&
@@ -136,7 +140,8 @@ class WorkItemShortApiResult {
     other.modifiedById == modifiedById &&
     other.createdDate == createdDate &&
     other.modifiedDate == modifiedDate &&
-    _deepEquality.equals(other.tagNames, tagNames);
+    _deepEquality.equals(other.tagNames, tagNames) &&
+    other.layer == layer;
 
   @override
   int get hashCode =>
@@ -164,10 +169,11 @@ class WorkItemShortApiResult {
     (modifiedById == null ? 0 : modifiedById!.hashCode) +
     (createdDate == null ? 0 : createdDate!.hashCode) +
     (modifiedDate == null ? 0 : modifiedDate!.hashCode) +
-    (tagNames == null ? 0 : tagNames!.hashCode);
+    (tagNames == null ? 0 : tagNames!.hashCode) +
+    (layer == null ? 0 : layer!.hashCode);
 
   @override
-  String toString() => 'WorkItemShortApiResult[id=$id, versionId=$versionId, versionNumber=$versionNumber, name=$name, entityTypeName=$entityTypeName, projectId=$projectId, sectionId=$sectionId, sectionName=$sectionName, isAutomated=$isAutomated, globalId=$globalId, duration=$duration, createdById=$createdById, state=$state, priority=$priority, sourceType=$sourceType, isDeleted=$isDeleted, iterations=$iterations, links=$links, medianDuration=$medianDuration, attributes=$attributes, modifiedById=$modifiedById, createdDate=$createdDate, modifiedDate=$modifiedDate, tagNames=$tagNames]';
+  String toString() => 'WorkItemShortApiResult[id=$id, versionId=$versionId, versionNumber=$versionNumber, name=$name, entityTypeName=$entityTypeName, projectId=$projectId, sectionId=$sectionId, sectionName=$sectionName, isAutomated=$isAutomated, globalId=$globalId, duration=$duration, createdById=$createdById, state=$state, priority=$priority, sourceType=$sourceType, isDeleted=$isDeleted, iterations=$iterations, links=$links, medianDuration=$medianDuration, attributes=$attributes, modifiedById=$modifiedById, createdDate=$createdDate, modifiedDate=$modifiedDate, tagNames=$tagNames, layer=$layer]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -219,6 +225,11 @@ class WorkItemShortApiResult {
     } else {
       json[r'tagNames'] = null;
     }
+    if (this.layer != null) {
+      json[r'layer'] = this.layer;
+    } else {
+      json[r'layer'] = null;
+    }
     return json;
   }
 
@@ -267,6 +278,7 @@ class WorkItemShortApiResult {
         tagNames: json[r'tagNames'] is Iterable
             ? (json[r'tagNames'] as Iterable).cast<String>().toList(growable: false)
             : const [],
+        layer: WorkItemLayerApiResult.fromJson(json[r'layer']),
       );
     }
     return null;

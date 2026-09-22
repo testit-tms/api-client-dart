@@ -14,11 +14,17 @@ class Inquiry {
   /// Returns a new [Inquiry] instance.
   Inquiry({
     this.order = const [],
+    required this.mode,
+    this.group,
     this.filter,
     this.page,
   });
 
   List<Order> order;
+
+  Mode mode;
+
+  Group? group;
 
   CompositeFilter? filter;
 
@@ -27,6 +33,8 @@ class Inquiry {
   @override
   bool operator ==(Object other) => identical(this, other) || other is Inquiry &&
     _deepEquality.equals(other.order, order) &&
+    other.mode == mode &&
+    other.group == group &&
     other.filter == filter &&
     other.page == page;
 
@@ -34,15 +42,23 @@ class Inquiry {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (order.hashCode) +
+    (mode.hashCode) +
+    (group == null ? 0 : group!.hashCode) +
     (filter == null ? 0 : filter!.hashCode) +
     (page == null ? 0 : page!.hashCode);
 
   @override
-  String toString() => 'Inquiry[order=$order, filter=$filter, page=$page]';
+  String toString() => 'Inquiry[order=$order, mode=$mode, group=$group, filter=$filter, page=$page]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'order'] = this.order;
+      json[r'mode'] = this.mode;
+    if (this.group != null) {
+      json[r'group'] = this.group;
+    } else {
+      json[r'group'] = null;
+    }
     if (this.filter != null) {
       json[r'filter'] = this.filter;
     } else {
@@ -76,6 +92,8 @@ class Inquiry {
 
       return Inquiry(
         order: Order.listFromJson(json[r'order']),
+        mode: Mode.fromJson(json[r'mode'])!,
+        group: Group.fromJson(json[r'group']),
         filter: CompositeFilter.fromJson(json[r'filter']),
         page: Page.fromJson(json[r'page']),
       );
@@ -126,6 +144,7 @@ class Inquiry {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'order',
+    'mode',
   };
 }
 

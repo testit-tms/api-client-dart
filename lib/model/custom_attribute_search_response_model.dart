@@ -16,30 +16,43 @@ class CustomAttributeSearchResponseModel {
     this.workItemUsage = const [],
     this.testPlanUsage = const [],
     required this.id,
-    this.options = const [],
     required this.type,
+    this.options = const [],
+    this.targets = const [],
+    required this.isReadOnly,
     required this.isDeleted,
+    required this.isSystem,
     required this.name,
     required this.isEnabled,
     required this.isRequired,
     required this.isGlobal,
+    this.code,
   });
 
   List<ProjectShortestModel> workItemUsage;
 
   List<ProjectShortestModel> testPlanUsage;
 
-  /// Unique ID of the attribute
+  /// Unique ID of the attribute.
   String id;
 
-  /// Collection of the attribute options   Available for attributes of type `options` and `multiple options` only
-  List<CustomAttributeOptionModel> options;
-
-  /// Type of the attribute
+  /// Type of the attribute.
   CustomAttributeTypesEnum type;
 
-  /// Indicates if the attribute is deleted
+  /// Collection of the attribute options.
+  List<CustomAttributeOptionModel> options;
+
+  /// Collection of the attribute targets.   Defines where the attribute can be used (e.g., TestCases, AutoTestCases, TestPlans).
+  List<String> targets;
+
+  /// Indicates if the attribute is read-only.
+  bool isReadOnly;
+
+  /// Indicates if the attribute is deleted.
   bool isDeleted;
+
+  /// Indicates if the attribute is system.
+  bool isSystem;
 
   /// Name of the attribute
   String name;
@@ -53,18 +66,25 @@ class CustomAttributeSearchResponseModel {
   /// Indicates if the attribute is available across all projects
   bool isGlobal;
 
+  /// Optional code identifier for the attribute.
+  String? code;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CustomAttributeSearchResponseModel &&
     _deepEquality.equals(other.workItemUsage, workItemUsage) &&
     _deepEquality.equals(other.testPlanUsage, testPlanUsage) &&
     other.id == id &&
-    _deepEquality.equals(other.options, options) &&
     other.type == type &&
+    _deepEquality.equals(other.options, options) &&
+    _deepEquality.equals(other.targets, targets) &&
+    other.isReadOnly == isReadOnly &&
     other.isDeleted == isDeleted &&
+    other.isSystem == isSystem &&
     other.name == name &&
     other.isEnabled == isEnabled &&
     other.isRequired == isRequired &&
-    other.isGlobal == isGlobal;
+    other.isGlobal == isGlobal &&
+    other.code == code;
 
   @override
   int get hashCode =>
@@ -72,29 +92,41 @@ class CustomAttributeSearchResponseModel {
     (workItemUsage.hashCode) +
     (testPlanUsage.hashCode) +
     (id.hashCode) +
-    (options.hashCode) +
     (type.hashCode) +
+    (options.hashCode) +
+    (targets.hashCode) +
+    (isReadOnly.hashCode) +
     (isDeleted.hashCode) +
+    (isSystem.hashCode) +
     (name.hashCode) +
     (isEnabled.hashCode) +
     (isRequired.hashCode) +
-    (isGlobal.hashCode);
+    (isGlobal.hashCode) +
+    (code == null ? 0 : code!.hashCode);
 
   @override
-  String toString() => 'CustomAttributeSearchResponseModel[workItemUsage=$workItemUsage, testPlanUsage=$testPlanUsage, id=$id, options=$options, type=$type, isDeleted=$isDeleted, name=$name, isEnabled=$isEnabled, isRequired=$isRequired, isGlobal=$isGlobal]';
+  String toString() => 'CustomAttributeSearchResponseModel[workItemUsage=$workItemUsage, testPlanUsage=$testPlanUsage, id=$id, type=$type, options=$options, targets=$targets, isReadOnly=$isReadOnly, isDeleted=$isDeleted, isSystem=$isSystem, name=$name, isEnabled=$isEnabled, isRequired=$isRequired, isGlobal=$isGlobal, code=$code]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'workItemUsage'] = this.workItemUsage;
       json[r'testPlanUsage'] = this.testPlanUsage;
       json[r'id'] = this.id;
-      json[r'options'] = this.options;
       json[r'type'] = this.type;
+      json[r'options'] = this.options;
+      json[r'targets'] = this.targets;
+      json[r'isReadOnly'] = this.isReadOnly;
       json[r'isDeleted'] = this.isDeleted;
+      json[r'isSystem'] = this.isSystem;
       json[r'name'] = this.name;
       json[r'isEnabled'] = this.isEnabled;
       json[r'isRequired'] = this.isRequired;
       json[r'isGlobal'] = this.isGlobal;
+    if (this.code != null) {
+      json[r'code'] = this.code;
+    } else {
+      json[r'code'] = null;
+    }
     return json;
   }
 
@@ -120,13 +152,19 @@ class CustomAttributeSearchResponseModel {
         workItemUsage: ProjectShortestModel.listFromJson(json[r'workItemUsage']),
         testPlanUsage: ProjectShortestModel.listFromJson(json[r'testPlanUsage']),
         id: mapValueOfType<String>(json, r'id')!,
-        options: CustomAttributeOptionModel.listFromJson(json[r'options']),
         type: CustomAttributeTypesEnum.fromJson(json[r'type'])!,
+        options: CustomAttributeOptionModel.listFromJson(json[r'options']),
+        targets: json[r'targets'] is Iterable
+            ? (json[r'targets'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
+        isReadOnly: mapValueOfType<bool>(json, r'isReadOnly')!,
         isDeleted: mapValueOfType<bool>(json, r'isDeleted')!,
+        isSystem: mapValueOfType<bool>(json, r'isSystem')!,
         name: mapValueOfType<String>(json, r'name')!,
         isEnabled: mapValueOfType<bool>(json, r'isEnabled')!,
         isRequired: mapValueOfType<bool>(json, r'isRequired')!,
         isGlobal: mapValueOfType<bool>(json, r'isGlobal')!,
+        code: mapValueOfType<String>(json, r'code'),
       );
     }
     return null;
@@ -177,9 +215,12 @@ class CustomAttributeSearchResponseModel {
     'workItemUsage',
     'testPlanUsage',
     'id',
-    'options',
     'type',
+    'options',
+    'targets',
+    'isReadOnly',
     'isDeleted',
+    'isSystem',
     'name',
     'isEnabled',
     'isRequired',

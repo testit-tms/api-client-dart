@@ -15,7 +15,6 @@ class SectionPutModel {
   SectionPutModel({
     required this.id,
     required this.name,
-    required this.projectId,
     this.attachments = const [],
     this.parentId,
     this.preconditionSteps = const [],
@@ -25,8 +24,6 @@ class SectionPutModel {
   String id;
 
   String name;
-
-  String projectId;
 
   List<AttachmentPutModel> attachments;
 
@@ -40,7 +37,6 @@ class SectionPutModel {
   bool operator ==(Object other) => identical(this, other) || other is SectionPutModel &&
     other.id == id &&
     other.name == name &&
-    other.projectId == projectId &&
     _deepEquality.equals(other.attachments, attachments) &&
     other.parentId == parentId &&
     _deepEquality.equals(other.preconditionSteps, preconditionSteps) &&
@@ -51,20 +47,18 @@ class SectionPutModel {
     // ignore: unnecessary_parenthesis
     (id.hashCode) +
     (name.hashCode) +
-    (projectId.hashCode) +
     (attachments.hashCode) +
     (parentId == null ? 0 : parentId!.hashCode) +
     (preconditionSteps == null ? 0 : preconditionSteps!.hashCode) +
     (postconditionSteps == null ? 0 : postconditionSteps!.hashCode);
 
   @override
-  String toString() => 'SectionPutModel[id=$id, name=$name, projectId=$projectId, attachments=$attachments, parentId=$parentId, preconditionSteps=$preconditionSteps, postconditionSteps=$postconditionSteps]';
+  String toString() => 'SectionPutModel[id=$id, name=$name, attachments=$attachments, parentId=$parentId, preconditionSteps=$preconditionSteps, postconditionSteps=$postconditionSteps]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
       json[r'name'] = this.name;
-      json[r'projectId'] = this.projectId;
       json[r'attachments'] = this.attachments;
     if (this.parentId != null) {
       json[r'parentId'] = this.parentId;
@@ -105,7 +99,6 @@ class SectionPutModel {
       return SectionPutModel(
         id: mapValueOfType<String>(json, r'id')!,
         name: mapValueOfType<String>(json, r'name')!,
-        projectId: mapValueOfType<String>(json, r'projectId')!,
         attachments: AttachmentPutModel.listFromJson(json[r'attachments']),
         parentId: mapValueOfType<String>(json, r'parentId'),
         preconditionSteps: StepPutModel.listFromJson(json[r'preconditionSteps']),
@@ -159,7 +152,6 @@ class SectionPutModel {
   static const requiredKeys = <String>{
     'id',
     'name',
-    'projectId',
     'attachments',
   };
 }

@@ -20,7 +20,10 @@ class CustomAttributeApiResult {
     required this.name,
     required this.isEnabled,
     required this.isRequired,
+    required this.isReadOnly,
     required this.isGlobal,
+    required this.isSystem,
+    this.targets = const [],
   });
 
   /// Unique ID of the attribute
@@ -44,8 +47,17 @@ class CustomAttributeApiResult {
   /// Indicates if the attribute value is mandatory to specify
   bool isRequired;
 
+  /// Indicates if the attribute value is read-only
+  bool isReadOnly;
+
   /// Indicates if the attribute is available across all projects
   bool isGlobal;
+
+  /// Indicates if the attribute is system
+  bool isSystem;
+
+  /// Collection of the attribute targets   Defines where the attribute can be used (e.g., TestCases, AutoTestCases, TestPlans)
+  List<String> targets;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CustomAttributeApiResult &&
@@ -56,7 +68,10 @@ class CustomAttributeApiResult {
     other.name == name &&
     other.isEnabled == isEnabled &&
     other.isRequired == isRequired &&
-    other.isGlobal == isGlobal;
+    other.isReadOnly == isReadOnly &&
+    other.isGlobal == isGlobal &&
+    other.isSystem == isSystem &&
+    _deepEquality.equals(other.targets, targets);
 
   @override
   int get hashCode =>
@@ -68,10 +83,13 @@ class CustomAttributeApiResult {
     (name.hashCode) +
     (isEnabled.hashCode) +
     (isRequired.hashCode) +
-    (isGlobal.hashCode);
+    (isReadOnly.hashCode) +
+    (isGlobal.hashCode) +
+    (isSystem.hashCode) +
+    (targets.hashCode);
 
   @override
-  String toString() => 'CustomAttributeApiResult[id=$id, options=$options, type=$type, isDeleted=$isDeleted, name=$name, isEnabled=$isEnabled, isRequired=$isRequired, isGlobal=$isGlobal]';
+  String toString() => 'CustomAttributeApiResult[id=$id, options=$options, type=$type, isDeleted=$isDeleted, name=$name, isEnabled=$isEnabled, isRequired=$isRequired, isReadOnly=$isReadOnly, isGlobal=$isGlobal, isSystem=$isSystem, targets=$targets]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -82,7 +100,10 @@ class CustomAttributeApiResult {
       json[r'name'] = this.name;
       json[r'isEnabled'] = this.isEnabled;
       json[r'isRequired'] = this.isRequired;
+      json[r'isReadOnly'] = this.isReadOnly;
       json[r'isGlobal'] = this.isGlobal;
+      json[r'isSystem'] = this.isSystem;
+      json[r'targets'] = this.targets;
     return json;
   }
 
@@ -112,7 +133,12 @@ class CustomAttributeApiResult {
         name: mapValueOfType<String>(json, r'name')!,
         isEnabled: mapValueOfType<bool>(json, r'isEnabled')!,
         isRequired: mapValueOfType<bool>(json, r'isRequired')!,
+        isReadOnly: mapValueOfType<bool>(json, r'isReadOnly')!,
         isGlobal: mapValueOfType<bool>(json, r'isGlobal')!,
+        isSystem: mapValueOfType<bool>(json, r'isSystem')!,
+        targets: json[r'targets'] is Iterable
+            ? (json[r'targets'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
       );
     }
     return null;
@@ -167,7 +193,10 @@ class CustomAttributeApiResult {
     'name',
     'isEnabled',
     'isRequired',
+    'isReadOnly',
     'isGlobal',
+    'isSystem',
+    'targets',
   };
 }
 

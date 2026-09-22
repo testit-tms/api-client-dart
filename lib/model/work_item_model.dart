@@ -20,11 +20,11 @@ class WorkItemModel {
     required this.entityTypeName,
     required this.isAutomated,
     required this.versionNumber,
+    this.externalIssues = const [],
+    this.parameters = const [],
     required this.createdDate,
     required this.createdById,
     required this.globalId,
-    this.externalIssues = const [],
-    this.parameters = const [],
     required this.id,
     required this.sectionId,
     required this.state,
@@ -58,22 +58,22 @@ class WorkItemModel {
 
   String projectId;
 
-  WorkItemEntityTypes entityTypeName;
+  WorkItemTypeModel entityTypeName;
 
   bool isAutomated;
 
   /// used for define chronology of workitem state in each version
   int versionNumber;
 
+  List<ExternalIssueModel> externalIssues;
+
+  List<WorkItemParameterKeyModel> parameters;
+
   DateTime createdDate;
 
   String createdById;
 
   int globalId;
-
-  List<ExternalIssueModel> externalIssues;
-
-  List<WorkItemParameterKeyModel> parameters;
 
   String id;
 
@@ -128,11 +128,11 @@ class WorkItemModel {
     other.entityTypeName == entityTypeName &&
     other.isAutomated == isAutomated &&
     other.versionNumber == versionNumber &&
+    _deepEquality.equals(other.externalIssues, externalIssues) &&
+    _deepEquality.equals(other.parameters, parameters) &&
     other.createdDate == createdDate &&
     other.createdById == createdById &&
     other.globalId == globalId &&
-    _deepEquality.equals(other.externalIssues, externalIssues) &&
-    _deepEquality.equals(other.parameters, parameters) &&
     other.id == id &&
     other.sectionId == sectionId &&
     other.state == state &&
@@ -165,11 +165,11 @@ class WorkItemModel {
     (entityTypeName.hashCode) +
     (isAutomated.hashCode) +
     (versionNumber.hashCode) +
+    (externalIssues.hashCode) +
+    (parameters.hashCode) +
     (createdDate.hashCode) +
     (createdById.hashCode) +
     (globalId.hashCode) +
-    (externalIssues.hashCode) +
-    (parameters.hashCode) +
     (id.hashCode) +
     (sectionId.hashCode) +
     (state.hashCode) +
@@ -193,7 +193,7 @@ class WorkItemModel {
     (description == null ? 0 : description!.hashCode);
 
   @override
-  String toString() => 'WorkItemModel[versionId=$versionId, medianDuration=$medianDuration, isDeleted=$isDeleted, projectId=$projectId, entityTypeName=$entityTypeName, isAutomated=$isAutomated, versionNumber=$versionNumber, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, externalIssues=$externalIssues, parameters=$parameters, id=$id, sectionId=$sectionId, state=$state, priority=$priority, sourceType=$sourceType, steps=$steps, preconditionSteps=$preconditionSteps, postconditionSteps=$postconditionSteps, duration=$duration, attributes=$attributes, tags=$tags, links=$links, name=$name, autoTests=$autoTests, attachments=$attachments, sectionPreconditionSteps=$sectionPreconditionSteps, sectionPostconditionSteps=$sectionPostconditionSteps, iterations=$iterations, modifiedDate=$modifiedDate, modifiedById=$modifiedById, description=$description]';
+  String toString() => 'WorkItemModel[versionId=$versionId, medianDuration=$medianDuration, isDeleted=$isDeleted, projectId=$projectId, entityTypeName=$entityTypeName, isAutomated=$isAutomated, versionNumber=$versionNumber, externalIssues=$externalIssues, parameters=$parameters, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, id=$id, sectionId=$sectionId, state=$state, priority=$priority, sourceType=$sourceType, steps=$steps, preconditionSteps=$preconditionSteps, postconditionSteps=$postconditionSteps, duration=$duration, attributes=$attributes, tags=$tags, links=$links, name=$name, autoTests=$autoTests, attachments=$attachments, sectionPreconditionSteps=$sectionPreconditionSteps, sectionPostconditionSteps=$sectionPostconditionSteps, iterations=$iterations, modifiedDate=$modifiedDate, modifiedById=$modifiedById, description=$description]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -204,11 +204,11 @@ class WorkItemModel {
       json[r'entityTypeName'] = this.entityTypeName;
       json[r'isAutomated'] = this.isAutomated;
       json[r'versionNumber'] = this.versionNumber;
+      json[r'externalIssues'] = this.externalIssues;
+      json[r'parameters'] = this.parameters;
       json[r'createdDate'] = this.createdDate.toUtc().toIso8601String();
       json[r'createdById'] = this.createdById;
       json[r'globalId'] = this.globalId;
-      json[r'externalIssues'] = this.externalIssues;
-      json[r'parameters'] = this.parameters;
       json[r'id'] = this.id;
       json[r'sectionId'] = this.sectionId;
       json[r'state'] = this.state;
@@ -288,14 +288,14 @@ class WorkItemModel {
         medianDuration: mapValueOfType<int>(json, r'medianDuration')!,
         isDeleted: mapValueOfType<bool>(json, r'isDeleted')!,
         projectId: mapValueOfType<String>(json, r'projectId')!,
-        entityTypeName: WorkItemEntityTypes.fromJson(json[r'entityTypeName'])!,
+        entityTypeName: WorkItemTypeModel.fromJson(json[r'entityTypeName'])!,
         isAutomated: mapValueOfType<bool>(json, r'isAutomated')!,
         versionNumber: mapValueOfType<int>(json, r'versionNumber')!,
+        externalIssues: ExternalIssueModel.listFromJson(json[r'externalIssues']),
+        parameters: WorkItemParameterKeyModel.listFromJson(json[r'parameters']),
         createdDate: mapDateTime(json, r'createdDate', r'')!,
         createdById: mapValueOfType<String>(json, r'createdById')!,
         globalId: mapValueOfType<int>(json, r'globalId')!,
-        externalIssues: ExternalIssueModel.listFromJson(json[r'externalIssues']),
-        parameters: WorkItemParameterKeyModel.listFromJson(json[r'parameters']),
         id: mapValueOfType<String>(json, r'id')!,
         sectionId: mapValueOfType<String>(json, r'sectionId')!,
         state: WorkItemStates.fromJson(json[r'state'])!,
@@ -371,11 +371,11 @@ class WorkItemModel {
     'entityTypeName',
     'isAutomated',
     'versionNumber',
+    'externalIssues',
+    'parameters',
     'createdDate',
     'createdById',
     'globalId',
-    'externalIssues',
-    'parameters',
     'id',
     'sectionId',
     'state',

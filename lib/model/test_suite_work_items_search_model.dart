@@ -48,7 +48,7 @@ class TestSuiteWorkItemsSearchModel {
   Set<String>? tagNames;
 
   /// Collection of types of work item  Allowed values: `TestCases`, `CheckLists`, `SharedSteps`
-  Set<WorkItemEntityTypes>? entityTypes;
+  Set<WorkItemTypeModel>? entityTypes;
 
   /// Name or identifier (UUID) of work item
   String? nameOrId;
@@ -96,7 +96,7 @@ class TestSuiteWorkItemsSearchModel {
   Set<WorkItemSourceTypeModel>? sourceTypes;
 
   /// Collection of types of work item
-  Set<WorkItemEntityTypes>? types;
+  Set<WorkItemTypeModel>? types;
 
   /// Specifies a work item range of creation date to search for
   DateTimeRangeSelectorModel? createdDate;
@@ -371,7 +371,7 @@ class TestSuiteWorkItemsSearchModel {
         tagNames: json[r'tagNames'] is Iterable
             ? (json[r'tagNames'] as Iterable).cast<String>().toSet()
             : const {},
-        entityTypes: WorkItemEntityTypes.listFromJson(json[r'entityTypes']).toSet(),
+        entityTypes: WorkItemTypeModel.listFromJson(json[r'entityTypes']).toSet(),
         nameOrId: mapValueOfType<String>(json, r'nameOrId'),
         includeIds: json[r'includeIds'] is Iterable
             ? (json[r'includeIds'] as Iterable).cast<String>().toSet()
@@ -405,7 +405,7 @@ class TestSuiteWorkItemsSearchModel {
         states: WorkItemStates.listFromJson(json[r'states']).toSet(),
         priorities: WorkItemPriorityModel.listFromJson(json[r'priorities']).toSet(),
         sourceTypes: WorkItemSourceTypeModel.listFromJson(json[r'sourceTypes']).toSet(),
-        types: WorkItemEntityTypes.listFromJson(json[r'types']).toSet(),
+        types: WorkItemTypeModel.listFromJson(json[r'types']).toSet(),
         createdDate: DateTimeRangeSelectorModel.fromJson(json[r'createdDate']),
         modifiedDate: DateTimeRangeSelectorModel.fromJson(json[r'modifiedDate']),
         duration: Int64RangeSelectorModel.fromJson(json[r'duration']),

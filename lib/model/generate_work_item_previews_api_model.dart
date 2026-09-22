@@ -16,7 +16,6 @@ class GenerateWorkItemPreviewsApiModel {
     required this.externalServiceId,
     required this.temperature,
     required this.previewLimit,
-    this.taskKey,
     this.issueKey,
     this.userContext,
   });
@@ -37,9 +36,6 @@ class GenerateWorkItemPreviewsApiModel {
   int previewLimit;
 
   /// The key of the issue in an issue tracker (e.g., JIRA-123).
-  String? taskKey;
-
-  /// The key of the issue in an issue tracker (e.g., JIRA-123).
   String? issueKey;
 
   /// Additional user context or description of the issue if no issue key is provided.
@@ -50,7 +46,6 @@ class GenerateWorkItemPreviewsApiModel {
     other.externalServiceId == externalServiceId &&
     other.temperature == temperature &&
     other.previewLimit == previewLimit &&
-    other.taskKey == taskKey &&
     other.issueKey == issueKey &&
     other.userContext == userContext;
 
@@ -60,23 +55,17 @@ class GenerateWorkItemPreviewsApiModel {
     (externalServiceId.hashCode) +
     (temperature.hashCode) +
     (previewLimit.hashCode) +
-    (taskKey == null ? 0 : taskKey!.hashCode) +
     (issueKey == null ? 0 : issueKey!.hashCode) +
     (userContext == null ? 0 : userContext!.hashCode);
 
   @override
-  String toString() => 'GenerateWorkItemPreviewsApiModel[externalServiceId=$externalServiceId, temperature=$temperature, previewLimit=$previewLimit, taskKey=$taskKey, issueKey=$issueKey, userContext=$userContext]';
+  String toString() => 'GenerateWorkItemPreviewsApiModel[externalServiceId=$externalServiceId, temperature=$temperature, previewLimit=$previewLimit, issueKey=$issueKey, userContext=$userContext]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'externalServiceId'] = this.externalServiceId;
       json[r'temperature'] = this.temperature;
       json[r'previewLimit'] = this.previewLimit;
-    if (this.taskKey != null) {
-      json[r'taskKey'] = this.taskKey;
-    } else {
-      json[r'taskKey'] = null;
-    }
     if (this.issueKey != null) {
       json[r'issueKey'] = this.issueKey;
     } else {
@@ -112,7 +101,6 @@ class GenerateWorkItemPreviewsApiModel {
         externalServiceId: mapValueOfType<String>(json, r'externalServiceId')!,
         temperature: mapValueOfType<double>(json, r'temperature')!,
         previewLimit: mapValueOfType<int>(json, r'previewLimit')!,
-        taskKey: mapValueOfType<String>(json, r'taskKey'),
         issueKey: mapValueOfType<String>(json, r'issueKey'),
         userContext: mapValueOfType<String>(json, r'userContext'),
       );

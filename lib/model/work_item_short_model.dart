@@ -52,7 +52,7 @@ class WorkItemShortModel {
   String name;
 
   /// Work Item type. Possible values: CheckLists, SharedSteps, TestCases
-  String entityTypeName;
+  WorkItemTypeModel entityTypeName;
 
   /// Project unique identifier
   String projectId;
@@ -245,7 +245,7 @@ class WorkItemShortModel {
         versionId: mapValueOfType<String>(json, r'versionId')!,
         versionNumber: mapValueOfType<int>(json, r'versionNumber')!,
         name: mapValueOfType<String>(json, r'name')!,
-        entityTypeName: mapValueOfType<String>(json, r'entityTypeName')!,
+        entityTypeName: WorkItemTypeModel.fromJson(json[r'entityTypeName'])!,
         projectId: mapValueOfType<String>(json, r'projectId')!,
         sectionId: mapValueOfType<String>(json, r'sectionId')!,
         sectionName: mapValueOfType<String>(json, r'sectionName')!,

@@ -1000,7 +1000,7 @@ class ProjectsApi {
   ///   Value for searching
   ///
   /// * [ProjectsFilterModel] projectsFilterModel:
-  Future<List<ProjectShortModel>?> apiV2ProjectsSearchPost({ int? skip, int? take, String? orderBy, String? searchField, String? searchValue, ProjectsFilterModel? projectsFilterModel, }) async {
+  Future<List<ProjectApiResult>?> apiV2ProjectsSearchPost({ int? skip, int? take, String? orderBy, String? searchField, String? searchValue, ProjectsFilterModel? projectsFilterModel, }) async {
     final response = await apiV2ProjectsSearchPostWithHttpInfo( skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, projectsFilterModel: projectsFilterModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -1010,8 +1010,8 @@ class ProjectsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<ProjectShortModel>') as List)
-        .cast<ProjectShortModel>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<ProjectApiResult>') as List)
+        .cast<ProjectApiResult>()
         .toList(growable: false);
 
     }
@@ -1059,7 +1059,7 @@ class ProjectsApi {
   /// Parameters:
   ///
   /// * [GetShortProjectsApiModel] getShortProjectsApiModel:
-  Future<ProjectShortApiResultReply?> apiV2ProjectsShortsPost({ GetShortProjectsApiModel? getShortProjectsApiModel, }) async {
+  Future<ProjectShortApiResultIReply?> apiV2ProjectsShortsPost({ GetShortProjectsApiModel? getShortProjectsApiModel, }) async {
     final response = await apiV2ProjectsShortsPostWithHttpInfo( getShortProjectsApiModel: getShortProjectsApiModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -1068,7 +1068,7 @@ class ProjectsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProjectShortApiResultReply',) as ProjectShortApiResultReply;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProjectShortApiResultIReply',) as ProjectShortApiResultIReply;
     
     }
     return null;
@@ -1276,7 +1276,7 @@ class ProjectsApi {
   ///
   /// * [String] searchValue:
   ///   Value for searching
-  Future<List<ProjectShortModel>?> getAllProjects({ bool? isDeleted, String? projectName, int? skip, int? take, String? orderBy, String? searchField, String? searchValue, }) async {
+  Future<List<ProjectApiResult>?> getAllProjects({ bool? isDeleted, String? projectName, int? skip, int? take, String? orderBy, String? searchField, String? searchValue, }) async {
     final response = await getAllProjectsWithHttpInfo( isDeleted: isDeleted, projectName: projectName, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -1286,8 +1286,8 @@ class ProjectsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<ProjectShortModel>') as List)
-        .cast<ProjectShortModel>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<ProjectApiResult>') as List)
+        .cast<ProjectApiResult>()
         .toList(growable: false);
 
     }
@@ -1400,7 +1400,7 @@ class ProjectsApi {
   ///
   /// * [String] id (required):
   ///   Project internal (UUID) or global (integer) identifier
-  Future<ProjectModel?> getProjectById(String id,) async {
+  Future<DetailedProjectApiResult?> getProjectById(String id,) async {
     final response = await getProjectByIdWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -1409,7 +1409,7 @@ class ProjectsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProjectModel',) as ProjectModel;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DetailedProjectApiResult',) as DetailedProjectApiResult;
     
     }
     return null;
@@ -1417,7 +1417,7 @@ class ProjectsApi {
 
   /// Get project test plans
   ///
-  ///  Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to project  [Optional] If User sets isDeleted field value as false, System search all test plans related to project which are not deleted  [Optional] If User did not set isDeleted field value, System search all v related to project  System returns array of found test plans (listed in response model)
+  ///  Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to                     project  [Optional] If User sets isDeleted field value as false, System search all test plans related to project which                     are not deleted  [Optional] If User did not set isDeleted field value, System search all v related to project  System returns array of found test plans (listed in response model)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1460,7 +1460,7 @@ class ProjectsApi {
 
   /// Get project test plans
   ///
-  ///  Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to project  [Optional] If User sets isDeleted field value as false, System search all test plans related to project which are not deleted  [Optional] If User did not set isDeleted field value, System search all v related to project  System returns array of found test plans (listed in response model)
+  ///  Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to                     project  [Optional] If User sets isDeleted field value as false, System search all test plans related to project which                     are not deleted  [Optional] If User did not set isDeleted field value, System search all v related to project  System returns array of found test plans (listed in response model)
   ///
   /// Parameters:
   ///

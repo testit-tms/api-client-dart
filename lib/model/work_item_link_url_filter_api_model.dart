@@ -17,7 +17,7 @@ class WorkItemLinkUrlFilterApiModel {
     this.searchUrl,
   });
 
-  Set<WorkItemEntityTypes>? types;
+  Set<WorkItemTypeModel>? types;
 
   String? searchUrl;
 
@@ -69,7 +69,7 @@ class WorkItemLinkUrlFilterApiModel {
       }());
 
       return WorkItemLinkUrlFilterApiModel(
-        types: WorkItemEntityTypes.listFromJson(json[r'types']).toSet(),
+        types: WorkItemTypeModel.listFromJson(json[r'types']).toSet(),
         searchUrl: mapValueOfType<String>(json, r'searchUrl'),
       );
     }

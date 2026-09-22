@@ -40,6 +40,7 @@ class WorkItemFilterApiModel {
     this.workItemVersionIds = const [],
     this.links,
     this.externalMetadata,
+    this.layers = const {},
   });
 
   /// Name or identifier (UUID) of work item
@@ -88,7 +89,7 @@ class WorkItemFilterApiModel {
   Set<WorkItemSourceTypeModel>? sourceTypes;
 
   /// Collection of types of work item
-  Set<WorkItemEntityTypes>? types;
+  Set<WorkItemTypeModel>? types;
 
   /// Specifies a work item range of creation date to search for
   DateTimeRangeSelectorModel? createdDate;
@@ -123,6 +124,9 @@ class WorkItemFilterApiModel {
   /// Specifies work item filter by its external metadata
   WorkItemExternalMetadataFilterApiModel? externalMetadata;
 
+  /// Specifies auto test case layers to search for
+  Set<String>? layers;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is WorkItemFilterApiModel &&
     other.nameOrId == nameOrId &&
@@ -151,7 +155,8 @@ class WorkItemFilterApiModel {
     _deepEquality.equals(other.autoTestIds, autoTestIds) &&
     _deepEquality.equals(other.workItemVersionIds, workItemVersionIds) &&
     other.links == links &&
-    other.externalMetadata == externalMetadata;
+    other.externalMetadata == externalMetadata &&
+    _deepEquality.equals(other.layers, layers);
 
   @override
   int get hashCode =>
@@ -182,10 +187,11 @@ class WorkItemFilterApiModel {
     (autoTestIds == null ? 0 : autoTestIds!.hashCode) +
     (workItemVersionIds == null ? 0 : workItemVersionIds!.hashCode) +
     (links == null ? 0 : links!.hashCode) +
-    (externalMetadata == null ? 0 : externalMetadata!.hashCode);
+    (externalMetadata == null ? 0 : externalMetadata!.hashCode) +
+    (layers == null ? 0 : layers!.hashCode);
 
   @override
-  String toString() => 'WorkItemFilterApiModel[nameOrId=$nameOrId, includeIds=$includeIds, excludeIds=$excludeIds, projectIds=$projectIds, name=$name, ids=$ids, globalIds=$globalIds, attributes=$attributes, isDeleted=$isDeleted, sectionIds=$sectionIds, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds, states=$states, priorities=$priorities, sourceTypes=$sourceTypes, types=$types, createdDate=$createdDate, modifiedDate=$modifiedDate, duration=$duration, medianDuration=$medianDuration, isAutomated=$isAutomated, tags=$tags, excludeTags=$excludeTags, autoTestIds=$autoTestIds, workItemVersionIds=$workItemVersionIds, links=$links, externalMetadata=$externalMetadata]';
+  String toString() => 'WorkItemFilterApiModel[nameOrId=$nameOrId, includeIds=$includeIds, excludeIds=$excludeIds, projectIds=$projectIds, name=$name, ids=$ids, globalIds=$globalIds, attributes=$attributes, isDeleted=$isDeleted, sectionIds=$sectionIds, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds, states=$states, priorities=$priorities, sourceTypes=$sourceTypes, types=$types, createdDate=$createdDate, modifiedDate=$modifiedDate, duration=$duration, medianDuration=$medianDuration, isAutomated=$isAutomated, tags=$tags, excludeTags=$excludeTags, autoTestIds=$autoTestIds, workItemVersionIds=$workItemVersionIds, links=$links, externalMetadata=$externalMetadata, layers=$layers]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -324,6 +330,11 @@ class WorkItemFilterApiModel {
     } else {
       json[r'externalMetadata'] = null;
     }
+    if (this.layers != null) {
+      json[r'layers'] = this.layers!.toList(growable: false);
+    } else {
+      json[r'layers'] = null;
+    }
     return json;
   }
 
@@ -379,7 +390,7 @@ class WorkItemFilterApiModel {
         states: WorkItemStates.listFromJson(json[r'states']).toSet(),
         priorities: WorkItemPriorityModel.listFromJson(json[r'priorities']).toSet(),
         sourceTypes: WorkItemSourceTypeModel.listFromJson(json[r'sourceTypes']).toSet(),
-        types: WorkItemEntityTypes.listFromJson(json[r'types']).toSet(),
+        types: WorkItemTypeModel.listFromJson(json[r'types']).toSet(),
         createdDate: DateTimeRangeSelectorModel.fromJson(json[r'createdDate']),
         modifiedDate: DateTimeRangeSelectorModel.fromJson(json[r'modifiedDate']),
         duration: Int32RangeSelectorModel.fromJson(json[r'duration']),
@@ -399,6 +410,9 @@ class WorkItemFilterApiModel {
             : const [],
         links: WorkItemLinkFilterApiModel.fromJson(json[r'links']),
         externalMetadata: WorkItemExternalMetadataFilterApiModel.fromJson(json[r'externalMetadata']),
+        layers: json[r'layers'] is Iterable
+            ? (json[r'layers'] as Iterable).cast<String>().toSet()
+            : const {},
       );
     }
     return null;

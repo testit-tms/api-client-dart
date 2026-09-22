@@ -21,6 +21,10 @@ class AutoTestProjectSettingsApiResult {
     required this.rerunAttemptsCount,
     required this.workItemUpdatingEnabled,
     required this.workItemUpdatingFields,
+    required this.archiveOutdatedTestRunsEnabled,
+    required this.testRunsArchiveLimitEnabled,
+    required this.testRunsRetentionPeriodDays,
+    required this.maxActiveTestRunsCount,
   });
 
   /// Unique ID of the project.
@@ -47,6 +51,18 @@ class AutoTestProjectSettingsApiResult {
   /// Autotest to work item updating fields
   WorkItemUpdatingFieldsApiResult workItemUpdatingFields;
 
+  /// Indicates whether archiving of outdated test runs is enabled for the project.
+  bool archiveOutdatedTestRunsEnabled;
+
+  /// Indicates whether a limit is enforced on the number of archived test runs.
+  bool testRunsArchiveLimitEnabled;
+
+  ///  The retention period in days for test runs. After this period, outdated test runs may be archived based on project settings
+  int testRunsRetentionPeriodDays;
+
+  /// Maximum number of active test runs to keep. When this limit is exceeded, older test runs are automatically archived
+  int maxActiveTestRunsCount;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is AutoTestProjectSettingsApiResult &&
     other.projectId == projectId &&
@@ -56,7 +72,11 @@ class AutoTestProjectSettingsApiResult {
     other.rerunEnabled == rerunEnabled &&
     other.rerunAttemptsCount == rerunAttemptsCount &&
     other.workItemUpdatingEnabled == workItemUpdatingEnabled &&
-    other.workItemUpdatingFields == workItemUpdatingFields;
+    other.workItemUpdatingFields == workItemUpdatingFields &&
+    other.archiveOutdatedTestRunsEnabled == archiveOutdatedTestRunsEnabled &&
+    other.testRunsArchiveLimitEnabled == testRunsArchiveLimitEnabled &&
+    other.testRunsRetentionPeriodDays == testRunsRetentionPeriodDays &&
+    other.maxActiveTestRunsCount == maxActiveTestRunsCount;
 
   @override
   int get hashCode =>
@@ -68,10 +88,14 @@ class AutoTestProjectSettingsApiResult {
     (rerunEnabled.hashCode) +
     (rerunAttemptsCount.hashCode) +
     (workItemUpdatingEnabled.hashCode) +
-    (workItemUpdatingFields.hashCode);
+    (workItemUpdatingFields.hashCode) +
+    (archiveOutdatedTestRunsEnabled.hashCode) +
+    (testRunsArchiveLimitEnabled.hashCode) +
+    (testRunsRetentionPeriodDays.hashCode) +
+    (maxActiveTestRunsCount.hashCode);
 
   @override
-  String toString() => 'AutoTestProjectSettingsApiResult[projectId=$projectId, isFlakyAuto=$isFlakyAuto, flakyStabilityPercentage=$flakyStabilityPercentage, flakyTestRunCount=$flakyTestRunCount, rerunEnabled=$rerunEnabled, rerunAttemptsCount=$rerunAttemptsCount, workItemUpdatingEnabled=$workItemUpdatingEnabled, workItemUpdatingFields=$workItemUpdatingFields]';
+  String toString() => 'AutoTestProjectSettingsApiResult[projectId=$projectId, isFlakyAuto=$isFlakyAuto, flakyStabilityPercentage=$flakyStabilityPercentage, flakyTestRunCount=$flakyTestRunCount, rerunEnabled=$rerunEnabled, rerunAttemptsCount=$rerunAttemptsCount, workItemUpdatingEnabled=$workItemUpdatingEnabled, workItemUpdatingFields=$workItemUpdatingFields, archiveOutdatedTestRunsEnabled=$archiveOutdatedTestRunsEnabled, testRunsArchiveLimitEnabled=$testRunsArchiveLimitEnabled, testRunsRetentionPeriodDays=$testRunsRetentionPeriodDays, maxActiveTestRunsCount=$maxActiveTestRunsCount]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -83,6 +107,10 @@ class AutoTestProjectSettingsApiResult {
       json[r'rerunAttemptsCount'] = this.rerunAttemptsCount;
       json[r'workItemUpdatingEnabled'] = this.workItemUpdatingEnabled;
       json[r'workItemUpdatingFields'] = this.workItemUpdatingFields;
+      json[r'archiveOutdatedTestRunsEnabled'] = this.archiveOutdatedTestRunsEnabled;
+      json[r'testRunsArchiveLimitEnabled'] = this.testRunsArchiveLimitEnabled;
+      json[r'testRunsRetentionPeriodDays'] = this.testRunsRetentionPeriodDays;
+      json[r'maxActiveTestRunsCount'] = this.maxActiveTestRunsCount;
     return json;
   }
 
@@ -113,6 +141,10 @@ class AutoTestProjectSettingsApiResult {
         rerunAttemptsCount: mapValueOfType<int>(json, r'rerunAttemptsCount')!,
         workItemUpdatingEnabled: mapValueOfType<bool>(json, r'workItemUpdatingEnabled')!,
         workItemUpdatingFields: WorkItemUpdatingFieldsApiResult.fromJson(json[r'workItemUpdatingFields'])!,
+        archiveOutdatedTestRunsEnabled: mapValueOfType<bool>(json, r'archiveOutdatedTestRunsEnabled')!,
+        testRunsArchiveLimitEnabled: mapValueOfType<bool>(json, r'testRunsArchiveLimitEnabled')!,
+        testRunsRetentionPeriodDays: mapValueOfType<int>(json, r'testRunsRetentionPeriodDays')!,
+        maxActiveTestRunsCount: mapValueOfType<int>(json, r'maxActiveTestRunsCount')!,
       );
     }
     return null;
@@ -168,6 +200,10 @@ class AutoTestProjectSettingsApiResult {
     'rerunAttemptsCount',
     'workItemUpdatingEnabled',
     'workItemUpdatingFields',
+    'archiveOutdatedTestRunsEnabled',
+    'testRunsArchiveLimitEnabled',
+    'testRunsRetentionPeriodDays',
+    'maxActiveTestRunsCount',
   };
 }
 

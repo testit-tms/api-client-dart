@@ -19,17 +19,17 @@ class CreateWorkItemApiModel {
     required this.duration,
     required this.state,
     required this.priority,
+    this.sectionId,
+    this.description,
     this.attributes = const {},
     this.tags = const [],
     this.preconditionSteps = const [],
     this.steps = const [],
     this.postconditionSteps = const [],
-    this.links = const [],
-    this.sectionId,
-    this.description,
     this.iterations = const [],
     this.autoTests = const [],
     this.attachments = const [],
+    this.links = const [],
     this.parameters = const [],
   });
 
@@ -48,29 +48,11 @@ class CreateWorkItemApiModel {
   /// Maximum value: 86400000
   int duration;
 
-  /// State of the work item
+  /// Current state of the work item
   WorkItemStateApiModel state;
 
-  /// Priority level of the work item
+  /// Priority level assigned to the work item
   WorkItemPriorityApiModel priority;
-
-  /// Set of custom attributes associated with the work item
-  Map<String, Object> attributes;
-
-  /// Set of tags applied to the work item
-  List<TagModel> tags;
-
-  /// Set of precondition steps that need to be executed before starting the main steps
-  List<CreateStepApiModel> preconditionSteps;
-
-  /// Main steps or actions defined for the work item
-  List<CreateStepApiModel> steps;
-
-  /// Set of postcondition steps that are executed after completing the main steps
-  List<CreateStepApiModel> postconditionSteps;
-
-  /// Set of links related to the work item
-  List<CreateLinkApiModel> links;
 
   /// Unique identifier of the section within a project
   String? sectionId;
@@ -78,16 +60,34 @@ class CreateWorkItemApiModel {
   /// Description of the work item
   String? description;
 
-  /// Associated iterations linked to the work item
+  /// Set of custom attributes associated with the work item
+  Map<String, Object>? attributes;
+
+  /// Set of tags applied to the work item
+  List<TagModel>? tags;
+
+  /// Set of precondition steps that must be executed before the main steps
+  List<CreateStepApiModel>? preconditionSteps;
+
+  /// Set of main steps or actions defined for the work item
+  List<CreateStepApiModel>? steps;
+
+  /// Set of postcondition steps that are executed after completing the main steps
+  List<CreateStepApiModel>? postconditionSteps;
+
+  /// Set of iterations associated with the work item
   List<AssignIterationApiModel>? iterations;
 
-  /// Automated tests associated with the work item
+  /// Set of automated tests linked to the work item
   List<AutoTestIdModel>? autoTests;
 
-  /// Files attached to the work item
+  /// Set of files attached to the work item
   List<AssignAttachmentApiModel>? attachments;
 
-  /// Set of parameter keys related to the work item
+  /// Set of links related to the work item
+  List<CreateLinkApiModel>? links;
+
+  /// Set of parameter keys associated with the work item
   List<WorkItemParameterKeyApiModel>? parameters;
 
   @override
@@ -98,17 +98,17 @@ class CreateWorkItemApiModel {
     other.duration == duration &&
     other.state == state &&
     other.priority == priority &&
+    other.sectionId == sectionId &&
+    other.description == description &&
     _deepEquality.equals(other.attributes, attributes) &&
     _deepEquality.equals(other.tags, tags) &&
     _deepEquality.equals(other.preconditionSteps, preconditionSteps) &&
     _deepEquality.equals(other.steps, steps) &&
     _deepEquality.equals(other.postconditionSteps, postconditionSteps) &&
-    _deepEquality.equals(other.links, links) &&
-    other.sectionId == sectionId &&
-    other.description == description &&
     _deepEquality.equals(other.iterations, iterations) &&
     _deepEquality.equals(other.autoTests, autoTests) &&
     _deepEquality.equals(other.attachments, attachments) &&
+    _deepEquality.equals(other.links, links) &&
     _deepEquality.equals(other.parameters, parameters);
 
   @override
@@ -120,21 +120,21 @@ class CreateWorkItemApiModel {
     (duration.hashCode) +
     (state.hashCode) +
     (priority.hashCode) +
-    (attributes.hashCode) +
-    (tags.hashCode) +
-    (preconditionSteps.hashCode) +
-    (steps.hashCode) +
-    (postconditionSteps.hashCode) +
-    (links.hashCode) +
     (sectionId == null ? 0 : sectionId!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
+    (attributes == null ? 0 : attributes!.hashCode) +
+    (tags == null ? 0 : tags!.hashCode) +
+    (preconditionSteps == null ? 0 : preconditionSteps!.hashCode) +
+    (steps == null ? 0 : steps!.hashCode) +
+    (postconditionSteps == null ? 0 : postconditionSteps!.hashCode) +
     (iterations == null ? 0 : iterations!.hashCode) +
     (autoTests == null ? 0 : autoTests!.hashCode) +
     (attachments == null ? 0 : attachments!.hashCode) +
+    (links == null ? 0 : links!.hashCode) +
     (parameters == null ? 0 : parameters!.hashCode);
 
   @override
-  String toString() => 'CreateWorkItemApiModel[projectId=$projectId, name=$name, entityTypeName=$entityTypeName, duration=$duration, state=$state, priority=$priority, attributes=$attributes, tags=$tags, preconditionSteps=$preconditionSteps, steps=$steps, postconditionSteps=$postconditionSteps, links=$links, sectionId=$sectionId, description=$description, iterations=$iterations, autoTests=$autoTests, attachments=$attachments, parameters=$parameters]';
+  String toString() => 'CreateWorkItemApiModel[projectId=$projectId, name=$name, entityTypeName=$entityTypeName, duration=$duration, state=$state, priority=$priority, sectionId=$sectionId, description=$description, attributes=$attributes, tags=$tags, preconditionSteps=$preconditionSteps, steps=$steps, postconditionSteps=$postconditionSteps, iterations=$iterations, autoTests=$autoTests, attachments=$attachments, links=$links, parameters=$parameters]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -144,12 +144,6 @@ class CreateWorkItemApiModel {
       json[r'duration'] = this.duration;
       json[r'state'] = this.state;
       json[r'priority'] = this.priority;
-      json[r'attributes'] = this.attributes;
-      json[r'tags'] = this.tags;
-      json[r'preconditionSteps'] = this.preconditionSteps;
-      json[r'steps'] = this.steps;
-      json[r'postconditionSteps'] = this.postconditionSteps;
-      json[r'links'] = this.links;
     if (this.sectionId != null) {
       json[r'sectionId'] = this.sectionId;
     } else {
@@ -159,6 +153,31 @@ class CreateWorkItemApiModel {
       json[r'description'] = this.description;
     } else {
       json[r'description'] = null;
+    }
+    if (this.attributes != null) {
+      json[r'attributes'] = this.attributes;
+    } else {
+      json[r'attributes'] = null;
+    }
+    if (this.tags != null) {
+      json[r'tags'] = this.tags;
+    } else {
+      json[r'tags'] = null;
+    }
+    if (this.preconditionSteps != null) {
+      json[r'preconditionSteps'] = this.preconditionSteps;
+    } else {
+      json[r'preconditionSteps'] = null;
+    }
+    if (this.steps != null) {
+      json[r'steps'] = this.steps;
+    } else {
+      json[r'steps'] = null;
+    }
+    if (this.postconditionSteps != null) {
+      json[r'postconditionSteps'] = this.postconditionSteps;
+    } else {
+      json[r'postconditionSteps'] = null;
     }
     if (this.iterations != null) {
       json[r'iterations'] = this.iterations;
@@ -174,6 +193,11 @@ class CreateWorkItemApiModel {
       json[r'attachments'] = this.attachments;
     } else {
       json[r'attachments'] = null;
+    }
+    if (this.links != null) {
+      json[r'links'] = this.links;
+    } else {
+      json[r'links'] = null;
     }
     if (this.parameters != null) {
       json[r'parameters'] = this.parameters;
@@ -208,17 +232,17 @@ class CreateWorkItemApiModel {
         duration: mapValueOfType<int>(json, r'duration')!,
         state: WorkItemStateApiModel.fromJson(json[r'state'])!,
         priority: WorkItemPriorityApiModel.fromJson(json[r'priority'])!,
-        attributes: mapCastOfType<String, Object>(json, r'attributes')!,
+        sectionId: mapValueOfType<String>(json, r'sectionId'),
+        description: mapValueOfType<String>(json, r'description'),
+        attributes: mapCastOfType<String, Object>(json, r'attributes') ?? const {},
         tags: TagModel.listFromJson(json[r'tags']),
         preconditionSteps: CreateStepApiModel.listFromJson(json[r'preconditionSteps']),
         steps: CreateStepApiModel.listFromJson(json[r'steps']),
         postconditionSteps: CreateStepApiModel.listFromJson(json[r'postconditionSteps']),
-        links: CreateLinkApiModel.listFromJson(json[r'links']),
-        sectionId: mapValueOfType<String>(json, r'sectionId'),
-        description: mapValueOfType<String>(json, r'description'),
         iterations: AssignIterationApiModel.listFromJson(json[r'iterations']),
         autoTests: AutoTestIdModel.listFromJson(json[r'autoTests']),
         attachments: AssignAttachmentApiModel.listFromJson(json[r'attachments']),
+        links: CreateLinkApiModel.listFromJson(json[r'links']),
         parameters: WorkItemParameterKeyApiModel.listFromJson(json[r'parameters']),
       );
     }
@@ -273,12 +297,6 @@ class CreateWorkItemApiModel {
     'duration',
     'state',
     'priority',
-    'attributes',
-    'tags',
-    'preconditionSteps',
-    'steps',
-    'postconditionSteps',
-    'links',
   };
 }
 

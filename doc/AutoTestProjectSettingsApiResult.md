@@ -16,6 +16,10 @@ Name | Type | Description | Notes
 **rerunAttemptsCount** | **int** | Auto rerun attempt count | 
 **workItemUpdatingEnabled** | **bool** | Autotest to work item updating enabled | 
 **workItemUpdatingFields** | [**WorkItemUpdatingFieldsApiResult**](WorkItemUpdatingFieldsApiResult.md) | Autotest to work item updating fields | 
+**archiveOutdatedTestRunsEnabled** | **bool** | Indicates whether archiving of outdated test runs is enabled for the project. | 
+**testRunsArchiveLimitEnabled** | **bool** | Indicates whether a limit is enforced on the number of archived test runs. | 
+**testRunsRetentionPeriodDays** | **int** |  The retention period in days for test runs. After this period, outdated test runs may be archived based on project settings | 
+**maxActiveTestRunsCount** | **int** | Maximum number of active test runs to keep. When this limit is exceeded, older test runs are automatically archived | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

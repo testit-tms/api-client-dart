@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | 
 **name** | **String** |  | 
-**projectId** | **String** |  | 
 **attachments** | [**List<AttachmentPutModel>**](AttachmentPutModel.md) |  | [default to const []]
 **parentId** | **String** |  | [optional] 
 **preconditionSteps** | [**List<StepPutModel>**](StepPutModel.md) |  | [optional] [default to const []]

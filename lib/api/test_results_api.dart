@@ -342,6 +342,61 @@ class TestResultsApi {
     return null;
   }
 
+  /// Patch test result by ID
+  ///
+  /// See <a href=\"https://www.rfc-editor.org/rfc/rfc6902\" target=\"_blank\">RFC 6902: JavaScript Object Notation (JSON) Patch</a> for details
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   Test result unique ID
+  ///
+  /// * [List<Operation>] operation:
+  Future<Response> apiV2TestResultsIdPatchWithHttpInfo(String id, { List<Operation>? operation, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/v2/testResults/{id}'
+      .replaceAll('{id}', id);
+
+    // ignore: prefer_final_locals
+    Object? postBody = operation;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'PATCH',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Patch test result by ID
+  ///
+  /// See <a href=\"https://www.rfc-editor.org/rfc/rfc6902\" target=\"_blank\">RFC 6902: JavaScript Object Notation (JSON) Patch</a> for details
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   Test result unique ID
+  ///
+  /// * [List<Operation>] operation:
+  Future<void> apiV2TestResultsIdPatch(String id, { List<Operation>? operation, }) async {
+    final response = await apiV2TestResultsIdPatchWithHttpInfo(id,  operation: operation, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
   /// Edit test result by ID
   ///
   /// Note: This method returns the HTTP [Response].

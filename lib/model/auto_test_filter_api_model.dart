@@ -35,6 +35,8 @@ class AutoTestFilterApiModel {
     this.lastTestResultConfigurationIds = const {},
     this.tags = const {},
     this.excludeTags = const {},
+    this.layers = const {},
+    this.layerSources = const {},
   });
 
   /// Specifies an autotest projects IDs to search for
@@ -103,6 +105,12 @@ class AutoTestFilterApiModel {
   /// Specifies an autotest tags to exclude
   Set<String>? excludeTags;
 
+  /// Specifies auto test layers to search for
+  Set<String>? layers;
+
+  /// Specifies list of auto test layer sources to search for
+  Set<LayerSource>? layerSources;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is AutoTestFilterApiModel &&
     _deepEquality.equals(other.projectIds, projectIds) &&
@@ -126,7 +134,9 @@ class AutoTestFilterApiModel {
     other.externalKey == externalKey &&
     _deepEquality.equals(other.lastTestResultConfigurationIds, lastTestResultConfigurationIds) &&
     _deepEquality.equals(other.tags, tags) &&
-    _deepEquality.equals(other.excludeTags, excludeTags);
+    _deepEquality.equals(other.excludeTags, excludeTags) &&
+    _deepEquality.equals(other.layers, layers) &&
+    _deepEquality.equals(other.layerSources, layerSources);
 
   @override
   int get hashCode =>
@@ -152,10 +162,12 @@ class AutoTestFilterApiModel {
     (externalKey == null ? 0 : externalKey!.hashCode) +
     (lastTestResultConfigurationIds == null ? 0 : lastTestResultConfigurationIds!.hashCode) +
     (tags == null ? 0 : tags!.hashCode) +
-    (excludeTags == null ? 0 : excludeTags!.hashCode);
+    (excludeTags == null ? 0 : excludeTags!.hashCode) +
+    (layers == null ? 0 : layers!.hashCode) +
+    (layerSources == null ? 0 : layerSources!.hashCode);
 
   @override
-  String toString() => 'AutoTestFilterApiModel[projectIds=$projectIds, externalIds=$externalIds, globalIds=$globalIds, name=$name, isFlaky=$isFlaky, mustBeApproved=$mustBeApproved, stabilityPercentage=$stabilityPercentage, createdDate=$createdDate, createdByIds=$createdByIds, modifiedDate=$modifiedDate, modifiedByIds=$modifiedByIds, isDeleted=$isDeleted, namespace=$namespace, isEmptyNamespace=$isEmptyNamespace, className=$className, isEmptyClassName=$isEmptyClassName, lastTestResultOutcome=$lastTestResultOutcome, lastTestResultStatusCodes=$lastTestResultStatusCodes, externalKey=$externalKey, lastTestResultConfigurationIds=$lastTestResultConfigurationIds, tags=$tags, excludeTags=$excludeTags]';
+  String toString() => 'AutoTestFilterApiModel[projectIds=$projectIds, externalIds=$externalIds, globalIds=$globalIds, name=$name, isFlaky=$isFlaky, mustBeApproved=$mustBeApproved, stabilityPercentage=$stabilityPercentage, createdDate=$createdDate, createdByIds=$createdByIds, modifiedDate=$modifiedDate, modifiedByIds=$modifiedByIds, isDeleted=$isDeleted, namespace=$namespace, isEmptyNamespace=$isEmptyNamespace, className=$className, isEmptyClassName=$isEmptyClassName, lastTestResultOutcome=$lastTestResultOutcome, lastTestResultStatusCodes=$lastTestResultStatusCodes, externalKey=$externalKey, lastTestResultConfigurationIds=$lastTestResultConfigurationIds, tags=$tags, excludeTags=$excludeTags, layers=$layers, layerSources=$layerSources]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -269,6 +281,16 @@ class AutoTestFilterApiModel {
     } else {
       json[r'excludeTags'] = null;
     }
+    if (this.layers != null) {
+      json[r'layers'] = this.layers!.toList(growable: false);
+    } else {
+      json[r'layers'] = null;
+    }
+    if (this.layerSources != null) {
+      json[r'layerSources'] = this.layerSources!.toList(growable: false);
+    } else {
+      json[r'layerSources'] = null;
+    }
     return json;
   }
 
@@ -331,6 +353,10 @@ class AutoTestFilterApiModel {
         excludeTags: json[r'excludeTags'] is Iterable
             ? (json[r'excludeTags'] as Iterable).cast<String>().toSet()
             : const {},
+        layers: json[r'layers'] is Iterable
+            ? (json[r'layers'] as Iterable).cast<String>().toSet()
+            : const {},
+        layerSources: LayerSource.listFromJson(json[r'layerSources']).toSet(),
       );
     }
     return null;

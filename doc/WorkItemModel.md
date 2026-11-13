@@ -34,12 +34,15 @@ Name | Type | Description | Notes
 **links** | [**List<LinkModel>**](LinkModel.md) |  | [default to const []]
 **name** | **String** |  | 
 **autoTests** | [**List<AutoTestModel>**](AutoTestModel.md) |  | [optional] [default to const []]
+**manualTestId** | **String** |  | [optional] 
+**autoTestCases** | [**List<AutoTestCaseResult>**](AutoTestCaseResult.md) |  | [optional] [default to const []]
 **attachments** | [**List<AttachmentModel>**](AttachmentModel.md) |  | [optional] [default to const []]
 **sectionPreconditionSteps** | [**List<StepModel>**](StepModel.md) |  | [optional] [default to const []]
 **sectionPostconditionSteps** | [**List<StepModel>**](StepModel.md) |  | [optional] [default to const []]
 **iterations** | [**List<IterationModel>**](IterationModel.md) |  | [optional] [default to const []]
 **modifiedDate** | [**DateTime**](DateTime.md) |  | [optional] 
 **modifiedById** | **String** |  | [optional] 
+**externalId** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

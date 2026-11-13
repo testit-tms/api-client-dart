@@ -15,52 +15,48 @@ class IFilter {
   IFilter({
     this.filters = const [],
     required this.operator_,
+    required this.value,
     required this.field,
     required this.filter,
-    this.value,
   });
 
   List<IFilter> filters;
 
   CollectionOperator operator_;
 
+  JsonElement value;
+
   String field;
 
   IFilter filter;
-
-  String? value;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is IFilter &&
     _deepEquality.equals(other.filters, filters) &&
     other.operator_ == operator_ &&
+    other.value == value &&
     other.field == field &&
-    other.filter == filter &&
-    other.value == value;
+    other.filter == filter;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (filters.hashCode) +
     (operator_.hashCode) +
+    (value.hashCode) +
     (field.hashCode) +
-    (filter.hashCode) +
-    (value == null ? 0 : value!.hashCode);
+    (filter.hashCode);
 
   @override
-  String toString() => 'IFilter[filters=$filters, operator_=$operator_, field=$field, filter=$filter, value=$value]';
+  String toString() => 'IFilter[filters=$filters, operator_=$operator_, value=$value, field=$field, filter=$filter]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'filters'] = this.filters;
       json[r'operator'] = this.operator_;
+      json[r'value'] = this.value;
       json[r'field'] = this.field;
       json[r'filter'] = this.filter;
-    if (this.value != null) {
-      json[r'value'] = this.value;
-    } else {
-      json[r'value'] = null;
-    }
     return json;
   }
 
@@ -85,9 +81,9 @@ class IFilter {
       return IFilter(
         filters: IFilter.listFromJson(json[r'filters']),
         operator_: CollectionOperator.fromJson(json[r'operator'])!,
+        value: JsonElement.fromJson(json[r'value'])!,
         field: mapValueOfType<String>(json, r'field')!,
         filter: IFilter.fromJson(json[r'filter'])!,
-        value: mapValueOfType<String>(json, r'value'),
       );
     }
     return null;
@@ -137,6 +133,7 @@ class IFilter {
   static const requiredKeys = <String>{
     'filters',
     'operator',
+    'value',
     'field',
     'filter',
   };

@@ -16,9 +16,63 @@ class TestRunsApi {
 
   final ApiClient apiClient;
 
+  /// Create TestRun filled with autotests linked to work items of type \"AutoTestCases\" selected by the filter
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [CreateTestRunAndFillByAutoTestCasesApiModel] createTestRunAndFillByAutoTestCasesApiModel:
+  ///   Test run model with a filter for work items of type \"AutoTestCases\" and configuration IDs
+  Future<Response> apiV2TestRunsByAutoTestCasesPostWithHttpInfo({ CreateTestRunAndFillByAutoTestCasesApiModel? createTestRunAndFillByAutoTestCasesApiModel, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/v2/testRuns/byAutoTestCases';
+
+    // ignore: prefer_final_locals
+    Object? postBody = createTestRunAndFillByAutoTestCasesApiModel;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Create TestRun filled with autotests linked to work items of type \"AutoTestCases\" selected by the filter
+  ///
+  /// Parameters:
+  ///
+  /// * [CreateTestRunAndFillByAutoTestCasesApiModel] createTestRunAndFillByAutoTestCasesApiModel:
+  ///   Test run model with a filter for work items of type \"AutoTestCases\" and configuration IDs
+  Future<TestRunV2ApiResult?> apiV2TestRunsByAutoTestCasesPost({ CreateTestRunAndFillByAutoTestCasesApiModel? createTestRunAndFillByAutoTestCasesApiModel, }) async {
+    final response = await apiV2TestRunsByAutoTestCasesPostWithHttpInfo( createTestRunAndFillByAutoTestCasesApiModel: createTestRunAndFillByAutoTestCasesApiModel, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TestRunV2ApiResult',) as TestRunV2ApiResult;
+    
+    }
+    return null;
+  }
+
   /// Delete multiple test runs
   ///
-  ///   Use case    User sets selection parameters of test runs    System search and delete collection of test runs    System returns the number of deleted test runs
+  ///  Use case  User sets selection parameters of test runs  System search and delete collection of test runs  System returns the number of deleted test runs
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -52,7 +106,7 @@ class TestRunsApi {
 
   /// Delete multiple test runs
   ///
-  ///   Use case    User sets selection parameters of test runs    System search and delete collection of test runs    System returns the number of deleted test runs
+  ///  Use case  User sets selection parameters of test runs  System search and delete collection of test runs  System returns the number of deleted test runs
   ///
   /// Parameters:
   ///
@@ -127,7 +181,7 @@ class TestRunsApi {
 
   /// Delete test run
   ///
-  ///   Use case    User sets test run internal (guid format) identifier    System search and delete test run
+  ///  Use case  User sets test run internal (guid format) identifier  System search and delete test run
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -163,7 +217,7 @@ class TestRunsApi {
 
   /// Delete test run
   ///
-  ///   Use case    User sets test run internal (guid format) identifier    System search and delete test run
+  ///  Use case  User sets test run internal (guid format) identifier  System search and delete test run
   ///
   /// Parameters:
   ///
@@ -233,7 +287,7 @@ class TestRunsApi {
 
   /// Permanently delete test run from archive
   ///
-  ///   Use case    User sets archived test run internal (guid format) identifier    System search and purge archived test run
+  ///  Use case  User sets archived test run internal (guid format) identifier  System search and purge archived test run
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -269,7 +323,7 @@ class TestRunsApi {
 
   /// Permanently delete test run from archive
   ///
-  ///   Use case    User sets archived test run internal (guid format) identifier    System search and purge archived test run
+  ///  Use case  User sets archived test run internal (guid format) identifier  System search and purge archived test run
   ///
   /// Parameters:
   ///
@@ -341,7 +395,7 @@ class TestRunsApi {
 
   /// Restore test run from the archive
   ///
-  ///   Use case    User sets archived test run internal (guid format) identifier    System search and restore test run
+  ///  Use case  User sets archived test run internal (guid format) identifier  System search and restore test run
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -377,7 +431,7 @@ class TestRunsApi {
 
   /// Restore test run from the archive
   ///
-  ///   Use case    User sets archived test run internal (guid format) identifier    System search and restore test run
+  ///  Use case  User sets archived test run internal (guid format) identifier  System search and restore test run
   ///
   /// Parameters:
   ///
@@ -615,7 +669,7 @@ class TestRunsApi {
 
   /// Permanently delete multiple test runs from archive
   ///
-  ///   Use case    User sets selection parameters of archived test runs    System search and delete collection of archived test runs    System returns the number of deleted archived test runs
+  ///  Use case  User sets selection parameters of archived test runs  System search and delete collection of archived test runs  System returns the number of deleted archived test runs
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -649,7 +703,7 @@ class TestRunsApi {
 
   /// Permanently delete multiple test runs from archive
   ///
-  ///   Use case    User sets selection parameters of archived test runs    System search and delete collection of archived test runs    System returns the number of deleted archived test runs
+  ///  Use case  User sets selection parameters of archived test runs  System search and delete collection of archived test runs  System returns the number of deleted archived test runs
   ///
   /// Parameters:
   ///
@@ -671,7 +725,7 @@ class TestRunsApi {
 
   /// Restore multiple test runs from the archive
   ///
-  ///   Use case    User sets selection parameters of archived test runs    System search and restore collection of archived test runs    System returns the number of restored test runs
+  ///  Use case  User sets selection parameters of archived test runs  System search and restore collection of archived test runs  System returns the number of restored test runs
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -705,7 +759,7 @@ class TestRunsApi {
 
   /// Restore multiple test runs from the archive
   ///
-  ///   Use case    User sets selection parameters of archived test runs    System search and restore collection of archived test runs    System returns the number of restored test runs
+  ///  Use case  User sets selection parameters of archived test runs  System search and restore collection of archived test runs  System returns the number of restored test runs
   ///
   /// Parameters:
   ///
@@ -872,7 +926,7 @@ class TestRunsApi {
 
   /// Complete TestRun
   ///
-  ///   Use case    User sets test run identifier    User runs method execution    System completes test run    System returns no content response
+  ///  Use case  User sets test run identifier  User runs method execution  System completes test run  System returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -908,7 +962,7 @@ class TestRunsApi {
 
   /// Complete TestRun
   ///
-  ///   Use case    User sets test run identifier    User runs method execution    System completes test run    System returns no content response
+  ///  Use case  User sets test run identifier  User runs method execution  System completes test run  System returns no content response
   ///
   /// Parameters:
   ///
@@ -923,7 +977,7 @@ class TestRunsApi {
 
   /// Create test runs based on autotests and configurations
   ///
-  /// This method creates a test run based on an autotest and a configuration.  The difference between the `POST /api/v2/testRuns/byWorkItems` and `POST /api/v2/testRuns/byConfigurations` methods is  that in this method there is no need to create a test plan and work items (test cases and checklists).
+  /// This method creates a test run based on an autotest and a configuration. The difference between the `POST /api/v2/testRuns/byWorkItems` and `POST /api/v2/testRuns/byConfigurations` methods is that in this method there is no need to create a test plan and work items (test cases and checklists).
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -957,7 +1011,7 @@ class TestRunsApi {
 
   /// Create test runs based on autotests and configurations
   ///
-  /// This method creates a test run based on an autotest and a configuration.  The difference between the `POST /api/v2/testRuns/byWorkItems` and `POST /api/v2/testRuns/byConfigurations` methods is  that in this method there is no need to create a test plan and work items (test cases and checklists).
+  /// This method creates a test run based on an autotest and a configuration. The difference between the `POST /api/v2/testRuns/byWorkItems` and `POST /api/v2/testRuns/byConfigurations` methods is that in this method there is no need to create a test plan and work items (test cases and checklists).
   ///
   /// Parameters:
   ///
@@ -979,7 +1033,7 @@ class TestRunsApi {
 
   /// Create test runs picking the needed test points
   ///
-  /// This method creates a test run based on a combination of a configuration and a work item(test case or checklist).  Before you create a test run using this method, make sure to create a test plan. Work items must be automated.  This method is different from the `POST /api/v2/testRuns/byWorkItems` method because of the ability to send a  jagged array within the \"<b>testPointSelectors</b>\" parameter.
+  /// This method creates a test run based on a combination of a configuration and a work item(test case or checklist). Before you create a test run using this method, make sure to create a test plan. Work items must be automated. This method is different from the `POST /api/v2/testRuns/byWorkItems` method because of the ability to send a jagged array within the \"<b>testPointSelectors</b>\" parameter.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1013,7 +1067,7 @@ class TestRunsApi {
 
   /// Create test runs picking the needed test points
   ///
-  /// This method creates a test run based on a combination of a configuration and a work item(test case or checklist).  Before you create a test run using this method, make sure to create a test plan. Work items must be automated.  This method is different from the `POST /api/v2/testRuns/byWorkItems` method because of the ability to send a  jagged array within the \"<b>testPointSelectors</b>\" parameter.
+  /// This method creates a test run based on a combination of a configuration and a work item(test case or checklist). Before you create a test run using this method, make sure to create a test plan. Work items must be automated. This method is different from the `POST /api/v2/testRuns/byWorkItems` method because of the ability to send a jagged array within the \"<b>testPointSelectors</b>\" parameter.
   ///
   /// Parameters:
   ///
@@ -1035,7 +1089,7 @@ class TestRunsApi {
 
   /// Create test run based on configurations and work items
   ///
-  /// This method creates a test run based on a combination of configuration and work item (test case or checklist).  Before you create a test run using this method, make sure to create a test plan.  Work items must be automated.
+  /// This method creates a test run based on a combination of configuration and work item (test case or checklist). Before you create a test run using this method, make sure to create a test plan. Work items must be automated.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1069,7 +1123,7 @@ class TestRunsApi {
 
   /// Create test run based on configurations and work items
   ///
-  /// This method creates a test run based on a combination of configuration and work item (test case or checklist).  Before you create a test run using this method, make sure to create a test plan.  Work items must be automated.
+  /// This method creates a test run based on a combination of configuration and work item (test case or checklist). Before you create a test run using this method, make sure to create a test plan. Work items must be automated.
   ///
   /// Parameters:
   ///
@@ -1091,7 +1145,7 @@ class TestRunsApi {
 
   /// Create empty TestRun
   ///
-  ///   Use case    User sets test run model (listed in the request example)    User runs method execution    System creates test run    System returns test run model
+  ///  Use case  User sets test run model (listed in the request example)  User runs method execution  System creates test run  System returns test run model
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1125,7 +1179,7 @@ class TestRunsApi {
 
   /// Create empty TestRun
   ///
-  ///   Use case    User sets test run model (listed in the request example)    User runs method execution    System creates test run    System returns test run model
+  ///  Use case  User sets test run model (listed in the request example)  User runs method execution  System creates test run  System returns test run model
   ///
   /// Parameters:
   ///
@@ -1147,7 +1201,7 @@ class TestRunsApi {
 
   /// Get TestRun by Id
   ///
-  ///   Use case    User sets test run identifier    User runs method execution    System finds test run    System returns test run
+  ///  Use case  User sets test run identifier  User runs method execution  System finds test run  System returns test run
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1183,7 +1237,7 @@ class TestRunsApi {
 
   /// Get TestRun by Id
   ///
-  ///   Use case    User sets test run identifier    User runs method execution    System finds test run    System returns test run
+  ///  Use case  User sets test run identifier  User runs method execution  System finds test run  System returns test run
   ///
   /// Parameters:
   ///
@@ -1272,7 +1326,7 @@ class TestRunsApi {
 
   /// Start TestRun
   ///
-  ///   Use case    User sets test run identifier    User runs method execution    System starts test run    System returns no content response
+  ///  Use case  User sets test run identifier  User runs method execution  System starts test run  System returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1308,7 +1362,7 @@ class TestRunsApi {
 
   /// Start TestRun
   ///
-  ///   Use case    User sets test run identifier    User runs method execution    System starts test run    System returns no content response
+  ///  Use case  User sets test run identifier  User runs method execution  System starts test run  System returns no content response
   ///
   /// Parameters:
   ///
@@ -1323,7 +1377,7 @@ class TestRunsApi {
 
   /// Stop TestRun
   ///
-  ///   Use case    User sets test run identifier    User runs method execution    System stops test run    System returns no content response
+  ///  Use case  User sets test run identifier  User runs method execution  System stops test run  System returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1359,7 +1413,7 @@ class TestRunsApi {
 
   /// Stop TestRun
   ///
-  ///   Use case    User sets test run identifier    User runs method execution    System stops test run    System returns no content response
+  ///  Use case  User sets test run identifier  User runs method execution  System stops test run  System returns no content response
   ///
   /// Parameters:
   ///
@@ -1374,7 +1428,7 @@ class TestRunsApi {
 
   /// Update empty TestRun
   ///
-  ///   Use case    User sets test run properties (listed in the request example)    User runs method execution    System updates test run    System returns returns no content response
+  ///  Use case  User sets test run properties (listed in the request example)  User runs method execution  System updates test run  System returns returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -1408,7 +1462,7 @@ class TestRunsApi {
 
   /// Update empty TestRun
   ///
-  ///   Use case    User sets test run properties (listed in the request example)    User runs method execution    System updates test run    System returns returns no content response
+  ///  Use case  User sets test run properties (listed in the request example)  User runs method execution  System updates test run  System returns returns no content response
   ///
   /// Parameters:
   ///

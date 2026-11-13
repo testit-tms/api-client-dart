@@ -35,6 +35,8 @@ class AutoTestFilterModel {
     this.lastTestResultConfigurationIds = const [],
     this.tags = const [],
     this.excludeTags = const [],
+    this.layers = const [],
+    this.layerSources = const [],
   });
 
   List<String>? projectIds;
@@ -81,6 +83,10 @@ class AutoTestFilterModel {
 
   List<String>? excludeTags;
 
+  List<String>? layers;
+
+  List<LayerSource>? layerSources;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is AutoTestFilterModel &&
     _deepEquality.equals(other.projectIds, projectIds) &&
@@ -104,7 +110,9 @@ class AutoTestFilterModel {
     other.externalKey == externalKey &&
     _deepEquality.equals(other.lastTestResultConfigurationIds, lastTestResultConfigurationIds) &&
     _deepEquality.equals(other.tags, tags) &&
-    _deepEquality.equals(other.excludeTags, excludeTags);
+    _deepEquality.equals(other.excludeTags, excludeTags) &&
+    _deepEquality.equals(other.layers, layers) &&
+    _deepEquality.equals(other.layerSources, layerSources);
 
   @override
   int get hashCode =>
@@ -130,10 +138,12 @@ class AutoTestFilterModel {
     (externalKey == null ? 0 : externalKey!.hashCode) +
     (lastTestResultConfigurationIds == null ? 0 : lastTestResultConfigurationIds!.hashCode) +
     (tags == null ? 0 : tags!.hashCode) +
-    (excludeTags == null ? 0 : excludeTags!.hashCode);
+    (excludeTags == null ? 0 : excludeTags!.hashCode) +
+    (layers == null ? 0 : layers!.hashCode) +
+    (layerSources == null ? 0 : layerSources!.hashCode);
 
   @override
-  String toString() => 'AutoTestFilterModel[projectIds=$projectIds, externalIds=$externalIds, globalIds=$globalIds, name=$name, isFlaky=$isFlaky, mustBeApproved=$mustBeApproved, stabilityPercentage=$stabilityPercentage, createdDate=$createdDate, createdByIds=$createdByIds, modifiedDate=$modifiedDate, modifiedByIds=$modifiedByIds, isDeleted=$isDeleted, namespace=$namespace, isEmptyNamespace=$isEmptyNamespace, className=$className, isEmptyClassName=$isEmptyClassName, lastTestResultOutcome=$lastTestResultOutcome, lastTestResultStatusCodes=$lastTestResultStatusCodes, externalKey=$externalKey, lastTestResultConfigurationIds=$lastTestResultConfigurationIds, tags=$tags, excludeTags=$excludeTags]';
+  String toString() => 'AutoTestFilterModel[projectIds=$projectIds, externalIds=$externalIds, globalIds=$globalIds, name=$name, isFlaky=$isFlaky, mustBeApproved=$mustBeApproved, stabilityPercentage=$stabilityPercentage, createdDate=$createdDate, createdByIds=$createdByIds, modifiedDate=$modifiedDate, modifiedByIds=$modifiedByIds, isDeleted=$isDeleted, namespace=$namespace, isEmptyNamespace=$isEmptyNamespace, className=$className, isEmptyClassName=$isEmptyClassName, lastTestResultOutcome=$lastTestResultOutcome, lastTestResultStatusCodes=$lastTestResultStatusCodes, externalKey=$externalKey, lastTestResultConfigurationIds=$lastTestResultConfigurationIds, tags=$tags, excludeTags=$excludeTags, layers=$layers, layerSources=$layerSources]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -247,6 +257,16 @@ class AutoTestFilterModel {
     } else {
       json[r'excludeTags'] = null;
     }
+    if (this.layers != null) {
+      json[r'layers'] = this.layers;
+    } else {
+      json[r'layers'] = null;
+    }
+    if (this.layerSources != null) {
+      json[r'layerSources'] = this.layerSources;
+    } else {
+      json[r'layerSources'] = null;
+    }
     return json;
   }
 
@@ -309,6 +329,10 @@ class AutoTestFilterModel {
         excludeTags: json[r'excludeTags'] is Iterable
             ? (json[r'excludeTags'] as Iterable).cast<String>().toList(growable: false)
             : const [],
+        layers: json[r'layers'] is Iterable
+            ? (json[r'layers'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
+        layerSources: LayerSource.listFromJson(json[r'layerSources']),
       );
     }
     return null;

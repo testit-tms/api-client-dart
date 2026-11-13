@@ -23,29 +23,33 @@ class FilterOperator {
 
   String toJson() => value;
 
-  static const equal = FilterOperator._(r'=');
-  static const exclamationEqual = FilterOperator._(r'!=');
-  static const tilde = FilterOperator._(r'~');
-  static const exclamationTilde = FilterOperator._(r'!~');
-  static const lessThan = FilterOperator._(r'<');
-  static const lessThanEqual = FilterOperator._(r'<=');
-  static const greaterThan = FilterOperator._(r'>');
-  static const greaterThanEqual = FilterOperator._(r'>=');
-  static const star = FilterOperator._(r'*');
-  static const exclamationStar = FilterOperator._(r'!*');
+  static const equalTo = FilterOperator._(r'EqualTo');
+  static const notEqualTo = FilterOperator._(r'NotEqualTo');
+  static const contains = FilterOperator._(r'Contains');
+  static const notContains = FilterOperator._(r'NotContains');
+  static const lessThan = FilterOperator._(r'LessThan');
+  static const lessThanOrEqualTo = FilterOperator._(r'LessThanOrEqualTo');
+  static const greaterThan = FilterOperator._(r'GreaterThan');
+  static const greaterThanOrEqualTo = FilterOperator._(r'GreaterThanOrEqualTo');
+  static const empty = FilterOperator._(r'Empty');
+  static const notEmpty = FilterOperator._(r'NotEmpty');
+  static const in_ = FilterOperator._(r'In');
+  static const notIn = FilterOperator._(r'NotIn');
 
   /// List of all possible values in this [enum][FilterOperator].
   static const values = <FilterOperator>[
-    equal,
-    exclamationEqual,
-    tilde,
-    exclamationTilde,
+    equalTo,
+    notEqualTo,
+    contains,
+    notContains,
     lessThan,
-    lessThanEqual,
+    lessThanOrEqualTo,
     greaterThan,
-    greaterThanEqual,
-    star,
-    exclamationStar,
+    greaterThanOrEqualTo,
+    empty,
+    notEmpty,
+    in_,
+    notIn,
   ];
 
   static FilterOperator? fromJson(dynamic value) => FilterOperatorTypeTransformer().decode(value);
@@ -84,16 +88,18 @@ class FilterOperatorTypeTransformer {
   FilterOperator? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'=': return FilterOperator.equal;
-        case r'!=': return FilterOperator.exclamationEqual;
-        case r'~': return FilterOperator.tilde;
-        case r'!~': return FilterOperator.exclamationTilde;
-        case r'<': return FilterOperator.lessThan;
-        case r'<=': return FilterOperator.lessThanEqual;
-        case r'>': return FilterOperator.greaterThan;
-        case r'>=': return FilterOperator.greaterThanEqual;
-        case r'*': return FilterOperator.star;
-        case r'!*': return FilterOperator.exclamationStar;
+        case r'EqualTo': return FilterOperator.equalTo;
+        case r'NotEqualTo': return FilterOperator.notEqualTo;
+        case r'Contains': return FilterOperator.contains;
+        case r'NotContains': return FilterOperator.notContains;
+        case r'LessThan': return FilterOperator.lessThan;
+        case r'LessThanOrEqualTo': return FilterOperator.lessThanOrEqualTo;
+        case r'GreaterThan': return FilterOperator.greaterThan;
+        case r'GreaterThanOrEqualTo': return FilterOperator.greaterThanOrEqualTo;
+        case r'Empty': return FilterOperator.empty;
+        case r'NotEmpty': return FilterOperator.notEmpty;
+        case r'In': return FilterOperator.in_;
+        case r'NotIn': return FilterOperator.notIn;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

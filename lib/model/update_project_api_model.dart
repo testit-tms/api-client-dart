@@ -15,6 +15,8 @@ class UpdateProjectApiModel {
   UpdateProjectApiModel({
     required this.id,
     required this.name,
+    required this.testStrategy,
+    required this.testCaseCoverageMode,
     this.description,
     this.isFavorite,
     this.workflowId,
@@ -25,6 +27,10 @@ class UpdateProjectApiModel {
 
   /// Name of the project
   String name;
+
+  TestStrategy testStrategy;
+
+  TestCaseCoverageMode testCaseCoverageMode;
 
   /// Description of the project
   String? description;
@@ -39,6 +45,8 @@ class UpdateProjectApiModel {
   bool operator ==(Object other) => identical(this, other) || other is UpdateProjectApiModel &&
     other.id == id &&
     other.name == name &&
+    other.testStrategy == testStrategy &&
+    other.testCaseCoverageMode == testCaseCoverageMode &&
     other.description == description &&
     other.isFavorite == isFavorite &&
     other.workflowId == workflowId;
@@ -48,17 +56,21 @@ class UpdateProjectApiModel {
     // ignore: unnecessary_parenthesis
     (id.hashCode) +
     (name.hashCode) +
+    (testStrategy.hashCode) +
+    (testCaseCoverageMode.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (isFavorite == null ? 0 : isFavorite!.hashCode) +
     (workflowId == null ? 0 : workflowId!.hashCode);
 
   @override
-  String toString() => 'UpdateProjectApiModel[id=$id, name=$name, description=$description, isFavorite=$isFavorite, workflowId=$workflowId]';
+  String toString() => 'UpdateProjectApiModel[id=$id, name=$name, testStrategy=$testStrategy, testCaseCoverageMode=$testCaseCoverageMode, description=$description, isFavorite=$isFavorite, workflowId=$workflowId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
       json[r'name'] = this.name;
+      json[r'testStrategy'] = this.testStrategy;
+      json[r'testCaseCoverageMode'] = this.testCaseCoverageMode;
     if (this.description != null) {
       json[r'description'] = this.description;
     } else {
@@ -98,6 +110,8 @@ class UpdateProjectApiModel {
       return UpdateProjectApiModel(
         id: mapValueOfType<String>(json, r'id')!,
         name: mapValueOfType<String>(json, r'name')!,
+        testStrategy: TestStrategy.fromJson(json[r'testStrategy'])!,
+        testCaseCoverageMode: TestCaseCoverageMode.fromJson(json[r'testCaseCoverageMode'])!,
         description: mapValueOfType<String>(json, r'description'),
         isFavorite: mapValueOfType<bool>(json, r'isFavorite'),
         workflowId: mapValueOfType<String>(json, r'workflowId'),
@@ -150,6 +164,8 @@ class UpdateProjectApiModel {
   static const requiredKeys = <String>{
     'id',
     'name',
+    'testStrategy',
+    'testCaseCoverageMode',
   };
 }
 

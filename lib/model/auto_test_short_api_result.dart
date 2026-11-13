@@ -13,50 +13,60 @@ part of testit_api_client_dart;
 class AutoTestShortApiResult {
   /// Returns a new [AutoTestShortApiResult] instance.
   AutoTestShortApiResult({
+    required this.globalId,
     required this.id,
     required this.projectId,
-    required this.name,
     required this.externalId,
-    required this.globalId,
+    required this.name,
+    this.autoTestCaseGlobalId,
   });
+
+  int globalId;
 
   String id;
 
   String projectId;
 
-  String name;
-
   String externalId;
 
-  int globalId;
+  String name;
+
+  int? autoTestCaseGlobalId;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is AutoTestShortApiResult &&
+    other.globalId == globalId &&
     other.id == id &&
     other.projectId == projectId &&
-    other.name == name &&
     other.externalId == externalId &&
-    other.globalId == globalId;
+    other.name == name &&
+    other.autoTestCaseGlobalId == autoTestCaseGlobalId;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (globalId.hashCode) +
     (id.hashCode) +
     (projectId.hashCode) +
-    (name.hashCode) +
     (externalId.hashCode) +
-    (globalId.hashCode);
+    (name.hashCode) +
+    (autoTestCaseGlobalId == null ? 0 : autoTestCaseGlobalId!.hashCode);
 
   @override
-  String toString() => 'AutoTestShortApiResult[id=$id, projectId=$projectId, name=$name, externalId=$externalId, globalId=$globalId]';
+  String toString() => 'AutoTestShortApiResult[globalId=$globalId, id=$id, projectId=$projectId, externalId=$externalId, name=$name, autoTestCaseGlobalId=$autoTestCaseGlobalId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+      json[r'globalId'] = this.globalId;
       json[r'id'] = this.id;
       json[r'projectId'] = this.projectId;
-      json[r'name'] = this.name;
       json[r'externalId'] = this.externalId;
-      json[r'globalId'] = this.globalId;
+      json[r'name'] = this.name;
+    if (this.autoTestCaseGlobalId != null) {
+      json[r'autoTestCaseGlobalId'] = this.autoTestCaseGlobalId;
+    } else {
+      json[r'autoTestCaseGlobalId'] = null;
+    }
     return json;
   }
 
@@ -79,11 +89,12 @@ class AutoTestShortApiResult {
       }());
 
       return AutoTestShortApiResult(
+        globalId: mapValueOfType<int>(json, r'globalId')!,
         id: mapValueOfType<String>(json, r'id')!,
         projectId: mapValueOfType<String>(json, r'projectId')!,
-        name: mapValueOfType<String>(json, r'name')!,
         externalId: mapValueOfType<String>(json, r'externalId')!,
-        globalId: mapValueOfType<int>(json, r'globalId')!,
+        name: mapValueOfType<String>(json, r'name')!,
+        autoTestCaseGlobalId: mapValueOfType<int>(json, r'autoTestCaseGlobalId'),
       );
     }
     return null;
@@ -131,11 +142,11 @@ class AutoTestShortApiResult {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'globalId',
     'id',
     'projectId',
-    'name',
     'externalId',
-    'globalId',
+    'name',
   };
 }
 

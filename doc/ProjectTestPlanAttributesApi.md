@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 Add attributes to project's test plans
 
-  Use case    User sets project internal or global identifier and attributes identifiers    User runs method execution    System updates project and add attributes to project for test plans    System returns no content response
+ Use case  User sets project internal or global identifier and attributes identifiers  User runs method execution  System updates project and add attributes to project for test plans  System returns no content response
 
 ### Example
 ```dart
@@ -73,7 +73,7 @@ void (empty response body)
 
 Delete attribute from project's test plans
 
-  Use case    User sets project internal or global identifier and attribute identifier    User runs method execution    System updates project and delete attribute from project for test plans    System returns no content response
+ Use case  User sets project internal or global identifier and attribute identifier  User runs method execution  System updates project and delete attribute from project for test plans  System returns no content response
 
 ### Example
 ```dart
@@ -125,7 +125,7 @@ void (empty response body)
 
 Get project's test plan attributes
 
-  Use case    User runs method execution    System returns project for test plans attributes by project identifier
+ Use case  User runs method execution  System returns project for test plans attributes by project identifier
 
 ### Example
 ```dart
@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchTestPlanAttributesInProject**
-> List<CustomAttributeGetModel> searchTestPlanAttributesInProject(projectId, skip, take, orderBy, searchField, searchValue, projectAttributesFilterModel)
+> List<CustomAttributeModel> searchTestPlanAttributesInProject(projectId, skip, take, orderBy, searchField, searchValue, projectAttributesFilterModel)
 
 Search for attributes used in the project test plans
 
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<CustomAttributeGetModel>**](CustomAttributeGetModel.md)
+[**List<CustomAttributeModel>**](CustomAttributeModel.md)
 
 ### Authorization
 
@@ -237,7 +237,7 @@ Name | Type | Description  | Notes
 
 Update attribute of project's test plans
 
-  Use case    User sets project internal or global identifier and attribute model    User runs method execution    System updates project and project attribute for test plan    System returns no content response
+ Use case  User sets project internal or global identifier and attribute model  User runs method execution  System updates project and project attribute for test plan  System returns no content response
 
 ### Example
 ```dart

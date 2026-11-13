@@ -36,6 +36,7 @@ Name | Type | Description | Notes
 **lastTestResultConfiguration** | [**ConfigurationShort**](ConfigurationShort.md) | Configuration of the autotest last test result | [optional] 
 **lastTestResultOutcome** | **String** | Outcome of the autotest last test result | [optional] 
 **stabilityPercentage** | **int** | Stability percentage of the autotest | [optional] 
+**autoTestCase** | [**AutoTestCase**](AutoTestCase.md) | Auto test case linked with the autotest | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

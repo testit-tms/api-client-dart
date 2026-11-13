@@ -48,7 +48,7 @@ class SharedStepReferencesQueryFilterModel {
   /// Collection of priorities of work item
   Set<WorkItemPriorityModel>? priorities;
 
-  /// Collection of types of work item    Allowed values: `TestCases`, `CheckLists`, `SharedSteps`
+  /// Collection of types of work item  Allowed values: `TestCases`, `CheckLists`, `SharedSteps`
   Set<WorkItemTypeModel>? entityTypes;
 
   /// Date and time of work item creation

@@ -27,9 +27,14 @@ class UpdateWorkItemApiModel {
     this.postconditionSteps = const [],
     this.iterations = const [],
     this.autoTests = const [],
+    this.manualTestId,
+    this.autoTestCases = const [],
     this.attachments = const [],
     this.links = const [],
     this.parameters = const [],
+    this.layerName,
+    this.layerSource,
+    this.resetLayer,
   });
 
   /// Unique identifier of the work item
@@ -77,6 +82,12 @@ class UpdateWorkItemApiModel {
   /// Set of automated tests linked to the work item
   List<AutoTestIdModel>? autoTests;
 
+  /// Identifier of the linked manual test
+  String? manualTestId;
+
+  /// Set of automated test cases linked to the work item
+  List<AssignAutoTestCaseIdApiModel>? autoTestCases;
+
   /// Set of files attached to the work item
   List<AssignAttachmentApiModel>? attachments;
 
@@ -85,6 +96,15 @@ class UpdateWorkItemApiModel {
 
   /// Set of parameter keys associated with the work item
   List<WorkItemParameterKeyApiModel>? parameters;
+
+  /// Name of test pyramid layer associated with the work item
+  String? layerName;
+
+  /// Source of test pyramid layer associated with the work item
+  LayerSource? layerSource;
+
+  /// Reset current test pyramid layer associated with the work item and re-evaluates it
+  bool? resetLayer;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UpdateWorkItemApiModel &&
@@ -102,9 +122,14 @@ class UpdateWorkItemApiModel {
     _deepEquality.equals(other.postconditionSteps, postconditionSteps) &&
     _deepEquality.equals(other.iterations, iterations) &&
     _deepEquality.equals(other.autoTests, autoTests) &&
+    other.manualTestId == manualTestId &&
+    _deepEquality.equals(other.autoTestCases, autoTestCases) &&
     _deepEquality.equals(other.attachments, attachments) &&
     _deepEquality.equals(other.links, links) &&
-    _deepEquality.equals(other.parameters, parameters);
+    _deepEquality.equals(other.parameters, parameters) &&
+    other.layerName == layerName &&
+    other.layerSource == layerSource &&
+    other.resetLayer == resetLayer;
 
   @override
   int get hashCode =>
@@ -123,12 +148,17 @@ class UpdateWorkItemApiModel {
     (postconditionSteps == null ? 0 : postconditionSteps!.hashCode) +
     (iterations == null ? 0 : iterations!.hashCode) +
     (autoTests == null ? 0 : autoTests!.hashCode) +
+    (manualTestId == null ? 0 : manualTestId!.hashCode) +
+    (autoTestCases == null ? 0 : autoTestCases!.hashCode) +
     (attachments == null ? 0 : attachments!.hashCode) +
     (links == null ? 0 : links!.hashCode) +
-    (parameters == null ? 0 : parameters!.hashCode);
+    (parameters == null ? 0 : parameters!.hashCode) +
+    (layerName == null ? 0 : layerName!.hashCode) +
+    (layerSource == null ? 0 : layerSource!.hashCode) +
+    (resetLayer == null ? 0 : resetLayer!.hashCode);
 
   @override
-  String toString() => 'UpdateWorkItemApiModel[id=$id, sectionId=$sectionId, name=$name, duration=$duration, state=$state, priority=$priority, description=$description, attributes=$attributes, tags=$tags, preconditionSteps=$preconditionSteps, steps=$steps, postconditionSteps=$postconditionSteps, iterations=$iterations, autoTests=$autoTests, attachments=$attachments, links=$links, parameters=$parameters]';
+  String toString() => 'UpdateWorkItemApiModel[id=$id, sectionId=$sectionId, name=$name, duration=$duration, state=$state, priority=$priority, description=$description, attributes=$attributes, tags=$tags, preconditionSteps=$preconditionSteps, steps=$steps, postconditionSteps=$postconditionSteps, iterations=$iterations, autoTests=$autoTests, manualTestId=$manualTestId, autoTestCases=$autoTestCases, attachments=$attachments, links=$links, parameters=$parameters, layerName=$layerName, layerSource=$layerSource, resetLayer=$resetLayer]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -178,6 +208,16 @@ class UpdateWorkItemApiModel {
     } else {
       json[r'autoTests'] = null;
     }
+    if (this.manualTestId != null) {
+      json[r'manualTestId'] = this.manualTestId;
+    } else {
+      json[r'manualTestId'] = null;
+    }
+    if (this.autoTestCases != null) {
+      json[r'autoTestCases'] = this.autoTestCases;
+    } else {
+      json[r'autoTestCases'] = null;
+    }
     if (this.attachments != null) {
       json[r'attachments'] = this.attachments;
     } else {
@@ -192,6 +232,21 @@ class UpdateWorkItemApiModel {
       json[r'parameters'] = this.parameters;
     } else {
       json[r'parameters'] = null;
+    }
+    if (this.layerName != null) {
+      json[r'layerName'] = this.layerName;
+    } else {
+      json[r'layerName'] = null;
+    }
+    if (this.layerSource != null) {
+      json[r'layerSource'] = this.layerSource;
+    } else {
+      json[r'layerSource'] = null;
+    }
+    if (this.resetLayer != null) {
+      json[r'resetLayer'] = this.resetLayer;
+    } else {
+      json[r'resetLayer'] = null;
     }
     return json;
   }
@@ -229,9 +284,14 @@ class UpdateWorkItemApiModel {
         postconditionSteps: UpdateStepApiModel.listFromJson(json[r'postconditionSteps']),
         iterations: AssignIterationApiModel.listFromJson(json[r'iterations']),
         autoTests: AutoTestIdModel.listFromJson(json[r'autoTests']),
+        manualTestId: mapValueOfType<String>(json, r'manualTestId'),
+        autoTestCases: AssignAutoTestCaseIdApiModel.listFromJson(json[r'autoTestCases']),
         attachments: AssignAttachmentApiModel.listFromJson(json[r'attachments']),
         links: UpdateLinkApiModel.listFromJson(json[r'links']),
         parameters: WorkItemParameterKeyApiModel.listFromJson(json[r'parameters']),
+        layerName: mapValueOfType<String>(json, r'layerName'),
+        layerSource: LayerSource.fromJson(json[r'layerSource']),
+        resetLayer: mapValueOfType<bool>(json, r'resetLayer'),
       );
     }
     return null;

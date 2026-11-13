@@ -17,6 +17,7 @@ class TestStatusShortApiResult {
     required this.code,
     required this.name,
     required this.type,
+    required this.isSystem,
   });
 
   /// Identifier of the test status.
@@ -31,12 +32,16 @@ class TestStatusShortApiResult {
   /// Type of the test status (e.g., Passed, Failed).
   TestStatusApiType type;
 
+  /// Identifies test status as system.
+  bool isSystem;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is TestStatusShortApiResult &&
     other.id == id &&
     other.code == code &&
     other.name == name &&
-    other.type == type;
+    other.type == type &&
+    other.isSystem == isSystem;
 
   @override
   int get hashCode =>
@@ -44,10 +49,11 @@ class TestStatusShortApiResult {
     (id.hashCode) +
     (code.hashCode) +
     (name.hashCode) +
-    (type.hashCode);
+    (type.hashCode) +
+    (isSystem.hashCode);
 
   @override
-  String toString() => 'TestStatusShortApiResult[id=$id, code=$code, name=$name, type=$type]';
+  String toString() => 'TestStatusShortApiResult[id=$id, code=$code, name=$name, type=$type, isSystem=$isSystem]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -55,6 +61,7 @@ class TestStatusShortApiResult {
       json[r'code'] = this.code;
       json[r'name'] = this.name;
       json[r'type'] = this.type;
+      json[r'isSystem'] = this.isSystem;
     return json;
   }
 
@@ -81,6 +88,7 @@ class TestStatusShortApiResult {
         code: mapValueOfType<String>(json, r'code')!,
         name: mapValueOfType<String>(json, r'name')!,
         type: TestStatusApiType.fromJson(json[r'type'])!,
+        isSystem: mapValueOfType<bool>(json, r'isSystem')!,
       );
     }
     return null;
@@ -132,6 +140,7 @@ class TestStatusShortApiResult {
     'code',
     'name',
     'type',
+    'isSystem',
   };
 }
 

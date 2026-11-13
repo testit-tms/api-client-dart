@@ -23,6 +23,8 @@ class DetailedProjectApiResult {
     required this.globalId,
     required this.type,
     required this.workflowId,
+    required this.testStrategy,
+    required this.testCaseCoverageMode,
     this.attributesScheme = const [],
     this.testPlansAttributesScheme = const [],
     this.description,
@@ -64,6 +66,12 @@ class DetailedProjectApiResult {
   /// ID of the workflow used in project
   String workflowId;
 
+  /// Test strategy of the project
+  TestStrategy testStrategy;
+
+  /// Coverage mode of test cases of the project
+  TestCaseCoverageMode testCaseCoverageMode;
+
   /// Collection of the project attributes
   List<CustomAttributeApiResult>? attributesScheme;
 
@@ -103,6 +111,8 @@ class DetailedProjectApiResult {
     other.globalId == globalId &&
     other.type == type &&
     other.workflowId == workflowId &&
+    other.testStrategy == testStrategy &&
+    other.testCaseCoverageMode == testCaseCoverageMode &&
     _deepEquality.equals(other.attributesScheme, attributesScheme) &&
     _deepEquality.equals(other.testPlansAttributesScheme, testPlansAttributesScheme) &&
     other.description == description &&
@@ -126,6 +136,8 @@ class DetailedProjectApiResult {
     (globalId.hashCode) +
     (type.hashCode) +
     (workflowId.hashCode) +
+    (testStrategy.hashCode) +
+    (testCaseCoverageMode.hashCode) +
     (attributesScheme == null ? 0 : attributesScheme!.hashCode) +
     (testPlansAttributesScheme == null ? 0 : testPlansAttributesScheme!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
@@ -137,7 +149,7 @@ class DetailedProjectApiResult {
     (modifiedById == null ? 0 : modifiedById!.hashCode);
 
   @override
-  String toString() => 'DetailedProjectApiResult[id=$id, name=$name, isFavorite=$isFavorite, workItemsCount=$workItemsCount, isDeleted=$isDeleted, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, type=$type, workflowId=$workflowId, attributesScheme=$attributesScheme, testPlansAttributesScheme=$testPlansAttributesScheme, description=$description, testCasesCount=$testCasesCount, sharedStepsCount=$sharedStepsCount, checkListsCount=$checkListsCount, autoTestsCount=$autoTestsCount, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
+  String toString() => 'DetailedProjectApiResult[id=$id, name=$name, isFavorite=$isFavorite, workItemsCount=$workItemsCount, isDeleted=$isDeleted, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, type=$type, workflowId=$workflowId, testStrategy=$testStrategy, testCaseCoverageMode=$testCaseCoverageMode, attributesScheme=$attributesScheme, testPlansAttributesScheme=$testPlansAttributesScheme, description=$description, testCasesCount=$testCasesCount, sharedStepsCount=$sharedStepsCount, checkListsCount=$checkListsCount, autoTestsCount=$autoTestsCount, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -151,6 +163,8 @@ class DetailedProjectApiResult {
       json[r'globalId'] = this.globalId;
       json[r'type'] = this.type;
       json[r'workflowId'] = this.workflowId;
+      json[r'testStrategy'] = this.testStrategy;
+      json[r'testCaseCoverageMode'] = this.testCaseCoverageMode;
     if (this.attributesScheme != null) {
       json[r'attributesScheme'] = this.attributesScheme;
     } else {
@@ -228,6 +242,8 @@ class DetailedProjectApiResult {
         globalId: mapValueOfType<int>(json, r'globalId')!,
         type: ProjectType.fromJson(json[r'type'])!,
         workflowId: mapValueOfType<String>(json, r'workflowId')!,
+        testStrategy: TestStrategy.fromJson(json[r'testStrategy'])!,
+        testCaseCoverageMode: TestCaseCoverageMode.fromJson(json[r'testCaseCoverageMode'])!,
         attributesScheme: CustomAttributeApiResult.listFromJson(json[r'attributesScheme']),
         testPlansAttributesScheme: CustomAttributeApiResult.listFromJson(json[r'testPlansAttributesScheme']),
         description: mapValueOfType<String>(json, r'description'),
@@ -294,6 +310,8 @@ class DetailedProjectApiResult {
     'globalId',
     'type',
     'workflowId',
+    'testStrategy',
+    'testCaseCoverageMode',
   };
 }
 

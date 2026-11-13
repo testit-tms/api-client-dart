@@ -42,6 +42,8 @@ class BackgroundJobType {
   static const deleteCompletedJobs = BackgroundJobType._(r'DeleteCompletedJobs');
   static const copySections = BackgroundJobType._(r'CopySections');
   static const deleteSection = BackgroundJobType._(r'DeleteSection');
+  static const importAutoTestsReport = BackgroundJobType._(r'ImportAutoTestsReport');
+  static const analyzeAutoTestLayers = BackgroundJobType._(r'AnalyzeAutoTestLayers');
 
   /// List of all possible values in this [enum][BackgroundJobType].
   static const values = <BackgroundJobType>[
@@ -64,6 +66,8 @@ class BackgroundJobType {
     deleteCompletedJobs,
     copySections,
     deleteSection,
+    importAutoTestsReport,
+    analyzeAutoTestLayers,
   ];
 
   static BackgroundJobType? fromJson(dynamic value) => BackgroundJobTypeTypeTransformer().decode(value);
@@ -121,6 +125,8 @@ class BackgroundJobTypeTypeTransformer {
         case r'DeleteCompletedJobs': return BackgroundJobType.deleteCompletedJobs;
         case r'CopySections': return BackgroundJobType.copySections;
         case r'DeleteSection': return BackgroundJobType.deleteSection;
+        case r'ImportAutoTestsReport': return BackgroundJobType.importAutoTestsReport;
+        case r'AnalyzeAutoTestLayers': return BackgroundJobType.analyzeAutoTestLayers;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

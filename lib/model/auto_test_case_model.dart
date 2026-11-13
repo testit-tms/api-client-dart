@@ -13,26 +13,27 @@ part of testit_api_client_dart;
 class AutoTestCaseModel {
   /// Returns a new [AutoTestCaseModel] instance.
   AutoTestCaseModel({
-    required this.id,
+    required this.globalId,
   });
 
-  String id;
+  /// Global ID of the auto test case
+  int globalId;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is AutoTestCaseModel &&
-    other.id == id;
+    other.globalId == globalId;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id.hashCode);
+    (globalId.hashCode);
 
   @override
-  String toString() => 'AutoTestCaseModel[id=$id]';
+  String toString() => 'AutoTestCaseModel[globalId=$globalId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'id'] = this.id;
+      json[r'globalId'] = this.globalId;
     return json;
   }
 
@@ -55,7 +56,7 @@ class AutoTestCaseModel {
       }());
 
       return AutoTestCaseModel(
-        id: mapValueOfType<String>(json, r'id')!,
+        globalId: mapValueOfType<int>(json, r'globalId')!,
       );
     }
     return null;
@@ -103,7 +104,7 @@ class AutoTestCaseModel {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'id',
+    'globalId',
   };
 }
 

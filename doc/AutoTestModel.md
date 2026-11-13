@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **lastTestResultOutcome** | **String** | Outcome of the autotest last test result | [optional] 
 **lastTestResultStatus** | [**TestStatusModel**](TestStatusModel.md) | Status of the autotest last test result | [optional] 
 **stabilityPercentage** | **int** | Stability percentage of the autotest | [optional] 
+**autoTestCase** | [**AutoTestCaseModel**](AutoTestCaseModel.md) | Auto test case linked with the autotest | [optional] 
 **links** | [**List<LinkPutModel>**](LinkPutModel.md) | Collection of the autotest links | [optional] [default to const []]
 **namespace** | **String** | Name of the autotest namespace | [optional] 
 **classname** | **String** | Name of the autotest class | [optional] 

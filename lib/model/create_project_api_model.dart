@@ -14,6 +14,8 @@ class CreateProjectApiModel {
   /// Returns a new [CreateProjectApiModel] instance.
   CreateProjectApiModel({
     required this.name,
+    required this.testStrategy,
+    required this.testCaseCoverageMode,
     this.description,
     this.isFavorite,
     this.workflowId,
@@ -21,6 +23,10 @@ class CreateProjectApiModel {
 
   /// Name of the project
   String name;
+
+  TestStrategy testStrategy;
+
+  TestCaseCoverageMode testCaseCoverageMode;
 
   /// Description of the project
   String? description;
@@ -34,6 +40,8 @@ class CreateProjectApiModel {
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateProjectApiModel &&
     other.name == name &&
+    other.testStrategy == testStrategy &&
+    other.testCaseCoverageMode == testCaseCoverageMode &&
     other.description == description &&
     other.isFavorite == isFavorite &&
     other.workflowId == workflowId;
@@ -42,16 +50,20 @@ class CreateProjectApiModel {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (name.hashCode) +
+    (testStrategy.hashCode) +
+    (testCaseCoverageMode.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (isFavorite == null ? 0 : isFavorite!.hashCode) +
     (workflowId == null ? 0 : workflowId!.hashCode);
 
   @override
-  String toString() => 'CreateProjectApiModel[name=$name, description=$description, isFavorite=$isFavorite, workflowId=$workflowId]';
+  String toString() => 'CreateProjectApiModel[name=$name, testStrategy=$testStrategy, testCaseCoverageMode=$testCaseCoverageMode, description=$description, isFavorite=$isFavorite, workflowId=$workflowId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'name'] = this.name;
+      json[r'testStrategy'] = this.testStrategy;
+      json[r'testCaseCoverageMode'] = this.testCaseCoverageMode;
     if (this.description != null) {
       json[r'description'] = this.description;
     } else {
@@ -90,6 +102,8 @@ class CreateProjectApiModel {
 
       return CreateProjectApiModel(
         name: mapValueOfType<String>(json, r'name')!,
+        testStrategy: TestStrategy.fromJson(json[r'testStrategy'])!,
+        testCaseCoverageMode: TestCaseCoverageMode.fromJson(json[r'testCaseCoverageMode'])!,
         description: mapValueOfType<String>(json, r'description'),
         isFavorite: mapValueOfType<bool>(json, r'isFavorite'),
         workflowId: mapValueOfType<String>(json, r'workflowId'),
@@ -141,6 +155,8 @@ class CreateProjectApiModel {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'name',
+    'testStrategy',
+    'testCaseCoverageMode',
   };
 }
 

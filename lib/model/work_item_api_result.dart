@@ -36,6 +36,7 @@ class WorkItemApiResult {
     this.postconditionSteps = const [],
     this.iterations = const [],
     this.autoTests = const [],
+    this.autoTestCases = const [],
     this.attachments = const [],
     this.links = const [],
     this.externalIssues = const [],
@@ -44,6 +45,9 @@ class WorkItemApiResult {
     required this.createdById,
     required this.isDeleted,
     this.description,
+    this.externalId,
+    this.manualTestId,
+    this.layer,
     this.modifiedDate,
     this.modifiedById,
   });
@@ -116,6 +120,9 @@ class WorkItemApiResult {
   /// Automated tests associated with the work item
   List<AutoTestModel> autoTests;
 
+  /// Set of automated test cases linked to the work item
+  List<AutoTestCaseApiModel> autoTestCases;
+
   /// Files attached to the work item
   List<AttachmentModel> attachments;
 
@@ -139,6 +146,15 @@ class WorkItemApiResult {
 
   /// Description of the work item
   String? description;
+
+  /// External identifier of the work item from external systems
+  String? externalId;
+
+  /// Identifier of the linked manual test
+  String? manualTestId;
+
+  /// Test pyramid layer of the work item
+  WorkItemLayerApiResult? layer;
 
   /// Modification date of the work item
   DateTime? modifiedDate;
@@ -171,6 +187,7 @@ class WorkItemApiResult {
     _deepEquality.equals(other.postconditionSteps, postconditionSteps) &&
     _deepEquality.equals(other.iterations, iterations) &&
     _deepEquality.equals(other.autoTests, autoTests) &&
+    _deepEquality.equals(other.autoTestCases, autoTestCases) &&
     _deepEquality.equals(other.attachments, attachments) &&
     _deepEquality.equals(other.links, links) &&
     _deepEquality.equals(other.externalIssues, externalIssues) &&
@@ -179,6 +196,9 @@ class WorkItemApiResult {
     other.createdById == createdById &&
     other.isDeleted == isDeleted &&
     other.description == description &&
+    other.externalId == externalId &&
+    other.manualTestId == manualTestId &&
+    other.layer == layer &&
     other.modifiedDate == modifiedDate &&
     other.modifiedById == modifiedById;
 
@@ -208,6 +228,7 @@ class WorkItemApiResult {
     (postconditionSteps.hashCode) +
     (iterations.hashCode) +
     (autoTests.hashCode) +
+    (autoTestCases.hashCode) +
     (attachments.hashCode) +
     (links.hashCode) +
     (externalIssues.hashCode) +
@@ -216,11 +237,14 @@ class WorkItemApiResult {
     (createdById.hashCode) +
     (isDeleted.hashCode) +
     (description == null ? 0 : description!.hashCode) +
+    (externalId == null ? 0 : externalId!.hashCode) +
+    (manualTestId == null ? 0 : manualTestId!.hashCode) +
+    (layer == null ? 0 : layer!.hashCode) +
     (modifiedDate == null ? 0 : modifiedDate!.hashCode) +
     (modifiedById == null ? 0 : modifiedById!.hashCode);
 
   @override
-  String toString() => 'WorkItemApiResult[id=$id, globalId=$globalId, versionId=$versionId, versionNumber=$versionNumber, projectId=$projectId, sectionId=$sectionId, name=$name, sourceType=$sourceType, entityTypeName=$entityTypeName, duration=$duration, medianDuration=$medianDuration, state=$state, priority=$priority, isAutomated=$isAutomated, attributes=$attributes, tags=$tags, sectionPreconditionSteps=$sectionPreconditionSteps, sectionPostconditionSteps=$sectionPostconditionSteps, preconditionSteps=$preconditionSteps, steps=$steps, postconditionSteps=$postconditionSteps, iterations=$iterations, autoTests=$autoTests, attachments=$attachments, links=$links, externalIssues=$externalIssues, parameters=$parameters, createdDate=$createdDate, createdById=$createdById, isDeleted=$isDeleted, description=$description, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
+  String toString() => 'WorkItemApiResult[id=$id, globalId=$globalId, versionId=$versionId, versionNumber=$versionNumber, projectId=$projectId, sectionId=$sectionId, name=$name, sourceType=$sourceType, entityTypeName=$entityTypeName, duration=$duration, medianDuration=$medianDuration, state=$state, priority=$priority, isAutomated=$isAutomated, attributes=$attributes, tags=$tags, sectionPreconditionSteps=$sectionPreconditionSteps, sectionPostconditionSteps=$sectionPostconditionSteps, preconditionSteps=$preconditionSteps, steps=$steps, postconditionSteps=$postconditionSteps, iterations=$iterations, autoTests=$autoTests, autoTestCases=$autoTestCases, attachments=$attachments, links=$links, externalIssues=$externalIssues, parameters=$parameters, createdDate=$createdDate, createdById=$createdById, isDeleted=$isDeleted, description=$description, externalId=$externalId, manualTestId=$manualTestId, layer=$layer, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -247,6 +271,7 @@ class WorkItemApiResult {
       json[r'postconditionSteps'] = this.postconditionSteps;
       json[r'iterations'] = this.iterations;
       json[r'autoTests'] = this.autoTests;
+      json[r'autoTestCases'] = this.autoTestCases;
       json[r'attachments'] = this.attachments;
       json[r'links'] = this.links;
       json[r'externalIssues'] = this.externalIssues;
@@ -258,6 +283,21 @@ class WorkItemApiResult {
       json[r'description'] = this.description;
     } else {
       json[r'description'] = null;
+    }
+    if (this.externalId != null) {
+      json[r'externalId'] = this.externalId;
+    } else {
+      json[r'externalId'] = null;
+    }
+    if (this.manualTestId != null) {
+      json[r'manualTestId'] = this.manualTestId;
+    } else {
+      json[r'manualTestId'] = null;
+    }
+    if (this.layer != null) {
+      json[r'layer'] = this.layer;
+    } else {
+      json[r'layer'] = null;
     }
     if (this.modifiedDate != null) {
       json[r'modifiedDate'] = this.modifiedDate!.toUtc().toIso8601String();
@@ -314,6 +354,7 @@ class WorkItemApiResult {
         postconditionSteps: StepModel.listFromJson(json[r'postconditionSteps']),
         iterations: IterationModel.listFromJson(json[r'iterations']),
         autoTests: AutoTestModel.listFromJson(json[r'autoTests']),
+        autoTestCases: AutoTestCaseApiModel.listFromJson(json[r'autoTestCases']),
         attachments: AttachmentModel.listFromJson(json[r'attachments']),
         links: LinkModel.listFromJson(json[r'links']),
         externalIssues: ExternalIssueApiResult.listFromJson(json[r'externalIssues']),
@@ -322,6 +363,9 @@ class WorkItemApiResult {
         createdById: mapValueOfType<String>(json, r'createdById')!,
         isDeleted: mapValueOfType<bool>(json, r'isDeleted')!,
         description: mapValueOfType<String>(json, r'description'),
+        externalId: mapValueOfType<String>(json, r'externalId'),
+        manualTestId: mapValueOfType<String>(json, r'manualTestId'),
+        layer: WorkItemLayerApiResult.fromJson(json[r'layer']),
         modifiedDate: mapDateTime(json, r'modifiedDate', r''),
         modifiedById: mapValueOfType<String>(json, r'modifiedById'),
       );
@@ -394,6 +438,7 @@ class WorkItemApiResult {
     'postconditionSteps',
     'iterations',
     'autoTests',
+    'autoTestCases',
     'attachments',
     'links',
     'externalIssues',

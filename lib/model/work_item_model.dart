@@ -39,12 +39,15 @@ class WorkItemModel {
     this.links = const [],
     required this.name,
     this.autoTests = const [],
+    this.manualTestId,
+    this.autoTestCases = const [],
     this.attachments = const [],
     this.sectionPreconditionSteps = const [],
     this.sectionPostconditionSteps = const [],
     this.iterations = const [],
     this.modifiedDate,
     this.modifiedById,
+    this.externalId,
     this.description,
   });
 
@@ -105,6 +108,10 @@ class WorkItemModel {
 
   List<AutoTestModel>? autoTests;
 
+  String? manualTestId;
+
+  List<AutoTestCaseResult>? autoTestCases;
+
   List<AttachmentModel>? attachments;
 
   List<StepModel>? sectionPreconditionSteps;
@@ -116,6 +123,8 @@ class WorkItemModel {
   DateTime? modifiedDate;
 
   String? modifiedById;
+
+  String? externalId;
 
   String? description;
 
@@ -147,12 +156,15 @@ class WorkItemModel {
     _deepEquality.equals(other.links, links) &&
     other.name == name &&
     _deepEquality.equals(other.autoTests, autoTests) &&
+    other.manualTestId == manualTestId &&
+    _deepEquality.equals(other.autoTestCases, autoTestCases) &&
     _deepEquality.equals(other.attachments, attachments) &&
     _deepEquality.equals(other.sectionPreconditionSteps, sectionPreconditionSteps) &&
     _deepEquality.equals(other.sectionPostconditionSteps, sectionPostconditionSteps) &&
     _deepEquality.equals(other.iterations, iterations) &&
     other.modifiedDate == modifiedDate &&
     other.modifiedById == modifiedById &&
+    other.externalId == externalId &&
     other.description == description;
 
   @override
@@ -184,16 +196,19 @@ class WorkItemModel {
     (links.hashCode) +
     (name.hashCode) +
     (autoTests == null ? 0 : autoTests!.hashCode) +
+    (manualTestId == null ? 0 : manualTestId!.hashCode) +
+    (autoTestCases == null ? 0 : autoTestCases!.hashCode) +
     (attachments == null ? 0 : attachments!.hashCode) +
     (sectionPreconditionSteps == null ? 0 : sectionPreconditionSteps!.hashCode) +
     (sectionPostconditionSteps == null ? 0 : sectionPostconditionSteps!.hashCode) +
     (iterations == null ? 0 : iterations!.hashCode) +
     (modifiedDate == null ? 0 : modifiedDate!.hashCode) +
     (modifiedById == null ? 0 : modifiedById!.hashCode) +
+    (externalId == null ? 0 : externalId!.hashCode) +
     (description == null ? 0 : description!.hashCode);
 
   @override
-  String toString() => 'WorkItemModel[versionId=$versionId, medianDuration=$medianDuration, isDeleted=$isDeleted, projectId=$projectId, entityTypeName=$entityTypeName, isAutomated=$isAutomated, versionNumber=$versionNumber, externalIssues=$externalIssues, parameters=$parameters, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, id=$id, sectionId=$sectionId, state=$state, priority=$priority, sourceType=$sourceType, steps=$steps, preconditionSteps=$preconditionSteps, postconditionSteps=$postconditionSteps, duration=$duration, attributes=$attributes, tags=$tags, links=$links, name=$name, autoTests=$autoTests, attachments=$attachments, sectionPreconditionSteps=$sectionPreconditionSteps, sectionPostconditionSteps=$sectionPostconditionSteps, iterations=$iterations, modifiedDate=$modifiedDate, modifiedById=$modifiedById, description=$description]';
+  String toString() => 'WorkItemModel[versionId=$versionId, medianDuration=$medianDuration, isDeleted=$isDeleted, projectId=$projectId, entityTypeName=$entityTypeName, isAutomated=$isAutomated, versionNumber=$versionNumber, externalIssues=$externalIssues, parameters=$parameters, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, id=$id, sectionId=$sectionId, state=$state, priority=$priority, sourceType=$sourceType, steps=$steps, preconditionSteps=$preconditionSteps, postconditionSteps=$postconditionSteps, duration=$duration, attributes=$attributes, tags=$tags, links=$links, name=$name, autoTests=$autoTests, manualTestId=$manualTestId, autoTestCases=$autoTestCases, attachments=$attachments, sectionPreconditionSteps=$sectionPreconditionSteps, sectionPostconditionSteps=$sectionPostconditionSteps, iterations=$iterations, modifiedDate=$modifiedDate, modifiedById=$modifiedById, externalId=$externalId, description=$description]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -227,6 +242,16 @@ class WorkItemModel {
     } else {
       json[r'autoTests'] = null;
     }
+    if (this.manualTestId != null) {
+      json[r'manualTestId'] = this.manualTestId;
+    } else {
+      json[r'manualTestId'] = null;
+    }
+    if (this.autoTestCases != null) {
+      json[r'autoTestCases'] = this.autoTestCases;
+    } else {
+      json[r'autoTestCases'] = null;
+    }
     if (this.attachments != null) {
       json[r'attachments'] = this.attachments;
     } else {
@@ -256,6 +281,11 @@ class WorkItemModel {
       json[r'modifiedById'] = this.modifiedById;
     } else {
       json[r'modifiedById'] = null;
+    }
+    if (this.externalId != null) {
+      json[r'externalId'] = this.externalId;
+    } else {
+      json[r'externalId'] = null;
     }
     if (this.description != null) {
       json[r'description'] = this.description;
@@ -310,12 +340,15 @@ class WorkItemModel {
         links: LinkModel.listFromJson(json[r'links']),
         name: mapValueOfType<String>(json, r'name')!,
         autoTests: AutoTestModel.listFromJson(json[r'autoTests']),
+        manualTestId: mapValueOfType<String>(json, r'manualTestId'),
+        autoTestCases: AutoTestCaseResult.listFromJson(json[r'autoTestCases']),
         attachments: AttachmentModel.listFromJson(json[r'attachments']),
         sectionPreconditionSteps: StepModel.listFromJson(json[r'sectionPreconditionSteps']),
         sectionPostconditionSteps: StepModel.listFromJson(json[r'sectionPostconditionSteps']),
         iterations: IterationModel.listFromJson(json[r'iterations']),
         modifiedDate: mapDateTime(json, r'modifiedDate', r''),
         modifiedById: mapValueOfType<String>(json, r'modifiedById'),
+        externalId: mapValueOfType<String>(json, r'externalId'),
         description: mapValueOfType<String>(json, r'description'),
       );
     }

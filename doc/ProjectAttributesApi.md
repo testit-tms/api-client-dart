@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 Create project attribute
 
-  Use case    User sets attribute parameters (listed in request example) and runs method execution    System search project    System creates attribute and relates it to the project    System returns project attribute properties (example listed in response parameters)
+ Use case  User sets attribute parameters (listed in request example) and runs method execution  System search project  System creates attribute and relates it to the project  System returns project attribute properties (example listed in response parameters)
 
 ### Example
 ```dart
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 Delete project attribute
 
-  Use case    User sets project identifier and runs method execution    User sets attribute identifier    User runs method execution    System search project    System search and delete attribute    System returns no content response
+ Use case  User sets project identifier and runs method execution  User sets attribute identifier  User runs method execution  System search project  System search and delete attribute  System returns no content response
 
 ### Example
 ```dart
@@ -127,7 +127,7 @@ void (empty response body)
 
 Get project attribute
 
-  Use case    User sets project internal or global identifier    User sets project attribute identifier    User runs method execution    System search project    System search project attribute    System returns project attribute (listed in response model)
+ Use case  User sets project internal or global identifier  User sets project attribute identifier  User runs method execution  System search project  System search project attribute  System returns project attribute (listed in response model)
 
 ### Example
 ```dart
@@ -180,7 +180,7 @@ Name | Type | Description  | Notes
 
 Get project attributes
 
-  Use case    User sets project internal or global identifier    [Optional] User sets isDeleted field value    User runs method execution    System search project    [Optional] If User sets isDeleted field value as true, System search all deleted attributes related to project    [Optional] If User sets isDeleted field value as false, System search all attributes related to project which are not deleted    [Optional] If User did not set isDeleted field value, System search all attributes related to project    System returns array of found attributes (listed in response model)
+ Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted attributes related to project  [Optional] If User sets isDeleted field value as false, System search all attributes related to project which are not deleted  [Optional] If User did not set isDeleted field value, System search all attributes related to project  System returns array of found attributes (listed in response model)
 
 ### Example
 ```dart
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchAttributesInProject**
-> List<CustomAttributeGetModel> searchAttributesInProject(projectId, skip, take, orderBy, searchField, searchValue, projectAttributesFilterModel)
+> List<CustomAttributeModel> searchAttributesInProject(projectId, skip, take, orderBy, searchField, searchValue, projectAttributesFilterModel)
 
 Search for attributes used in the project
 
@@ -276,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<CustomAttributeGetModel>**](CustomAttributeGetModel.md)
+[**List<CustomAttributeModel>**](CustomAttributeModel.md)
 
 ### Authorization
 

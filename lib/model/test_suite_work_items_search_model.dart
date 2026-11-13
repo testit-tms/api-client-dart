@@ -25,6 +25,7 @@ class TestSuiteWorkItemsSearchModel {
     this.attributes = const {},
     this.isDeleted,
     this.sectionIds = const {},
+    this.namespaceIds = const {},
     this.createdByIds = const {},
     this.modifiedByIds = const {},
     this.states = const {},
@@ -42,12 +43,13 @@ class TestSuiteWorkItemsSearchModel {
     this.workItemVersionIds = const [],
     this.links,
     this.externalMetadata,
+    this.externalId,
   });
 
   /// Collection of tags
   Set<String>? tagNames;
 
-  /// Collection of types of work item    Allowed values: `TestCases`, `CheckLists`, `SharedSteps`
+  /// Collection of types of work item  Allowed values: `TestCases`, `CheckLists`, `SharedSteps`
   Set<WorkItemTypeModel>? entityTypes;
 
   /// Name or identifier (UUID) of work item
@@ -79,6 +81,9 @@ class TestSuiteWorkItemsSearchModel {
 
   /// Collection of section identifiers
   Set<String>? sectionIds;
+
+  /// Collection of namespace identifiers
+  Set<String>? namespaceIds;
 
   /// Collection of identifiers of users who created work item
   Set<String>? createdByIds;
@@ -131,6 +136,9 @@ class TestSuiteWorkItemsSearchModel {
   /// Specifies work item filter by its external metadata
   WorkItemExternalMetadataFilterModel? externalMetadata;
 
+  /// External identifier of the work item
+  String? externalId;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is TestSuiteWorkItemsSearchModel &&
     _deepEquality.equals(other.tagNames, tagNames) &&
@@ -145,6 +153,7 @@ class TestSuiteWorkItemsSearchModel {
     _deepEquality.equals(other.attributes, attributes) &&
     other.isDeleted == isDeleted &&
     _deepEquality.equals(other.sectionIds, sectionIds) &&
+    _deepEquality.equals(other.namespaceIds, namespaceIds) &&
     _deepEquality.equals(other.createdByIds, createdByIds) &&
     _deepEquality.equals(other.modifiedByIds, modifiedByIds) &&
     _deepEquality.equals(other.states, states) &&
@@ -161,7 +170,8 @@ class TestSuiteWorkItemsSearchModel {
     _deepEquality.equals(other.autoTestIds, autoTestIds) &&
     _deepEquality.equals(other.workItemVersionIds, workItemVersionIds) &&
     other.links == links &&
-    other.externalMetadata == externalMetadata;
+    other.externalMetadata == externalMetadata &&
+    other.externalId == externalId;
 
   @override
   int get hashCode =>
@@ -178,6 +188,7 @@ class TestSuiteWorkItemsSearchModel {
     (attributes == null ? 0 : attributes!.hashCode) +
     (isDeleted == null ? 0 : isDeleted!.hashCode) +
     (sectionIds == null ? 0 : sectionIds!.hashCode) +
+    (namespaceIds == null ? 0 : namespaceIds!.hashCode) +
     (createdByIds == null ? 0 : createdByIds!.hashCode) +
     (modifiedByIds == null ? 0 : modifiedByIds!.hashCode) +
     (states == null ? 0 : states!.hashCode) +
@@ -194,10 +205,11 @@ class TestSuiteWorkItemsSearchModel {
     (autoTestIds == null ? 0 : autoTestIds!.hashCode) +
     (workItemVersionIds == null ? 0 : workItemVersionIds!.hashCode) +
     (links == null ? 0 : links!.hashCode) +
-    (externalMetadata == null ? 0 : externalMetadata!.hashCode);
+    (externalMetadata == null ? 0 : externalMetadata!.hashCode) +
+    (externalId == null ? 0 : externalId!.hashCode);
 
   @override
-  String toString() => 'TestSuiteWorkItemsSearchModel[tagNames=$tagNames, entityTypes=$entityTypes, nameOrId=$nameOrId, includeIds=$includeIds, excludeIds=$excludeIds, projectIds=$projectIds, name=$name, ids=$ids, globalIds=$globalIds, attributes=$attributes, isDeleted=$isDeleted, sectionIds=$sectionIds, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds, states=$states, priorities=$priorities, sourceTypes=$sourceTypes, types=$types, createdDate=$createdDate, modifiedDate=$modifiedDate, duration=$duration, medianDuration=$medianDuration, isAutomated=$isAutomated, tags=$tags, excludeTags=$excludeTags, autoTestIds=$autoTestIds, workItemVersionIds=$workItemVersionIds, links=$links, externalMetadata=$externalMetadata]';
+  String toString() => 'TestSuiteWorkItemsSearchModel[tagNames=$tagNames, entityTypes=$entityTypes, nameOrId=$nameOrId, includeIds=$includeIds, excludeIds=$excludeIds, projectIds=$projectIds, name=$name, ids=$ids, globalIds=$globalIds, attributes=$attributes, isDeleted=$isDeleted, sectionIds=$sectionIds, namespaceIds=$namespaceIds, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds, states=$states, priorities=$priorities, sourceTypes=$sourceTypes, types=$types, createdDate=$createdDate, modifiedDate=$modifiedDate, duration=$duration, medianDuration=$medianDuration, isAutomated=$isAutomated, tags=$tags, excludeTags=$excludeTags, autoTestIds=$autoTestIds, workItemVersionIds=$workItemVersionIds, links=$links, externalMetadata=$externalMetadata, externalId=$externalId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -260,6 +272,11 @@ class TestSuiteWorkItemsSearchModel {
       json[r'sectionIds'] = this.sectionIds!.toList(growable: false);
     } else {
       json[r'sectionIds'] = null;
+    }
+    if (this.namespaceIds != null) {
+      json[r'namespaceIds'] = this.namespaceIds!.toList(growable: false);
+    } else {
+      json[r'namespaceIds'] = null;
     }
     if (this.createdByIds != null) {
       json[r'createdByIds'] = this.createdByIds!.toList(growable: false);
@@ -346,6 +363,11 @@ class TestSuiteWorkItemsSearchModel {
     } else {
       json[r'externalMetadata'] = null;
     }
+    if (this.externalId != null) {
+      json[r'externalId'] = this.externalId;
+    } else {
+      json[r'externalId'] = null;
+    }
     return json;
   }
 
@@ -396,6 +418,9 @@ class TestSuiteWorkItemsSearchModel {
         sectionIds: json[r'sectionIds'] is Iterable
             ? (json[r'sectionIds'] as Iterable).cast<String>().toSet()
             : const {},
+        namespaceIds: json[r'namespaceIds'] is Iterable
+            ? (json[r'namespaceIds'] as Iterable).cast<String>().toSet()
+            : const {},
         createdByIds: json[r'createdByIds'] is Iterable
             ? (json[r'createdByIds'] as Iterable).cast<String>().toSet()
             : const {},
@@ -425,6 +450,7 @@ class TestSuiteWorkItemsSearchModel {
             : const [],
         links: WorkItemLinkFilterModel.fromJson(json[r'links']),
         externalMetadata: WorkItemExternalMetadataFilterModel.fromJson(json[r'externalMetadata']),
+        externalId: mapValueOfType<String>(json, r'externalId'),
       );
     }
     return null;

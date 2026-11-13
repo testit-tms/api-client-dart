@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **postconditionSteps** | [**List<StepModel>**](StepModel.md) | Set of postcondition steps that are executed after completing the main steps | [default to const []]
 **iterations** | [**List<IterationModel>**](IterationModel.md) | Associated iterations linked to the work item | [default to const []]
 **autoTests** | [**List<AutoTestModel>**](AutoTestModel.md) | Automated tests associated with the work item | [default to const []]
+**autoTestCases** | [**List<AutoTestCaseApiModel>**](AutoTestCaseApiModel.md) | Set of automated test cases linked to the work item | [default to const []]
 **attachments** | [**List<AttachmentModel>**](AttachmentModel.md) | Files attached to the work item | [default to const []]
 **links** | [**List<LinkModel>**](LinkModel.md) | Set of links related to the work item | [default to const []]
 **externalIssues** | [**List<ExternalIssueApiResult>**](ExternalIssueApiResult.md) | Set of external issues related to the work item | [default to const []]
@@ -39,6 +40,9 @@ Name | Type | Description | Notes
 **createdById** | **String** | Unique identifier of the work item creator | 
 **isDeleted** | **bool** | Indicates whether the work item is marked as deleted | 
 **description** | **String** | Description of the work item | [optional] 
+**externalId** | **String** | External identifier of the work item from external systems | [optional] 
+**manualTestId** | **String** | Identifier of the linked manual test | [optional] 
+**layer** | [**WorkItemLayerApiResult**](WorkItemLayerApiResult.md) | Test pyramid layer of the work item | [optional] 
 **modifiedDate** | [**DateTime**](DateTime.md) | Modification date of the work item | [optional] 
 **modifiedById** | **String** | Unique identifier of the work item modifier | [optional] 
 

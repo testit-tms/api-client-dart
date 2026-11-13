@@ -62,15 +62,15 @@ class AutoTestProjectSettingsApiModel {
   /// Autotest to work item updating enabled
   bool workItemUpdatingEnabled;
 
-  ///  The retention period in days for test runs. After this period,  outdated test runs may be archived based on project settings
+  ///  The retention period in days for test runs. After this period, outdated test runs may be archived based on project settings
   ///
-  /// Minimum value: 0
+  /// Minimum value: 1
   /// Maximum value: 1000
   int testRunsRetentionPeriodDays;
 
-  /// Maximum number of active test runs to keep. When this limit is exceeded,  older test runs are automatically archived
+  /// Maximum number of active test runs to keep. When this limit is exceeded, older test runs are automatically archived
   ///
-  /// Minimum value: 0
+  /// Minimum value: 1
   /// Maximum value: 10000
   int maxActiveTestRunsCount;
 

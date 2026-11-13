@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **createdDate** | [**DateTime**](DateTime.md) | Date and time of Work Item creation | [optional] 
 **modifiedDate** | [**DateTime**](DateTime.md) | Date and time of the latest modification of Work Item | [optional] 
 **tagNames** | **List<String>** | Array of tag names of Work Item | [optional] [default to const []]
+**layer** | [**WorkItemLayerApiResult**](WorkItemLayerApiResult.md) | Test pyramid layer of Work Item | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

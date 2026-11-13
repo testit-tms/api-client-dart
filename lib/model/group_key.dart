@@ -17,7 +17,7 @@ class GroupKey {
     this.displayValue,
   });
 
-  String? value;
+  JsonElement value;
 
   String? displayValue;
 
@@ -29,7 +29,7 @@ class GroupKey {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (value == null ? 0 : value!.hashCode) +
+    (value.hashCode) +
     (displayValue == null ? 0 : displayValue!.hashCode);
 
   @override
@@ -37,11 +37,7 @@ class GroupKey {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.value != null) {
       json[r'value'] = this.value;
-    } else {
-      json[r'value'] = null;
-    }
     if (this.displayValue != null) {
       json[r'displayValue'] = this.displayValue;
     } else {
@@ -69,7 +65,7 @@ class GroupKey {
       }());
 
       return GroupKey(
-        value: mapValueOfType<String>(json, r'value'),
+        value: JsonElement.fromJson(json[r'value'])!,
         displayValue: mapValueOfType<String>(json, r'displayValue'),
       );
     }

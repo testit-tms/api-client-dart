@@ -23,6 +23,8 @@ class ProjectApiResult {
     required this.globalId,
     required this.type,
     required this.workflowId,
+    required this.testStrategy,
+    required this.testCaseCoverageMode,
     this.description,
     this.testCasesCount,
     this.sharedStepsCount,
@@ -62,6 +64,12 @@ class ProjectApiResult {
   /// ID of the workflow used in project
   String workflowId;
 
+  /// Test strategy of the project
+  TestStrategy testStrategy;
+
+  /// Coverage mode of test cases of the project
+  TestCaseCoverageMode testCaseCoverageMode;
+
   /// Description of the project
   String? description;
 
@@ -95,6 +103,8 @@ class ProjectApiResult {
     other.globalId == globalId &&
     other.type == type &&
     other.workflowId == workflowId &&
+    other.testStrategy == testStrategy &&
+    other.testCaseCoverageMode == testCaseCoverageMode &&
     other.description == description &&
     other.testCasesCount == testCasesCount &&
     other.sharedStepsCount == sharedStepsCount &&
@@ -116,6 +126,8 @@ class ProjectApiResult {
     (globalId.hashCode) +
     (type.hashCode) +
     (workflowId.hashCode) +
+    (testStrategy.hashCode) +
+    (testCaseCoverageMode.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (testCasesCount == null ? 0 : testCasesCount!.hashCode) +
     (sharedStepsCount == null ? 0 : sharedStepsCount!.hashCode) +
@@ -125,7 +137,7 @@ class ProjectApiResult {
     (modifiedById == null ? 0 : modifiedById!.hashCode);
 
   @override
-  String toString() => 'ProjectApiResult[id=$id, name=$name, isFavorite=$isFavorite, workItemsCount=$workItemsCount, isDeleted=$isDeleted, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, type=$type, workflowId=$workflowId, description=$description, testCasesCount=$testCasesCount, sharedStepsCount=$sharedStepsCount, checkListsCount=$checkListsCount, autoTestsCount=$autoTestsCount, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
+  String toString() => 'ProjectApiResult[id=$id, name=$name, isFavorite=$isFavorite, workItemsCount=$workItemsCount, isDeleted=$isDeleted, createdDate=$createdDate, createdById=$createdById, globalId=$globalId, type=$type, workflowId=$workflowId, testStrategy=$testStrategy, testCaseCoverageMode=$testCaseCoverageMode, description=$description, testCasesCount=$testCasesCount, sharedStepsCount=$sharedStepsCount, checkListsCount=$checkListsCount, autoTestsCount=$autoTestsCount, modifiedDate=$modifiedDate, modifiedById=$modifiedById]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -139,6 +151,8 @@ class ProjectApiResult {
       json[r'globalId'] = this.globalId;
       json[r'type'] = this.type;
       json[r'workflowId'] = this.workflowId;
+      json[r'testStrategy'] = this.testStrategy;
+      json[r'testCaseCoverageMode'] = this.testCaseCoverageMode;
     if (this.description != null) {
       json[r'description'] = this.description;
     } else {
@@ -206,6 +220,8 @@ class ProjectApiResult {
         globalId: mapValueOfType<int>(json, r'globalId')!,
         type: ProjectType.fromJson(json[r'type'])!,
         workflowId: mapValueOfType<String>(json, r'workflowId')!,
+        testStrategy: TestStrategy.fromJson(json[r'testStrategy'])!,
+        testCaseCoverageMode: TestCaseCoverageMode.fromJson(json[r'testCaseCoverageMode'])!,
         description: mapValueOfType<String>(json, r'description'),
         testCasesCount: mapValueOfType<int>(json, r'testCasesCount'),
         sharedStepsCount: mapValueOfType<int>(json, r'sharedStepsCount'),
@@ -270,6 +286,8 @@ class ProjectApiResult {
     'globalId',
     'type',
     'workflowId',
+    'testStrategy',
+    'testCaseCoverageMode',
   };
 }
 

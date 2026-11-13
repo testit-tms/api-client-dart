@@ -9,6 +9,8 @@ import 'package:testit_api_client_dart/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | Name of the project | 
+**testStrategy** | [**TestStrategy**](TestStrategy.md) |  | 
+**testCaseCoverageMode** | [**TestCaseCoverageMode**](TestCaseCoverageMode.md) |  | 
 **description** | **String** | Description of the project | [optional] 
 **isFavorite** | **bool** | Indicates if the project is marked as favorite | [optional] 
 **workflowId** | **String** | Identifier of the workflow project should use | [optional] 

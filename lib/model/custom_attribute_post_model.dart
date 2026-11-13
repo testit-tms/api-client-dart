@@ -36,7 +36,7 @@ class CustomAttributePostModel {
   /// Indicates if the attribute is available across all projects
   bool isGlobal;
 
-  /// Collection of attribute options      Available for attributes of type `options` and `multiple options` only
+  /// Collection of attribute options   Available for attributes of type `options` and `multiple options` only
   List<CustomAttributeOptionPostModel>? options;
 
   @override

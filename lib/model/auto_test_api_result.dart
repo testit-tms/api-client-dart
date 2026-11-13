@@ -40,9 +40,11 @@ class AutoTestApiResult {
     this.lastTestResultOutcome,
     this.lastTestResultStatus,
     this.stabilityPercentage,
+    this.layer,
     this.links = const [],
     this.labels = const [],
     this.tags = const [],
+    this.manualTestId,
   });
 
   String id;
@@ -99,11 +101,16 @@ class AutoTestApiResult {
 
   int? stabilityPercentage;
 
+  /// Model of auto test layer for use in responses.
+  LayerApiResult? layer;
+
   List<LinkApiResult>? links;
 
   List<LabelApiResult>? labels;
 
   List<String>? tags;
+
+  String? manualTestId;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is AutoTestApiResult &&
@@ -134,9 +141,11 @@ class AutoTestApiResult {
     other.lastTestResultOutcome == lastTestResultOutcome &&
     other.lastTestResultStatus == lastTestResultStatus &&
     other.stabilityPercentage == stabilityPercentage &&
+    other.layer == layer &&
     _deepEquality.equals(other.links, links) &&
     _deepEquality.equals(other.labels, labels) &&
-    _deepEquality.equals(other.tags, tags);
+    _deepEquality.equals(other.tags, tags) &&
+    other.manualTestId == manualTestId;
 
   @override
   int get hashCode =>
@@ -168,12 +177,14 @@ class AutoTestApiResult {
     (lastTestResultOutcome == null ? 0 : lastTestResultOutcome!.hashCode) +
     (lastTestResultStatus == null ? 0 : lastTestResultStatus!.hashCode) +
     (stabilityPercentage == null ? 0 : stabilityPercentage!.hashCode) +
+    (layer == null ? 0 : layer!.hashCode) +
     (links == null ? 0 : links!.hashCode) +
     (labels == null ? 0 : labels!.hashCode) +
-    (tags == null ? 0 : tags!.hashCode);
+    (tags == null ? 0 : tags!.hashCode) +
+    (manualTestId == null ? 0 : manualTestId!.hashCode);
 
   @override
-  String toString() => 'AutoTestApiResult[id=$id, projectId=$projectId, name=$name, isFlaky=$isFlaky, globalId=$globalId, isDeleted=$isDeleted, mustBeApproved=$mustBeApproved, createdDate=$createdDate, createdById=$createdById, externalId=$externalId, namespace=$namespace, classname=$classname, steps=$steps, setup=$setup, teardown=$teardown, title=$title, description=$description, externalKey=$externalKey, modifiedDate=$modifiedDate, modifiedById=$modifiedById, lastTestRunId=$lastTestRunId, lastTestRunName=$lastTestRunName, lastTestResultId=$lastTestResultId, lastTestResultConfiguration=$lastTestResultConfiguration, lastTestResultOutcome=$lastTestResultOutcome, lastTestResultStatus=$lastTestResultStatus, stabilityPercentage=$stabilityPercentage, links=$links, labels=$labels, tags=$tags]';
+  String toString() => 'AutoTestApiResult[id=$id, projectId=$projectId, name=$name, isFlaky=$isFlaky, globalId=$globalId, isDeleted=$isDeleted, mustBeApproved=$mustBeApproved, createdDate=$createdDate, createdById=$createdById, externalId=$externalId, namespace=$namespace, classname=$classname, steps=$steps, setup=$setup, teardown=$teardown, title=$title, description=$description, externalKey=$externalKey, modifiedDate=$modifiedDate, modifiedById=$modifiedById, lastTestRunId=$lastTestRunId, lastTestRunName=$lastTestRunName, lastTestResultId=$lastTestResultId, lastTestResultConfiguration=$lastTestResultConfiguration, lastTestResultOutcome=$lastTestResultOutcome, lastTestResultStatus=$lastTestResultStatus, stabilityPercentage=$stabilityPercentage, layer=$layer, links=$links, labels=$labels, tags=$tags, manualTestId=$manualTestId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -276,6 +287,11 @@ class AutoTestApiResult {
     } else {
       json[r'stabilityPercentage'] = null;
     }
+    if (this.layer != null) {
+      json[r'layer'] = this.layer;
+    } else {
+      json[r'layer'] = null;
+    }
     if (this.links != null) {
       json[r'links'] = this.links;
     } else {
@@ -290,6 +306,11 @@ class AutoTestApiResult {
       json[r'tags'] = this.tags;
     } else {
       json[r'tags'] = null;
+    }
+    if (this.manualTestId != null) {
+      json[r'manualTestId'] = this.manualTestId;
+    } else {
+      json[r'manualTestId'] = null;
     }
     return json;
   }
@@ -340,11 +361,13 @@ class AutoTestApiResult {
         lastTestResultOutcome: mapValueOfType<String>(json, r'lastTestResultOutcome'),
         lastTestResultStatus: TestStatusApiResult.fromJson(json[r'lastTestResultStatus']),
         stabilityPercentage: mapValueOfType<int>(json, r'stabilityPercentage'),
+        layer: LayerApiResult.fromJson(json[r'layer']),
         links: LinkApiResult.listFromJson(json[r'links']),
         labels: LabelApiResult.listFromJson(json[r'labels']),
         tags: json[r'tags'] is Iterable
             ? (json[r'tags'] as Iterable).cast<String>().toList(growable: false)
             : const [],
+        manualTestId: mapValueOfType<String>(json, r'manualTestId'),
       );
     }
     return null;

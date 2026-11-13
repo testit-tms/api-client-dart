@@ -23,6 +23,7 @@ class WorkItemFilterApiModel {
     this.attributes = const {},
     this.isDeleted,
     this.sectionIds = const {},
+    this.namespaceIds = const {},
     this.createdByIds = const {},
     this.modifiedByIds = const {},
     this.states = const {},
@@ -40,6 +41,9 @@ class WorkItemFilterApiModel {
     this.workItemVersionIds = const [],
     this.links,
     this.externalMetadata,
+    this.layers = const {},
+    this.layerSources = const {},
+    this.externalId,
   });
 
   /// Name or identifier (UUID) of work item
@@ -71,6 +75,9 @@ class WorkItemFilterApiModel {
 
   /// Collection of section identifiers
   Set<String>? sectionIds;
+
+  /// Collection of namespace identifiers
+  Set<String>? namespaceIds;
 
   /// Collection of identifiers of users who created work item
   Set<String>? createdByIds;
@@ -123,6 +130,15 @@ class WorkItemFilterApiModel {
   /// Specifies work item filter by its external metadata
   WorkItemExternalMetadataFilterApiModel? externalMetadata;
 
+  /// Specifies auto test case layers to search for
+  Set<String>? layers;
+
+  /// Specifies list of auto test case layer sources to search for
+  Set<LayerSource>? layerSources;
+
+  /// External identifier of the work item
+  String? externalId;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is WorkItemFilterApiModel &&
     other.nameOrId == nameOrId &&
@@ -135,6 +151,7 @@ class WorkItemFilterApiModel {
     _deepEquality.equals(other.attributes, attributes) &&
     other.isDeleted == isDeleted &&
     _deepEquality.equals(other.sectionIds, sectionIds) &&
+    _deepEquality.equals(other.namespaceIds, namespaceIds) &&
     _deepEquality.equals(other.createdByIds, createdByIds) &&
     _deepEquality.equals(other.modifiedByIds, modifiedByIds) &&
     _deepEquality.equals(other.states, states) &&
@@ -151,7 +168,10 @@ class WorkItemFilterApiModel {
     _deepEquality.equals(other.autoTestIds, autoTestIds) &&
     _deepEquality.equals(other.workItemVersionIds, workItemVersionIds) &&
     other.links == links &&
-    other.externalMetadata == externalMetadata;
+    other.externalMetadata == externalMetadata &&
+    _deepEquality.equals(other.layers, layers) &&
+    _deepEquality.equals(other.layerSources, layerSources) &&
+    other.externalId == externalId;
 
   @override
   int get hashCode =>
@@ -166,6 +186,7 @@ class WorkItemFilterApiModel {
     (attributes == null ? 0 : attributes!.hashCode) +
     (isDeleted == null ? 0 : isDeleted!.hashCode) +
     (sectionIds == null ? 0 : sectionIds!.hashCode) +
+    (namespaceIds == null ? 0 : namespaceIds!.hashCode) +
     (createdByIds == null ? 0 : createdByIds!.hashCode) +
     (modifiedByIds == null ? 0 : modifiedByIds!.hashCode) +
     (states == null ? 0 : states!.hashCode) +
@@ -182,10 +203,13 @@ class WorkItemFilterApiModel {
     (autoTestIds == null ? 0 : autoTestIds!.hashCode) +
     (workItemVersionIds == null ? 0 : workItemVersionIds!.hashCode) +
     (links == null ? 0 : links!.hashCode) +
-    (externalMetadata == null ? 0 : externalMetadata!.hashCode);
+    (externalMetadata == null ? 0 : externalMetadata!.hashCode) +
+    (layers == null ? 0 : layers!.hashCode) +
+    (layerSources == null ? 0 : layerSources!.hashCode) +
+    (externalId == null ? 0 : externalId!.hashCode);
 
   @override
-  String toString() => 'WorkItemFilterApiModel[nameOrId=$nameOrId, includeIds=$includeIds, excludeIds=$excludeIds, projectIds=$projectIds, name=$name, ids=$ids, globalIds=$globalIds, attributes=$attributes, isDeleted=$isDeleted, sectionIds=$sectionIds, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds, states=$states, priorities=$priorities, sourceTypes=$sourceTypes, types=$types, createdDate=$createdDate, modifiedDate=$modifiedDate, duration=$duration, medianDuration=$medianDuration, isAutomated=$isAutomated, tags=$tags, excludeTags=$excludeTags, autoTestIds=$autoTestIds, workItemVersionIds=$workItemVersionIds, links=$links, externalMetadata=$externalMetadata]';
+  String toString() => 'WorkItemFilterApiModel[nameOrId=$nameOrId, includeIds=$includeIds, excludeIds=$excludeIds, projectIds=$projectIds, name=$name, ids=$ids, globalIds=$globalIds, attributes=$attributes, isDeleted=$isDeleted, sectionIds=$sectionIds, namespaceIds=$namespaceIds, createdByIds=$createdByIds, modifiedByIds=$modifiedByIds, states=$states, priorities=$priorities, sourceTypes=$sourceTypes, types=$types, createdDate=$createdDate, modifiedDate=$modifiedDate, duration=$duration, medianDuration=$medianDuration, isAutomated=$isAutomated, tags=$tags, excludeTags=$excludeTags, autoTestIds=$autoTestIds, workItemVersionIds=$workItemVersionIds, links=$links, externalMetadata=$externalMetadata, layers=$layers, layerSources=$layerSources, externalId=$externalId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -238,6 +262,11 @@ class WorkItemFilterApiModel {
       json[r'sectionIds'] = this.sectionIds!.toList(growable: false);
     } else {
       json[r'sectionIds'] = null;
+    }
+    if (this.namespaceIds != null) {
+      json[r'namespaceIds'] = this.namespaceIds!.toList(growable: false);
+    } else {
+      json[r'namespaceIds'] = null;
     }
     if (this.createdByIds != null) {
       json[r'createdByIds'] = this.createdByIds!.toList(growable: false);
@@ -324,6 +353,21 @@ class WorkItemFilterApiModel {
     } else {
       json[r'externalMetadata'] = null;
     }
+    if (this.layers != null) {
+      json[r'layers'] = this.layers!.toList(growable: false);
+    } else {
+      json[r'layers'] = null;
+    }
+    if (this.layerSources != null) {
+      json[r'layerSources'] = this.layerSources!.toList(growable: false);
+    } else {
+      json[r'layerSources'] = null;
+    }
+    if (this.externalId != null) {
+      json[r'externalId'] = this.externalId;
+    } else {
+      json[r'externalId'] = null;
+    }
     return json;
   }
 
@@ -370,6 +414,9 @@ class WorkItemFilterApiModel {
         sectionIds: json[r'sectionIds'] is Iterable
             ? (json[r'sectionIds'] as Iterable).cast<String>().toSet()
             : const {},
+        namespaceIds: json[r'namespaceIds'] is Iterable
+            ? (json[r'namespaceIds'] as Iterable).cast<String>().toSet()
+            : const {},
         createdByIds: json[r'createdByIds'] is Iterable
             ? (json[r'createdByIds'] as Iterable).cast<String>().toSet()
             : const {},
@@ -399,6 +446,11 @@ class WorkItemFilterApiModel {
             : const [],
         links: WorkItemLinkFilterApiModel.fromJson(json[r'links']),
         externalMetadata: WorkItemExternalMetadataFilterApiModel.fromJson(json[r'externalMetadata']),
+        layers: json[r'layers'] is Iterable
+            ? (json[r'layers'] as Iterable).cast<String>().toSet()
+            : const {},
+        layerSources: LayerSource.listFromJson(json[r'layerSources']).toSet(),
+        externalId: mapValueOfType<String>(json, r'externalId'),
       );
     }
     return null;

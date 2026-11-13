@@ -23,9 +23,12 @@ class AutoTestUpdateApiModel {
     this.title,
     this.description,
     this.isFlaky,
+    this.layer,
+    this.resetLayer,
     this.steps = const [],
     this.setup = const [],
     this.teardown = const [],
+    this.manualTestId,
     this.workItemIds = const [],
     this.workItemIdsForLinkWithAutoTest = const [],
     this.labels = const [],
@@ -63,6 +66,12 @@ class AutoTestUpdateApiModel {
   /// Indicates if the autotest is marked as flaky
   bool? isFlaky;
 
+  /// Layer of the autotest. Assigns layer by rules if omitted.
+  LayerApiModel? layer;
+
+  /// Indicates if the autotest layer should be reset.
+  bool? resetLayer;
+
   /// Collection of the autotest steps
   List<AutoTestStepApiModel>? steps;
 
@@ -71,6 +80,9 @@ class AutoTestUpdateApiModel {
 
   /// Collection of the autotest teardown steps
   List<AutoTestStepApiModel>? teardown;
+
+  /// ID of the manual test to be linked with the autotest
+  String? manualTestId;
 
   /// Specifies the IDs of work items to link your autotest to. You can specify several IDs.
   List<String>? workItemIds;
@@ -99,9 +111,12 @@ class AutoTestUpdateApiModel {
     other.title == title &&
     other.description == description &&
     other.isFlaky == isFlaky &&
+    other.layer == layer &&
+    other.resetLayer == resetLayer &&
     _deepEquality.equals(other.steps, steps) &&
     _deepEquality.equals(other.setup, setup) &&
     _deepEquality.equals(other.teardown, teardown) &&
+    other.manualTestId == manualTestId &&
     _deepEquality.equals(other.workItemIds, workItemIds) &&
     _deepEquality.equals(other.workItemIdsForLinkWithAutoTest, workItemIdsForLinkWithAutoTest) &&
     _deepEquality.equals(other.labels, labels) &&
@@ -121,9 +136,12 @@ class AutoTestUpdateApiModel {
     (title == null ? 0 : title!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (isFlaky == null ? 0 : isFlaky!.hashCode) +
+    (layer == null ? 0 : layer!.hashCode) +
+    (resetLayer == null ? 0 : resetLayer!.hashCode) +
     (steps == null ? 0 : steps!.hashCode) +
     (setup == null ? 0 : setup!.hashCode) +
     (teardown == null ? 0 : teardown!.hashCode) +
+    (manualTestId == null ? 0 : manualTestId!.hashCode) +
     (workItemIds == null ? 0 : workItemIds!.hashCode) +
     (workItemIdsForLinkWithAutoTest == null ? 0 : workItemIdsForLinkWithAutoTest!.hashCode) +
     (labels == null ? 0 : labels!.hashCode) +
@@ -131,7 +149,7 @@ class AutoTestUpdateApiModel {
     (tags == null ? 0 : tags!.hashCode);
 
   @override
-  String toString() => 'AutoTestUpdateApiModel[projectId=$projectId, externalId=$externalId, name=$name, id=$id, externalKey=$externalKey, namespace=$namespace, classname=$classname, title=$title, description=$description, isFlaky=$isFlaky, steps=$steps, setup=$setup, teardown=$teardown, workItemIds=$workItemIds, workItemIdsForLinkWithAutoTest=$workItemIdsForLinkWithAutoTest, labels=$labels, links=$links, tags=$tags]';
+  String toString() => 'AutoTestUpdateApiModel[projectId=$projectId, externalId=$externalId, name=$name, id=$id, externalKey=$externalKey, namespace=$namespace, classname=$classname, title=$title, description=$description, isFlaky=$isFlaky, layer=$layer, resetLayer=$resetLayer, steps=$steps, setup=$setup, teardown=$teardown, manualTestId=$manualTestId, workItemIds=$workItemIds, workItemIdsForLinkWithAutoTest=$workItemIdsForLinkWithAutoTest, labels=$labels, links=$links, tags=$tags]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -173,6 +191,16 @@ class AutoTestUpdateApiModel {
     } else {
       json[r'isFlaky'] = null;
     }
+    if (this.layer != null) {
+      json[r'layer'] = this.layer;
+    } else {
+      json[r'layer'] = null;
+    }
+    if (this.resetLayer != null) {
+      json[r'resetLayer'] = this.resetLayer;
+    } else {
+      json[r'resetLayer'] = null;
+    }
     if (this.steps != null) {
       json[r'steps'] = this.steps;
     } else {
@@ -187,6 +215,11 @@ class AutoTestUpdateApiModel {
       json[r'teardown'] = this.teardown;
     } else {
       json[r'teardown'] = null;
+    }
+    if (this.manualTestId != null) {
+      json[r'manualTestId'] = this.manualTestId;
+    } else {
+      json[r'manualTestId'] = null;
     }
     if (this.workItemIds != null) {
       json[r'workItemIds'] = this.workItemIds;
@@ -245,9 +278,12 @@ class AutoTestUpdateApiModel {
         title: mapValueOfType<String>(json, r'title'),
         description: mapValueOfType<String>(json, r'description'),
         isFlaky: mapValueOfType<bool>(json, r'isFlaky'),
+        layer: LayerApiModel.fromJson(json[r'layer']),
+        resetLayer: mapValueOfType<bool>(json, r'resetLayer'),
         steps: AutoTestStepApiModel.listFromJson(json[r'steps']),
         setup: AutoTestStepApiModel.listFromJson(json[r'setup']),
         teardown: AutoTestStepApiModel.listFromJson(json[r'teardown']),
+        manualTestId: mapValueOfType<String>(json, r'manualTestId'),
         workItemIds: json[r'workItemIds'] is Iterable
             ? (json[r'workItemIds'] as Iterable).cast<String>().toList(growable: false)
             : const [],

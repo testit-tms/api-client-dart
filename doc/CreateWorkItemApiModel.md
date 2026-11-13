@@ -23,6 +23,8 @@ Name | Type | Description | Notes
 **postconditionSteps** | [**List<CreateStepApiModel>**](CreateStepApiModel.md) | Set of postcondition steps that are executed after completing the main steps | [optional] [default to const []]
 **iterations** | [**List<AssignIterationApiModel>**](AssignIterationApiModel.md) | Set of iterations associated with the work item | [optional] [default to const []]
 **autoTests** | [**List<AutoTestIdModel>**](AutoTestIdModel.md) | Set of automated tests linked to the work item | [optional] [default to const []]
+**manualTestId** | **String** | Identifier of the linked manual test | [optional] 
+**autoTestCases** | [**List<AssignAutoTestCaseIdApiModel>**](AssignAutoTestCaseIdApiModel.md) | Set of automated test cases linked to the work item | [optional] [default to const []]
 **attachments** | [**List<AssignAttachmentApiModel>**](AssignAttachmentApiModel.md) | Set of files attached to the work item | [optional] [default to const []]
 **links** | [**List<CreateLinkApiModel>**](CreateLinkApiModel.md) | Set of links related to the work item | [optional] [default to const []]
 **parameters** | [**List<WorkItemParameterKeyApiModel>**](WorkItemParameterKeyApiModel.md) | Set of parameter keys associated with the work item | [optional] [default to const []]

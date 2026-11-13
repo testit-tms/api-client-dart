@@ -22,9 +22,11 @@ class AutoTestCreateApiModel {
     this.title,
     this.description,
     this.isFlaky,
+    this.layer,
     this.steps = const [],
     this.setup = const [],
     this.teardown = const [],
+    this.manualTestId,
     this.shouldCreateWorkItem,
     this.workItemIds = const [],
     this.attributes = const {},
@@ -61,6 +63,9 @@ class AutoTestCreateApiModel {
   /// Indicates if the autotest is marked as flaky
   bool? isFlaky;
 
+  /// Layer of the autotest. Assigns layer by rules if omitted.
+  LayerApiModel? layer;
+
   /// Collection of the autotest steps
   List<AutoTestStepApiModel>? steps;
 
@@ -69,6 +74,9 @@ class AutoTestCreateApiModel {
 
   /// Collection of the autotest teardown steps
   List<AutoTestStepApiModel>? teardown;
+
+  /// ID of the manual test to be linked with the autotest
+  String? manualTestId;
 
   /// Creates a test case linked to the autotest.
   bool? shouldCreateWorkItem;
@@ -102,9 +110,11 @@ class AutoTestCreateApiModel {
     other.title == title &&
     other.description == description &&
     other.isFlaky == isFlaky &&
+    other.layer == layer &&
     _deepEquality.equals(other.steps, steps) &&
     _deepEquality.equals(other.setup, setup) &&
     _deepEquality.equals(other.teardown, teardown) &&
+    other.manualTestId == manualTestId &&
     other.shouldCreateWorkItem == shouldCreateWorkItem &&
     _deepEquality.equals(other.workItemIds, workItemIds) &&
     _deepEquality.equals(other.attributes, attributes) &&
@@ -125,9 +135,11 @@ class AutoTestCreateApiModel {
     (title == null ? 0 : title!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (isFlaky == null ? 0 : isFlaky!.hashCode) +
+    (layer == null ? 0 : layer!.hashCode) +
     (steps == null ? 0 : steps!.hashCode) +
     (setup == null ? 0 : setup!.hashCode) +
     (teardown == null ? 0 : teardown!.hashCode) +
+    (manualTestId == null ? 0 : manualTestId!.hashCode) +
     (shouldCreateWorkItem == null ? 0 : shouldCreateWorkItem!.hashCode) +
     (workItemIds == null ? 0 : workItemIds!.hashCode) +
     (attributes == null ? 0 : attributes!.hashCode) +
@@ -137,7 +149,7 @@ class AutoTestCreateApiModel {
     (tags == null ? 0 : tags!.hashCode);
 
   @override
-  String toString() => 'AutoTestCreateApiModel[projectId=$projectId, externalId=$externalId, name=$name, externalKey=$externalKey, namespace=$namespace, classname=$classname, title=$title, description=$description, isFlaky=$isFlaky, steps=$steps, setup=$setup, teardown=$teardown, shouldCreateWorkItem=$shouldCreateWorkItem, workItemIds=$workItemIds, attributes=$attributes, workItemIdsForLinkWithAutoTest=$workItemIdsForLinkWithAutoTest, labels=$labels, links=$links, tags=$tags]';
+  String toString() => 'AutoTestCreateApiModel[projectId=$projectId, externalId=$externalId, name=$name, externalKey=$externalKey, namespace=$namespace, classname=$classname, title=$title, description=$description, isFlaky=$isFlaky, layer=$layer, steps=$steps, setup=$setup, teardown=$teardown, manualTestId=$manualTestId, shouldCreateWorkItem=$shouldCreateWorkItem, workItemIds=$workItemIds, attributes=$attributes, workItemIdsForLinkWithAutoTest=$workItemIdsForLinkWithAutoTest, labels=$labels, links=$links, tags=$tags]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -174,6 +186,11 @@ class AutoTestCreateApiModel {
     } else {
       json[r'isFlaky'] = null;
     }
+    if (this.layer != null) {
+      json[r'layer'] = this.layer;
+    } else {
+      json[r'layer'] = null;
+    }
     if (this.steps != null) {
       json[r'steps'] = this.steps;
     } else {
@@ -188,6 +205,11 @@ class AutoTestCreateApiModel {
       json[r'teardown'] = this.teardown;
     } else {
       json[r'teardown'] = null;
+    }
+    if (this.manualTestId != null) {
+      json[r'manualTestId'] = this.manualTestId;
+    } else {
+      json[r'manualTestId'] = null;
     }
     if (this.shouldCreateWorkItem != null) {
       json[r'shouldCreateWorkItem'] = this.shouldCreateWorkItem;
@@ -255,9 +277,11 @@ class AutoTestCreateApiModel {
         title: mapValueOfType<String>(json, r'title'),
         description: mapValueOfType<String>(json, r'description'),
         isFlaky: mapValueOfType<bool>(json, r'isFlaky'),
+        layer: LayerApiModel.fromJson(json[r'layer']),
         steps: AutoTestStepApiModel.listFromJson(json[r'steps']),
         setup: AutoTestStepApiModel.listFromJson(json[r'setup']),
         teardown: AutoTestStepApiModel.listFromJson(json[r'teardown']),
+        manualTestId: mapValueOfType<String>(json, r'manualTestId'),
         shouldCreateWorkItem: mapValueOfType<bool>(json, r'shouldCreateWorkItem'),
         workItemIds: json[r'workItemIds'] is Iterable
             ? (json[r'workItemIds'] as Iterable).cast<String>().toList(growable: false)

@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 Delete tags
 
-  Use case    User sets collection of tags internal (guid format) identifiers    System searches and deletes a collection of tags
+ Use case  User sets collection of tags internal (guid format) identifiers  System searches and deletes a collection of tags
 
 ### Example
 ```dart
@@ -72,7 +72,7 @@ void (empty response body)
 
 Delete tag
 
-  Use case    User sets tag internal (guid format) identifier    System search and delete tag
+ Use case  User sets tag internal (guid format) identifier  System search and delete tag
 
 ### Example
 ```dart
@@ -122,7 +122,7 @@ void (empty response body)
 
 Create tag
 
-  Use case    User sets tag model (listed in the request example)    User runs method execution    System creates tag    System returns tag model (listed in the response example)
+ Use case  User sets tag model (listed in the request example)  User runs method execution  System creates tag  System returns tag model (listed in the response example)
 
 ### Example
 ```dart
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 Update tag
 
-  Use case    User sets tag ID and model (listed in the request example)    User runs method execution    System updates tag    System returns tag model (listed in the response example)
+ Use case  User sets tag ID and model (listed in the request example)  User runs method execution  System updates tag  System returns tag model (listed in the response example)
 
 ### Example
 ```dart
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 Search tags
 
-  Use case    User runs method execution    System returns collection of tags (listed in the response example)
+ Use case  User runs method execution  System returns collection of tags (listed in the response example)
 
 ### Example
 ```dart
@@ -285,7 +285,7 @@ Name | Type | Description  | Notes
 
 Get all Tags that are used in TestPlans
 
-  Use case    User runs method execution    System returns tags (listed in the response example)
+ Use case  User runs method execution  System returns tags (listed in the response example)
 
 ### Example
 ```dart

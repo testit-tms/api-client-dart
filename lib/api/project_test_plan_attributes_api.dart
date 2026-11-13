@@ -18,7 +18,7 @@ class ProjectTestPlanAttributesApi {
 
   /// Add attributes to project's test plans
   ///
-  ///   Use case    User sets project internal or global identifier and attributes identifiers    User runs method execution    System updates project and add attributes to project for test plans    System returns no content response
+  ///  Use case  User sets project internal or global identifier and attributes identifiers  User runs method execution  System updates project and add attributes to project for test plans  System returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -56,7 +56,7 @@ class ProjectTestPlanAttributesApi {
 
   /// Add attributes to project's test plans
   ///
-  ///   Use case    User sets project internal or global identifier and attributes identifiers    User runs method execution    System updates project and add attributes to project for test plans    System returns no content response
+  ///  Use case  User sets project internal or global identifier and attributes identifiers  User runs method execution  System updates project and add attributes to project for test plans  System returns no content response
   ///
   /// Parameters:
   ///
@@ -73,7 +73,7 @@ class ProjectTestPlanAttributesApi {
 
   /// Delete attribute from project's test plans
   ///
-  ///   Use case    User sets project internal or global identifier and attribute identifier    User runs method execution    System updates project and delete attribute from project for test plans    System returns no content response
+  ///  Use case  User sets project internal or global identifier and attribute identifier  User runs method execution  System updates project and delete attribute from project for test plans  System returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -112,7 +112,7 @@ class ProjectTestPlanAttributesApi {
 
   /// Delete attribute from project's test plans
   ///
-  ///   Use case    User sets project internal or global identifier and attribute identifier    User runs method execution    System updates project and delete attribute from project for test plans    System returns no content response
+  ///  Use case  User sets project internal or global identifier and attribute identifier  User runs method execution  System updates project and delete attribute from project for test plans  System returns no content response
   ///
   /// Parameters:
   ///
@@ -129,7 +129,7 @@ class ProjectTestPlanAttributesApi {
 
   /// Get project's test plan attributes
   ///
-  ///   Use case    User runs method execution    System returns project for test plans attributes by project identifier
+  ///  Use case  User runs method execution  System returns project for test plans attributes by project identifier
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -165,7 +165,7 @@ class ProjectTestPlanAttributesApi {
 
   /// Get project's test plan attributes
   ///
-  ///   Use case    User runs method execution    System returns project for test plans attributes by project identifier
+  ///  Use case  User runs method execution  System returns project for test plans attributes by project identifier
   ///
   /// Parameters:
   ///
@@ -279,7 +279,7 @@ class ProjectTestPlanAttributesApi {
   ///   Value for searching
   ///
   /// * [ProjectAttributesFilterModel] projectAttributesFilterModel:
-  Future<List<CustomAttributeGetModel>?> searchTestPlanAttributesInProject(String projectId, { int? skip, int? take, String? orderBy, String? searchField, String? searchValue, ProjectAttributesFilterModel? projectAttributesFilterModel, }) async {
+  Future<List<CustomAttributeModel>?> searchTestPlanAttributesInProject(String projectId, { int? skip, int? take, String? orderBy, String? searchField, String? searchValue, ProjectAttributesFilterModel? projectAttributesFilterModel, }) async {
     final response = await searchTestPlanAttributesInProjectWithHttpInfo(projectId,  skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, projectAttributesFilterModel: projectAttributesFilterModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -289,8 +289,8 @@ class ProjectTestPlanAttributesApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<CustomAttributeGetModel>') as List)
-        .cast<CustomAttributeGetModel>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<CustomAttributeModel>') as List)
+        .cast<CustomAttributeModel>()
         .toList(growable: false);
 
     }
@@ -299,7 +299,7 @@ class ProjectTestPlanAttributesApi {
 
   /// Update attribute of project's test plans
   ///
-  ///   Use case    User sets project internal or global identifier and attribute model    User runs method execution    System updates project and project attribute for test plan    System returns no content response
+  ///  Use case  User sets project internal or global identifier and attribute model  User runs method execution  System updates project and project attribute for test plan  System returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -337,7 +337,7 @@ class ProjectTestPlanAttributesApi {
 
   /// Update attribute of project's test plans
   ///
-  ///   Use case    User sets project internal or global identifier and attribute model    User runs method execution    System updates project and project attribute for test plan    System returns no content response
+  ///  Use case  User sets project internal or global identifier and attribute model  User runs method execution  System updates project and project attribute for test plan  System returns no content response
   ///
   /// Parameters:
   ///

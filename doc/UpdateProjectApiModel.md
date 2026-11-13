@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | Unique ID of the project | 
 **name** | **String** | Name of the project | 
+**testStrategy** | [**TestStrategy**](TestStrategy.md) |  | 
+**testCaseCoverageMode** | [**TestCaseCoverageMode**](TestCaseCoverageMode.md) |  | 
 **description** | **String** | Description of the project | [optional] 
 **isFavorite** | **bool** | Indicates if the project is marked as favorite | [optional] 
 **workflowId** | **String** | Identifier of the workflow project should use | [optional] 

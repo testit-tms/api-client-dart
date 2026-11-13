@@ -17,8 +17,8 @@ Name | Type | Description | Notes
 **flakyStabilityPercentage** | **int** | Stability percentage for autotest flaky computing | [optional] [default to 100]
 **flakyTestRunCount** | **int** | Last test run count for autotest flaky computing | [optional] [default to 100]
 **workItemUpdatingEnabled** | **bool** | Autotest to work item updating enabled | [optional] [default to false]
-**testRunsRetentionPeriodDays** | **int** |  The retention period in days for test runs. After this period,  outdated test runs may be archived based on project settings | [optional] [default to 180]
-**maxActiveTestRunsCount** | **int** | Maximum number of active test runs to keep. When this limit is exceeded,  older test runs are automatically archived | [optional] [default to 500]
+**testRunsRetentionPeriodDays** | **int** |  The retention period in days for test runs. After this period, outdated test runs may be archived based on project settings | [optional] [default to 180]
+**maxActiveTestRunsCount** | **int** | Maximum number of active test runs to keep. When this limit is exceeded, older test runs are automatically archived | [optional] [default to 500]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

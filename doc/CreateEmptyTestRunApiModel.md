@@ -8,7 +8,7 @@ import 'package:testit_api_client_dart/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**projectId** | **String** | Project unique identifier                This property is to link test run with a project | 
+**projectId** | **String** | Project unique identifier              This property is to link test run with a project | 
 **name** | **String** | Test run name | [optional] 
 **description** | **String** | Test run description | [optional] 
 **launchSource** | **String** | Test run launch source | [optional] 

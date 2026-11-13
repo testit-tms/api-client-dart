@@ -18,7 +18,7 @@ class ProjectAttributesApi {
 
   /// Create project attribute
   ///
-  ///   Use case    User sets attribute parameters (listed in request example) and runs method execution    System search project    System creates attribute and relates it to the project    System returns project attribute properties (example listed in response parameters)
+  ///  Use case  User sets attribute parameters (listed in request example) and runs method execution  System search project  System creates attribute and relates it to the project  System returns project attribute properties (example listed in response parameters)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -56,7 +56,7 @@ class ProjectAttributesApi {
 
   /// Create project attribute
   ///
-  ///   Use case    User sets attribute parameters (listed in request example) and runs method execution    System search project    System creates attribute and relates it to the project    System returns project attribute properties (example listed in response parameters)
+  ///  Use case  User sets attribute parameters (listed in request example) and runs method execution  System search project  System creates attribute and relates it to the project  System returns project attribute properties (example listed in response parameters)
   ///
   /// Parameters:
   ///
@@ -81,7 +81,7 @@ class ProjectAttributesApi {
 
   /// Delete project attribute
   ///
-  ///   Use case    User sets project identifier and runs method execution    User sets attribute identifier    User runs method execution    System search project    System search and delete attribute    System returns no content response
+  ///  Use case  User sets project identifier and runs method execution  User sets attribute identifier  User runs method execution  System search project  System search and delete attribute  System returns no content response
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -121,7 +121,7 @@ class ProjectAttributesApi {
 
   /// Delete project attribute
   ///
-  ///   Use case    User sets project identifier and runs method execution    User sets attribute identifier    User runs method execution    System search project    System search and delete attribute    System returns no content response
+  ///  Use case  User sets project identifier and runs method execution  User sets attribute identifier  User runs method execution  System search project  System search and delete attribute  System returns no content response
   ///
   /// Parameters:
   ///
@@ -139,7 +139,7 @@ class ProjectAttributesApi {
 
   /// Get project attribute
   ///
-  ///   Use case    User sets project internal or global identifier    User sets project attribute identifier    User runs method execution    System search project    System search project attribute    System returns project attribute (listed in response model)
+  ///  Use case  User sets project internal or global identifier  User sets project attribute identifier  User runs method execution  System search project  System search project attribute  System returns project attribute (listed in response model)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -179,7 +179,7 @@ class ProjectAttributesApi {
 
   /// Get project attribute
   ///
-  ///   Use case    User sets project internal or global identifier    User sets project attribute identifier    User runs method execution    System search project    System search project attribute    System returns project attribute (listed in response model)
+  ///  Use case  User sets project internal or global identifier  User sets project attribute identifier  User runs method execution  System search project  System search project attribute  System returns project attribute (listed in response model)
   ///
   /// Parameters:
   ///
@@ -205,7 +205,7 @@ class ProjectAttributesApi {
 
   /// Get project attributes
   ///
-  ///   Use case    User sets project internal or global identifier    [Optional] User sets isDeleted field value    User runs method execution    System search project    [Optional] If User sets isDeleted field value as true, System search all deleted attributes related to project    [Optional] If User sets isDeleted field value as false, System search all attributes related to project which are not deleted    [Optional] If User did not set isDeleted field value, System search all attributes related to project    System returns array of found attributes (listed in response model)
+  ///  Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted attributes related to project  [Optional] If User sets isDeleted field value as false, System search all attributes related to project which are not deleted  [Optional] If User did not set isDeleted field value, System search all attributes related to project  System returns array of found attributes (listed in response model)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -247,7 +247,7 @@ class ProjectAttributesApi {
 
   /// Get project attributes
   ///
-  ///   Use case    User sets project internal or global identifier    [Optional] User sets isDeleted field value    User runs method execution    System search project    [Optional] If User sets isDeleted field value as true, System search all deleted attributes related to project    [Optional] If User sets isDeleted field value as false, System search all attributes related to project which are not deleted    [Optional] If User did not set isDeleted field value, System search all attributes related to project    System returns array of found attributes (listed in response model)
+  ///  Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted attributes related to project  [Optional] If User sets isDeleted field value as false, System search all attributes related to project which are not deleted  [Optional] If User did not set isDeleted field value, System search all attributes related to project  System returns array of found attributes (listed in response model)
   ///
   /// Parameters:
   ///
@@ -363,7 +363,7 @@ class ProjectAttributesApi {
   ///   Value for searching
   ///
   /// * [ProjectAttributesFilterModel] projectAttributesFilterModel:
-  Future<List<CustomAttributeGetModel>?> searchAttributesInProject(String projectId, { int? skip, int? take, String? orderBy, String? searchField, String? searchValue, ProjectAttributesFilterModel? projectAttributesFilterModel, }) async {
+  Future<List<CustomAttributeModel>?> searchAttributesInProject(String projectId, { int? skip, int? take, String? orderBy, String? searchField, String? searchValue, ProjectAttributesFilterModel? projectAttributesFilterModel, }) async {
     final response = await searchAttributesInProjectWithHttpInfo(projectId,  skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, projectAttributesFilterModel: projectAttributesFilterModel, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -373,8 +373,8 @@ class ProjectAttributesApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<CustomAttributeGetModel>') as List)
-        .cast<CustomAttributeGetModel>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<CustomAttributeModel>') as List)
+        .cast<CustomAttributeModel>()
         .toList(growable: false);
 
     }

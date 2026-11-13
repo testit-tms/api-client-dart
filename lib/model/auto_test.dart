@@ -41,6 +41,7 @@ class AutoTest {
     this.lastTestResultConfiguration,
     this.lastTestResultOutcome,
     this.stabilityPercentage,
+    this.autoTestCase,
   });
 
   /// External ID of the autotest
@@ -127,6 +128,9 @@ class AutoTest {
   /// Stability percentage of the autotest
   int? stabilityPercentage;
 
+  /// Auto test case linked with the autotest
+  AutoTestCase? autoTestCase;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is AutoTest &&
     other.externalId == externalId &&
@@ -156,7 +160,8 @@ class AutoTest {
     other.lastTestResultId == lastTestResultId &&
     other.lastTestResultConfiguration == lastTestResultConfiguration &&
     other.lastTestResultOutcome == lastTestResultOutcome &&
-    other.stabilityPercentage == stabilityPercentage;
+    other.stabilityPercentage == stabilityPercentage &&
+    other.autoTestCase == autoTestCase;
 
   @override
   int get hashCode =>
@@ -188,10 +193,11 @@ class AutoTest {
     (lastTestResultId == null ? 0 : lastTestResultId!.hashCode) +
     (lastTestResultConfiguration == null ? 0 : lastTestResultConfiguration!.hashCode) +
     (lastTestResultOutcome == null ? 0 : lastTestResultOutcome!.hashCode) +
-    (stabilityPercentage == null ? 0 : stabilityPercentage!.hashCode);
+    (stabilityPercentage == null ? 0 : stabilityPercentage!.hashCode) +
+    (autoTestCase == null ? 0 : autoTestCase!.hashCode);
 
   @override
-  String toString() => 'AutoTest[externalId=$externalId, projectId=$projectId, name=$name, globalId=$globalId, isDeleted=$isDeleted, mustBeApproved=$mustBeApproved, id=$id, createdDate=$createdDate, createdById=$createdById, links=$links, namespace=$namespace, classname=$classname, steps=$steps, setup=$setup, teardown=$teardown, title=$title, description=$description, labels=$labels, isFlaky=$isFlaky, externalKey=$externalKey, modifiedDate=$modifiedDate, modifiedById=$modifiedById, lastTestRunId=$lastTestRunId, lastTestRunName=$lastTestRunName, lastTestResultId=$lastTestResultId, lastTestResultConfiguration=$lastTestResultConfiguration, lastTestResultOutcome=$lastTestResultOutcome, stabilityPercentage=$stabilityPercentage]';
+  String toString() => 'AutoTest[externalId=$externalId, projectId=$projectId, name=$name, globalId=$globalId, isDeleted=$isDeleted, mustBeApproved=$mustBeApproved, id=$id, createdDate=$createdDate, createdById=$createdById, links=$links, namespace=$namespace, classname=$classname, steps=$steps, setup=$setup, teardown=$teardown, title=$title, description=$description, labels=$labels, isFlaky=$isFlaky, externalKey=$externalKey, modifiedDate=$modifiedDate, modifiedById=$modifiedById, lastTestRunId=$lastTestRunId, lastTestRunName=$lastTestRunName, lastTestResultId=$lastTestResultId, lastTestResultConfiguration=$lastTestResultConfiguration, lastTestResultOutcome=$lastTestResultOutcome, stabilityPercentage=$stabilityPercentage, autoTestCase=$autoTestCase]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -299,6 +305,11 @@ class AutoTest {
     } else {
       json[r'stabilityPercentage'] = null;
     }
+    if (this.autoTestCase != null) {
+      json[r'autoTestCase'] = this.autoTestCase;
+    } else {
+      json[r'autoTestCase'] = null;
+    }
     return json;
   }
 
@@ -349,6 +360,7 @@ class AutoTest {
         lastTestResultConfiguration: ConfigurationShort.fromJson(json[r'lastTestResultConfiguration']),
         lastTestResultOutcome: mapValueOfType<String>(json, r'lastTestResultOutcome'),
         stabilityPercentage: mapValueOfType<int>(json, r'stabilityPercentage'),
+        autoTestCase: AutoTestCase.fromJson(json[r'autoTestCase']),
       );
     }
     return null;

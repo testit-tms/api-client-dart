@@ -1,3 +1,7 @@
+## 1.6.1-TMS-6.0
+
+* 6.0 TMS support
+
 ## 1.6.0-TMS-5.8
 
 * 5.8 TMS support

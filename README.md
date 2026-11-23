@@ -11,6 +11,7 @@
 | 5.6     | 1.4.0-TMS-5.6           |
 | 5.7     | 1.5.4-TMS-5.7           |
 | 5.8     | 1.6.0-TMS-5.8           |
+| 6.0     | 1.6.1-TMS-6.0           |
 | Cloud   | 1.6.0 +                 | 
 
 1. For current versions, see the releases tab. 
